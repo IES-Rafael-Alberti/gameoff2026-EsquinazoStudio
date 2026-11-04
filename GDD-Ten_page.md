@@ -3,6 +3,7 @@
 
 ## Introducción
 ### Resumen del juego
+Dungeon Stacker es un juego que mezcla puzle de colocación de piezas y la exploración de un dungeon crawler para que el jugador se coloque las piezas generando su propia mazmorra.
 ### Inspiración
   Utilizando la temática de la Game Off (**SHIFT**) como base, partimos de la idea de cambiar entre dos mecánicas de juegos completamente distintas, siendo la primera el Tetris, junto a juegos de mazmorras, como The legend of Zelda o The Binding of Isaac, hemos creado una mezcla interesante donde utilizamos un tablero de Tetris para que el jugador genere su propia mazmorra explorable.
   <table>
@@ -27,6 +28,7 @@ Se va a desarrollar para dos plataformas: PC y Web. El formato web es necesario 
 ### Sotware de Desarrollo
   + Godot v4.7
   + Krita
+  + Git
 ### Género
   El juego mezcla el genero de **Puzzle** con un **Dungeon crawler.**
 ### Público Objetivo
@@ -39,6 +41,7 @@ Encontrar piezas en la mazmorra para poder seguir avanzando.
 Cambio del modo de juego entre mazmorreo y creación de mazmorra.
 Mecánicas propias de la mazmorra (Ataque, puzles, curas, etc)
 ### Temática
+
 ### Mecánicas principales
 + **Conseguir Piezas:** El jugador explorará la mazmorra para encontrar piezas. Estas podran ser obtenidas de diversas formas, ya sea a través de cofres o matando enemigos.
 + **Colocar Piezas:** Las piezas caerán de arriba hasta abajo con el tiempo y el jugador deberá colocarlas donde quiera. Esto además lleva las siguientes submecanicas.
