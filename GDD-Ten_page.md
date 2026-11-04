@@ -16,7 +16,8 @@
 </td>
     <td><img width="256" height="224" alt="zelda" src="https://github.com/user-attachments/assets/6224b8fa-1109-4c21-a577-64b04e245306" />
 </td>
-    <td>(INSERTAR IMAGEN AQUÍ)</td>
+    <td><img width="256" height="224" alt="isaac" src="https://github.com/user-attachments/assets/3312d58b-79b6-454f-9d6c-d428c2a50f6d" />
+</td>
   </tr>
 </table>
 
