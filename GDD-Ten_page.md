@@ -12,7 +12,8 @@
     <td>The Binding of Isaac</td>
   </tr>
   <tr>
-    <td>(INSERTAR IMAGEN AQUÍ)</td>
+    <td><img width="1200" height="675" alt="tetris" src="https://github.com/user-attachments/assets/091c2222-19d9-4c14-98d9-cb67ffae9b3e" />
+</td>
     <td>(INSERTAR IMAGEN AQUÍ)</td>
     <td>(INSERTAR IMAGEN AQUÍ)</td>
   </tr>
