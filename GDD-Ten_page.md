@@ -86,6 +86,14 @@ La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las
 ### Efectos de Sonido
 ## Experiencia de Juego
 ### UI
+La interfaz contara con los siguientes elementos:
++ Cantidad de piezas que tiene el jugador.
++ Vida del jugador.
++ Minimapa con la forma de la mazmorra.
++ Llave, si posee alguna.
+
+(Que Edu inserte un concept aqui)
+
 ### Controles
 El juego posee dos sets de controles, uno para el modo de creación de la mazmorra y otro para el modo de exploración. En la tabla a continuación se muestran los controles para ambas versiones
 <div align="center">
