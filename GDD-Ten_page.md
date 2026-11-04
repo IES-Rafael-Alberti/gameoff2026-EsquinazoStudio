@@ -30,6 +30,11 @@ Se va a desarrollar para dos plataformas: PC y Web. El formato web es necesario 
 El principal público objetivo son los desarrolladores de la Game Off. Ademas, apuntamos a los entusiastas de los juegos de puzzle y los juegos de mazmorras.
 ## Concept
 ### Jugabilidad
+La jugabilidad parte principalmente  del cambio de modo de juego, entre la mecánica de puzle creando la mazmorra y el modo de exploración de mazmorras. El jugador podra colocar las piezas haciendo el camino para llegar al lugar deseado.
+Colocar las piezas de forma eficiente para hacer los caminos.
+Encontrar piezas en la mazmorra para poder seguir avanzando.
+Cambio del modo de juego entre mazmorreo y creación de mazmorra.
+Mecánicas propias de la mazmorra (Ataque, puzles, curas, etc)
 ### Temática
 ### Mecánicas principales
 + **Conseguir Piezas:** El jugador explorará la mazmorra para encontrar piezas. Estas podran ser obtenidas de diversas formas, ya sea a través de cofres o matando enemigos.
