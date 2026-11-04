@@ -4,8 +4,9 @@
 ## Introducción
 ### Resumen del juego
 Dungeon Stacker es un juego que mezcla puzle de colocación de piezas y la exploración de un dungeon crawler para que el jugador se coloque las piezas generando su propia mazmorra.
+
 ### Inspiración
-  Utilizando la temática de la Game Off (**SHIFT**) como base, partimos de la idea de cambiar entre dos mecánicas de juegos completamente distintas, siendo la primera el Tetris, junto a juegos de mazmorras, como The legend of Zelda o The Binding of Isaac, hemos creado una mezcla interesante donde utilizamos un tablero de Tetris para que el jugador genere su propia mazmorra explorable.
+Utilizando la temática de la Game Off (**SHIFT**) como base, partimos de la idea de cambiar entre dos mecánicas de juegos completamente distintas; siendo la primera el Tetris, junto a juegos de mazmorras, como The Legend of Zelda o The Binding of Isaac, hemos creado una mezcla interesante donde utilizamos un tablero de Tetris para que el jugador genere su propia mazmorra explorable.
   <div align="center">
     <table>
     <tr>
@@ -25,29 +26,28 @@ Dungeon Stacker es un juego que mezcla puzle de colocación de piezas y la explo
 </div>
 
 ### Experiencia del Jugador
-A través de los cinco niveles, el jugador el jugador deberá experimentar con las mecánicas de colocación de bloques del conocidísimo juego Tetris, para crear una mazmorra explorable donde se podrá encontrar desafíos de puzles, combate y piezas de recompensa para seguir creando la mazmorra.
+A través de los cinco niveles, el jugador deberá experimentar con las mecánicas de colocación de bloques del conocidísimo juego Tetris, para crear una mazmorra explorable donde se podrán encontrar desafíos de puzles, combate y piezas de recompensa para seguir creando la mazmorra.
 
 ### Plataforma
-Se va a desarrollar para dos plataformas: PC y Web. El formato web es necesario para publicarlo en itch.io y dado que el objetivo final es poner el juego en Steam es necesario desarrollar ambas versiones.
+Se va a desarrollar para dos plataformas: PC y web. El formato web es necesario para publicarlo en itch.io y, dado que el objetivo final es poner el juego en Steam, es necesario desarrollar ambas versiones.
 
 ### Sotware de Desarrollo
   + Godot v4.7
   + Krita
   + Git
-  + 
+    
 ### Género
   El juego mezcla el genero de **Puzzle** con un **Dungeon crawler.**
   
-### Público Objetivo
-El principal público objetivo son los desarrolladores de la Game Off. Ademas, apuntamos a los entusiastas de los juegos de puzzle y los juegos de mazmorras.
+### Público objetivo
+El principal público objetivo son los desarrolladores de la Game Off. Además, apuntamos a los entusiastas de los juegos de puzle y a aquellos a los que les gusten los juegos de mazmorras con un toque distintivo.
+
 ## Concept
 ### Jugabilidad
-La jugabilidad parte principalmente  del cambio de modo de juego, entre la mecánica de puzle creando la mazmorra y el modo de exploración de mazmorras. El jugador podra colocar las piezas haciendo el camino para llegar al lugar deseado.
-Colocar las piezas de forma eficiente para hacer los caminos.
-Encontrar piezas en la mazmorra para poder seguir avanzando.
-Cambio del modo de juego entre mazmorreo y creación de mazmorra.
-Mecánicas propias de la mazmorra (Ataque, puzles, curas, etc)
-### Temática
+La jugabilidad parte de la mezcla de la mecánica de puzle creando la mazmorra y el modo de exploración de mazmorras. El jugador podrá colocar las piezas haciendo el camino para llegar al lugar deseado. La temática de cambio propuesta en la jam se profundiza con la obtención de las piezas dentro de la mazmorra, limitando la cantidad de piezas que puedes colocar y forzándote a cambiar de modo de juego para obtener mas piezas y completar el nivel. Una vez dentro de la mazmorra el jugador podrá encontrar las mecánicas típicas de un dungeon crawler, tal como atacar a enemigos, puzles que resolver, objetos para curarse, etc...
+
+### Interpretación de la temática
+La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las dos mecánicas completamente distintas, una de colocación de bloques y otra de exploración de mazmorras, a través de la obtención de los bloques dentro de la mazmorra, fuerzan al jugador a cambiar de modo de juego.
 
 ### Mecánicas principales
 + **Conseguir Piezas:** El jugador explorará la mazmorra para encontrar piezas. Estas podran ser obtenidas de diversas formas, ya sea a través de cofres o matando enemigos.
