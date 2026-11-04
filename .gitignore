@@ -4,6 +4,7 @@
 # Godot 4+ specific ignores
 .godot/
 .nomedia
+/android/
 
 # Godot-specific ignores
 .import/
@@ -11,7 +12,7 @@ export.cfg
 export_credentials.cfg
 *.tmp
 
-# Imported translations (automatically generated from CSV files)
+# Imported translations
 *.translation
 
 # Mono-specific ignores
@@ -21,5 +22,4 @@ mono_crash.*.json
 
 # Export outputs
 *.exe
-# Uncomment if your project does not version PCK files as runtime dependencies.
 # *.pck

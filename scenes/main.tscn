@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dybwwc21vgycb"]
+
+[ext_resource type="Script" uid="uid://c5umapo4jp2kn" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://d13g2aba8o5hu" path="res://scripts/grid_background.gd" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://dxm2rn25xq6v" path="res://scripts/tablero.gd" id="3_o6xl0"]
+[ext_resource type="Script" uid="uid://dbdb60dew3vhi" path="res://scripts/fixed_blocks.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://cpo0eoojwa5p5" path="res://scripts/ghost_piece.gd" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://bkqgf036amws2" path="res://scripts/current_piece.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://dflrhf5ww8hu2" path="res://scripts/piezas.gd" id="7_tipki"]
+[ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="8_85g3d"]
+
+[node name="Main" type="Node2D" unique_id=545254014]
+script = ExtResource("1_o5qli")
+
+[node name="Background" type="ColorRect" parent="." unique_id=393229449]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Board" type="Node2D" parent="." unique_id=2081255230]
+
+[node name="GridBackground" type="Node2D" parent="Board" unique_id=292566563]
+script = ExtResource("2_0wfyh")
+
+[node name="Tablero" type="Node" parent="Board" unique_id=366065856]
+script = ExtResource("3_o6xl0")
+
+[node name="FixedBlocks" type="Node2D" parent="Board" unique_id=1485467602]
+z_index = 1
+script = ExtResource("3_sugp2")
+
+[node name="GhostPiece" type="Node2D" parent="Board" unique_id=2051215285]
+z_index = 2
+script = ExtResource("4_jyhfs")
+
+[node name="CurrentPiece" type="Node2D" parent="Board" unique_id=1417490684]
+z_index = 3
+script = ExtResource("5_tbgi4")
+
+[node name="Piezas" type="Node" parent="." unique_id=392330731]
+script = ExtResource("7_tipki")
+
+[node name="ControladorPieza" type="Node" parent="." unique_id=1241629587]
+script = ExtResource("8_85g3d")
+
+[node name="SidePanel" type="Control" parent="." unique_id=1758495758]
+z_index = 5
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_right = 500.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="NextLabel" type="Label" parent="SidePanel" unique_id=1189905426]
+custom_maximum_size = Vector2(20, 40)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 60.0
+offset_bottom = 63.0
+text = "SIGUIENTE"
+
+[node name="NextPiece" type="Node2D" parent="SidePanel" unique_id=729437495]
+position = Vector2(55, 100)
+script = ExtResource("6_tefeu")
