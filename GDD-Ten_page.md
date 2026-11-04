@@ -20,12 +20,14 @@
 
 ### Experiencia del Jugador
 ### Plataforma
+Se va a desarrollar para dos plataformas: PC y Web. El formato web es necesario para publicarlo en itch.io y dado que el objetivo final es poner el juego en Steam es necesario desarrollar ambas versiones.
 ### Sotware de Desarrollo
   + Godot v4.7
   + Krita
 ### Género
-  El juego mezcla el genero de **Puzzle** con un **Dungeon crawler**
+  El juego mezcla el genero de **Puzzle** con un **Dungeon crawler.**
 ### Público Objetivo
+El principal público objetivo son los desarrolladores de la Game Off. Ademas, apuntamos a los entusiastas de los juegos de puzzle y los juegos de mazmorras.
 ## Concept
 ### Jugabilidad
 ### Temática
@@ -53,7 +55,7 @@
 ### Mecánicas secundarias
 
 + **Mezcla de habitaciones:** Se podrá encontrar habitaciones que incluyan varios tipos, como una habitación de combate y tesoro.
-+ 
++ **Puzles**: Algunas habitaciones de desafío tendrán puzles a resolver.
 ## Arte
 ### Temática
 ### Diseño
