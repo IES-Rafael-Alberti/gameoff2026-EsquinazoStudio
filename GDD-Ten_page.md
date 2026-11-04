@@ -6,31 +6,38 @@
 Dungeon Stacker es un juego que mezcla puzle de colocación de piezas y la exploración de un dungeon crawler para que el jugador se coloque las piezas generando su propia mazmorra.
 ### Inspiración
   Utilizando la temática de la Game Off (**SHIFT**) como base, partimos de la idea de cambiar entre dos mecánicas de juegos completamente distintas, siendo la primera el Tetris, junto a juegos de mazmorras, como The legend of Zelda o The Binding of Isaac, hemos creado una mezcla interesante donde utilizamos un tablero de Tetris para que el jugador genere su propia mazmorra explorable.
-  <table>
-  <tr>
-    <td>Tetris</td>
-    <td>The Legend of Zelda</td>
-    <td>The Binding of Isaac</td>
-  </tr>
-  <tr>
-    <td><img width="256" height="224" alt="tetris" src="https://github.com/user-attachments/assets/091c2222-19d9-4c14-98d9-cb67ffae9b3e" />
-</td>
-    <td><img width="256" height="224" alt="zelda" src="https://github.com/user-attachments/assets/6224b8fa-1109-4c21-a577-64b04e245306" />
-</td>
-    <td><img width="256" height="224" alt="isaac" src="https://github.com/user-attachments/assets/3312d58b-79b6-454f-9d6c-d428c2a50f6d" />
-</td>
-  </tr>
-</table>
+  <div align="center">
+    <table>
+    <tr>
+      <td>Tetris</td>
+      <td>The Legend of Zelda</td>
+      <td>The Binding of Isaac</td>
+    </tr>
+    <tr>
+      <td><img width="256" height="224" alt="tetris" src="https://github.com/user-attachments/assets/091c2222-19d9-4c14-98d9-cb67ffae9b3e" />
+  </td>
+      <td><img width="256" height="224" alt="zelda" src="https://github.com/user-attachments/assets/6224b8fa-1109-4c21-a577-64b04e245306" />
+  </td>
+      <td><img width="256" height="224" alt="isaac" src="https://github.com/user-attachments/assets/3312d58b-79b6-454f-9d6c-d428c2a50f6d" />
+  </td>
+    </tr>
+  </table>
+</div>
 
 ### Experiencia del Jugador
+A través de los cinco niveles, el jugador el jugador deberá experimentar con las mecánicas de colocación de bloques del conocidísimo juego Tetris, para crear una mazmorra explorable donde se podrá encontrar desafíos de puzles, combate y piezas de recompensa para seguir creando la mazmorra.
+
 ### Plataforma
 Se va a desarrollar para dos plataformas: PC y Web. El formato web es necesario para publicarlo en itch.io y dado que el objetivo final es poner el juego en Steam es necesario desarrollar ambas versiones.
+
 ### Sotware de Desarrollo
   + Godot v4.7
   + Krita
   + Git
+  + 
 ### Género
   El juego mezcla el genero de **Puzzle** con un **Dungeon crawler.**
+  
 ### Público Objetivo
 El principal público objetivo son los desarrolladores de la Game Off. Ademas, apuntamos a los entusiastas de los juegos de puzzle y los juegos de mazmorras.
 ## Concept
