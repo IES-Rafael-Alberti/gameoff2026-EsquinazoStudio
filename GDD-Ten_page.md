@@ -12,9 +12,10 @@
     <td>The Binding of Isaac</td>
   </tr>
   <tr>
-    <td><img width="1200" height="675" alt="tetris" src="https://github.com/user-attachments/assets/091c2222-19d9-4c14-98d9-cb67ffae9b3e" />
+    <td><img width="256" height="224" alt="tetris" src="https://github.com/user-attachments/assets/091c2222-19d9-4c14-98d9-cb67ffae9b3e" />
 </td>
-    <td>(INSERTAR IMAGEN AQUÍ)</td>
+    <td><img width="256" height="224" alt="zelda" src="https://github.com/user-attachments/assets/6224b8fa-1109-4c21-a577-64b04e245306" />
+</td>
     <td>(INSERTAR IMAGEN AQUÍ)</td>
   </tr>
 </table>
@@ -43,6 +44,10 @@ Mecánicas propias de la mazmorra (Ataque, puzles, curas, etc)
   - **Movimiento de piezas:** Las piezas se podran mover de izquierda a derecha.
   - **Rotación de piezas:** Las piezas se podrán rotar en sentido horario y antihorario.
   - **Eliminación de fila:** Si el jugador llena todas las casillas de la fila, esa fila será eliminada y el resto de piezas caerán hacia abajo.
++ **Objetivos:** Objetivos extras en el mapa para dificultar los niveles.
+  - **Puntos de referencia:** Punto por los que hay pasar por el mapa para lograr abrir la puerta final.
+  - **Puertas con llaves:** Puertas que se abren al obtener llaves.
+  - **Puertas de enemigos:** Puertas que se abre solo si el jugador derrota a cierta cantidad de enemigos.
 + **Tipo de piezas:** Las piezas que se colocan tienen variedad de tipos
   - **Piezas normales:** Cada parte de la pieza tendrá asignada distintos tipos de habitaciones y se podran conectar desde todas direcciones.
   - **Piezas direccionales:** Cada parte de la pieza tendrá asignada distintos tipos de habitaciones y solo se podran conectar en la dirección que se marquen.
