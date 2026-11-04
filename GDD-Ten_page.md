@@ -17,6 +17,7 @@
     <td>(INSERTAR IMAGEN AQUÍ)</td>
   </tr>
 </table>
+
 ### Experiencia del Jugador
 ### Plataforma
 ### Sotware de Desarrollo
