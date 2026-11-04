@@ -88,67 +88,73 @@ La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las
 ### UI
 ### Controles
 El juego posee dos sets de controles, uno para el modo de creación de la mazmorra y otro para el modo de exploración. Para el modo de creación los controles serán los siguientes:
-<table>
-  <thead>
-    <tr>
-      <th>Acción</th>
-      <th>Teclado</th>
-      <th>Mando</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Movimiento hacia la izquierda</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Movimiento hacia la derecha</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Rotación horaria</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Rotación antihoraria</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Caída rápida</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="3" align="center"><strong>Modo de exploración de mazmorras</strong></td>
-    </tr>
-    <tr>
-      <td>Movimiento hacia arriba</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Movimiento hacia abajo</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Movimiento hacia la izquierda</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Movimiento hacia la derecha</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Ataque</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+
+<div align="center">
+  <table>
+    <thead>
+      <tr>
+        <th>Acción</th>
+        <th>Teclado</th>
+        <th>Mando</th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr>
+        <td colspan="3" align="center"><strong>Modo de creación de mazmorras</strong></td>
+      </tr>
+      <tr>
+        <td>Movimiento hacia la izquierda</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Movimiento hacia la derecha</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Rotación horaria</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Rotación antihoraria</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Caída rápida</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center"><strong>Modo de exploración de mazmorras</strong></td>
+      </tr>
+      <tr>
+        <td>Movimiento hacia arriba</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Movimiento hacia abajo</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Movimiento hacia la izquierda</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Movimiento hacia la derecha</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Ataque</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
