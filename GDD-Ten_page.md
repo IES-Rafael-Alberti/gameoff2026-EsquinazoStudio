@@ -87,20 +87,23 @@ La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las
 ## Experiencia de Juego
 ### UI
 ### Controles
-El juego posee dos sets de controles, uno para el modo de creación de la mazmorra y otro para el modo de exploración. Para el modo de creación los controles serán los siguientes:
-
+El juego posee dos sets de controles, uno para el modo de creación de la mazmorra y otro para el modo de exploración. En la tabla a continuación se muestran los controles para ambas versiones
 <div align="center">
   <table>
-    <thead>
+    <tbody>
       <tr>
-        <th>Acción</th>
-        <th>Teclado</th>
-        <th>Mando</th>
+        <td colspan="3" align="center"><strong> ⚒️ Modo de creación de mazmorras</strong></td>
       </tr>
-    </thead>
-    <tbody>    
       <tr>
-        <td colspan="3" align="center"><strong>Modo de creación de mazmorras</strong></td>
+        <th bgcolor="#343a40" style="color: white; padding: 14px; font-size: 16px;">
+          ACCIÓN
+        </th>
+        <th bgcolor="#343a40" style="color: white; padding: 14px; font-size: 16px;">
+          ⌨️ TECLADO
+        </th>
+        <th bgcolor="#343a40" style="color: white; padding: 14px; font-size: 16px;">
+          🎮 MANDO
+        </th>
       </tr>
       <tr>
         <td>Movimiento hacia la izquierda</td>
@@ -127,8 +130,25 @@ El juego posee dos sets de controles, uno para el modo de creación de la mazmor
         <td></td>
         <td></td>
       </tr>
+    </tbody>
+  </table>
+</div>
+<div align="center">
+  <table>
+    <tbody>
       <tr>
-        <td colspan="3" align="center"><strong>Modo de exploración de mazmorras</strong></td>
+        <td colspan="3" align="center"><strong> 🗺️ Modo de exploración de mazmorras</strong></td>
+      </tr>
+      <tr>
+        <th bgcolor="#343a40" style="color: white; padding: 14px; font-size: 16px;">
+          ACCIÓN
+        </th>
+        <th bgcolor="#343a40" style="color: white; padding: 14px; font-size: 16px;">
+          ⌨️ TECLADO
+        </th>
+        <th bgcolor="#343a40" style="color: white; padding: 14px; font-size: 16px;">
+          🎮 MANDO
+        </th>
       </tr>
       <tr>
         <td>Movimiento hacia arriba</td>
