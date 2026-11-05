@@ -80,15 +80,18 @@ La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las
 + **Puzles**: Algunas habitaciones de desafío tendrán puzles a resolver.
 ## Arte
 
-Para el arte se empleará un estilo de dibujo hecho a mano, con un estilo simple y con una paleta de colores oscura y desaturada.
+Para el arte se empleará un estilo de dibujo hecho a mano con distintos estilos y paletas de colores en función de la zona, según la sala la paleta de colores será más oscuro o más claro con colores cálidos o frios.
+Cuenta con colores llamativos y muy intuitivo para resolver los puzles que se encuentren  por las salas.
 
 <img width="256" height="224" alt="Trampa" src="https://github.com/user-attachments/assets/e1ad97ca-2364-4487-80d0-9f73935e5250" />
 <img width="256" height="224" alt="Concept Dungeon Stacker" src="https://github.com/user-attachments/assets/d6488cc4-31ad-4601-aada-ac72d564695f" />
 <img width="256" height="224" alt="Rey" src="https://github.com/user-attachments/assets/881a8203-757c-4024-a8ed-c7054701fcba" />
 
 
-
 ### Temática
+
+El tablero y decoraciones bases cuentan con una temática medieval, usando la misma en el primer nivel. A medida que se avanza se añades salas de distintas eras como futuristas o de la era de hielo. Cada sala con su época respectiva cuenta con características ajustadas a esa época como los enemigos, trampas, escenarios, puzles, etc.
+
 ### Diseño
 ## Audio
 ### Música
