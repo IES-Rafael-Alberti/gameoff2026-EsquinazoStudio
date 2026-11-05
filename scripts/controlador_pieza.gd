@@ -98,7 +98,7 @@ func mover_pieza(direccion: Vector2i) -> void:
 		solicitar_fijar_pieza.emit()
 
 func rotar_pieza(direccion: int = 1):
-	if pieza_actual == "O":
+	if pieza_actual == "O" or pieza_actual == "P":
 		return
 
 	var nueva_forma: Array[Vector2i] = []
@@ -155,7 +155,7 @@ func procesar_caida(delta: float) -> void:
 	var velocidad_actual = velocidad_soft_drop if soft_drop_activo else velocidad_caida
 
 	if temporizador >= velocidad_actual:
-		temporizador = 0.0
+		temporizador -= velocidad_actual
 		mover_pieza(Vector2i(0, 1))
 		
 func establecer_pieza(nombre: String) -> bool:

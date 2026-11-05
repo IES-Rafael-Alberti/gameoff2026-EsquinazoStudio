@@ -32,7 +32,17 @@ func _physics_process(_delta: float) -> void:
 			last_direction = "South" if input_direction.y > 0 else "North"
 		sprite.play("Walk_" + last_direction)
 	else:
-		sprite.play("Idle_South")
+		play_idle()
+
+
+func play_idle() -> void:
+	var idle_anim = "Idle_" + last_direction
+	if sprite.sprite_frames.has_animation(idle_anim):
+		sprite.play(idle_anim)
+	else:
+		sprite.play("Walk_" + last_direction)
+		sprite.frame = 0
+		sprite.pause()
 
 
 func _input(event: InputEvent) -> void:

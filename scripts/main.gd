@@ -35,12 +35,13 @@ func _process(delta):
 	controlador_pieza.procesar_caida(delta)
 
 func _input(event):
+	if not juego_activo:
+		return
+
 	if event is InputEventKey:
 		# Soft Drop: mantener pulsada la flecha abajo
 		if event.keycode == KEY_DOWN:
 			controlador_pieza.soft_drop_activo = event.pressed
-		if not juego_activo:
-			return
 		if event.pressed and not event.echo:
 			if event.keycode == KEY_LEFT:
 				controlador_pieza.mover_pieza(Vector2i(-1, 0))
@@ -90,4 +91,5 @@ func actualizar_siguiente_pieza() -> void:
 	
 func finalizar_partida() -> void:
 	juego_activo = false
+	controlador_pieza.soft_drop_activo = false
 	print("GAME OVER")

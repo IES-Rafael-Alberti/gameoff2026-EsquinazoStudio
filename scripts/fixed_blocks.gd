@@ -9,6 +9,9 @@ func actualizar_tablero(nuevo_tablero: Array) -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	if tablero.size() < Configuracion.FILAS:
+		return
+
 	for y in range(Configuracion.FILAS):
 		for x in range(Configuracion.COLUMNAS):
 			if typeof(tablero[y][x]) == TYPE_COLOR:
