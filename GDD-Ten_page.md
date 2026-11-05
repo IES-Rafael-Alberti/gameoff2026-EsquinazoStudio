@@ -127,28 +127,28 @@ El juego posee dos sets de controles, uno para el modo de creación de la mazmor
       </tr>
       <tr>
         <td>Movimiento hacia la izquierda</td>
-        <td></td>
-        <td></td>
+        <td>A</td>
+        <td>Joystick Izquiera</td>
       </tr>
       <tr>
         <td>Movimiento hacia la derecha</td>
-        <td></td>
-        <td></td>
+        <td>D</td>
+        <td>Joystick derecha</td>
       </tr>
       <tr>
         <td>Rotación horaria</td>
-        <td></td>
-        <td></td>
+        <td>R</td>
+        <td>R1</td>
       </tr>
       <tr>
         <td>Rotación antihoraria</td>
-        <td></td>
-        <td></td>
+        <td>Q</td>
+        <td>L1</td>
       </tr>
       <tr>
         <td>Caída rápida</td>
-        <td></td>
-        <td></td>
+        <td>S</td>
+        <td>Joystick abajo</td>
       </tr>
     </tbody>
   </table>
@@ -172,28 +172,28 @@ El juego posee dos sets de controles, uno para el modo de creación de la mazmor
       </tr>
       <tr>
         <td>Movimiento hacia arriba</td>
-        <td></td>
-        <td></td>
+        <td>W</td>
+        <td>Joystick arriba</td>
       </tr>
       <tr>
         <td>Movimiento hacia abajo</td>
-        <td></td>
-        <td></td>
+        <td>S</td>
+        <td>Joystick abajo</td>
       </tr>
       <tr>
         <td>Movimiento hacia la izquierda</td>
-        <td></td>
-        <td></td>
+        <td>A</td>
+        <td>Joystick izquierda</td>
       </tr>
       <tr>
         <td>Movimiento hacia la derecha</td>
-        <td></td>
-        <td></td>
+        <td>D</td>
+        <td>Joystick derecha.</td>
       </tr>
       <tr>
         <td>Ataque</td>
-        <td></td>
-        <td></td>
+        <td>Click Izq.</td>
+        <td>Cuadrado</td>
       </tr>
     </tbody>
   </table>
