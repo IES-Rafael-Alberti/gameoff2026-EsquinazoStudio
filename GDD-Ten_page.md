@@ -82,9 +82,9 @@ La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las
 
 Para el arte se empleará un estilo de dibujo hecho a mano, con un estilo simple y con una paleta de colores oscura y desaturada.
 
-<img width="4096" height="2160" alt="Trampa" src="https://github.com/user-attachments/assets/e1ad97ca-2364-4487-80d0-9f73935e5250" />
-<img width="4096" height="2160" alt="Concept Dungeon Stacker" src="https://github.com/user-attachments/assets/d6488cc4-31ad-4601-aada-ac72d564695f" />
-<img width="1162" height="1127" alt="Rey" src="https://github.com/user-attachments/assets/881a8203-757c-4024-a8ed-c7054701fcba" />
+<img width="256" height="224" alt="Trampa" src="https://github.com/user-attachments/assets/e1ad97ca-2364-4487-80d0-9f73935e5250" />
+<img width="256" height="224" alt="Concept Dungeon Stacker" src="https://github.com/user-attachments/assets/d6488cc4-31ad-4601-aada-ac72d564695f" />
+<img width="256" height="224" alt="Rey" src="https://github.com/user-attachments/assets/881a8203-757c-4024-a8ed-c7054701fcba" />
 
 
 
