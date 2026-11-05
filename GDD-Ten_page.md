@@ -79,6 +79,12 @@ La temática, **Shift**, se ha incorporado al juego en el diseño del mismo, las
 + **Mezcla de habitaciones:** Se podrá encontrar habitaciones que incluyan varios tipos, como una habitación de combate y tesoro.
 + **Puzles**: Algunas habitaciones de desafío tendrán puzles a resolver.
 ## Arte
+<img width="4096" height="2160" alt="Trampa" src="https://github.com/user-attachments/assets/e1ad97ca-2364-4487-80d0-9f73935e5250" />
+<img width="4096" height="2160" alt="Concept Dungeon Stacker" src="https://github.com/user-attachments/assets/d6488cc4-31ad-4601-aada-ac72d564695f" />
+<img width="1162" height="1127" alt="Rey" src="https://github.com/user-attachments/assets/881a8203-757c-4024-a8ed-c7054701fcba" />
+
+
+
 ### Temática
 ### Diseño
 ## Audio
