@@ -1,17 +1,43 @@
 extends Node2D
 
 const Configuracion = preload("res://scripts/configuracion.gd")
+const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
 
 var forma: Array = []
-var color: Color = Color.WHITE
+var textura_fondo: Texture2D
+var textura_marco: Texture2D
+var categorias: Array = []
 
-func actualizar_pieza(nueva_forma: Array, nuevo_color: Color) -> void:
+var _cuadrados: Array = []
+
+
+func actualizar_pieza(
+	nueva_forma: Array,
+	nueva_textura_fondo: Texture2D,
+	nueva_textura_marco: Texture2D,
+	nuevas_categorias: Array
+) -> void:
 	forma = nueva_forma
-	color = nuevo_color
-	queue_redraw()
+	textura_fondo = nueva_textura_fondo
+	textura_marco = nueva_textura_marco
+	categorias = nuevas_categorias
 
-func _draw() -> void:
+	_asegurar_cuadrados(forma.size())
+	_actualizar_cuadrados()
+
+
+func _asegurar_cuadrados(cantidad: int) -> void:
+	while _cuadrados.size() < cantidad:
+		var cuadrado = ESCENA_CUADRADO.instantiate()
+		cuadrado.tamano = Configuracion.TAM_CELDA
+		add_child(cuadrado)
+		_cuadrados.append(cuadrado)
+
+
+func _actualizar_cuadrados() -> void:
 	if forma.is_empty():
+		for cuadrado in _cuadrados:
+			cuadrado.visible = false
 		return
 
 	var min_x: int = forma[0].x
@@ -30,9 +56,18 @@ func _draw() -> void:
 	var alto = (max_y - min_y + 1) * tam
 	var origen = Vector2(-ancho / 2.0, -alto / 2.0)
 
-	for bloque in forma:
-		var posicion = Vector2(bloque.x - min_x, bloque.y - min_y) * tam + origen
-		var rect = Rect2(posicion, Vector2(tam, tam))
+	for i in _cuadrados.size():
+		var cuadrado = _cuadrados[i]
 
-		draw_rect(rect, color)
-		draw_rect(rect, Color.BLACK, false, 1.0)
+		if i >= forma.size():
+			cuadrado.visible = false
+			continue
+
+		var categoria = Cuadrado.Categoria.A
+		if i < categorias.size():
+			categoria = categorias[i]
+
+		var bloque = forma[i]
+		cuadrado.visible = true
+		cuadrado.configurar(textura_fondo, textura_marco, categoria)
+		cuadrado.position = origen + Vector2(bloque.x - min_x, bloque.y - min_y) * tam

@@ -8,7 +8,7 @@ extends Node2D
 @onready var piezas = $Piezas
 @onready var controlador_pieza = $ControladorPieza
 
-var siguiente_pieza = ""
+var siguiente_pieza: PiezaGenerada = null
 var juego_activo = true
 
 # Matriz del tablero
@@ -25,8 +25,9 @@ func _ready():
 	)
 	controlador_pieza.solicitar_fijar_pieza.connect(fijar_pieza)
 	controlador_pieza.game_over.connect(finalizar_partida)
+	fixed_blocks.textura_marco = piezas.MARCOS_NIVEL[1]
 	crear_tablero()
-	siguiente_pieza = piezas.pieza_aleatoria()
+	siguiente_pieza = piezas.generar_pieza(1)
 	generar_pieza()
 	
 func _process(delta):
@@ -61,33 +62,32 @@ func crear_tablero() -> void:
 func generar_pieza() -> void:
 	if not controlador_pieza.establecer_pieza(siguiente_pieza):
 		return
-	siguiente_pieza = piezas.pieza_aleatoria()
+	siguiente_pieza = piezas.generar_pieza(1)
 	actualizar_siguiente_pieza()
 	
 func fijar_pieza() -> void:
-	# Guardar los bloques en el tablero.
 	tablero_nodo.fijar_pieza(
 		controlador_pieza.posicion_pieza,
 		controlador_pieza.forma_actual,
-		controlador_pieza.color_actual
+		controlador_pieza.textura_actual,
+		controlador_pieza.categorias_actuales
 	)
 
-	# Comprobar y eliminar líneas completas.
 	tablero_nodo.comprobar_lineas()
-
-	# Actualizar los bloques fijados.
 	fixed_blocks.actualizar_tablero(tablero)
-
-	# Crear la siguiente pieza.
 	generar_pieza()
 
 func actualizar_siguiente_pieza() -> void:
-	if siguiente_pieza == "":
-		next_piece.actualizar_pieza([], Color.WHITE)
+	if siguiente_pieza == null:
+		next_piece.actualizar_pieza([], null, null, [])
 		return
-	var forma_preview = piezas.FORMAS[siguiente_pieza]
-	var color_preview = piezas.COLORES[siguiente_pieza]
-	next_piece.actualizar_pieza(forma_preview, color_preview)
+
+	next_piece.actualizar_pieza(
+		siguiente_pieza.forma,
+		siguiente_pieza.textura_fondo,
+		siguiente_pieza.textura_marco,
+		siguiente_pieza.categorias
+	)
 	
 func finalizar_partida() -> void:
 	juego_activo = false

@@ -1,32 +1,49 @@
 extends Node2D
 
 const Configuracion = preload("res://scripts/configuracion.gd")
+const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
 
 var tablero: Array = []
+var textura_marco: Texture2D
+
+var _cuadrados: Array = []
+
 
 func actualizar_tablero(nuevo_tablero: Array) -> void:
 	tablero = nuevo_tablero
-	queue_redraw()
+	_actualizar_cuadrados()
 
-func _draw() -> void:
-	if tablero.size() < Configuracion.FILAS:
-		return
 
-	for y in range(Configuracion.FILAS):
-		for x in range(Configuracion.COLUMNAS):
-			if typeof(tablero[y][x]) == TYPE_COLOR:
-				var posicion = Vector2(
-					x * Configuracion.TAM_CELDA,
-					y * Configuracion.TAM_CELDA
-				)
-				var rect = Rect2(
-					posicion,
-					Vector2(
-						Configuracion.TAM_CELDA,
-						Configuracion.TAM_CELDA
-					)
-				)
+func _actualizar_cuadrados() -> void:
+	var posiciones: Array = []
+	var celdas: Array = []
 
-				draw_rect(rect, tablero[y][x])
-				draw_rect(rect, Color(0, 0, 0, 0.25),
-					false, 1.5)
+	if tablero.size() >= Configuracion.FILAS:
+		for y in range(Configuracion.FILAS):
+			for x in range(Configuracion.COLUMNAS):
+				var celda = tablero[y][x]
+				if celda != null:
+					posiciones.append(Vector2i(x, y))
+					celdas.append(celda)
+
+	_asegurar_cuadrados(posiciones.size())
+
+	for i in _cuadrados.size():
+		var cuadrado = _cuadrados[i]
+
+		if i >= posiciones.size():
+			cuadrado.visible = false
+			continue
+
+		var celda = celdas[i]
+		cuadrado.visible = true
+		cuadrado.configurar(celda.textura_fondo, textura_marco, celda.categoria)
+		cuadrado.poner_en_celda(posiciones[i])
+
+
+func _asegurar_cuadrados(cantidad: int) -> void:
+	while _cuadrados.size() < cantidad:
+		var cuadrado = ESCENA_CUADRADO.instantiate()
+		cuadrado.tamano = Configuracion.TAM_CELDA
+		add_child(cuadrado)
+		_cuadrados.append(cuadrado)

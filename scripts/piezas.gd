@@ -97,24 +97,6 @@ const FORMAS = {
 	]
 }
 
-# Colores de cada pieza
-const COLORES = {
-	"I": Color("#00E5FF"),
-	"O": Color("#FFD600"),
-	"T": Color("#AA00FF"),
-	"S": Color("#00E676"),
-	"Z": Color("#FF1744"),
-	"J": Color("#2979FF"),
-	"L": Color("#FF9100"),
-	"X": Color("#FFD600"),
-	"TT": Color("#FF9100"),
-	"H": Color("#2979FF"),
-	"P": Color("#AA00FF"),
-	"+": Color("#00E676"),
-	"C": Color("#FF1744"),
-	"-": Color("#00E5FF")
-}
-
 const TEXTURAS_COLOR = {
 	"I": preload("res://assets/sprites/piezas/Pieza celeste.png"),
 	"O": preload("res://assets/sprites/piezas/Pieza amarilla.png"),
@@ -140,3 +122,20 @@ const MARCOS_NIVEL = {
 func pieza_aleatoria() -> String:
 	var nombres = FORMAS.keys()
 	return nombres.pick_random()
+
+func generar_pieza(tipo_nivel: int = 1) -> PiezaGenerada:
+	var nombre = pieza_aleatoria()
+
+	var pieza = PiezaGenerada.new()
+	pieza.nombre = nombre
+	pieza.forma = FORMAS[nombre]
+	pieza.textura_fondo = TEXTURAS_COLOR[nombre]
+	pieza.textura_marco = MARCOS_NIVEL.get(tipo_nivel, MARCOS_NIVEL[1])
+
+	for i in pieza.forma.size():
+		pieza.categorias.append(_elegir_categoria())
+	return pieza
+	
+func _elegir_categoria() -> int:
+	# De momento todas las celdas son A; aquí irán las probabilidades A-F.
+	return Cuadrado.Categoria.A

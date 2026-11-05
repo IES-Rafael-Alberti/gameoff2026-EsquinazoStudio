@@ -6,9 +6,12 @@ var tablero_nodo: Node
 var piezas: Node
 var current_piece: Node2D
 var ghost_piece: Node2D
-var pieza_actual = ""
+
+var pieza_actual: PiezaGenerada = null
 var forma_actual: Array = []
-var color_actual = Color.WHITE
+var textura_actual: Texture2D
+var marco_actual: Texture2D
+var categorias_actuales: Array[int] = []
 
 var posicion_pieza = Vector2i(3, 0)
 
@@ -63,19 +66,19 @@ func configurar(
 	
 func actualizar_pieza_actual() -> void:
 	if forma_actual.is_empty():
-		current_piece.actualizar_pieza([], Vector2i.ZERO, color_actual, false)
+		current_piece.actualizar_pieza([], Vector2i.ZERO, textura_actual, marco_actual, categorias_actuales, false)
 		return
 
-	current_piece.actualizar_pieza(forma_actual, posicion_pieza, color_actual, true)
-
+	current_piece.actualizar_pieza(forma_actual, posicion_pieza, textura_actual, marco_actual, categorias_actuales, true)
 
 func actualizar_pieza_fantasma() -> void:
 	if forma_actual.is_empty():
-		ghost_piece.actualizar_pieza([], Vector2i.ZERO, color_actual, false)
+		ghost_piece.actualizar_pieza([], Vector2i.ZERO, textura_actual, marco_actual, categorias_actuales, false)
 		return
-	var posicion_fantasma = calcular_posicion_fantasma()
-	ghost_piece.actualizar_pieza(forma_actual, posicion_fantasma, color_actual, true)
 
+	var posicion_fantasma = calcular_posicion_fantasma()
+	ghost_piece.actualizar_pieza(forma_actual, posicion_fantasma, textura_actual, marco_actual, categorias_actuales, true)
+	
 func calcular_posicion_fantasma() -> Vector2i:
 	var posicion_fantasma = posicion_pieza
 
@@ -98,7 +101,9 @@ func mover_pieza(direccion: Vector2i) -> void:
 		solicitar_fijar_pieza.emit()
 
 func rotar_pieza(direccion: int = 1):
-	if pieza_actual == "O" or pieza_actual == "P":
+	if pieza_actual == null:
+		return
+	if pieza_actual.nombre == "O" or pieza_actual.nombre == "P":
 		return
 
 	var nueva_forma: Array[Vector2i] = []
@@ -106,7 +111,7 @@ func rotar_pieza(direccion: int = 1):
 	# Calcular la nueva orientación de cada bloque.
 	for punto in forma_actual:
 		var nuevo_punto: Vector2i
-		if pieza_actual == "I":
+		if pieza_actual.nombre == "I":
 			if direccion == 1:
 				nuevo_punto = Vector2i(3 - punto.y, punto.x)
 			else:
@@ -125,7 +130,7 @@ func rotar_pieza(direccion: int = 1):
 	# Obtener la tabla de movimientos correspondiente.
 	var clave = "%d_%d" % [estado_rotacion, nuevo_estado]
 
-	var tabla_kicks = KICKS_I if pieza_actual == "I" else KICKS_JLSTZ
+	var tabla_kicks = KICKS_I if pieza_actual.nombre == "I" else KICKS_JLSTZ
 	var movimientos = tabla_kicks[clave]
 
 	# Probar cada desplazamiento hasta encontrar uno válido.
@@ -158,10 +163,15 @@ func procesar_caida(delta: float) -> void:
 		temporizador -= velocidad_actual
 		mover_pieza(Vector2i(0, 1))
 		
-func establecer_pieza(nombre: String) -> bool:
-	pieza_actual = nombre
-	forma_actual = piezas.FORMAS[pieza_actual]
-	color_actual = piezas.COLORES[pieza_actual]
+func establecer_pieza(pieza: PiezaGenerada) -> bool:
+	if pieza == null:
+		return false
+
+	pieza_actual = pieza
+	forma_actual = pieza.forma
+	textura_actual = pieza.textura_fondo
+	marco_actual = pieza.textura_marco
+	categorias_actuales = pieza.categorias
 	posicion_pieza = Vector2i(3, 0)
 	estado_rotacion = 0
 

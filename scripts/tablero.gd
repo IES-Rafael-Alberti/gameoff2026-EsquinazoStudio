@@ -11,7 +11,7 @@ func crear_tablero() -> void:
 		var fila: Array = []
 
 		for x in range(Configuracion.COLUMNAS):
-			fila.append(0)
+			fila.append(null)
 
 		matriz.append(fila)
 
@@ -20,16 +20,13 @@ func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
 	for bloque in forma:
 		var celda = posicion + bloque
 
-		# Comprobar paredes
 		if celda.x < 0 or celda.x >= Configuracion.COLUMNAS:
 			return true
 
-		# Comprobar suelo
 		if celda.y >= Configuracion.FILAS:
 			return true
 
-		# Comprobar bloques fijados
-		if celda.y >= 0 and typeof(matriz[celda.y][celda.x]) == TYPE_COLOR:
+		if celda.y >= 0 and matriz[celda.y][celda.x] != null:
 			return true
 
 	return false
@@ -42,7 +39,7 @@ func comprobar_lineas() -> void:
 		var linea_completa = true
 
 		for x in range(Configuracion.COLUMNAS):
-			if typeof(matriz[y][x]) != TYPE_COLOR:
+			if matriz[y][x] == null:
 				linea_completa = false
 				break
 
@@ -51,14 +48,20 @@ func comprobar_lineas() -> void:
 
 			var nueva_fila: Array = []
 			for x in range(Configuracion.COLUMNAS):
-				nueva_fila.append(0)
+				nueva_fila.append(null)
 
 			matriz.push_front(nueva_fila)
 		else:
 			y -= 1
 
-func fijar_pieza(posicion: Vector2i, forma: Array, color: Color) -> void:
-	for bloque in forma:
-		var celda = posicion + bloque
+
+func fijar_pieza(posicion: Vector2i, forma: Array, textura_fondo: Texture2D, categorias: Array) -> void:
+	for i in forma.size():
+		var celda = posicion + forma[i]
+
 		if celda.y >= 0:
-			matriz[celda.y][celda.x] = color
+			var categoria = Cuadrado.Categoria.A
+			if i < categorias.size():
+				categoria = categorias[i]
+
+			matriz[celda.y][celda.x] = CeldaTablero.new(textura_fondo, categoria)
