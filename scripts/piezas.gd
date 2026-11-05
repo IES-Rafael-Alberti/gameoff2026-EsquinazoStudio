@@ -115,6 +115,27 @@ const COLORES = {
 	"-": Color("#00E5FF")
 }
 
+const TEXTURAS_COLOR = {
+	"I": preload("res://assets/sprites/piezas/Pieza celeste.png"),
+	"O": preload("res://assets/sprites/piezas/Pieza amarilla.png"),
+	"T": preload("res://assets/sprites/piezas/Pieza morada.png"),
+	"S": preload("res://assets/sprites/piezas/Pieza verde.png"),
+	"Z": preload("res://assets/sprites/piezas/Pieza roja.png"),
+	"J": preload("res://assets/sprites/piezas/Pieza azul.png"),
+	"L": preload("res://assets/sprites/piezas/Pieza naranja.png"),
+	"TT": preload("res://assets/sprites/piezas/Pieza marron.png"),
+	"H": preload("res://assets/sprites/piezas/Pieza gris.png"),
+	"X": preload("res://assets/sprites/piezas/Pieza rosa.png"),
+	"P": preload("res://assets/sprites/piezas/Pieza lima.png"),
+	"+": preload("res://assets/sprites/piezas/Pieza turquesa.png"),
+	"-": preload("res://assets/sprites/piezas/Pieza verde pistacho.png"),
+	"C": preload("res://assets/sprites/piezas/Pieza gris oscuro.png")
+}
+
+const MARCOS_NIVEL = {
+	1: preload("res://assets/sprites/piezas/Marco medieval.png")
+}
+
 # Obtener una pieza aleatoria
 func pieza_aleatoria() -> String:
 	var nombres = FORMAS.keys()

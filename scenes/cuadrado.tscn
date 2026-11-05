@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://blvjaebgnqvbq"]
+
+[ext_resource type="Script" uid="uid://duha6hnphuqpj" path="res://scripts/cuadrado.gd" id="1_kdvc6"]
+
+[node name="Cuadrado" type="Node2D" unique_id=1254677309]
+script = ExtResource("1_kdvc6")
+
+[node name="Fondo" type="Sprite2D" parent="." unique_id=1681781544]
+centered = false
+
+[node name="Borde" type="Sprite2D" parent="." unique_id=1453114880]
+z_index = 1
+centered = false
+
+[node name="Icono" type="Sprite2D" parent="." unique_id=628423082]
+z_index = 2
+centered = false
