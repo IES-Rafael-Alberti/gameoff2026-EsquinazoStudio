@@ -1,6 +1,6 @@
 extends Node
 
-const Configuracion = preload("res://scripts/configuracion.gd")
+var Configuracion: Configuracion_Tablero
 
 var matriz: Array = []
 
@@ -9,7 +9,6 @@ func crear_tablero() -> void:
 
 	for y in range(Configuracion.FILAS):
 		var fila: Array = []
-
 		for x in range(Configuracion.COLUMNAS):
 			fila.append(null)
 

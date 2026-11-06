@@ -1,12 +1,13 @@
 extends Node2D
-const Configuracion = preload("res://scripts/configuracion.gd")
+
+var Configuracion: Configuracion_Tablero
 
 func _draw():
-	for y in range(	Configuracion.FILAS):
-		for x in range(	Configuracion.COLUMNAS):
+	for y in range(Configuracion.FILAS):
+		for x in range(Configuracion.COLUMNAS):
 			var posicion = Vector2(
-				x * 	Configuracion.TAM_CELDA,
-				y * 	Configuracion.TAM_CELDA
+				x * Configuracion.TAM_CELDA,
+				y * Configuracion.TAM_CELDA
 			)
 			var rect = Rect2(
 				posicion,

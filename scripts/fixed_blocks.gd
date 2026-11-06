@@ -1,7 +1,7 @@
 extends Node2D
 
-const Configuracion = preload("res://scripts/configuracion.gd")
 const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
+var Configuracion: Configuracion_Tablero
 
 var tablero: Array = []
 var textura_marco: Texture2D

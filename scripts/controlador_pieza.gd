@@ -7,6 +7,7 @@ var piezas: Node
 var current_piece: Node2D
 var ghost_piece: Node2D
 
+var Configuracion: Configuracion_Tablero
 var pieza_actual: PiezaGenerada = null
 var forma_actual: Array = []
 var textura_actual: Texture2D
@@ -172,7 +173,7 @@ func establecer_pieza(pieza: PiezaGenerada) -> bool:
 	textura_actual = pieza.textura_fondo
 	marco_actual = pieza.textura_marco
 	categorias_actuales = pieza.categorias
-	posicion_pieza = Vector2i(3, 0)
+	posicion_pieza = Vector2i(floori(float(Configuracion.COLUMNAS) / 2.0), 0)
 	estado_rotacion = 0
 
 	if tablero_nodo.comprobar_colision(posicion_pieza, forma_actual):

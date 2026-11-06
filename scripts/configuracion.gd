@@ -1,10 +1,16 @@
-extends RefCounted
+class_name Configuracion_Tablero
+extends Resource
 
 # Dimensiones del tablero
-const COLUMNAS: int = 10
-const FILAS: int = 20
-const TAM_CELDA: int = 30
+@export var COLUMNAS: int
+@export var FILAS: int
+@export var TAM_CELDA: int
 
 # Dimensiones calculadas del tablero
-const ANCHO_TABLERO: int = COLUMNAS * TAM_CELDA
-const ALTO_TABLERO: int = FILAS * TAM_CELDA
+var ANCHO_TABLERO: int:
+	get:
+		return COLUMNAS * TAM_CELDA
+
+var ALTO_TABLERO: int:
+	get:
+		return FILAS * TAM_CELDA

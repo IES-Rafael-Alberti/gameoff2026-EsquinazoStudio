@@ -1,11 +1,10 @@
 class_name Cuadrado
 extends Node2D
 
-const Configuracion = preload("res://scripts/configuracion.gd")
-
 enum Categoria { A, B, C, D, E, F }
+var Configuracion: Configuracion_Tablero = preload("res://resources/configuracion_tablero.tres")
 
-@export var tamano: int = Configuracion.TAM_CELDA
+var tamano: int = Configuracion.TAM_CELDA
 
 @onready var fondo: Sprite2D = $Fondo
 @onready var borde: Sprite2D = $Borde
