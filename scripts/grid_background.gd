@@ -1,8 +1,13 @@
 extends Node2D
 
-var Configuracion: Configuracion_Tablero
+#var Configuracion: Configuracion_Tablero
 
 func _draw():
+	# Cuando es directamente el padre
+	var Configuracion = get_parent().Configuracion
+	# Cuando es la raiz (en este caso Main)
+	#var Configuracion = get_tree().root.Configuracion
+	
 	for y in range(Configuracion.FILAS):
 		for x in range(Configuracion.COLUMNAS):
 			var posicion = Vector2(

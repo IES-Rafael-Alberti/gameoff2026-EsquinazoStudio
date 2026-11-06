@@ -5,20 +5,12 @@
 [ext_resource type="Script" uid="uid://bo54et2rajqye" path="res://scripts/board.gd" id="2_choun"]
 [ext_resource type="Script" uid="uid://dxm2rn25xq6v" path="res://scripts/tablero.gd" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://dbdb60dew3vhi" path="res://scripts/fixed_blocks.gd" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="3_ya4ey"]
+[ext_resource type="Resource" uid="uid://cpr5say8kgftu" path="res://resources/configuracion_tablero_1.tres" id="3_ya4ey"]
 [ext_resource type="Script" uid="uid://cpo0eoojwa5p5" path="res://scripts/ghost_piece.gd" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://bkqgf036amws2" path="res://scripts/current_piece.gd" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://dflrhf5ww8hu2" path="res://scripts/piezas.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="8_85g3d"]
-
-[sub_resource type="Resource" id="Resource_a8y0u"]
-resource_local_to_scene = true
-script = ExtResource("3_ya4ey")
-COLUMNAS = 10
-FILAS = 20
-TAM_CELDA = 80
-metadata/_custom_type_script = "uid://l2dv12p10t3s"
 
 [node name="Main" type="Node2D" unique_id=545254014]
 script = ExtResource("1_o5qli")
@@ -34,7 +26,7 @@ mouse_filter = 2
 
 [node name="Board" type="Node2D" parent="." unique_id=313245139]
 script = ExtResource("2_choun")
-Configuracion = SubResource("Resource_a8y0u")
+Configuracion = ExtResource("3_ya4ey")
 
 [node name="GridBackground" type="Node2D" parent="Board" unique_id=292566563]
 script = ExtResource("2_0wfyh")

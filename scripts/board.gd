@@ -3,7 +3,7 @@ extends Node2D
 @export var Configuracion: Configuracion_Tablero
 
 func _ready():
-	$GridBackground.Configuracion = Configuracion
+	#$GridBackground.Configuracion = Configuracion
 	$FixedBlocks.Configuracion = Configuracion
 	$GhostPiece.Configuracion = Configuracion
 	$CurrentPiece.Configuracion = Configuracion

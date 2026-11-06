@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Configuracion_Tablero" format=3 uid="uid://cpr5say8kgftu"]
+
+[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="1_xttdm"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_xttdm")
+COLUMNAS = 10
+FILAS = 20
+TAM_CELDA = 80
+metadata/_custom_type_script = "uid://l2dv12p10t3s"
