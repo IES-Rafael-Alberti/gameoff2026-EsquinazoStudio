@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 9.0
-height = 45.0
+height = 35.347954
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdfoy"]
 atlas = ExtResource("1_3vyb7")
@@ -518,10 +518,12 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=802599124]
+position = Vector2(90, -99)
+scale = Vector2(1.4502358, 1.324797)
 script = ExtResource("1_oprun")
 
 [node name="HitboxPersonaje" type="CollisionShape2D" parent="." unique_id=537282891]
-position = Vector2(0, 9.5)
+position = Vector2(0, 17.36115)
 shape = SubResource("CapsuleShape2D_qhqgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1203869241]
