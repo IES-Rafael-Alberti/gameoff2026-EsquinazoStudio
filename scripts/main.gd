@@ -35,7 +35,6 @@ func _ready() -> void:
 		ghost_piece
 	)
 	controlador_pieza.solicitar_fijar_pieza.connect(fijar_pieza)
-	fixed_blocks.textura_marco = piezas.MARCOS_NIVEL[1]
 	crear_tablero()
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	refrescar_cola()
@@ -77,7 +76,7 @@ func crear_tablero() -> void:
 func refrescar_cola() -> void:
 	var objetivo = mini(piezas_disponibles, mini(MAX_PREVIEWS, previews.size()))
 	while cola_piezas.size() < objetivo:
-		cola_piezas.append(piezas.generar_pieza(1))
+		cola_piezas.append(piezas.generar_pieza())
 	while cola_piezas.size() > objetivo:
 		cola_piezas.pop_back()
 	actualizar_previews()
@@ -105,7 +104,7 @@ func generar_pieza() -> void:
 		return
 
 	if cola_piezas.is_empty():
-		cola_piezas.append(piezas.generar_pieza(1))
+		cola_piezas.append(piezas.generar_pieza())
 
 	var pieza = cola_piezas.pop_front()
 	if not controlador_pieza.establecer_pieza(pieza):
@@ -123,9 +122,9 @@ func fijar_pieza() -> void:
 		controlador_pieza.posicion_pieza,
 		controlador_pieza.forma_actual,
 		controlador_pieza.textura_actual,
-		controlador_pieza.categorias_actuales
+		controlador_pieza.categorias_actuales,
+		controlador_pieza.bioma_actual
 	)
-
 	tablero_nodo.comprobar_lineas()
 	fixed_blocks.actualizar_tablero(tablero)
 
