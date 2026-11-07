@@ -53,7 +53,13 @@ func comprobar_lineas() -> void:
 			y -= 1
 
 
-func fijar_pieza(posicion: Vector2i, forma: Array, textura_fondo: Texture2D, categorias: Array) -> int:
+func fijar_pieza(
+	posicion: Vector2i,
+	forma: Array,
+	textura_fondo: Texture2D,
+	categorias: Array,
+	bioma: int = Catalogo.Bioma.MEDIEVAL
+) -> int:
 	var colocadas := 0
 	for i in forma.size():
 		var celda = posicion + forma[i]
@@ -63,6 +69,6 @@ func fijar_pieza(posicion: Vector2i, forma: Array, textura_fondo: Texture2D, cat
 			if i < categorias.size():
 				categoria = categorias[i]
 
-			matriz[celda.y][celda.x] = CeldaTablero.new(textura_fondo, categoria)
+			matriz[celda.y][celda.x] = CeldaTablero.new(textura_fondo, categoria, bioma)
 			colocadas += 1
 	return colocadas
