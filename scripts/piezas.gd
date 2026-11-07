@@ -114,28 +114,69 @@ const TEXTURAS_COLOR = {
 	"C": preload("res://assets/sprites/piezas/Pieza gris oscuro.png")
 }
 
-const MARCOS_NIVEL = {
-	1: preload("res://assets/sprites/piezas/Marco medieval.png")
-}
-
 # Obtener una pieza aleatoria
 func pieza_aleatoria() -> String:
 	var nombres = FORMAS.keys()
 	return nombres.pick_random()
 
-func generar_pieza(tipo_nivel: int = 1) -> PiezaGenerada:
+func generar_pieza() -> PiezaGenerada:
 	var nombre = pieza_aleatoria()
 
 	var pieza = PiezaGenerada.new()
 	pieza.nombre = nombre
 	pieza.forma = FORMAS[nombre]
 	pieza.textura_fondo = TEXTURAS_COLOR[nombre]
-	pieza.textura_marco = MARCOS_NIVEL.get(tipo_nivel, MARCOS_NIVEL[1])
 
+	var biomas := _obtener_biomas()
+	pieza.bioma = biomas.pick_random()
+	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
+
+	var pesos := _obtener_pesos()
 	for i in pieza.forma.size():
-		pieza.categorias.append(_elegir_categoria())
+		pieza.categorias.append(_elegir_categoria(pesos))
+
 	return pieza
 	
-func _elegir_categoria() -> int:
-	# De momento todas las celdas son A; aquí irán las probabilidades A-F.
-	return Cuadrado.Categoria.A
+func _obtener_biomas() -> Array[int]:
+	var config = get_tree().current_scene.Configuracion
+	var biomas: Array[int] = []
+	if config != null:
+		biomas = config.BIOMAS_NIVEL.duplicate()
+	if biomas.is_empty():
+		biomas = [Catalogo.Bioma.MEDIEVAL]
+	return biomas
+
+func _obtener_pesos() -> Array[float]:
+	var pesos: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+	var config = get_tree().current_scene.Configuracion
+	if config != null:
+		pesos[0] = maxf(config.PESO_CATEGORIA_A, 0.0)
+		pesos[1] = maxf(config.PESO_CATEGORIA_B, 0.0)
+		pesos[2] = maxf(config.PESO_CATEGORIA_C, 0.0)
+		pesos[3] = maxf(config.PESO_CATEGORIA_D, 0.0)
+		pesos[4] = maxf(config.PESO_CATEGORIA_E, 0.0)
+		pesos[5] = maxf(config.PESO_CATEGORIA_F, 0.0)
+
+	var total := 0.0
+	for peso in pesos:
+		total += peso
+	if total <= 0.0:
+		push_warning("Todos los pesos de categoría están en 0; usando uniforme.")
+		for i in pesos.size():
+			pesos[i] = 1.0
+
+	return pesos
+
+func _elegir_categoria(pesos: Array[float]) -> int:
+	var total := 0.0
+	for peso in pesos:
+		total += peso
+
+	var umbral := randf() * total
+	var acumulado := 0.0
+	for i in pesos.size():
+		acumulado += pesos[i]
+		if umbral <= acumulado:
+			return i
+
+	return pesos.size() - 1
