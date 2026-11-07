@@ -8,23 +8,35 @@ var tamano: int
 @onready var borde: Sprite2D = $Borde
 @onready var icono: Sprite2D = $Icono
 
-var categoria: Catalogo.Categoria = Catalogo.Categoria
+var categoria: Catalogo.Categoria = Catalogo.Categoria.A
+
+#provisional
+@onready var letra: Label = $LetraCategoria
 
 func _ready() -> void:
 	icono.visible = icono.texture != null
 	_ajustar_sprites()
-
+	letra.visible = false
+	_ajustar_letra()
+	
 func configurar(
 	textura_fondo: Texture2D,
 	textura_marco: Texture2D,
-	nueva_categoria: Catalogo.Categoria = Catalogo.Categoria,
+	nueva_categoria: Catalogo.Categoria = Catalogo.Categoria.A,
 	textura_icono: Texture2D = null
 ) -> void:
 	categoria = nueva_categoria
 	fondo.texture = textura_fondo
 	borde.texture = textura_marco
+
+	if textura_icono == null:
+		textura_icono = Catalogo.icono_categoria(categoria)
+
 	icono.texture = textura_icono
 	icono.visible = textura_icono != null
+	letra.text = Catalogo.letra_categoria(categoria)
+	letra.visible = textura_icono == null
+
 	_ajustar_sprites()
 
 func poner_en_celda(celda: Vector2i) -> void:
@@ -44,3 +56,12 @@ func _ajustar_sprite(sprite: Sprite2D) -> void:
 		return
 
 	sprite.scale = Vector2(tamano / medida.x, tamano / medida.y)
+
+#borra esto luego
+func _ajustar_letra() -> void:
+	if letra == null or tamano <= 0:
+		return
+	letra.size = Vector2(tamano, tamano)
+	letra.add_theme_font_size_override("font_size", maxi(int(tamano * 0.6), 12))
+	letra.add_theme_color_override("font_outline_color", Color.BLACK)
+	letra.add_theme_constant_override("outline_size", 2)
