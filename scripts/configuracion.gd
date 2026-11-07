@@ -17,6 +17,7 @@ extends Resource
 
 @export_group("Biomas")
 @export var BIOMAS_NIVEL: Array[int] = [1] # 1 = Medieval
+
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
 	get:
