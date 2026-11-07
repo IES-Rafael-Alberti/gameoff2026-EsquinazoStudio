@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c5umapo4jp2kn" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://d13g2aba8o5hu" path="res://scripts/grid_background.gd" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://bo54et2rajqye" path="res://scripts/board.gd" id="2_choun"]
 [ext_resource type="Script" uid="uid://dxm2rn25xq6v" path="res://scripts/tablero.gd" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://dbdb60dew3vhi" path="res://scripts/fixed_blocks.gd" id="3_sugp2"]
 [ext_resource type="Resource" uid="uid://cpr5say8kgftu" path="res://resources/configuracion_tablero_1.tres" id="3_ya4ey"]
@@ -14,6 +13,7 @@
 
 [node name="Main" type="Node2D" unique_id=545254014]
 script = ExtResource("1_o5qli")
+Configuracion = ExtResource("3_ya4ey")
 
 [node name="Background" type="ColorRect" parent="." unique_id=393229449]
 z_index = -10
@@ -25,8 +25,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Board" type="Node2D" parent="." unique_id=313245139]
-script = ExtResource("2_choun")
-Configuracion = ExtResource("3_ya4ey")
 
 [node name="GridBackground" type="Node2D" parent="Board" unique_id=292566563]
 script = ExtResource("2_0wfyh")
@@ -73,8 +71,33 @@ offset_left = 20.0
 offset_top = 40.0
 offset_right = 60.0
 offset_bottom = 63.0
-text = "SIGUIENTE"
+text = "SIGUIENTES"
 
-[node name="NextPiece" type="Node2D" parent="SidePanel" unique_id=729437495]
+[node name="NextPiece1" type="Node2D" parent="SidePanel" unique_id=729437495]
 position = Vector2(60, 150)
 script = ExtResource("6_tefeu")
+
+[node name="NextPiece2" type="Node2D" parent="SidePanel" unique_id=8595327]
+position = Vector2(60, 310)
+script = ExtResource("6_tefeu")
+
+[node name="NextPiece3" type="Node2D" parent="SidePanel" unique_id=813856935]
+position = Vector2(60, 470)
+script = ExtResource("6_tefeu")
+
+[node name="NextPiece4" type="Node2D" parent="SidePanel" unique_id=1966944990]
+position = Vector2(60, 630)
+script = ExtResource("6_tefeu")
+
+[node name="NextPiece5" type="Node2D" parent="SidePanel" unique_id=120523711]
+position = Vector2(60, 790)
+script = ExtResource("6_tefeu")
+
+[node name="PiezasLabel" type="Label" parent="SidePanel" unique_id=1007720950]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 180.0
+offset_bottom = 33.0
+text = "PIEZAS: 0"

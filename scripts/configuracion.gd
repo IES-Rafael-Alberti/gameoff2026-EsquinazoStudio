@@ -5,7 +5,7 @@ extends Resource
 @export var COLUMNAS: int
 @export var FILAS: int
 @export var TAM_CELDA: int
-
+@export var CANTIDAD_PIEZAS: int
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
 	get:

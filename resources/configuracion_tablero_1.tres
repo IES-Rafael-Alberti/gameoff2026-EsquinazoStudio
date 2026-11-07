@@ -7,5 +7,6 @@ resource_local_to_scene = true
 script = ExtResource("1_xttdm")
 COLUMNAS = 10
 FILAS = 20
-TAM_CELDA = 80
+TAM_CELDA = 40
+CANTIDAD_PIEZAS = 8
 metadata/_custom_type_script = "uid://l2dv12p10t3s"

@@ -1,7 +1,6 @@
 extends Node2D
 
 const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
-var Configuracion: Configuracion_Tablero
 
 var forma: Array = []
 var posicion: Vector2i = Vector2i.ZERO
@@ -33,6 +32,7 @@ func actualizar_pieza(
 
 
 func _asegurar_cuadrados(cantidad: int) -> void:
+	var Configuracion = get_tree().current_scene.Configuracion
 	while _cuadrados.size() < cantidad:
 		var cuadrado = ESCENA_CUADRADO.instantiate()
 		cuadrado.tamano = Configuracion.TAM_CELDA

@@ -1,13 +1,11 @@
 extends Node
 signal solicitar_fijar_pieza
-signal game_over
 
 var tablero_nodo: Node
 var piezas: Node
 var current_piece: Node2D
 var ghost_piece: Node2D
 
-var Configuracion: Configuracion_Tablero
 var pieza_actual: PiezaGenerada = null
 var forma_actual: Array = []
 var textura_actual: Texture2D
@@ -65,6 +63,41 @@ func configurar(
 	current_piece = pieza_visual
 	ghost_piece = fantasma_visual
 	
+func calcular_posicion_spawn(forma: Array) -> Vector2i:
+	if forma.is_empty():
+		return Vector2i.ZERO
+	var Configuracion = get_tree().current_scene.Configuracion
+	var min_x: int = forma[0].x
+	var max_x: int = forma[0].x
+	var max_y: int = forma[0].y
+	for bloque in forma:
+		min_x = min(min_x, bloque.x)
+		max_x = max(max_x, bloque.x)
+		max_y = max(max_y, bloque.y)
+	var ancho = max_x - min_x + 1
+	var x = floori((Configuracion.COLUMNAS - ancho) / 2.0) - min_x
+	x = clampi(x, 0, maxi(Configuracion.COLUMNAS - ancho, 0))
+	var y = -max_y - 1
+	return Vector2i(x, y)
+
+func limpiar_pieza() -> void:
+	pieza_actual = null
+	forma_actual = []
+	textura_actual = null
+	marco_actual = null
+	categorias_actuales.clear()
+	if current_piece != null:
+		current_piece.actualizar_pieza([], Vector2i.ZERO, null, null, [], false)
+	if ghost_piece != null:
+		ghost_piece.actualizar_pieza([], Vector2i.ZERO, null, null, [], false)
+
+func reiniciar_estado() -> void:
+	temporizador = 0.0
+	soft_drop_activo = false
+	estado_rotacion = 0
+	posicion_pieza = Vector2i.ZERO
+	limpiar_pieza()
+	
 func actualizar_pieza_actual() -> void:
 	if forma_actual.is_empty():
 		current_piece.actualizar_pieza([], Vector2i.ZERO, textura_actual, marco_actual, categorias_actuales, false)
@@ -92,6 +125,9 @@ func calcular_posicion_fantasma() -> Vector2i:
 	return posicion_fantasma
 	
 func mover_pieza(direccion: Vector2i) -> void:
+	if pieza_actual == null:
+		return
+	
 	var nueva_posicion = posicion_pieza + direccion
 
 	if not tablero_nodo.comprobar_colision(nueva_posicion, forma_actual):
@@ -147,6 +183,8 @@ func rotar_pieza(direccion: int = 1):
 			return
 
 func hard_drop() -> void:
+	if pieza_actual == null:
+		return
 	while not tablero_nodo.comprobar_colision(
 		posicion_pieza + Vector2i(0, 1),
 		forma_actual
@@ -156,6 +194,8 @@ func hard_drop() -> void:
 	solicitar_fijar_pieza.emit()
 
 func procesar_caida(delta: float) -> void:
+	if pieza_actual == null:
+		return
 	temporizador += delta
 
 	var velocidad_actual = velocidad_soft_drop if soft_drop_activo else velocidad_caida
@@ -173,12 +213,9 @@ func establecer_pieza(pieza: PiezaGenerada) -> bool:
 	textura_actual = pieza.textura_fondo
 	marco_actual = pieza.textura_marco
 	categorias_actuales = pieza.categorias
-	posicion_pieza = Vector2i(floori(float(Configuracion.COLUMNAS) / 2.0), 0)
+	posicion_pieza = calcular_posicion_spawn(forma_actual)
 	estado_rotacion = 0
-
-	if tablero_nodo.comprobar_colision(posicion_pieza, forma_actual):
-		game_over.emit()
-		return false
+	temporizador = 0.0
 
 	actualizar_pieza_actual()
 	actualizar_pieza_fantasma()

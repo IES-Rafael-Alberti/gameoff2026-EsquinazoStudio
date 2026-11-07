@@ -1,12 +1,10 @@
 extends Node
 
-var Configuracion: Configuracion_Tablero
-
 var matriz: Array = []
 
 func crear_tablero() -> void:
 	matriz.clear()
-
+	var Configuracion = get_tree().current_scene.Configuracion
 	for y in range(Configuracion.FILAS):
 		var fila: Array = []
 		for x in range(Configuracion.COLUMNAS):
@@ -16,9 +14,9 @@ func crear_tablero() -> void:
 
 
 func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
+	var Configuracion = get_tree().current_scene.Configuracion
 	for bloque in forma:
 		var celda = posicion + bloque
-
 		if celda.x < 0 or celda.x >= Configuracion.COLUMNAS:
 			return true
 
@@ -32,6 +30,7 @@ func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
 
 
 func comprobar_lineas() -> void:
+	var Configuracion = get_tree().current_scene.Configuracion
 	var y = Configuracion.FILAS - 1
 
 	while y >= 0:
@@ -54,13 +53,16 @@ func comprobar_lineas() -> void:
 			y -= 1
 
 
-func fijar_pieza(posicion: Vector2i, forma: Array, textura_fondo: Texture2D, categorias: Array) -> void:
+func fijar_pieza(posicion: Vector2i, forma: Array, textura_fondo: Texture2D, categorias: Array) -> int:
+	var colocadas := 0
 	for i in forma.size():
 		var celda = posicion + forma[i]
 
-		if celda.y >= 0:
+		if celda.y >= 0 and celda.y < matriz.size():
 			var categoria = Cuadrado.Categoria.A
 			if i < categorias.size():
 				categoria = categorias[i]
 
 			matriz[celda.y][celda.x] = CeldaTablero.new(textura_fondo, categoria)
+			colocadas += 1
+	return colocadas
