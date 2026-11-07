@@ -47,6 +47,6 @@ func _actualizar_cuadrados() -> void:
 			continue
 
 		cuadrado.visible = true
-		cuadrado.configurar(textura_fondo, textura_marco, Cuadrado.Categoria.A)
+		cuadrado.configurar(textura_fondo, textura_marco, Catalogo.Categoria.A)
 		cuadrado.modulate = Color(1, 1, 1, 0.35)
 		cuadrado.poner_en_celda(posicion + forma[i])

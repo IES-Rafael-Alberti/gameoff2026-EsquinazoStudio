@@ -48,7 +48,7 @@ func _actualizar_cuadrados() -> void:
 			cuadrado.visible = false
 			continue
 
-		var categoria = Cuadrado.Categoria.A
+		var categoria = Catalogo.Categoria.A
 		if i < categorias.size():
 			categoria = categorias[i]
 

@@ -59,7 +59,7 @@ func fijar_pieza(posicion: Vector2i, forma: Array, textura_fondo: Texture2D, cat
 		var celda = posicion + forma[i]
 
 		if celda.y >= 0 and celda.y < matriz.size():
-			var categoria = Cuadrado.Categoria.A
+			var categoria = Catalogo.Categoria.A
 			if i < categorias.size():
 				categoria = categorias[i]
 

@@ -1,14 +1,14 @@
+
 class_name Cuadrado
 extends Node2D
 
-enum Categoria { A, B, C, D, E, F }
 var tamano: int
 
 @onready var fondo: Sprite2D = $Fondo
 @onready var borde: Sprite2D = $Borde
 @onready var icono: Sprite2D = $Icono
 
-var categoria: Categoria = Categoria.A
+var categoria: Catalogo.Categoria = Catalogo.Categoria
 
 func _ready() -> void:
 	icono.visible = icono.texture != null
@@ -17,7 +17,7 @@ func _ready() -> void:
 func configurar(
 	textura_fondo: Texture2D,
 	textura_marco: Texture2D,
-	nueva_categoria: Categoria = Categoria.A,
+	nueva_categoria: Catalogo.Categoria = Catalogo.Categoria,
 	textura_icono: Texture2D = null
 ) -> void:
 	categoria = nueva_categoria
