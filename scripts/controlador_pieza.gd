@@ -11,7 +11,7 @@ var forma_actual: Array = []
 var textura_actual: Texture2D
 var marco_actual: Texture2D
 var categorias_actuales: Array[int] = []
-
+var bioma_actual: int = Catalogo.Bioma.MEDIEVAL
 var posicion_pieza = Vector2i(3, 0)
 
 # 0 = inicial
@@ -86,6 +86,7 @@ func limpiar_pieza() -> void:
 	textura_actual = null
 	marco_actual = null
 	categorias_actuales.clear()
+	bioma_actual = Catalogo.Bioma.MEDIEVAL
 	if current_piece != null:
 		current_piece.actualizar_pieza([], Vector2i.ZERO, null, null, [], false)
 	if ghost_piece != null:
@@ -216,7 +217,8 @@ func establecer_pieza(pieza: PiezaGenerada) -> bool:
 	posicion_pieza = calcular_posicion_spawn(forma_actual)
 	estado_rotacion = 0
 	temporizador = 0.0
-
+	bioma_actual = pieza.bioma
+	
 	actualizar_pieza_actual()
 	actualizar_pieza_fantasma()
 	return true
