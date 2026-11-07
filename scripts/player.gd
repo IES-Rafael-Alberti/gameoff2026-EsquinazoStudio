@@ -8,7 +8,9 @@ extends CharacterBody2D
 var attacking := false
 var last_direction: String = "South"
 
-
+func _ready() -> void:
+	add_to_group("jugador")
+	
 func _physics_process(_delta: float) -> void:
 
 	if attacking:

@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://pii86euytu88"]
 
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_5drms"]
+[ext_resource type="Script" uid="uid://2ty1yri2og33" path="res://scripts/habitacion_base.gd" id="1_qdygs"]
 [ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="2_hkqad"]
+[ext_resource type="PackedScene" uid="uid://lms712vs40ot" path="res://scenes/puerta.tscn" id="3_egxel"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hkqad"]
 texture = ExtResource("1_5drms")
@@ -24,7 +26,11 @@ tile_size = Vector2i(512, 512)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hkqad")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(768, 768)
+
 [node name="HabitacionBase" type="Node2D" unique_id=1972970273]
+script = ExtResource("1_qdygs")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1996153903]
 position = Vector2(0, -32)
@@ -34,3 +40,28 @@ tile_set = SubResource("TileSet_mjkrw")
 
 [node name="Player" parent="." unique_id=802599124 instance=ExtResource("2_hkqad")]
 position = Vector2(607, 483.00003)
+
+[node name="Puertas" type="Node2D" parent="." unique_id=1354287463]
+
+[node name="PuertaNorte" parent="Puertas" unique_id=1428825819 instance=ExtResource("3_egxel")]
+position = Vector2(928, 64)
+
+[node name="PuertaEste" parent="Puertas" unique_id=1373427372 instance=ExtResource("3_egxel")]
+position = Vector2(1376, 512)
+direccion = 1
+
+[node name="PuertaSur" parent="Puertas" unique_id=1809080674 instance=ExtResource("3_egxel")]
+position = Vector2(928, 960)
+direccion = 2
+
+[node name="PuertaOeste" parent="Puertas" unique_id=914210556 instance=ExtResource("3_egxel")]
+position = Vector2(480, 512)
+direccion = 3
+
+[node name="ZonaEntrada" type="Area2D" parent="." unique_id=180062892]
+position = Vector2(928, 512)
+collision_layer = 0
+monitorable = false
+
+[node name="Forma" type="CollisionShape2D" parent="ZonaEntrada" unique_id=990661461]
+shape = SubResource("RectangleShape2D_mjkrw")
