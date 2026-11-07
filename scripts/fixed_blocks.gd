@@ -3,7 +3,6 @@ extends Node2D
 const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
 
 var tablero: Array = []
-var textura_marco: Texture2D
 var _cuadrados: Array = []
 
 
@@ -35,7 +34,7 @@ func _actualizar_cuadrados() -> void:
 
 		var celda = celdas[i]
 		cuadrado.visible = true
-		cuadrado.configurar(celda.textura_fondo, textura_marco, celda.categoria)
+		cuadrado.configurar(celda.textura_fondo, Catalogo.marco_bioma(celda.bioma), celda.categoria)
 		cuadrado.poner_en_celda(posiciones[i])
 
 
