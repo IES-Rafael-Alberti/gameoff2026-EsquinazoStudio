@@ -47,6 +47,10 @@ func _actualizar_cuadrados() -> void:
 			continue
 
 		cuadrado.visible = true
-		cuadrado.configurar(textura_fondo, textura_marco, Catalogo.Categoria.A)
+		var categoria = Catalogo.Categoria.A
+		if i < categorias.size():
+			categoria = categorias[i]
+
+		cuadrado.configurar(textura_fondo, textura_marco, categoria)
 		cuadrado.modulate = Color(1, 1, 1, 0.35)
 		cuadrado.poner_en_celda(posicion + forma[i])
