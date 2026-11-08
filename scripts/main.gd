@@ -1,4 +1,13 @@
+class_name Tetris
 extends Node2D
+
+## Devuelve el Tetris al que pertenece este nodo, subiendo por el árbol hasta encontrarlo.
+## Así los componentes no dependen de qué escena sea la "escena actual".
+static func de(nodo: Node) -> Tetris:
+	var actual := nodo
+	while actual != null and not actual is Tetris:
+		actual = actual.get_parent()
+	return actual as Tetris
 
 @export var Configuracion: Configuracion_Tablero
 @export var MAX_PREVIEWS := 5

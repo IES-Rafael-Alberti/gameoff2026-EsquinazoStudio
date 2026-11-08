@@ -66,7 +66,7 @@ func configurar(
 func calcular_posicion_spawn(forma: Array) -> Vector2i:
 	if forma.is_empty():
 		return Vector2i.ZERO
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	var min_x: int = forma[0].x
 	var max_x: int = forma[0].x
 	var max_y: int = forma[0].y

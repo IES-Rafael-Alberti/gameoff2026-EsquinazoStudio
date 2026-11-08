@@ -5,7 +5,7 @@ extends Node2D
 # Cuando es la raiz (en este caso Main)
 #var Configuracion = get_tree().root.Configuracion
 func _draw():
-	var Configuracion = get_tree().current_scene.Configuracion	
+	var Configuracion = Tetris.de(self).Configuracion	
 	for y in range(Configuracion.FILAS):
 		for x in range(Configuracion.COLUMNAS):
 			var posicion = Vector2(

@@ -31,7 +31,7 @@ func actualizar_pieza(
 	_actualizar_cuadrados()
 
 func _asegurar_cuadrados(cantidad: int) -> void:
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	while _cuadrados.size() < cantidad:
 		var cuadrado = ESCENA_CUADRADO.instantiate()
 		cuadrado.tamano = Configuracion.TAM_CELDA

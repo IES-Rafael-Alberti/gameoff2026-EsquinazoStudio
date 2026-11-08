@@ -14,7 +14,7 @@ func actualizar_tablero(nuevo_tablero: Array) -> void:
 func _actualizar_cuadrados() -> void:
 	var posiciones: Array = []
 	var celdas: Array = []
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	if tablero.size() >= Configuracion.FILAS:
 		for y in range(Configuracion.FILAS):
 			for x in range(Configuracion.COLUMNAS):
@@ -39,7 +39,7 @@ func _actualizar_cuadrados() -> void:
 
 
 func _asegurar_cuadrados(cantidad: int) -> void:
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	while _cuadrados.size() < cantidad:
 		var cuadrado = ESCENA_CUADRADO.instantiate()
 		cuadrado.tamano = Configuracion.TAM_CELDA

@@ -4,7 +4,7 @@ var matriz: Array = []
 
 func crear_tablero() -> void:
 	matriz.clear()
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	for y in range(Configuracion.FILAS):
 		var fila: Array = []
 		for x in range(Configuracion.COLUMNAS):
@@ -14,7 +14,7 @@ func crear_tablero() -> void:
 
 
 func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	for bloque in forma:
 		var celda = posicion + bloque
 		if celda.x < 0 or celda.x >= Configuracion.COLUMNAS:
@@ -30,7 +30,7 @@ func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
 
 
 func comprobar_lineas() -> void:
-	var Configuracion = get_tree().current_scene.Configuracion
+	var Configuracion = Tetris.de(self).Configuracion
 	var y = Configuracion.FILAS - 1
 
 	while y >= 0:

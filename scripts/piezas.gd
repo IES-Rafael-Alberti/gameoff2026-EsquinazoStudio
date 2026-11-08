@@ -138,7 +138,7 @@ func generar_pieza() -> PiezaGenerada:
 	return pieza
 	
 func _obtener_biomas() -> Array[int]:
-	var config = get_tree().current_scene.Configuracion
+	var config = Tetris.de(self).Configuracion
 	var biomas: Array[int] = []
 	if config != null:
 		biomas = config.BIOMAS_NIVEL.duplicate()
@@ -148,7 +148,7 @@ func _obtener_biomas() -> Array[int]:
 
 func _obtener_pesos() -> Array[float]:
 	var pesos: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
-	var config = get_tree().current_scene.Configuracion
+	var config = Tetris.de(self).Configuracion
 	if config != null:
 		pesos[0] = maxf(config.PESO_CATEGORIA_A, 0.0)
 		pesos[1] = maxf(config.PESO_CATEGORIA_B, 0.0)
