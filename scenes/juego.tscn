@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bx1agdn2f4cw7"]
+
+[ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
+[ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/Tetris.tscn" id="2_pew7j"]
+[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="3_iq6uk"]
+[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/Mazmorra.tscn" id="4_ervc2"]
+
+[sub_resource type="Resource" id="Resource_ebtnq"]
+resource_local_to_scene = true
+script = ExtResource("3_iq6uk")
+COLUMNAS = 10
+FILAS = 20
+TAM_CELDA = 40
+CANTIDAD_PIEZAS = 15
+BIOMAS_NIVEL = Array[int]([1, 2])
+metadata/_custom_type_script = "uid://l2dv12p10t3s"
+
+[node name="Juego" type="Node" unique_id=1710010088]
+script = ExtResource("1_x4n2o")
+
+[node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
+Configuracion = SubResource("Resource_ebtnq")
+
+[node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]

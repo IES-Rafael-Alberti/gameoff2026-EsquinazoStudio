@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="dungeon-stacker"
-run/main_scene="uid://pii86euytu88"
+run/main_scene="uid://bx1agdn2f4cw7"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
