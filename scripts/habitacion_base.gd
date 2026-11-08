@@ -6,7 +6,13 @@ signal puertas_cerradas
 signal puertas_abiertas
 
 ## Qué puertas tienen habitación al otro lado (solo para probar la escena suelta).
+## Cuando la crea la Mazmorra, preparar() lo sobrescribe.
 @export_flags("Norte", "Este", "Sur", "Oeste") var conexiones_iniciales := 15
+
+## Datos que le asigna la mazmorra (a partir de su celda del tablero).
+var posicion_tablero := Vector2i.ZERO
+var categoria: int = Catalogo.Categoria.A
+var bioma: int = Catalogo.Bioma.MEDIEVAL
 
 var _puertas := {} # Puerta.Direccion -> Puerta
 var _desafios: Array[Node] = []
@@ -22,11 +28,27 @@ func _ready() -> void:
 		if puerta:
 			_puertas[puerta.direccion] = puerta
 
-	for dir in _puertas:
-		_puertas[dir].establecer_conectada((conexiones_iniciales & (1 << dir)) != 0)
+	var vecinos := {}
+	for dir in Puerta.Direccion.values():
+		vecinos[dir] = (conexiones_iniciales & (1 << dir)) != 0
+	configurar_conexiones(vecinos)
 
 	_zona.body_entered.connect(_on_cuerpo_entro)
 	_zona.body_exited.connect(_on_cuerpo_salio)
+
+
+## Lo llama la mazmorra justo después de añadir la habitación a la escena.
+func preparar(posicion: Vector2i, celda: CeldaTablero, vecinos: Dictionary) -> void:
+	posicion_tablero = posicion
+	categoria = celda.categoria
+	bioma = celda.bioma
+	configurar_conexiones(vecinos)
+
+
+## vecinos: {Puerta.Direccion: bool}. Las direcciones que falten quedan selladas.
+func configurar_conexiones(vecinos: Dictionary) -> void:
+	for dir in _puertas:
+		_puertas[dir].establecer_conectada(vecinos.get(dir, false))
 
 
 ## Anota un combate o puzzle. Se resuelve solo cuando el nodo sale del árbol
