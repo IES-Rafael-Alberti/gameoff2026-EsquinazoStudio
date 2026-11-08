@@ -180,23 +180,28 @@ func _actualizar_etiqueta() -> void:
 	]
 
 func sincronizar(matriz: Array) -> bool:
+	# Tu sala es una CeldaTablero concreta; si bajaron filas, su posición ha cambiado.
+	var datos_actuales: CeldaTablero = null
+	if habitacion_actual != null:
+		datos_actuales = habitacion_actual.datos
+
 	generar(matriz)
 	if celdas.is_empty():
 		return false
 
-	if habitacion_actual == null or not hay_habitacion(celda_actual):
+	var posicion_nueva := Vector2i(-1, -1)
+	if datos_actuales != null:
+		for posicion in celdas:
+			if celdas[posicion] == datos_actuales:
+				posicion_nueva = posicion
+				break
+
+	if posicion_nueva == Vector2i(-1, -1):
+		# Primera vez, o tu casilla se borró: entras a la mazmorra de nuevo.
 		cargar_habitacion(elegir_inicio(), CENTRO_HABITACION)
 	else:
-		var estaba_resuelta:bool = habitacion_actual.datos != null and habitacion_actual.datos.resuelta
-
-		habitacion_actual.preparar(
-			celda_actual,
-			celdas[celda_actual],
-			vecinos_de(celda_actual)
-		)
-
-		if estaba_resuelta:
-			celdas[celda_actual].resuelta = true
-
+		# Sigues en tu sala; solo se actualizan su posición y sus puertas.
+		celda_actual = posicion_nueva
+		habitacion_actual.preparar(celda_actual, datos_actuales, vecinos_de(celda_actual))
 		_actualizar_etiqueta()
 	return true

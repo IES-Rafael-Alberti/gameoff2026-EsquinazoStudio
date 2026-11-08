@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d23scxhhtplpl"]
+
+[ext_resource type="Script" uid="uid://d2bf6tq8ts1af" path="res://scripts/vestibulo.gd" id="1_0fsgt"]
+[ext_resource type="Script" uid="uid://d0hu5w78iv8d1" path="res://BorrarTodoDeAqui/prueba_vestibulo.gd" id="1_ml7hq"]
+[ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="2_ml7hq"]
+
+[node name="PruebaVestibulo" type="Node2D" unique_id=1097724210]
+script = ExtResource("1_ml7hq")
+
+[node name="Inferior" type="Node2D" parent="." unique_id=1691683481]
+position = Vector2(320, 600)
+script = ExtResource("1_0fsgt")
+
+[node name="Superior" type="Node2D" parent="." unique_id=1809653819]
+position = Vector2(320, 300)
+script = ExtResource("1_0fsgt")
+tipo = 1
+
+[node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_ml7hq")]

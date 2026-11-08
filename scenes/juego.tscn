@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
 [ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/Tetris.tscn" id="2_pew7j"]
 [ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="3_iq6uk"]
-[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/Mazmorra.tscn" id="4_ervc2"]
+[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra.tscn" id="4_ervc2"]
 
-[sub_resource type="Resource" id="Resource_ebtnq"]
+[sub_resource type="Resource" id="Resource_pew7j"]
 resource_local_to_scene = true
 script = ExtResource("3_iq6uk")
 COLUMNAS = 10
@@ -19,6 +19,6 @@ metadata/_custom_type_script = "uid://l2dv12p10t3s"
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
-Configuracion = SubResource("Resource_ebtnq")
+Configuracion = SubResource("Resource_pew7j")
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
