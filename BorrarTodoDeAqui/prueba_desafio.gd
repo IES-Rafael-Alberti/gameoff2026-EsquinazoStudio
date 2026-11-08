@@ -8,8 +8,10 @@ extends Node
 
 
 func _ready() -> void:
+	if _habitacion.datos != null and _habitacion.datos.resuelta:
+		queue_free()
+		return
 	_habitacion.jugador_entro.connect(_on_jugador_entro)
-
 
 func _on_jugador_entro() -> void:
 	var desafio := Node.new()

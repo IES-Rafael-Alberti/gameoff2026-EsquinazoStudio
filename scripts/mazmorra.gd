@@ -8,7 +8,8 @@ const CENTRO_HABITACION := Vector2(928, 512)
 ## Habitaciones de la mazmorra: Vector2i(x, y) -> CeldaTablero (categoría y bioma).
 ## La forma de la mazmorra es la forma que dejan las piezas en el tablero.
 var celdas := {}
-
+var _columnas := 0
+var _filas := 0
 var celda_actual := Vector2i.ZERO
 var habitacion_actual: Habitacion
 
@@ -19,27 +20,7 @@ var _etiqueta: Label # provisional: muestra en qué sala estás
 
 func _ready() -> void:
 	_crear_etiqueta()
-
-	# Diseño de prueba: 0 = vacío, 1..6 = categoría A..F.
-	# Más adelante se sustituye por tablero.matriz (null = vacío).
-	var diseno := [
-		[0, 2, 0],
-		[1, 3, 4],
-		[0, 5, 0],
-	]
-
-	var matriz: Array = []
-	for fila in diseno:
-		var fila_matriz: Array = []
-		for valor in fila:
-			if valor == 0:
-				fila_matriz.append(null)
-			else:
-				fila_matriz.append(CeldaTablero.new(null, valor - 1))
-		matriz.append(fila_matriz)
-
-	generar(matriz)
-	cargar_habitacion(Vector2i(1, 0))
+	_etiqueta.visible = false
 
 
 ## Texto provisional en pantalla con la celda y la categoría de la sala actual.
@@ -52,11 +33,16 @@ func _crear_etiqueta() -> void:
 	_etiqueta.add_theme_constant_override("outline_size", 8)
 	capa.add_child(_etiqueta)
 
+func set_activa(activa: bool) -> void:
+	if _etiqueta != null:
+		_etiqueta.visible = activa
 
 ## Lee una matriz como la de tablero.matriz: null = sin habitación, CeldaTablero = habitación.
 func generar(matriz: Array) -> void:
 	celdas.clear()
-	for y in matriz.size():
+	_filas = matriz.size()
+	_columnas = 0 if _filas == 0 else matriz[0].size()
+	for y in _filas:
 		for x in matriz[y].size():
 			if matriz[y][x] != null:
 				celdas[Vector2i(x, y)] = matriz[y][x]
@@ -69,18 +55,20 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 		return
 
 	if habitacion_actual:
+		habitacion_actual.cerrar()
 		remove_child(habitacion_actual)
 		habitacion_actual.queue_free()
 
 	celda_actual = celda
 	habitacion_actual = ESCENA_HABITACION.instantiate() as Habitacion
+	habitacion_actual.datos = celdas[celda]
 	add_child(habitacion_actual)
 	move_child(habitacion_actual, 0) # detrás del jugador
 	habitacion_actual.preparar(celda, celdas[celda], vecinos_de(celda))
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	jugador.position = posicion_jugador
 
-	_etiqueta.text = "Sala %s [%s]" % [celda, Catalogo.letra_categoria(categoria_de(celda))]
+	_actualizar_etiqueta()
 	print("Habitación ", celda, " [", Catalogo.letra_categoria(categoria_de(celda)), "] -> ", describir_vecinos(celda))
 
 
@@ -128,3 +116,87 @@ func describir_vecinos(celda: Vector2i) -> String:
 		if vecinos[dir]:
 			nombres.append(Puerta.Direccion.keys()[dir])
 	return ", ".join(nombres)
+	
+func elegir_inicio() -> Vector2i:
+	if celdas.is_empty():
+		return Vector2i.ZERO
+
+	var visitadas := {}
+	var componentes: Array = []
+	var tamano_max := 0
+
+	for inicio in celdas.keys():
+		if visitadas.has(inicio):
+			continue
+		var componente: Array = []
+		var pendientes: Array = [inicio]
+		visitadas[inicio] = true
+
+		while not pendientes.is_empty():
+			var actual: Vector2i = pendientes.pop_back()
+			componente.append(actual)
+			for dir in Puerta.Direccion.values():
+				var vecino: Vector2i = actual + Puerta.vector_de(dir)
+				if celdas.has(vecino) and not visitadas.has(vecino):
+					visitadas[vecino] = true
+					pendientes.append(vecino)
+
+		if componente.size() > tamano_max:
+			tamano_max = componente.size()
+			componentes = [componente]
+		elif componente.size() == tamano_max:
+			componentes.append(componente)
+
+	var mejor := Vector2i.ZERO
+	var hay_mejor := false
+	for componente in componentes:
+		for celda in componente:
+			var c: Vector2i = celda
+			if not hay_mejor or _es_mejor_inicio(c, mejor):
+				mejor = c
+				hay_mejor = true
+	return mejor
+
+
+func _es_mejor_inicio(candidato: Vector2i, actual: Vector2i) -> bool:
+	if candidato.y != actual.y:
+		return candidato.y > actual.y
+
+	var centro := Vector2((_columnas - 1) / 2.0, (_filas - 1) / 2.0)
+	var d_candidato := Vector2(candidato).distance_squared_to(centro)
+	var d_actual := Vector2(actual).distance_squared_to(centro)
+	if not is_equal_approx(d_candidato, d_actual):
+		return d_candidato < d_actual
+
+	return candidato.x < actual.x
+
+func _actualizar_etiqueta() -> void:
+	var celda: CeldaTablero = celdas[celda_actual]
+	var estado := " [resuelta]" if celda.resuelta else ""
+	_etiqueta.text = "Sala %s [%s]%s" % [
+		celda_actual,
+		Catalogo.letra_categoria(celda.categoria),
+		estado
+	]
+
+func sincronizar(matriz: Array) -> bool:
+	generar(matriz)
+	if celdas.is_empty():
+		return false
+
+	if habitacion_actual == null or not hay_habitacion(celda_actual):
+		cargar_habitacion(elegir_inicio(), CENTRO_HABITACION)
+	else:
+		var estaba_resuelta:bool = habitacion_actual.datos != null and habitacion_actual.datos.resuelta
+
+		habitacion_actual.preparar(
+			celda_actual,
+			celdas[celda_actual],
+			vecinos_de(celda_actual)
+		)
+
+		if estaba_resuelta:
+			celdas[celda_actual].resuelta = true
+
+		_actualizar_etiqueta()
+	return true

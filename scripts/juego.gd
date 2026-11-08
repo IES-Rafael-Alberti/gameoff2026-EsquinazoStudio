@@ -8,7 +8,6 @@ var modo := Modo.TETRIS
 @onready var _tetris: Tetris = $Tetris
 @onready var _mazmorra: Mazmorra = $Mazmorra
 
-
 func _ready() -> void:
 	_aplicar_modo()
 
@@ -19,7 +18,13 @@ func _input(event: InputEvent) -> void:
 
 
 func cambiar_modo() -> void:
-	modo = Modo.MAZMORRA if modo == Modo.TETRIS else Modo.TETRIS
+	if modo == Modo.TETRIS:
+		if not _mazmorra.sincronizar(_tetris.tablero):
+			print("No hay habitaciones en el tablero")
+			return
+		modo = Modo.MAZMORRA
+	else:
+		modo = Modo.TETRIS
 	_aplicar_modo()
 
 
@@ -27,6 +32,7 @@ func cambiar_modo() -> void:
 func _aplicar_modo() -> void:
 	_activar(_tetris, modo == Modo.TETRIS)
 	_activar(_mazmorra, modo == Modo.MAZMORRA)
+	_mazmorra.set_activa(modo == Modo.MAZMORRA)
 	print("Modo: ", Modo.keys()[modo])
 
 
