@@ -61,9 +61,14 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 	add_child(habitacion_actual)
 	move_child(habitacion_actual, 0) # detrás del jugador
 	habitacion_actual.preparar(celda, celdas[celda], vecinos_de(celda))
+	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	jugador.position = posicion_jugador
 
 	print("Habitación ", celda, " [", Catalogo.letra_categoria(categoria_de(celda)), "] -> ", describir_vecinos(celda))
+
+
+func _on_puerta_cruzada(puerta: Puerta) -> void:
+	print("Cruzó la puerta ", Puerta.Direccion.keys()[puerta.direccion])
 
 
 func hay_habitacion(celda: Vector2i) -> bool:

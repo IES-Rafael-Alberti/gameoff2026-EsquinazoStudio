@@ -4,6 +4,8 @@ extends Node2D
 signal jugador_entro
 signal puertas_cerradas
 signal puertas_abiertas
+## El jugador ha cruzado una puerta abierta (puerta.direccion dice cuál).
+signal puerta_cruzada(puerta: Puerta)
 
 ## Qué puertas tienen habitación al otro lado (solo para probar la escena suelta).
 ## Cuando la crea la Mazmorra, preparar() lo sobrescribe.
@@ -27,6 +29,7 @@ func _ready() -> void:
 		var puerta := hijo as Puerta
 		if puerta:
 			_puertas[puerta.direccion] = puerta
+			puerta.jugador_cruzo.connect(puerta_cruzada.emit)
 
 	var vecinos := {}
 	for dir in Puerta.Direccion.values():
