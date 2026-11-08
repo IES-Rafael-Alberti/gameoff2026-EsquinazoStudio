@@ -54,6 +54,7 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 		return
 
 	if habitacion_actual:
+		remove_child(habitacion_actual)
 		habitacion_actual.queue_free()
 
 	celda_actual = celda
@@ -68,7 +69,24 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 
 
 func _on_puerta_cruzada(puerta: Puerta) -> void:
-	print("Cruzó la puerta ", Puerta.Direccion.keys()[puerta.direccion])
+	var destino := celda_actual + Puerta.vector_de(puerta.direccion)
+	var entrada := Puerta.opuesta(puerta.direccion)
+	# Diferido: estamos dentro de una señal de física y no se pueden crear cuerpos ahora.
+	cargar_habitacion.call_deferred(destino, posicion_de_entrada(entrada))
+
+
+## Dónde aparece el jugador al entrar por la puerta "entrada" de la nueva habitación:
+## justo dentro de la sala, sin tocar el hueco de la puerta (para no volver a cruzarla).
+func posicion_de_entrada(entrada: Puerta.Direccion) -> Vector2:
+	match entrada:
+		Puerta.Direccion.NORTE:
+			return Vector2(928, 192)
+		Puerta.Direccion.ESTE:
+			return Vector2(1248, 512)
+		Puerta.Direccion.SUR:
+			return Vector2(928, 832)
+		_:
+			return Vector2(608, 512)
 
 
 func hay_habitacion(celda: Vector2i) -> bool:

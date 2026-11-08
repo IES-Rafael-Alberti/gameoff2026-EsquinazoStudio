@@ -35,6 +35,9 @@ static func vector_de(dir: Direccion) -> Vector2i:
 		_:
 			return Vector2i(-1, 0)
 
+## La puerta de la habitación vecina que conecta con esta.
+static func opuesta(dir: Direccion) -> Direccion:
+	return ((dir + 2) % 4) as Direccion
 
 func esta_abierta() -> bool:
 	return _conectada and not _bloqueada

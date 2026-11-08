@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_5drms"]
 [ext_resource type="Script" uid="uid://2ty1yri2og33" path="res://scripts/habitacion_base.gd" id="1_qdygs"]
 [ext_resource type="PackedScene" uid="uid://lms712vs40ot" path="res://scenes/puerta.tscn" id="3_egxel"]
+[ext_resource type="Script" uid="uid://blx25pi61x0f5" path="res://BorrarTodoDeAqui/prueba_desafio.gd" id="5_qqu6j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hkqad"]
 texture = ExtResource("1_5drms")
@@ -16,7 +17,6 @@ use_texture_padding = false
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 133.83716, 256, 133.83716, 256, 256, -256, 256)
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
@@ -61,3 +61,6 @@ monitorable = false
 
 [node name="Forma" type="CollisionShape2D" parent="ZonaEntrada" unique_id=990661461]
 shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="PruebaDesafio" type="Node" parent="." unique_id=444762006]
+script = ExtResource("5_qqu6j")
