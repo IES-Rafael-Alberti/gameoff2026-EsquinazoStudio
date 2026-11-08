@@ -12,10 +12,14 @@ var celdas := {}
 var celda_actual := Vector2i.ZERO
 var habitacion_actual: Habitacion
 
+var _etiqueta: Label # provisional: muestra en qué sala estás
+
 @onready var jugador: CharacterBody2D = $Jugador
 
 
 func _ready() -> void:
+	_crear_etiqueta()
+
 	# Diseño de prueba: 0 = vacío, 1..6 = categoría A..F.
 	# Más adelante se sustituye por tablero.matriz (null = vacío).
 	var diseno := [
@@ -36,6 +40,17 @@ func _ready() -> void:
 
 	generar(matriz)
 	cargar_habitacion(Vector2i(1, 0))
+
+
+## Texto provisional en pantalla con la celda y la categoría de la sala actual.
+func _crear_etiqueta() -> void:
+	var capa := CanvasLayer.new()
+	add_child(capa)
+	_etiqueta = Label.new()
+	_etiqueta.position = Vector2(10, 10)
+	_etiqueta.add_theme_font_size_override("font_size", 28)
+	_etiqueta.add_theme_constant_override("outline_size", 8)
+	capa.add_child(_etiqueta)
 
 
 ## Lee una matriz como la de tablero.matriz: null = sin habitación, CeldaTablero = habitación.
@@ -65,6 +80,7 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	jugador.position = posicion_jugador
 
+	_etiqueta.text = "Sala %s [%s]" % [celda, Catalogo.letra_categoria(categoria_de(celda))]
 	print("Habitación ", celda, " [", Catalogo.letra_categoria(categoria_de(celda)), "] -> ", describir_vecinos(celda))
 
 

@@ -6,6 +6,9 @@ signal jugador_cruzo(puerta: Puerta)
 
 enum Direccion { NORTE, ESTE, SUR, OESTE }
 
+## Si el jugador está más lejos que esto (en píxeles), no cuenta como cruce.
+const DISTANCIA_MAXIMA_CRUCE := 128.0
+
 @export var direccion: Direccion = Direccion.NORTE
 @export var color_cerrada := Color(0.45, 0.28, 0.12)
 @export var color_sellada := Color(0.16, 0.14, 0.18)
@@ -35,9 +38,11 @@ static func vector_de(dir: Direccion) -> Vector2i:
 		_:
 			return Vector2i(-1, 0)
 
+
 ## La puerta de la habitación vecina que conecta con esta.
 static func opuesta(dir: Direccion) -> Direccion:
 	return ((dir + 2) % 4) as Direccion
+
 
 func esta_abierta() -> bool:
 	return _conectada and not _bloqueada
@@ -59,8 +64,13 @@ func abrir() -> void:
 
 
 func _on_umbral_cuerpo_entro(cuerpo: Node2D) -> void:
-	if esta_abierta() and cuerpo.is_in_group("jugador"):
-		jugador_cruzo.emit(self)
+	if not esta_abierta() or not cuerpo.is_in_group("jugador"):
+		return
+	# Al cargar una sala nueva, la física puede avisar con la posición antigua del
+	# jugador (que ya se ha movido). Solo cuenta si de verdad está junto a la puerta.
+	if cuerpo.global_position.distance_to(global_position) > DISTANCIA_MAXIMA_CRUCE:
+		return
+	jugador_cruzo.emit(self)
 
 
 func _aplicar_estado() -> void:
