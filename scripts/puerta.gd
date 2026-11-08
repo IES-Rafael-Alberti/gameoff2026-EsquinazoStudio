@@ -44,3 +44,15 @@ func _aplicar_estado() -> void:
 	_colision.set_deferred("disabled", abierta)
 	_visual.visible = not abierta
 	_visual.color = color_cerrada if _conectada else color_sellada
+
+## Hacia dónde mira la puerta en el tablero del tetris (la y crece hacia abajo).
+static func vector_de(dir: Direccion) -> Vector2i:
+	match dir:
+		Direccion.NORTE:
+			return Vector2i(0, -1)
+		Direccion.ESTE:
+			return Vector2i(1, 0)
+		Direccion.SUR:
+			return Vector2i(0, 1)
+		_:
+			return Vector2i(-1, 0)
