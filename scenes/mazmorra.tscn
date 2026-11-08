@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bevmdwiaqd1if"]
+
+[ext_resource type="Script" uid="uid://81xbgurlhsa4" path="res://scripts/mazmorra.gd" id="1_s31mj"]
+[ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="2_pu7ub"]
+
+[node name="Mazmorra" type="Node2D" unique_id=1787572250]
+script = ExtResource("1_s31mj")
+
+[node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_pu7ub")]
+position = Vector2(607, 483.00003)
