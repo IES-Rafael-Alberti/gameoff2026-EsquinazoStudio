@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 script = ExtResource("3_iq6uk")
 COLUMNAS = 10
-FILAS = 20
+FILAS = 10
 TAM_CELDA = 40
 CANTIDAD_PIEZAS = 15
 BIOMAS_NIVEL = Array[int]([1, 2])

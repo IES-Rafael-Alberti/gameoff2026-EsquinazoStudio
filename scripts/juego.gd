@@ -19,9 +19,7 @@ func _input(event: InputEvent) -> void:
 
 func cambiar_modo() -> void:
 	if modo == Modo.TETRIS:
-		if not _mazmorra.sincronizar(_tetris.tablero):
-			print("No hay habitaciones en el tablero")
-			return
+		_mazmorra.sincronizar(_tetris.tablero)
 		modo = Modo.MAZMORRA
 	else:
 		modo = Modo.TETRIS

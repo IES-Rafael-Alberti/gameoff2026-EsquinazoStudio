@@ -1,0 +1,33 @@
+[gd_scene format=4 uid="uid://cc5yxyojw81r7"]
+
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_kk16p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yanfb"]
+texture = ExtResource("1_kk16p")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 133.83716, 256, 133.83716, 256, 256, -256, 256)
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+
+[sub_resource type="TileSet" id="TileSet_py81d"]
+tile_size = Vector2i(512, 512)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_yanfb")
+
+[node name="VestibuloZonaSuperior" type="Node2D" unique_id=398440739]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1274219548]
+scale = Vector2(0.125, 0.125)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAFABAAAAAAAAAAEAAAAAAAEAAAABAAAAAFAAAAIAAAABAAAAAFABAAIAAAAAAAEAAAABAAEAAAAAAAEAAAABAAMAAAABAAAAAAAAAAMAAAABAAAAAFACAAEAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAAIAAAAAAAEAAAAFAAMAAAABAAAAAAACAAAAAAAAAAEAAAACAAIAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAEAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAACAAMAAAABAAAAAAADAAMAAAABAAAAAAAEAAMAAAABAAAAAAAGAAMAAAABAAAAAAAHAAMAAAAAAAAAAGAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_py81d")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=652935805]
+position = Vector2(256, 160)
