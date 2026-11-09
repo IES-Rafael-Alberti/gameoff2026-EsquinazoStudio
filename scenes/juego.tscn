@@ -2,11 +2,89 @@
 
 [ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
 [ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/Tetris.tscn" id="2_pew7j"]
+[ext_resource type="Resource" uid="uid://blu4dlyhl61tl" path="res://resources/contenido_salas.tres" id="3_py3uc"]
+[ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="4_c173r"]
 [ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra.tscn" id="4_ervc2"]
+[ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="5_d0608"]
+[ext_resource type="Resource" uid="uid://cbiolwbo0it2y" path="res://resources/categorias/CombateCuracion.tres" id="6_spu22"]
+[ext_resource type="Resource" uid="uid://dfbhvxj5ui1n" path="res://resources/categorias/CombatePuzle.tres" id="7_skotl"]
+[ext_resource type="Resource" uid="uid://b2jry5pe8wn07" path="res://resources/categorias/Curación.tres" id="8_ibsrw"]
+[ext_resource type="Resource" uid="uid://ckfpqisg5v4hy" path="res://resources/categorias/Puzle.tres" id="9_oyo8v"]
+[ext_resource type="Resource" uid="uid://dv8f1mhdewg4u" path="res://resources/categorias/PuzleCuracion.tres" id="10_yp23v"]
+[ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="11_0g8fp"]
+[ext_resource type="Resource" uid="uid://odv61bfmtlbk" path="res://resources/categorias/TesoroCombate.tres" id="12_u22gr"]
+[ext_resource type="Resource" uid="uid://cm5gfqhkao5nr" path="res://resources/categorias/TesoroCuracion.tres" id="13_bh3c7"]
+[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="14_rcahx"]
+
+[sub_resource type="Resource" id="Resource_ervc2"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("5_d0608")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_5g1u2"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("6_spu22")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_mlgrx"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("7_skotl")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_spu22"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("8_ibsrw")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_d0608"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("9_oyo8v")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_c173r"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("10_yp23v")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_py3uc"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("11_0g8fp")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_d7syh"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("12_u22gr")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_pncoq"]
+script = ExtResource("4_c173r")
+categoria = ExtResource("13_bh3c7")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_y8n3i"]
+script = ExtResource("4_c173r")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_ae6e5"]
+script = ExtResource("4_c173r")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_vf1pr"]
+resource_local_to_scene = true
+script = ExtResource("14_rcahx")
+COLUMNAS = 10
+FILAS = 10
+TAM_CELDA = 40
+CANTIDAD_PIEZAS = 15
+PESOS_CATEGORIAS = Array[ExtResource("4_c173r")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
+CONTENIDO = ExtResource("3_py3uc")
+PIEZAS_NIVEL = 16258
+metadata/_custom_type_script = "uid://l2dv12p10t3s"
 
 [node name="Juego" type="Node" unique_id=1710010088]
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
+Configuracion = SubResource("Resource_vf1pr")
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]

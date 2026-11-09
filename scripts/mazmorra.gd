@@ -134,6 +134,9 @@ func _mostrar_vestibulo(vestibulo: Vestibulo, activo: bool) -> void:
 	elif not activo and vestibulo.get_parent() != null:
 		remove_child(vestibulo)
 
+## No se puede salir de la mazmorra (cambiar a Tetris) con la sala actual sin resolver.
+func puede_cambiar_modo() -> bool:
+	return habitacion_actual == null or not habitacion_actual.tiene_desafios_pendientes()
 
 func _descargar_habitacion() -> void:
 	if habitacion_actual == null:

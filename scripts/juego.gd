@@ -15,20 +15,20 @@ func _ready() -> void:
 	_mazmorra.sincronizar(_tetris.tablero)
 	_aplicar_modo()
 
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SHIFT:
 		cambiar_modo()
 
-
 func cambiar_modo() -> void:
+	if modo == Modo.MAZMORRA and not _mazmorra.puede_cambiar_modo():
+		print("Sala sin resolver: no se puede cambiar de modo")
+		return
 	if modo == Modo.TETRIS:
 		_mazmorra.sincronizar(_tetris.tablero)
 		modo = Modo.MAZMORRA
 	else:
 		modo = Modo.TETRIS
 	_aplicar_modo()
-
 
 ## Solo el modo activo se ve y recibe entrada y procesamiento; el otro queda congelado.
 func _aplicar_modo() -> void:

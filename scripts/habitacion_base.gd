@@ -68,6 +68,10 @@ func registrar_desafio(desafio: Node) -> void:
 	desafio.tree_exited.connect(resolver_desafio.bind(desafio), CONNECT_ONE_SHOT)
 	_actualizar_puertas()
 
+## True mientras quede algún combate o puzzle sin resolver.
+func tiene_desafios_pendientes() -> bool:
+	return not _desafios.is_empty()
+
 func resolver_desafio(desafio: Node) -> void:
 	if not _desafios.has(desafio):
 		return
