@@ -1,15 +1,32 @@
 
 extends CharacterBody2D
 
+signal murio
+
 @export var speed: float = 150.0
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@export_group("Combate")
+@export var vida_maxima := 1
+@export var dano_ataque := 1
+## Distancia desde el centro del jugador hasta el centro del golpe (píxeles).
+@export var alcance_ataque := 40.0
+@export var radio_ataque := 28.0
+## Segundos desde que empieza la animación de ataque hasta que el golpe hace daño.
+@export var retardo_golpe := 0.1
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _hitbox: CollisionShape2D = $HitboxPersonaje
+
+var vida: Vida
 var attacking := false
 var last_direction: String = "South"
 
 func _ready() -> void:
 	add_to_group("jugador")
+	vida = Vida.new()
+	vida.vida_maxima = vida_maxima
+	add_child(vida)
+	vida.murio.connect(_on_vida_murio)
 	
 func _physics_process(_delta: float) -> void:
 
@@ -22,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		"ui_left",
 		"ui_right",
 		"ui_up",
-        "ui_down"
+		"ui_down"
 	)
 
 	velocity = input_direction * speed
@@ -56,5 +73,51 @@ func _input(event: InputEvent) -> void:
 func attack() -> void:
 	attacking = true
 	sprite.play("Attack_" + last_direction)
+	get_tree().create_timer(retardo_golpe).timeout.connect(_golpear)
 	await sprite.animation_finished
 	attacking = false
+
+
+## Centro del cuerpo (el origen del personaje está en los pies).
+func centro() -> Vector2:
+	return _hitbox.global_position
+
+
+func recibir_dano(cantidad: int) -> void:
+	vida.recibir_dano(cantidad)
+
+
+## Daña a todos los enemigos dentro de un círculo delante del jugador.
+func _golpear() -> void:
+	if not attacking:
+		return
+	var forma := CircleShape2D.new()
+	forma.radius = radio_ataque
+
+	var consulta := PhysicsShapeQueryParameters2D.new()
+	consulta.shape = forma
+	consulta.transform = Transform2D(0.0, centro() + _vector_de(last_direction) * alcance_ataque)
+	consulta.collision_mask = 1
+	consulta.exclude = [get_rid()]
+
+	for resultado in get_world_2d().direct_space_state.intersect_shape(consulta):
+		var objetivo := resultado.collider as Node
+		if objetivo is Enemigo:
+			objetivo.recibir_dano(dano_ataque)
+
+
+func _vector_de(direccion: String) -> Vector2:
+	match direccion:
+		"North":
+			return Vector2.UP
+		"East":
+			return Vector2.RIGHT
+		"West":
+			return Vector2.LEFT
+		_:
+			return Vector2.DOWN
+
+
+func _on_vida_murio() -> void:
+	print("Jugador muerto")
+	murio.emit()

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bb4wfd8vxexr4"]
 
-[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/Habitacion_Base.tscn" id="1_fckqq"]
-[ext_resource type="Script" uid="uid://blx25pi61x0f5" path="res://BorrarTodoDeAqui/prueba_desafio.gd" id="2_ladvn"]
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fckqq"]
+[ext_resource type="PackedScene" uid="uid://3usamd7xkrha" path="res://scenes/enemigos/EnemigoEstatico.tscn" id="2_46aam"]
+[ext_resource type="PackedScene" uid="uid://b4cqci5h5klxp" path="res://scenes/enemigos/EnemigoPerseguidor.tscn" id="3_msgi3"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fckqq")]
 
@@ -12,5 +13,16 @@ offset_right = 860.0
 offset_bottom = 423.0
 text = "COMBATE 1"
 
-[node name="pruebadesafio" type="Node" parent="." index="4" unique_id=1339462756]
-script = ExtResource("2_ladvn")
+[node name="Enemigos" type="Node2D" parent="." index="4" unique_id=1825924326]
+
+[node name="EnemigoEstatico" parent="Enemigos" index="0" unique_id=985281501 instance=ExtResource("2_46aam")]
+position = Vector2(668, 351)
+
+[node name="EnemigoEstatico2" parent="Enemigos" index="1" unique_id=1002324315 instance=ExtResource("2_46aam")]
+position = Vector2(923, 351)
+
+[node name="EnemigoEstatico3" parent="Enemigos" index="2" unique_id=2093607761 instance=ExtResource("2_46aam")]
+position = Vector2(1157, 351)
+
+[node name="EnemigoPerseguidor" parent="Enemigos" index="3" unique_id=592405911 instance=ExtResource("3_msgi3")]
+position = Vector2(615, 183)

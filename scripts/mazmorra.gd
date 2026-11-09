@@ -4,7 +4,7 @@ extends Node2D
 enum Lugar { NINGUNO, VESTIBULO_INFERIOR, VESTIBULO_SUPERIOR, SALA }
 
 ## Sala base: se usa cuando no hay ninguna sala en el pool que toca.
-const ESCENA_HABITACION := preload("res://scenes/Habitacion_Base.tscn")
+const ESCENA_HABITACION := preload("res://scenes/salas/Habitacion_Base.tscn")
 ## Centro de la habitación, en coordenadas de la propia habitación.
 const CENTRO_HABITACION := Vector2(928, 512)
 

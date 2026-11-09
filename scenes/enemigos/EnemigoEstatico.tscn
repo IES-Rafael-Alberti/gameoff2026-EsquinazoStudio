@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://3usamd7xkrha"]
+
+[ext_resource type="Script" uid="uid://dwsipcx1o11w3" path="res://scripts/combate/enemigo.gd" id="1_2tsqd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+radius = 16.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1274045193]
+script = ExtResource("1_2tsqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=901559757]
+shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=470877268]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true

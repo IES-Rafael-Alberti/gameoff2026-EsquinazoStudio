@@ -18,7 +18,6 @@ metadata/_custom_type_script = "uid://d20qapcko8rat"
 [sub_resource type="Resource" id="Resource_lghde"]
 script = ExtResource("4_iehwp")
 escena = ExtResource("6_a87yp")
-peso = 3.0
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_efurq"]

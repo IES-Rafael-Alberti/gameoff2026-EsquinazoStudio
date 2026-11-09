@@ -8,21 +8,31 @@ enum Direccion { NORTE, ESTE, SUR, OESTE }
 
 ## Si el jugador está más lejos que esto (en píxeles), no cuenta como cruce.
 const DISTANCIA_MAXIMA_CRUCE := 128.0
+## Lado de la celda de la puerta en píxeles: los sprites se escalan a este tamaño.
+const TAM_CELDA := 64.0
 
 @export var direccion: Direccion = Direccion.NORTE
-@export var color_cerrada := Color(0.45, 0.28, 0.12)
-@export var color_sellada := Color(0.16, 0.14, 0.18)
+
+@export_group("Sprites")
+## Puerta abierta: el hueco por el que se pasa.
+@export var sprite_abierta: Texture2D
+## Puerta cerrada: hay sala al otro lado pero un combate o puzle la bloquea.
+@export var sprite_cerrada: Texture2D
+## Sin sala al otro lado. Si no se asigna, se usa el sprite de cerrada.
+@export var sprite_sellada: Texture2D
 
 var _conectada := false # hay habitación al otro lado
 var _bloqueada := false # un combate/puzzle la mantiene cerrada
 
 @onready var _colision: CollisionShape2D = $Colision
-@onready var _visual: ColorRect = $Visual
+@onready var _sprite: Sprite2D = $Sprite
 @onready var _umbral: Area2D = $Umbral
 
 
 func _ready() -> void:
 	_umbral.body_entered.connect(_on_umbral_cuerpo_entro)
+	# El sprite del atlas está dibujado para la puerta SUR; las demás son giros de 90°.
+	_sprite.rotation_degrees = (int(direccion) - 2) * 90.0
 	_aplicar_estado()
 
 
@@ -78,5 +88,21 @@ func _aplicar_estado() -> void:
 		return
 	var abierta := esta_abierta()
 	_colision.set_deferred("disabled", abierta)
-	_visual.visible = not abierta
-	_visual.color = color_cerrada if _conectada else color_sellada
+	_mostrar(_textura_para(abierta))
+
+
+## Qué sprite toca según el estado de la puerta.
+func _textura_para(abierta: bool) -> Texture2D:
+	if abierta:
+		return sprite_abierta
+	if _conectada:
+		return sprite_cerrada
+	return sprite_sellada if sprite_sellada != null else sprite_cerrada
+
+
+func _mostrar(textura: Texture2D) -> void:
+	_sprite.texture = textura
+	_sprite.visible = textura != null
+	if textura != null:
+		var medida := textura.get_size()
+		_sprite.scale = Vector2(TAM_CELDA / medida.x, TAM_CELDA / medida.y)

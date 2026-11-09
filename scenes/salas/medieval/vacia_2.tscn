@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dv80ngbap45nx"]
 
-[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/Habitacion_Base.tscn" id="1_lj8p8"]
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_lj8p8"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_lj8p8")]
 

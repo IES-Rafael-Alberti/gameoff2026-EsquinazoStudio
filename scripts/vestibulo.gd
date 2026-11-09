@@ -33,7 +33,6 @@ var _tiene_spawn := false
 ## Se llama una sola vez, con el número de columnas del tablero.
 func construir(columnas: int) -> void:
 	scale = Vector2(1, -1) if tipo == Tipo.SUPERIOR else Vector2.ONE
-	var direccion := Puerta.Direccion.NORTE if tipo == Tipo.INFERIOR else Puerta.Direccion.SUR
 
 	var tramo := ESCENA_TRAMO.instantiate()
 	var extremo := ESCENA_EXTREMO.instantiate()
@@ -56,8 +55,9 @@ func construir(columnas: int) -> void:
 	var x := ancho_extremo
 	for columna in columnas:
 		_estampar(capa_tramo, Vector2i(x, 0))
+		# La dirección de la puerta se queda en NORTE (la del tramo): en el vestíbulo superior
+		# el volteo de todo el vestíbulo ya la deja mirando al otro lado.
 		var puerta := ESCENA_PUERTA.instantiate() as Puerta
-		puerta.direccion = direccion
 		puerta.position = puerta_en_tramo + Vector2(x * _tam_celda, 0)
 		puerta.jugador_cruzo.connect(_on_jugador_cruzo.bind(columna))
 		add_child(puerta)
