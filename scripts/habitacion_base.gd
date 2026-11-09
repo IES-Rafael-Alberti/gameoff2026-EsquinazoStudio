@@ -14,7 +14,7 @@ signal puerta_cruzada(puerta: Puerta)
 
 ## Datos que le asigna la mazmorra (a partir de su celda del tablero).
 var posicion_tablero := Vector2i.ZERO
-var categoria: int = Catalogo.Categoria.A
+var categoria: CategoriaSala
 var bioma: int = Catalogo.Bioma.MEDIEVAL
 
 var _puertas := {} # Puerta.Direccion -> Puerta

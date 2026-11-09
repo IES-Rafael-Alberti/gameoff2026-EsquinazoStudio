@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bb4wfd8vxexr4"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/Habitacion_Base.tscn" id="1_fckqq"]
+[ext_resource type="Script" uid="uid://blx25pi61x0f5" path="res://BorrarTodoDeAqui/prueba_desafio.gd" id="2_ladvn"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fckqq")]
+
+[node name="Label" type="Label" parent="." index="3" unique_id=261664480]
+offset_left = 800.0
+offset_top = 400.0
+offset_right = 860.0
+offset_bottom = 423.0
+text = "COMBATE 1"
+
+[node name="pruebadesafio" type="Node" parent="." index="4" unique_id=1339462756]
+script = ExtResource("2_ladvn")

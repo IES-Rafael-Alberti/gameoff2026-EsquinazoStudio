@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://d2sqte7cht5mu"]
+
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_cgeie"]
+
+[resource]
+script = ExtResource("1_cgeie")
+nombre = "Tesoro"
+letra = "T"
+metadata/_custom_type_script = "uid://iortsm7cn8s0"

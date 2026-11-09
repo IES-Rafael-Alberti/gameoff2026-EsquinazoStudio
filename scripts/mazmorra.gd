@@ -3,9 +3,13 @@ extends Node2D
 
 enum Lugar { NINGUNO, VESTIBULO_INFERIOR, VESTIBULO_SUPERIOR, SALA }
 
+## Sala base: se usa cuando no hay ninguna sala en el pool que toca.
 const ESCENA_HABITACION := preload("res://scenes/Habitacion_Base.tscn")
 ## Centro de la habitación, en coordenadas de la propia habitación.
 const CENTRO_HABITACION := Vector2(928, 512)
+
+## Pools de salas por bioma y categoría. Lo asigna Juego desde la configuración del nivel.
+var contenido: ContenidoSalas
 
 ## Habitaciones de la mazmorra: Vector2i(x, y) -> CeldaTablero (categoría y bioma).
 ## La forma de la mazmorra es la forma que dejan las piezas en el tablero.
@@ -150,6 +154,31 @@ func _descargar_habitacion() -> void:
 	habitacion_actual = null
 
 
+## Crea la sala de una celda con la variante que le toca (la elige del pool la primera vez).
+func _instanciar_sala(datos_celda: CeldaTablero) -> Habitacion:
+	if datos_celda.escena_sala == null:
+		datos_celda.escena_sala = _elegir_escena(datos_celda)
+	var sala := datos_celda.escena_sala.instantiate() as Habitacion
+	if sala == null:
+		push_error("La escena elegida no tiene el script Habitacion; usando la sala base.")
+		datos_celda.escena_sala = ESCENA_HABITACION
+		sala = ESCENA_HABITACION.instantiate() as Habitacion
+	return sala
+
+
+func _elegir_escena(datos_celda: CeldaTablero) -> PackedScene:
+	var escena: PackedScene = null
+	if contenido != null:
+		escena = contenido.elegir(datos_celda.bioma, datos_celda.categoria)
+	if escena == null:
+		var nombre := "sin categoría" if datos_celda.categoria == null else datos_celda.categoria.nombre
+		push_warning("Sin salas en el pool %s / %s; usando la sala base." % [
+			Catalogo.NOMBRES_BIOMA.get(datos_celda.bioma, "?"), nombre
+		])
+		escena = ESCENA_HABITACION
+	return escena
+
+
 ## Sustituye la habitación cargada por la de esta celda y coloca al jugador.
 func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABITACION) -> void:
 	if not hay_habitacion(celda):
@@ -162,17 +191,18 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 
 	lugar = Lugar.SALA
 	celda_actual = celda
-	habitacion_actual = ESCENA_HABITACION.instantiate() as Habitacion
-	habitacion_actual.datos = celdas[celda]
+	var datos_celda: CeldaTablero = celdas[celda]
+	habitacion_actual = _instanciar_sala(datos_celda)
+	habitacion_actual.datos = datos_celda
 	add_child(habitacion_actual)
 	move_child(habitacion_actual, 0) # detrás del jugador
-	habitacion_actual.preparar(celda, celdas[celda], vecinos_de(celda))
+	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda))
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	jugador.position = posicion_jugador
 
 	_actualizar_camara()
 	_actualizar_etiqueta()
-	print("Habitación ", celda, " [", Catalogo.letra_categoria(categoria_de(celda)), "] -> ", describir_vecinos(celda))
+	print("Habitación ", celda, " [", _letra_de(datos_celda.categoria), "] -> ", describir_vecinos(celda))
 
 
 ## Pasa a un vestíbulo. columna >= 0: delante de su puerta; columna < 0: en la zona de spawn.
@@ -236,7 +266,7 @@ func hay_conexion(celda: Vector2i) -> bool:
 	return celda.x >= 0 and celda.x < _columnas and (celda.y == -1 or celda.y == _filas)
 
 
-func categoria_de(celda: Vector2i) -> int:
+func categoria_de(celda: Vector2i) -> CategoriaSala:
 	return celdas[celda].categoria
 
 
@@ -257,6 +287,10 @@ func describir_vecinos(celda: Vector2i) -> String:
 	return ", ".join(nombres)
 
 
+func _letra_de(categoria: CategoriaSala) -> String:
+	return "-" if categoria == null else categoria.letra
+
+
 func _actualizar_etiqueta() -> void:
 	match lugar:
 		Lugar.VESTIBULO_INFERIOR:
@@ -268,7 +302,7 @@ func _actualizar_etiqueta() -> void:
 			var estado := " [resuelta]" if celda.resuelta else ""
 			_etiqueta.text = "Sala %s [%s]%s" % [
 				celda_actual,
-				Catalogo.letra_categoria(celda.categoria),
+				_letra_de(celda.categoria),
 				estado
 			]
 

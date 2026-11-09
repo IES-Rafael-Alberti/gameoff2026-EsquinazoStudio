@@ -8,7 +8,7 @@ var tamano: int
 @onready var borde: Sprite2D = $Borde
 @onready var icono: Sprite2D = $Icono
 
-var categoria: Catalogo.Categoria = Catalogo.Categoria.A
+var categoria: CategoriaSala = null
 
 #provisional
 @onready var letra: Label = $LetraCategoria
@@ -22,20 +22,20 @@ func _ready() -> void:
 func configurar(
 	textura_fondo: Texture2D,
 	textura_marco: Texture2D,
-	nueva_categoria: Catalogo.Categoria = Catalogo.Categoria.A,
+	nueva_categoria: CategoriaSala = null,
 	textura_icono: Texture2D = null
 ) -> void:
 	categoria = nueva_categoria
 	fondo.texture = textura_fondo
 	borde.texture = textura_marco
 
-	if textura_icono == null:
-		textura_icono = Catalogo.icono_categoria(categoria)
+	if textura_icono == null and categoria != null:
+		textura_icono = categoria.icono
 
 	icono.texture = textura_icono
 	icono.visible = textura_icono != null
-	letra.text = Catalogo.letra_categoria(categoria)
-	letra.visible = textura_icono == null
+	letra.text = categoria.letra if categoria != null else ""
+	letra.visible = textura_icono == null and categoria != null
 
 	_ajustar_sprites()
 

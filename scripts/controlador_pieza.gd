@@ -10,7 +10,7 @@ var pieza_actual: PiezaGenerada = null
 var forma_actual: Array = []
 var textura_actual: Texture2D
 var marco_actual: Texture2D
-var categorias_actuales: Array[int] = []
+var categorias_actuales: Array[CategoriaSala] = []
 var bioma_actual: int = Catalogo.Bioma.MEDIEVAL
 var posicion_pieza = Vector2i(3, 0)
 

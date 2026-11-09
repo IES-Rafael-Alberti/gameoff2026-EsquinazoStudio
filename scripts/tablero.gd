@@ -65,7 +65,7 @@ func fijar_pieza(
 		var celda = posicion + forma[i]
 
 		if celda.y >= 0 and celda.y < matriz.size():
-			var categoria = Catalogo.Categoria.A
+			var categoria: CategoriaSala = null
 			if i < categorias.size():
 				categoria = categorias[i]
 

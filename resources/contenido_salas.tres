@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="ContenidoSalas" format=3 uid="uid://blu4dlyhl61tl"]
+
+[ext_resource type="Script" uid="uid://cvem01iwwrqy3" path="res://scripts/pool_bioma.gd" id="1_g7xdy"]
+[ext_resource type="Script" uid="uid://c6684rv0ysdpf" path="res://scripts/pool_categoria.gd" id="2_3vuvy"]
+[ext_resource type="Script" uid="uid://cf31yyhmx7s7f" path="res://scripts/contenido_salas.gd" id="2_efurq"]
+[ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="3_qw038"]
+[ext_resource type="Script" uid="uid://d20qapcko8rat" path="res://scripts/entrada_sala.gd" id="4_iehwp"]
+[ext_resource type="PackedScene" uid="uid://dk01icknxxntc" path="res://scenes/salas/medieval/vacia_1.tscn" id="5_ut0hs"]
+[ext_resource type="PackedScene" uid="uid://dv80ngbap45nx" path="res://scenes/salas/medieval/vacia_2.tscn" id="6_a87yp"]
+[ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="7_iehwp"]
+[ext_resource type="PackedScene" uid="uid://bb4wfd8vxexr4" path="res://scenes/salas/medieval/combate_1.tscn" id="8_ut0hs"]
+
+[sub_resource type="Resource" id="Resource_rdg03"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("5_ut0hs")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_lghde"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("6_a87yp")
+peso = 3.0
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_efurq"]
+script = ExtResource("2_3vuvy")
+categoria = ExtResource("3_qw038")
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_rdg03"), SubResource("Resource_lghde")])
+metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+
+[sub_resource type="Resource" id="Resource_n51ts"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("8_ut0hs")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_i21ei"]
+script = ExtResource("2_3vuvy")
+categoria = ExtResource("7_iehwp")
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_n51ts")])
+metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+
+[sub_resource type="Resource" id="Resource_g7xdy"]
+script = ExtResource("1_g7xdy")
+categorias = Array[ExtResource("2_3vuvy")]([SubResource("Resource_efurq"), SubResource("Resource_i21ei")])
+metadata/_custom_type_script = "uid://cvem01iwwrqy3"
+
+[resource]
+script = ExtResource("2_efurq")
+biomas = Array[ExtResource("1_g7xdy")]([SubResource("Resource_g7xdy")])
+metadata/_custom_type_script = "uid://cf31yyhmx7s7f"
