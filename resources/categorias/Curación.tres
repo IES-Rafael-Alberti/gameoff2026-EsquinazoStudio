@@ -6,4 +6,5 @@
 script = ExtResource("1_gli6e")
 nombre = "Curacion"
 letra = "U"
+se_resuelve_al_entrar = true
 metadata/_custom_type_script = "uid://iortsm7cn8s0"

@@ -6,4 +6,5 @@
 script = ExtResource("1_cgeie")
 nombre = "Tesoro"
 letra = "T"
+se_resuelve_al_entrar = true
 metadata/_custom_type_script = "uid://iortsm7cn8s0"

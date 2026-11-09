@@ -86,7 +86,7 @@ func _on_cuerpo_entro(cuerpo: Node2D) -> void:
 	_jugador_dentro = true
 	jugador_entro.emit()
 	_actualizar_puertas()
-
+	_resolver_si_corresponde()
 
 func _on_cuerpo_salio(cuerpo: Node2D) -> void:
 	if not cuerpo.is_in_group("jugador"):
@@ -113,3 +113,14 @@ func _actualizar_puertas() -> void:
 
 func cerrar() -> void:
 	_cerrando = true
+
+## Las salas marcadas como "se resuelve al entrar" (vacías) se completan al pisarlas.
+func _resolver_si_corresponde() -> void:
+	if datos == null or datos.resuelta:
+		return
+	if categoria == null or not categoria.se_resuelve_al_entrar:
+		return
+	if not _desafios.is_empty():
+		return
+	datos.resuelta = true
+	desafios_resueltos.emit()

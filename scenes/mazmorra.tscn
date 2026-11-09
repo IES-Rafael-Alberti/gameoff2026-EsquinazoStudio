@@ -2,9 +2,34 @@
 
 [ext_resource type="Script" uid="uid://81xbgurlhsa4" path="res://scripts/mazmorra.gd" id="1_s31mj"]
 [ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="2_pu7ub"]
+[ext_resource type="Script" uid="uid://bqddph4t53tq1" path="res://scripts/mazmorra/minimapa.gd" id="3_0puqh"]
 
 [node name="Mazmorra" type="Node2D" unique_id=1787572250]
 script = ExtResource("1_s31mj")
 
 [node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_pu7ub")]
 position = Vector2(607, 483.00003)
+
+[node name="Interfaz" type="CanvasLayer" parent="." unique_id=23799330]
+
+[node name="Minimapa" type="Control" parent="Interfaz" unique_id=774690835]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("3_0puqh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Etiqueta" type="Label" parent="Interfaz" unique_id=2050480189]
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 410.0
+offset_bottom = 50.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
+metadata/_edit_use_anchors_ = true

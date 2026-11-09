@@ -8,3 +8,5 @@ extends Resource
 @export var letra := "?"
 ## Icono del cuadrado. Si está vacío se muestra la letra.
 @export var icono: Texture2D
+## Si es true, la sala se marca como resuelta en cuanto el jugador entra (salas vacías).
+@export var se_resuelve_al_entrar := false

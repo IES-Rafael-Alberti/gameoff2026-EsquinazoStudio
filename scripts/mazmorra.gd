@@ -18,20 +18,21 @@ var _columnas := 0
 var _filas := 0
 var lugar := Lugar.NINGUNO
 var celda_actual := Vector2i.ZERO
+var columna_vestibulo := -1
 var habitacion_actual: Habitacion
 
 var _activa := false
 var _vestibulo_inferior: Vestibulo
 var _vestibulo_superior: Vestibulo
 var _camara: Camera2D # solo activa dentro de un vestíbulo
-var _etiqueta: Label # provisional: muestra en qué sala estás
-
 @onready var jugador: CharacterBody2D = $Jugador
-
+@onready var _interfaz: CanvasLayer = $Interfaz
+@onready var _minimapa: Minimapa = $Interfaz/Minimapa
+@onready var _etiqueta: Label = $Interfaz/Etiqueta
 
 func _ready() -> void:
-	_crear_etiqueta()
-	_etiqueta.visible = false
+	_interfaz.visible = false
+	_minimapa.configurar(self)
 	_camara = Camera2D.new()
 	_camara.enabled = false
 	add_child(_camara)
@@ -40,6 +41,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if _camara.enabled:
 		_seguir_jugador()
+	_actualizar_columna_vestibulo()
 
 
 func _notification(what: int) -> void:
@@ -49,24 +51,11 @@ func _notification(what: int) -> void:
 			if is_instance_valid(vestibulo) and vestibulo.get_parent() == null:
 				vestibulo.free()
 
-
-## Texto provisional en pantalla con la celda y la categoría de la sala actual.
-func _crear_etiqueta() -> void:
-	var capa := CanvasLayer.new()
-	add_child(capa)
-	_etiqueta = Label.new()
-	_etiqueta.position = Vector2(10, 10)
-	_etiqueta.add_theme_font_size_override("font_size", 28)
-	_etiqueta.add_theme_constant_override("outline_size", 8)
-	capa.add_child(_etiqueta)
-
-
 func set_activa(activa: bool) -> void:
 	_activa = activa
-	if _etiqueta != null:
-		_etiqueta.visible = activa
+	if _interfaz != null:
+		_interfaz.visible = activa
 	_actualizar_camara()
-
 
 ## La cámara solo se usa en los vestíbulos (son más anchos que la pantalla) y solo en
 ## modo mazmorra; en las salas y en el tetris se desactiva y la vista queda como siempre.
@@ -105,6 +94,7 @@ func generar(matriz: Array) -> void:
 			if matriz[y][x] != null:
 				celdas[Vector2i(x, y)] = matriz[y][x]
 	_asegurar_vestibulos()
+	_minimapa.refrescar()
 
 
 ## Crea los vestíbulos la primera vez que se conoce el número de columnas.
@@ -191,6 +181,7 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 
 	lugar = Lugar.SALA
 	celda_actual = celda
+	columna_vestibulo = -1
 	var datos_celda: CeldaTablero = celdas[celda]
 	habitacion_actual = _instanciar_sala(datos_celda)
 	habitacion_actual.datos = datos_celda
@@ -198,6 +189,7 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 	move_child(habitacion_actual, 0) # detrás del jugador
 	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda))
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
+	habitacion_actual.desafios_resueltos.connect(_minimapa.refrescar)
 	jugador.position = posicion_jugador
 
 	_actualizar_camara()
@@ -209,6 +201,7 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	_descargar_habitacion()
 	lugar = donde
+	columna_vestibulo = columna
 	_mostrar_vestibulo(_vestibulo_inferior, donde == Lugar.VESTIBULO_INFERIOR)
 	_mostrar_vestibulo(_vestibulo_superior, donde == Lugar.VESTIBULO_SUPERIOR)
 	var vestibulo := _vestibulo_inferior if donde == Lugar.VESTIBULO_INFERIOR else _vestibulo_superior
@@ -218,6 +211,7 @@ func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 		jugador.global_position = vestibulo.posicion_entrada(columna)
 	_actualizar_camara()
 	_actualizar_etiqueta()
+	_minimapa.refrescar()
 	print("Vestíbulo ", Lugar.keys()[donde], " columna ", columna)
 
 
@@ -305,6 +299,7 @@ func _actualizar_etiqueta() -> void:
 				_letra_de(celda.categoria),
 				estado
 			]
+	_minimapa.refrescar()
 
 
 ## Se llama al pasar de tetris a mazmorra.
@@ -316,6 +311,7 @@ func sincronizar(matriz: Array) -> void:
 
 	generar(matriz)
 	_actualizar_puertas_vestibulos()
+	_minimapa.refrescar()
 
 	# Si estabas en un vestíbulo, sigues en él: solo cambian sus puertas.
 	if lugar == Lugar.VESTIBULO_INFERIOR or lugar == Lugar.VESTIBULO_SUPERIOR:
@@ -336,3 +332,17 @@ func sincronizar(matriz: Array) -> void:
 		celda_actual = posicion_nueva
 		habitacion_actual.preparar(celda_actual, datos_actuales, vecinos_de(celda_actual))
 		_actualizar_etiqueta()
+
+## Mientras caminas por un vestíbulo, la columna actual es la de la puerta más cercana.
+func _actualizar_columna_vestibulo() -> void:
+	if not _activa:
+		return
+	if lugar != Lugar.VESTIBULO_INFERIOR and lugar != Lugar.VESTIBULO_SUPERIOR:
+		return
+	var vestibulo := _vestibulo_inferior if lugar == Lugar.VESTIBULO_INFERIOR else _vestibulo_superior
+	if vestibulo == null:
+		return
+	var columna := vestibulo.columna_cercana(jugador.global_position)
+	if columna != columna_vestibulo:
+		columna_vestibulo = columna
+		_minimapa.refrescar()

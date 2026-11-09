@@ -156,6 +156,19 @@ func _comprobar_cerrado() -> void:
 				visitadas[vecina] = true
 				pendientes.append(vecina)
 
-
 func _on_jugador_cruzo(_puerta: Puerta, columna: int) -> void:
 	puerta_cruzada.emit(columna)
+
+## Columna de la puerta más cercana horizontalmente a esta posición global.
+func columna_cercana(posicion_global: Vector2) -> int:
+	if _puertas.is_empty():
+		return -1
+	var x := to_local(posicion_global).x
+	var mejor := 0
+	var mejor_distancia := INF
+	for i in _puertas.size():
+		var distancia := absf(_puertas[i].position.x - x)
+		if distancia < mejor_distancia:
+			mejor_distancia = distancia
+			mejor = i
+	return mejor
