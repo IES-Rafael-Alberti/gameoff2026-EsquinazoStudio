@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="Configuracion_Tablero" format=3 uid="uid://k1c01fmktdg"]
-
-[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="1_q35pj"]
-
-[resource]
-script = ExtResource("1_q35pj")
