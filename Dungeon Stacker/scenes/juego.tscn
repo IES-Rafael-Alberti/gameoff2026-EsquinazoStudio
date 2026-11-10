@@ -69,7 +69,7 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 script = ExtResource("4_c173r")
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
-[sub_resource type="Resource" id="Resource_vf1pr"]
+[sub_resource type="Resource" id="Resource_skotl"]
 resource_local_to_scene = true
 script = ExtResource("14_rcahx")
 COLUMNAS = 10
@@ -78,13 +78,13 @@ TAM_CELDA = 40
 CANTIDAD_PIEZAS = 15
 PESOS_CATEGORIAS = Array[ExtResource("4_c173r")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
 CONTENIDO = ExtResource("3_py3uc")
-PIEZAS_NIVEL = 16258
+PIEZAS_NIVEL = 2
 metadata/_custom_type_script = "uid://l2dv12p10t3s"
 
 [node name="Juego" type="Node" unique_id=1710010088]
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
-Configuracion = SubResource("Resource_vf1pr")
+Configuracion = SubResource("Resource_skotl")
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
