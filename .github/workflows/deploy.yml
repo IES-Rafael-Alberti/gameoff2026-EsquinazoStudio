@@ -18,6 +18,6 @@ jobs:
 
       - name: Publish game
         env:
-          ITCHIO_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          ITCHIO_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
         run: |
           butler push ./build Esquina Studio/Dungeon Stacker:html5
