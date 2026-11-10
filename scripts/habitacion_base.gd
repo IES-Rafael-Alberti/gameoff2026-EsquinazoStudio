@@ -72,6 +72,15 @@ func registrar_desafio(desafio: Node) -> void:
 func tiene_desafios_pendientes() -> bool:
 	return not _desafios.is_empty()
 
+## Devuelve los puzles sin resolver y sus cajas a su estado inicial. Los combates no se tocan.
+func reiniciar_puzles() -> void:
+	if _desafios.is_empty():
+		return
+	# Primero las cajas y luego los puzles (que reinician sus placas).
+	for nodo in get_tree().get_nodes_in_group("caja") + get_tree().get_nodes_in_group("desafio"):
+		if is_ancestor_of(nodo):
+			nodo.reiniciar()
+
 func resolver_desafio(desafio: Node) -> void:
 	if not _desafios.has(desafio):
 		return

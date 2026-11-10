@@ -28,7 +28,7 @@ func _ready() -> void:
 	add_child(vida)
 	vida.murio.connect(_on_vida_murio)
 	
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 
 	if attacking:
 		velocity = Vector2.ZERO
@@ -44,6 +44,7 @@ func _physics_process(_delta: float) -> void:
 
 	velocity = input_direction * speed
 	move_and_slide()
+	_empujar_cajas(input_direction, delta)
 	if input_direction != Vector2.ZERO:
 		if abs(input_direction.x) > abs(input_direction.y):
 			last_direction = "East" if input_direction.x > 0 else "West"
@@ -63,6 +64,16 @@ func play_idle() -> void:
 		sprite.frame = 0
 		sprite.pause()
 
+## Si el jugador avanza contra una caja, la empuja (la caja decide si se mueve).
+func _empujar_cajas(direccion: Vector2, delta: float) -> void:
+	if direccion == Vector2.ZERO:
+		return
+	for i in get_slide_collision_count():
+		var choque := get_slide_collision(i)
+		var caja := choque.get_collider() as Caja
+		# Solo cuenta si el jugador realmente avanza hacia la caja.
+		if caja != null and direccion.dot(-choque.get_normal()) > 0.5:
+			caja.empujar(choque.get_normal(), delta)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not event.is_echo():
@@ -104,7 +115,8 @@ func _golpear() -> void:
 		var objetivo := resultado.collider as Node
 		if objetivo is Enemigo:
 			objetivo.recibir_dano(dano_ataque)
-
+		elif objetivo.has_method("recibir_golpe"):
+			objetivo.recibir_golpe()
 
 func _vector_de(direccion: String) -> Vector2:
 	match direccion:
