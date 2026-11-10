@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ofd1pd4wrxs3"]
+
+[ext_resource type="Script" uid="uid://dsfgu64hsdtnk" path="res://scripts/puzles/placa.gd" id="1_dcmf6"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_linji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_linji"]
+atlas = ExtResource("2_linji")
+region = Rect2(1024, 1024, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hov1w"]
+atlas = ExtResource("2_linji")
+region = Rect2(1536, 1024, 512, 512)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(32, 32)
+
+[node name="Placa" type="Area2D" unique_id=909371902]
+script = ExtResource("1_dcmf6")
+sprite_levantada = SubResource("AtlasTexture_linji")
+sprite_hundida = SubResource("AtlasTexture_hov1w")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1691265324]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=517540391]
+shape = SubResource("RectangleShape2D_mjkrw")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://b2jry5pe8wn07"]
+
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_gli6e"]
+
+[resource]
+script = ExtResource("1_gli6e")
+nombre = "Curacion"
+letra = "U"
+se_resuelve_al_entrar = true
+metadata/_custom_type_script = "uid://iortsm7cn8s0"

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b4cqci5h5klxp"]
+
+[ext_resource type="Script" uid="uid://cf4lxnqntiq35" path="res://scripts/combate/enemigo_perseguidor.gd" id="1_u0ah6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+radius = 16.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1141728963]
+script = ExtResource("1_u0ah6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1029685182]
+shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=727044555]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(1, 1, 0, 1)

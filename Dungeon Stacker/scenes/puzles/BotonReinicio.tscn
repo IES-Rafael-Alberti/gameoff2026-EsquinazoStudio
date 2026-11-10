@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://tm4tdhpxq5fj"]
+
+[ext_resource type="Script" uid="uid://ct82dauxk08qy" path="res://scripts/puzles/boton_reinicio.gd" id="1_t5mqm"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_geljj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("2_geljj")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqhdy"]
+atlas = ExtResource("2_geljj")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(32, 32)
+
+[node name="BotonReinicio" type="StaticBody2D" unique_id=2127740881]
+modulate = Color(0.8862745, 0, 0, 1)
+script = ExtResource("1_t5mqm")
+sprite_levantada = SubResource("AtlasTexture_mjkrw")
+sprite_hundida = SubResource("AtlasTexture_gqhdy")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=183633819]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=43875503]
+shape = SubResource("RectangleShape2D_mjkrw")

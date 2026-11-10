@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dybwwc21vgycb"]
+
+[ext_resource type="Script" uid="uid://c5umapo4jp2kn" path="res://scripts/main.gd" id="1_6ccle"]
+[ext_resource type="Resource" uid="uid://cpr5say8kgftu" path="res://resources/configuracion_tablero_1.tres" id="2_ajih5"]
+[ext_resource type="Script" uid="uid://d13g2aba8o5hu" path="res://scripts/grid_background.gd" id="3_5xuig"]
+[ext_resource type="Script" uid="uid://dxm2rn25xq6v" path="res://scripts/tablero.gd" id="4_5jpfg"]
+[ext_resource type="Script" uid="uid://dbdb60dew3vhi" path="res://scripts/fixed_blocks.gd" id="5_10yl2"]
+[ext_resource type="Script" uid="uid://cpo0eoojwa5p5" path="res://scripts/ghost_piece.gd" id="6_mtfya"]
+[ext_resource type="Script" uid="uid://bkqgf036amws2" path="res://scripts/current_piece.gd" id="7_4f33l"]
+[ext_resource type="Script" uid="uid://dflrhf5ww8hu2" path="res://scripts/piezas.gd" id="8_5r8ga"]
+[ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="9_lawg1"]
+[ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="10_kjx5x"]
+
+[node name="Tetris" type="Node2D" unique_id=545254014]
+script = ExtResource("1_6ccle")
+Configuracion = ExtResource("2_ajih5")
+
+[node name="Background" type="ColorRect" parent="." unique_id=393229449]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Board" type="Node2D" parent="." unique_id=313245139]
+
+[node name="GridBackground" type="Node2D" parent="Board" unique_id=292566563]
+script = ExtResource("3_5xuig")
+
+[node name="Tablero" type="Node" parent="Board" unique_id=366065856]
+script = ExtResource("4_5jpfg")
+
+[node name="FixedBlocks" type="Node2D" parent="Board" unique_id=1485467602]
+z_index = 1
+script = ExtResource("5_10yl2")
+
+[node name="GhostPiece" type="Node2D" parent="Board" unique_id=2051215285]
+z_index = 2
+script = ExtResource("6_mtfya")
+
+[node name="CurrentPiece" type="Node2D" parent="Board" unique_id=1417490684]
+z_index = 3
+script = ExtResource("7_4f33l")
+
+[node name="Piezas" type="Node" parent="." unique_id=392330731]
+script = ExtResource("8_5r8ga")
+
+[node name="ControladorPieza" type="Node" parent="." unique_id=1241629587]
+script = ExtResource("9_lawg1")
+
+[node name="SidePanel" type="Control" parent="." unique_id=1758495758]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1471.0
+offset_top = -1.0
+offset_right = 1671.0
+offset_bottom = 1077.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="NextLabel" type="Label" parent="SidePanel" unique_id=1189905426]
+custom_maximum_size = Vector2(20, 40)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 60.0
+offset_bottom = 63.0
+text = "SIGUIENTES"
+
+[node name="NextPiece1" type="Node2D" parent="SidePanel" unique_id=729437495]
+position = Vector2(60, 150)
+script = ExtResource("10_kjx5x")
+
+[node name="NextPiece2" type="Node2D" parent="SidePanel" unique_id=8595327]
+position = Vector2(60, 310)
+script = ExtResource("10_kjx5x")
+
+[node name="NextPiece3" type="Node2D" parent="SidePanel" unique_id=813856935]
+position = Vector2(60, 470)
+script = ExtResource("10_kjx5x")
+
+[node name="NextPiece4" type="Node2D" parent="SidePanel" unique_id=1966944990]
+position = Vector2(60, 630)
+script = ExtResource("10_kjx5x")
+
+[node name="NextPiece5" type="Node2D" parent="SidePanel" unique_id=120523711]
+position = Vector2(60, 790)
+script = ExtResource("10_kjx5x")
+
+[node name="PiezasLabel" type="Label" parent="SidePanel" unique_id=1007720950]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 180.0
+offset_bottom = 33.0
+text = "PIEZAS: 0"

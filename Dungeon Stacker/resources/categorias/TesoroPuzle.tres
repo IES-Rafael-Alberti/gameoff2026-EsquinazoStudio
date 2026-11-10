@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://bmft83rs5q0u5"]
+
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_2ssxh"]
+
+[resource]
+script = ExtResource("1_2ssxh")
+nombre = "TesoroPuzle"
+letra = "TP"
+metadata/_custom_type_script = "uid://iortsm7cn8s0"

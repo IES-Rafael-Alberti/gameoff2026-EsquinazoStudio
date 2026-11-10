@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dv80ngbap45nx"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_lj8p8"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_lj8p8")]
+
+[node name="Label" type="Label" parent="." index="3" unique_id=261664480]
+offset_left = 800.0
+offset_top = 400.0
+offset_right = 860.0
+offset_bottom = 423.0
+text = "VACIA 2"

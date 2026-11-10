@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://dvkek41po78nn"]
+
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_5srnv"]
+
+[resource]
+script = ExtResource("1_5srnv")
+nombre = "Vacia"
+letra = "V"
+se_resuelve_al_entrar = true
+metadata/_custom_type_script = "uid://iortsm7cn8s0"
