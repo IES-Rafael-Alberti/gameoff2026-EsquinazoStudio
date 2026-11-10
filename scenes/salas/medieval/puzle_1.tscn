@@ -26,7 +26,6 @@ se_queda_activa = true
 [node name="Placa4" parent="Puzle" index="3" unique_id=1128189773 instance=ExtResource("3_01lro")]
 position = Vector2(928, 704)
 activa_jugador = false
-se_queda_activa = true
 
 [node name="Caja" parent="Puzle" index="4" unique_id=1664255518 instance=ExtResource("4_01lro")]
 position = Vector2(928, 512)
