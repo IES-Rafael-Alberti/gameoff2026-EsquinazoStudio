@@ -94,22 +94,13 @@ func _casilla_libre(centro: Vector2, ignorar: CollisionObject2D = null) -> bool:
 	var consulta := PhysicsShapeQueryParameters2D.new()
 	consulta.shape = forma
 	consulta.transform = Transform2D(0.0, centro)
-	consulta.collision_mask = 3 # capa 1 (cuerpos y muros) y capa 2 (sierras)
-	consulta.collide_with_areas = true
+	consulta.collision_mask = Capas.MUROS | Capas.CAJAS | Capas.ENEMIGOS | Capas.SIERRAS
+	consulta.collide_with_areas = true # para ver también la zona de las sierras atravesables
 	var excluidos: Array[RID] = [get_rid()]
 	if ignorar != null:
 		excluidos.append(ignorar.get_rid())
 	consulta.exclude = excluidos
-
-	for resultado in get_world_2d().direct_space_state.intersect_shape(consulta, 16):
-		var otro := resultado.collider as Node
-		if otro == null:
-			continue
-		# Las placas y demás zonas no son obstáculos; las sierras sí.
-		if otro is Area2D and not otro is Sierra:
-			continue
-		return false
-	return true
+	return get_world_2d().direct_space_state.intersect_shape(consulta, 1).is_empty()
 
 
 ## Convierte una normal cualquiera al eje cardinal dominante, en sentido contrario al choque.

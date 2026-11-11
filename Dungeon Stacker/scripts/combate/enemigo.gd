@@ -13,6 +13,8 @@ signal murio
 @export var dano_contacto := 1
 ## Segundos mínimos entre dos daños seguidos al mismo jugador.
 @export var intervalo_dano := 1.0
+## Los voladores ignoran los peligros del suelo (pinchos, sierras...).
+@export var volador := false
 
 var vida: Vida
 

@@ -519,6 +519,8 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=802599124]
 scale = Vector2(1.4502358, 1.324797)
+collision_layer = 2
+collision_mask = 29
 script = ExtResource("1_oprun")
 
 [node name="HitboxPersonaje" type="CollisionShape2D" parent="." unique_id=537282891 groups=["jugador"]]
@@ -530,6 +532,8 @@ sprite_frames = SubResource("SpriteFrames_85g3d")
 animation = &"Attack_East"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=819136207]
+collision_layer = 0
+collision_mask = 8
 
 [node name="ColisionAtaque" type="CollisionShape2D" parent="Area2D" unique_id=1918915496]
 

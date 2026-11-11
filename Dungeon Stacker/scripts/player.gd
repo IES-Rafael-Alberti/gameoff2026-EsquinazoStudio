@@ -162,7 +162,7 @@ func _golpear() -> void:
 	var consulta := PhysicsShapeQueryParameters2D.new()
 	consulta.shape = forma
 	consulta.transform = Transform2D(0.0, centro() + _vector_de(last_direction) * alcance_ataque)
-	consulta.collision_mask = 1
+	consulta.collision_mask = Capas.ENEMIGOS | Capas.MUROS
 	consulta.exclude = [get_rid()]
 
 	for resultado in get_world_2d().direct_space_state.intersect_shape(consulta):

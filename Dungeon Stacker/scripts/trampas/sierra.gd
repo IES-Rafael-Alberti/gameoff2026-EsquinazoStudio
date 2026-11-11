@@ -137,35 +137,28 @@ func _direccion_hacia(objetivo: Vector2) -> int:
 
 ## Un rayo hasta el jugador: si choca antes con otra cosa, hay un obstáculo en medio.
 func _linea_libre(objetivo: Vector2) -> bool:
-	var consulta := PhysicsRayQueryParameters2D.create(global_position, objetivo, 1)
+	var mascara := Capas.MUROS | Capas.JUGADOR | Capas.CAJAS | Capas.ENEMIGOS | Capas.SIERRAS
+	var consulta := PhysicsRayQueryParameters2D.create(global_position, objetivo, mascara)
 	consulta.exclude = _propios()
 	var resultado := get_world_2d().direct_space_state.intersect_ray(consulta)
 	if resultado.is_empty():
 		return true
-	var chocado := resultado.collider as Node
-	return chocado != null and chocado.is_in_group("jugador")
+	return Capas.esta_en(resultado.collider, Capas.JUGADOR)
 
 
-## ¿Hay algo que impida estar en esta posición? Muros, cajas, otras sierras... y el jugador
-## si la sierra no es atravesable.
+## ¿Hay algo que impida estar en esta posición? Muros, cajas, enemigos, otras sierras... y el
+## jugador si la sierra no es atravesable.
 func _hay_obstaculo(posicion: Vector2) -> bool:
+	var mascara := Capas.MUROS | Capas.CAJAS | Capas.SIERRAS
+	if not atravesable:
+		mascara |= Capas.JUGADOR
 	var consulta := PhysicsShapeQueryParameters2D.new()
 	consulta.shape = _forma
 	consulta.transform = Transform2D(0.0, posicion)
-	consulta.collision_mask = 3 # capa 1 (cuerpos y muros) y capa 2 (sierras)
-	consulta.collide_with_areas = true
+	consulta.collision_mask = mascara
+	consulta.collide_with_areas = true # ve la zona de las otras sierras
 	consulta.exclude = _propios()
-	for resultado in get_world_2d().direct_space_state.intersect_shape(consulta, 16):
-		var otro := resultado.collider as Node
-		if otro == null:
-			continue
-		# Placas, zonas y demás áreas no son obstáculos; las otras sierras sí.
-		if otro is Area2D and not otro is Sierra:
-			continue
-		if atravesable and otro.is_in_group("jugador"):
-			continue
-		return true
-	return false
+	return not get_world_2d().direct_space_state.intersect_shape(consulta, 1).is_empty()
 
 
 func _propios() -> Array[RID]:
