@@ -27,6 +27,22 @@ shape = SubResource("RectangleShape2D_mjkrw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo" unique_id=863476468]
 shape = SubResource("RectangleShape2D_gqhdy")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=777123668]
-scale = Vector2(0.125, 0.125)
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1258677299]
+position = Vector2(-15.999999, 16)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1714056493]
+position = Vector2(16, 16)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Sprite2D11" type="Sprite2D" parent="." unique_id=1568855434]
+position = Vector2(-15.999999, -15.999999)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Sprite2D15" type="Sprite2D" parent="." unique_id=2017441774]
+position = Vector2(16, -15.999999)
+scale = Vector2(0.0625, 0.0625)
 texture = SubResource("AtlasTexture_mjkrw")
