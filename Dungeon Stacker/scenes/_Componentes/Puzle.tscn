@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b6gcy3tgbshv2"]
+
+[ext_resource type="Script" uid="uid://bope4wmsql374" path="res://scripts/puzles/PuzleBotones.gd" id="1_8ksqk"]
+
+[node name="Puzle" type="Node2D" unique_id=454960009]
+script = ExtResource("1_8ksqk")
