@@ -12,6 +12,7 @@ filter_clip = true
 size = Vector2(56, 56)
 
 [node name="Caja" type="AnimatableBody2D" unique_id=1664255518]
+z_index = 2
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_qn5tf")

@@ -176,7 +176,8 @@ func _elegir_escena(datos_celda: CeldaTablero) -> PackedScene:
 
 
 ## Sustituye la habitación cargada por la de esta celda y coloca al jugador.
-func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABITACION) -> void:
+## entrada: la puerta por la que entra (Puerta.Direccion) o -1 para el centro de la sala.
+func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	if not hay_habitacion(celda):
 		push_warning("No hay habitación en la celda %s" % celda)
 		return
@@ -193,16 +194,18 @@ func cargar_habitacion(celda: Vector2i, posicion_jugador: Vector2 = CENTRO_HABIT
 	habitacion_actual.datos = datos_celda
 	add_child(habitacion_actual)
 	move_child(habitacion_actual, 0) # detrás del jugador
-	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda))
+	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda), entrada)
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	habitacion_actual.desafios_resueltos.connect(_minimapa.refrescar)
-	jugador.position = posicion_jugador
+
+	# El punto de entrada es donde queda el centro del cuerpo, no los pies.
+	var centro_cuerpo := CENTRO_HABITACION if entrada < 0 else habitacion_actual.punto_de_entrada(entrada)
+	jugador.position = centro_cuerpo - jugador.desfase_centro()
 
 	_actualizar_camara()
 	_actualizar_etiqueta()
 	print("Habitación ", celda, " [", _letra_de(datos_celda.categoria), "] -> ", describir_vecinos(celda))
-
-
+	
 ## Pasa a un vestíbulo. columna >= 0: delante de su puerta; columna < 0: en la zona de spawn.
 func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	_descargar_habitacion()
@@ -230,34 +233,18 @@ func _on_puerta_cruzada(puerta: Puerta) -> void:
 		_entrar_vestibulo.call_deferred(Lugar.VESTIBULO_SUPERIOR, destino.x)
 	else:
 		var entrada := Puerta.opuesta(puerta.direccion)
-		cargar_habitacion.call_deferred(destino, posicion_de_entrada(entrada))
+		cargar_habitacion.call_deferred(destino, entrada)
 
 
 func _on_vestibulo_cruzado(columna: int, tipo: Vestibulo.Tipo) -> void:
 	if tipo == Vestibulo.Tipo.INFERIOR:
 		# Subes desde abajo: entras por la puerta SUR de la sala.
-		cargar_habitacion.call_deferred(Vector2i(columna, _filas - 1), posicion_de_entrada(Puerta.Direccion.SUR))
+		cargar_habitacion.call_deferred(Vector2i(columna, _filas - 1), Puerta.Direccion.SUR)
 	else:
-		cargar_habitacion.call_deferred(Vector2i(columna, 0), posicion_de_entrada(Puerta.Direccion.NORTE))
-
-
-## Dónde aparece el jugador al entrar por la puerta "entrada" de la nueva habitación:
-## justo dentro de la sala, sin tocar el hueco de la puerta (para no volver a cruzarla).
-func posicion_de_entrada(entrada: Puerta.Direccion) -> Vector2:
-	match entrada:
-		Puerta.Direccion.NORTE:
-			return Vector2(928, 192)
-		Puerta.Direccion.ESTE:
-			return Vector2(1248, 512)
-		Puerta.Direccion.SUR:
-			return Vector2(928, 832)
-		_:
-			return Vector2(608, 512)
-
+		cargar_habitacion.call_deferred(Vector2i(columna, 0), Puerta.Direccion.NORTE)
 
 func hay_habitacion(celda: Vector2i) -> bool:
 	return celdas.has(celda)
-
 
 ## Hay algo al otro lado: una sala, o un vestíbulo (justo encima o debajo del tablero).
 func hay_conexion(celda: Vector2i) -> bool:
@@ -265,10 +252,8 @@ func hay_conexion(celda: Vector2i) -> bool:
 		return true
 	return celda.x >= 0 and celda.x < _columnas and (celda.y == -1 or celda.y == _filas)
 
-
 func categoria_de(celda: Vector2i) -> CategoriaSala:
 	return celdas[celda].categoria
-
 
 ## Devuelve {Puerta.Direccion: bool}: en qué direcciones hay algo conectado.
 func vecinos_de(celda: Vector2i) -> Dictionary:
@@ -276,7 +261,6 @@ func vecinos_de(celda: Vector2i) -> Dictionary:
 	for dir in Puerta.Direccion.values():
 		vecinos[dir] = hay_conexion(celda + Puerta.vector_de(dir))
 	return vecinos
-
 
 func describir_vecinos(celda: Vector2i) -> String:
 	var nombres := []
@@ -286,10 +270,8 @@ func describir_vecinos(celda: Vector2i) -> String:
 			nombres.append(Puerta.Direccion.keys()[dir])
 	return ", ".join(nombres)
 
-
 func _letra_de(categoria: CategoriaSala) -> String:
 	return "-" if categoria == null else categoria.letra
-
 
 func _actualizar_etiqueta() -> void:
 	match lugar:
@@ -306,7 +288,6 @@ func _actualizar_etiqueta() -> void:
 				estado
 			]
 	_minimapa.refrescar()
-
 
 ## Se llama al pasar de tetris a mazmorra.
 func sincronizar(matriz: Array) -> void:
@@ -336,7 +317,7 @@ func sincronizar(matriz: Array) -> void:
 	else:
 		# Sigues en tu sala; solo se actualizan su posición y sus puertas.
 		celda_actual = posicion_nueva
-		habitacion_actual.preparar(celda_actual, datos_actuales, vecinos_de(celda_actual))
+		habitacion_actual.preparar(celda_actual, datos_actuales, vecinos_de(celda_actual), habitacion_actual.entrada)
 		_actualizar_etiqueta()
 
 ## Mientras caminas por un vestíbulo, la columna actual es la de la puerta más cercana.

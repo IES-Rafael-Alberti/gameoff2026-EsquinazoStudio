@@ -24,10 +24,13 @@ signal murio
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _hitbox: CollisionShape2D = $HitboxPersonaje
+@onready var _animacion_caida: AnimationPlayer = $AnimacionCaida
 
 var vida: Vida
 var attacking := false
 var last_direction: String = "South"
+## True durante la caída al vacío: no se mueve, no ataca y no recibe otro daño.
+var cayendo := false
 
 var _tiempo_invulnerable := 0.0
 var _tiempo_retroceso := 0.0
@@ -43,6 +46,11 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	_tiempo_invulnerable = maxf(_tiempo_invulnerable - delta, 0.0)
+
+	# Cayendo al vacío: sin control mientras dura la animación.
+	if cayendo:
+		velocity = Vector2.ZERO
+		return
 
 	# Retroceso tras un golpe: manda sobre el control y sobre el ataque.
 	if _tiempo_retroceso > 0.0:
@@ -97,6 +105,8 @@ func _empujar_cajas(direccion: Vector2, delta: float) -> void:
 			caja.empujar(choque.get_normal(), delta, self)
 
 func _input(event: InputEvent) -> void:
+	if cayendo:
+		return
 	if event.is_action_pressed("attack") and not event.is_echo():
 		if not attacking:
 			attack()
@@ -116,7 +126,7 @@ func centro() -> Vector2:
 
 
 func esta_invulnerable() -> bool:
-	return _tiempo_invulnerable > 0.0
+	return _tiempo_invulnerable > 0.0 or cayendo
 
 
 ## origen: punto global de donde viene el daño. Si se indica, el jugador retrocede alejándose de él.
@@ -134,6 +144,27 @@ func recibir_dano(cantidad: int, origen := Vector2.INF) -> void:
 			direccion = -_vector_de(last_direction)
 		_velocidad_retroceso = direccion * fuerza_retroceso
 		_tiempo_retroceso = duracion_retroceso
+
+
+## Caída al vacío: el sprite se encoge con la animación "caer", el jugador recibe daño
+## y reaparece en destino (coordenadas de la mazmorra) con invulnerabilidad.
+## Es una corrutina: quien la llame puede esperar (await) a que termine.
+func caer_al_vacio(dano: int, destino: Vector2) -> void:
+	if cayendo or not vida.esta_viva():
+		return
+	cayendo = true
+	_tiempo_retroceso = 0.0
+	velocity = Vector2.ZERO
+	_animacion_caida.play("caer")
+	await _animacion_caida.animation_finished
+	# El daño del vacío no lo frena la invulnerabilidad anterior.
+	vida.recibir_dano(dano)
+	if vida.esta_viva():
+		sprite.scale = Vector2.ONE
+		position = destino
+		_tiempo_invulnerable = invulnerabilidad
+		_parpadear()
+	cayendo = false
 
 
 func curar(cantidad: int) -> void:
@@ -183,6 +214,9 @@ func _vector_de(direccion: String) -> Vector2:
 		_:
 			return Vector2.DOWN
 
+## Cuánto hay desde el origen del personaje (los pies) hasta el centro de su cuerpo.
+func desfase_centro() -> Vector2:
+	return _hitbox.global_position - global_position
 
 func _on_vida_murio() -> void:
 	print("Jugador muerto")

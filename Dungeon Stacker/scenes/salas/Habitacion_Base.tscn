@@ -106,3 +106,17 @@ monitorable = false
 
 [node name="Forma" type="CollisionShape2D" parent="ZonaEntrada" unique_id=990661461]
 shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Entradas" type="Node2D" parent="." unique_id=1763109299]
+
+[node name="EntradaNorte" type="Marker2D" parent="Entradas" unique_id=2140593693]
+position = Vector2(928, 128)
+
+[node name="EntradaEste" type="Marker2D" parent="Entradas" unique_id=782472953]
+position = Vector2(1312, 512)
+
+[node name="EntradaSur" type="Marker2D" parent="Entradas" unique_id=945865678]
+position = Vector2(928, 896)
+
+[node name="EntradaOeste" type="Marker2D" parent="Entradas" unique_id=1563922289]
+position = Vector2(544, 512)
