@@ -5,17 +5,16 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
 atlas = ExtResource("2_geljj")
-region = Rect2(1024, 1024, 512, 512)
+region = Rect2(1024, 1536, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqhdy"]
 atlas = ExtResource("2_geljj")
-region = Rect2(1536, 1024, 512, 512)
+region = Rect2(1536, 1536, 512, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
 size = Vector2(32, 32)
 
 [node name="BotonReinicio" type="StaticBody2D" unique_id=2127740881]
-modulate = Color(0.8862745, 0, 0, 1)
 script = ExtResource("1_t5mqm")
 sprite_levantada = SubResource("AtlasTexture_mjkrw")
 sprite_hundida = SubResource("AtlasTexture_gqhdy")

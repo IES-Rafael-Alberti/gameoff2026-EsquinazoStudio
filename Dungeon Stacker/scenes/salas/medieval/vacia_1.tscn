@@ -1,6 +1,9 @@
 [gd_scene format=4 uid="uid://dk01icknxxntc"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_dglvb"]
+[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/BaldosaRota.tscn" id="2_5k68d"]
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="3_b4peg"]
+[ext_resource type="PackedScene" uid="uid://tm4tdhpxq5fj" path="res://scenes/puzles/BotonReinicio.tscn" id="4_b4peg"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_dglvb")]
 
@@ -13,3 +16,27 @@ offset_top = 400.0
 offset_right = 860.0
 offset_bottom = 423.0
 text = "VACIA 1"
+
+[node name="BaldosaRota" parent="." index="5" unique_id=500927486 instance=ExtResource("2_5k68d")]
+position = Vector2(608, 384)
+
+[node name="BaldosaRota2" parent="." index="6" unique_id=1284094005 instance=ExtResource("2_5k68d")]
+position = Vector2(608, 320)
+
+[node name="BaldosaRota3" parent="." index="7" unique_id=2132805222 instance=ExtResource("2_5k68d")]
+position = Vector2(672, 320)
+
+[node name="BaldosaRota4" parent="." index="8" unique_id=1463522741 instance=ExtResource("2_5k68d")]
+position = Vector2(672, 256)
+
+[node name="BaldosaRota5" parent="." index="9" unique_id=1211870833 instance=ExtResource("2_5k68d")]
+position = Vector2(736, 256)
+
+[node name="BaldosaRota6" parent="." index="10" unique_id=715468644 instance=ExtResource("2_5k68d")]
+position = Vector2(800, 256)
+
+[node name="Caja" parent="." index="11" unique_id=1664255518 instance=ExtResource("3_b4peg")]
+position = Vector2(608, 448)
+
+[node name="BotonReinicio" parent="." index="12" unique_id=2127740881 instance=ExtResource("4_b4peg")]
+position = Vector2(736, 576)

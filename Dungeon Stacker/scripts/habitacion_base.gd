@@ -5,22 +5,17 @@ signal jugador_entro
 signal puertas_cerradas
 signal puertas_abiertas
 signal desafios_resueltos
-## El jugador ha cruzado una puerta abierta (puerta.direccion dice cuál).
+## El jugador ha cruzado una puerta abierta.
 signal puerta_cruzada(puerta: Puerta)
 
-## Qué puertas tienen habitación al otro lado (solo para probar la escena suelta).
-## Cuando la crea la Mazmorra, preparar() lo sobrescribe.
 @export_flags("Norte", "Este", "Sur", "Oeste") var conexiones_iniciales := 15
-
-## Daño que hace caer al vacío. Cada sala puede ajustarlo en el inspector.
 @export var dano_vacio := 1
 
-## Datos que le asigna la mazmorra (a partir de su celda del tablero).
 var posicion_tablero := Vector2i.ZERO
 var categoria: CategoriaSala
 var bioma: int = Catalogo.Bioma.MEDIEVAL
 
-var _puertas := {} # Puerta.Direccion -> Puerta
+var _puertas := {}
 var _desafios: Array[Node] = []
 var _jugador_dentro := false
 var _puertas_cerradas := false
@@ -28,13 +23,15 @@ var datos: CeldaTablero
 var _cerrando := false
 var _tuvo_desafios := false
 var _baldosas_rotas := {}
+var _baldosas := {}
 
-## Puerta por la que se entró en la sala (Puerta.Direccion) o -1.
+## Puerta por la que se entró en la sala o -1.
 var entrada := -1
 var _cayendo := false
 
 @onready var _zona: Area2D = $ZonaEntrada
 @onready var _tiles: TileMapLayer = $TileMapLayer
+
 
 func _ready() -> void:
 	for hijo in $Puertas.get_children():
@@ -47,13 +44,14 @@ func _ready() -> void:
 	for dir in Puerta.Direccion.values():
 		vecinos[dir] = (conexiones_iniciales & (1 << dir)) != 0
 	configurar_conexiones(vecinos)
-
 	_zona.body_entered.connect(_on_cuerpo_entro)
 	_zona.body_exited.connect(_on_cuerpo_salio)
 	for nodo in get_tree().get_nodes_in_group("baldosa_rota"):
 		var baldosa := nodo as BaldosaRota
 		if baldosa != null and is_ancestor_of(baldosa):
 			baldosa.rota.connect(_on_baldosa_rota)
+			var celda := _tiles.local_to_map(_tiles.to_local(baldosa.global_position))
+			_baldosas[celda] = baldosa
 
 ## Lo llama la mazmorra justo después de añadir la habitación a la escena.
 func preparar(posicion: Vector2i, celda: CeldaTablero, vecinos: Dictionary, puerta_entrada := -1) -> void:
@@ -64,14 +62,13 @@ func preparar(posicion: Vector2i, celda: CeldaTablero, vecinos: Dictionary, puer
 	entrada = puerta_entrada
 	configurar_conexiones(vecinos)
 
-## vecinos: {Puerta.Direccion: bool}. Las direcciones que falten quedan selladas.
+## Las direcciones que falten quedan selladas.
 func configurar_conexiones(vecinos: Dictionary) -> void:
 	for dir in _puertas:
 		_puertas[dir].establecer_conectada(vecinos.get(dir, false))
 
 
-## Anota un combate o puzzle. Se resuelve solo cuando el nodo sale del árbol
-## (por ejemplo un enemigo que muere con queue_free).
+## Anota un combate o puzzle. Se resuelve cuando el nodo sale del árbol.
 func registrar_desafio(desafio: Node) -> void:
 	if desafio in _desafios:
 		return
@@ -84,15 +81,9 @@ func registrar_desafio(desafio: Node) -> void:
 func tiene_desafios_pendientes() -> bool:
 	return not _desafios.is_empty()
 
-## Devuelve los puzles sin resolver y sus cajas a su estado inicial. Los combates no se tocan.
+## Devuelve los puzles sin resolver y sus cajas a su estado inicial.
 func reiniciar_puzles() -> void:
-	if _desafios.is_empty():
-		return
 	_reiniciar_elementos()
-	# Primero las cajas y luego los puzles (que reinician sus placas).
-	for nodo in get_tree().get_nodes_in_group("caja") + get_tree().get_nodes_in_group("desafio"):
-		if is_ancestor_of(nodo):
-			nodo.reiniciar()
 
 func _reiniciar_elementos() -> void:
 	_restaurar_baldosas()
@@ -109,24 +100,33 @@ func _restaurar_baldosas() -> void:
 func _comprobar_cajas() -> void:
 	for nodo in get_tree().get_nodes_in_group("caja"):
 		var caja := nodo as Caja
-		if caja == null or not is_ancestor_of(caja) or caja.cayendo:
+		if caja == null:
+			continue
+		if not is_instance_valid(caja) or not is_ancestor_of(caja):
+			continue
+		if caja.cayendo or caja._moviendo or caja.reiniciando:
 			continue
 		var celda := _tiles.local_to_map(_tiles.to_local(caja.global_position))
-		if _es_vacio(celda):
+		if _es_hueco_para_caja(celda):
 			_caja_cae(caja)
 
 func _caja_cae(caja: Caja) -> void:
 	await caja.caer_al_vacio()
-	if not is_inside_tree() or not is_instance_valid(caja) or not caja.cayendo:
-		return
-	_reiniciar_elementos()
-	
+
+## La caja se hunde solo en el vacío que ninguna baldosa tapa.
+func _es_hueco_para_caja(celda: Vector2i) -> bool:
+	if _baldosas_rotas.has(celda):
+		return true
+	if _baldosas.has(celda):
+		return false
+	var tile := _tiles.get_cell_tile_data(celda)
+	return tile != null and tile.get_custom_data("vacio")
+
 func resolver_desafio(desafio: Node) -> void:
 	if not _desafios.has(desafio):
 		return
 	_desafios.erase(desafio)
 	_actualizar_puertas()
-
 	if _cerrando or not _desafios.is_empty():
 		return
 	if _tuvo_desafios and datos != null:
@@ -147,8 +147,7 @@ func _on_cuerpo_salio(cuerpo: Node2D) -> void:
 	_jugador_dentro = false
 	_actualizar_puertas()
 
-
-## Las puertas se cierran solo si el jugador está dentro Y queda algo por resolver.
+## Las puertas se cierran solo si el jugador está dentro y queda algo por resolver.
 func _actualizar_puertas() -> void:
 	var debe_cerrar := _jugador_dentro and not _desafios.is_empty()
 	if debe_cerrar == _puertas_cerradas:
@@ -167,7 +166,7 @@ func _actualizar_puertas() -> void:
 func cerrar() -> void:
 	_cerrando = true
 
-## Las salas marcadas como "se resuelve al entrar" (vacías) se completan al pisarlas.
+## Las salas marcadas como "se resuelve al entrar" se completan al pisarlas.
 func _resolver_si_corresponde() -> void:
 	if datos == null or datos.resuelta:
 		return
@@ -179,7 +178,6 @@ func _resolver_si_corresponde() -> void:
 	desafios_resueltos.emit()
 
 ## Dónde debe quedar el centro del cuerpo del jugador al entrar por esa puerta.
-## Lo marcan los Marker2D del nodo "Entradas" de la sala.
 func punto_de_entrada(entrada: int) -> Vector2:
 	var nombre := ""
 	match entrada:
@@ -189,7 +187,7 @@ func punto_de_entrada(entrada: int) -> Vector2:
 			nombre = "EntradaEste"
 		Puerta.Direccion.SUR:
 			nombre = "EntradaSur"
-		_:
+		Puerta.Direccion.OESTE:
 			nombre = "EntradaOeste"
 	var marcador := get_node_or_null("Entradas/" + nombre) as Marker2D
 	if marcador == null:
@@ -213,6 +211,8 @@ func _physics_process(_delta: float) -> void:
 func _es_vacio(celda: Vector2i) -> bool:
 	if _baldosas_rotas.has(celda):
 		return true
+	if _baldosas.has(celda):
+		return false
 	var tile := _tiles.get_cell_tile_data(celda)
 	return tile != null and tile.get_custom_data("vacio")
 

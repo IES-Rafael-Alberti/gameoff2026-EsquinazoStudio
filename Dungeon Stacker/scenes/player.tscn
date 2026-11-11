@@ -579,6 +579,7 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=802599124]
+z_index = 2
 scale = Vector2(1.4502358, 1.324797)
 collision_layer = 2
 collision_mask = 29
