@@ -63,8 +63,8 @@ visibility_layer = 2
 shape = SubResource("CircleShape2D_mjkrw")
 
 [node name="Explosion" type="Area2D" parent="." unique_id=1226012364]
-collision_layer = 0
-collision_mask = 42
+collision_layer = 32
+collision_mask = 10
 script = ExtResource("1_wcqh4")
 activo = false
 

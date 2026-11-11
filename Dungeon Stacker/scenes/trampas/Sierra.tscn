@@ -15,8 +15,8 @@ region = Rect2(1024, 2048, 512, 512)
 filter_clip = true
 
 [node name="Sierra" type="Area2D" unique_id=807437377]
-collision_layer = 16
-collision_mask = 58
+collision_layer = 48
+collision_mask = 26
 script = ExtResource("1_fbe2b")
 velocidad_retorno = 180.0
 velocidad_giro = 1440.0
