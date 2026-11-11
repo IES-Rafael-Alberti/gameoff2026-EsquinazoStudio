@@ -7,38 +7,47 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcqh4"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(0, 0, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ww2my"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(512, 0, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amd8h"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(1024, 0, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qbtr"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(0, 512, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fec0x"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(512, 512, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ic4x2"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(1024, 512, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ec57y"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(1024, 1024, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsjny"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(512, 1024, 512, 512)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxswq"]
 atlas = ExtResource("2_1qbtr")
 region = Rect2(1024, 1024, 512, 512)
+filter_clip = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
 
