@@ -16,7 +16,7 @@ filter_clip = true
 
 [node name="PinchosEstaticos" type="Area2D" unique_id=204095970]
 collision_layer = 0
-collision_mask = 10
+collision_mask = 42
 script = ExtResource("1_phg2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
