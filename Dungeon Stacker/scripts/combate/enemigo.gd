@@ -21,7 +21,6 @@ var vida: Vida
 var _zona_contacto: Area2D
 var _enfriamiento := 0.0
 
-
 func _ready() -> void:
 	add_to_group("enemigo")
 
@@ -37,34 +36,27 @@ func _ready() -> void:
 			queue_free()
 			return
 		habitacion.registrar_desafio(self)
-
 	_crear_zona_contacto()
-
 
 func _physics_process(delta: float) -> void:
 	_enfriamiento = maxf(_enfriamiento - delta, 0.0)
 	_actuar(delta)
 	_aplicar_dano_contacto()
 
-
 ## Comportamiento del enemigo en cada paso de física. La base no hace nada (estático).
 func _actuar(_delta: float) -> void:
 	pass
-
 
 ## Qué pasa al morir. Aquí puede ir una animación; por defecto desaparece.
 func morir() -> void:
 	queue_free()
 
-
 func recibir_dano(cantidad: int) -> void:
 	vida.recibir_dano(cantidad)
-
 
 func _on_vida_murio() -> void:
 	murio.emit()
 	morir()
-
 
 func _jugador() -> CharacterBody2D:
 	for nodo in get_tree().get_nodes_in_group("jugador"):
@@ -72,13 +64,11 @@ func _jugador() -> CharacterBody2D:
 			return nodo
 	return null
 
-
 ## Centro del cuerpo del jugador (su origen está en los pies).
 func _posicion_de(jugador: CharacterBody2D) -> Vector2:
 	if jugador.has_method("centro"):
 		return jugador.centro()
 	return jugador.global_position
-
 
 func _buscar_habitacion() -> Habitacion:
 	var nodo := get_parent()
@@ -86,12 +76,12 @@ func _buscar_habitacion() -> Habitacion:
 		nodo = nodo.get_parent()
 	return nodo as Habitacion
 
-
-## Un Area2D con la misma forma que el cuerpo, para detectar cuándo toca al jugador.
 func _crear_zona_contacto() -> void:
 	for hijo in get_children():
 		if hijo is CollisionShape2D:
 			_zona_contacto = Area2D.new()
+			_zona_contacto.collision_layer = 0
+			_zona_contacto.collision_mask = Capas.JUGADOR
 			var forma := CollisionShape2D.new()
 			forma.shape = hijo.shape
 			forma.position = hijo.position
@@ -99,7 +89,6 @@ func _crear_zona_contacto() -> void:
 			add_child(_zona_contacto)
 			return
 	push_warning("El enemigo %s no tiene ningún CollisionShape2D: no hará daño por contacto." % name)
-
 
 func _aplicar_dano_contacto() -> void:
 	if _zona_contacto == null or _enfriamiento > 0.0:

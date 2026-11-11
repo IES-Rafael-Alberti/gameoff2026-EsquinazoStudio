@@ -49,7 +49,7 @@ func _ready() -> void:
 	_inicio = global_position
 	_cuerpo = get_node_or_null("Cuerpo") as CollisionObject2D
 	if _cuerpo != null:
-		_cuerpo.collision_layer = 0 if atravesable else 1
+		_cuerpo.collision_layer = 0 if atravesable else Capas.SIERRAS
 	_visual = get_node_or_null("Visual") as Node2D
 	for hijo in get_children():
 		if hijo is CollisionShape2D:
@@ -137,7 +137,7 @@ func _direccion_hacia(objetivo: Vector2) -> int:
 
 ## Un rayo hasta el jugador: si choca antes con otra cosa, hay un obstáculo en medio.
 func _linea_libre(objetivo: Vector2) -> bool:
-	var mascara := Capas.MUROS | Capas.JUGADOR | Capas.CAJAS | Capas.ENEMIGOS | Capas.SIERRAS
+	var mascara := Capas.MUROS | Capas.JUGADOR | Capas.CAJAS | Capas.SIERRAS
 	var consulta := PhysicsRayQueryParameters2D.create(global_position, objetivo, mascara)
 	consulta.exclude = _propios()
 	var resultado := get_world_2d().direct_space_state.intersect_ray(consulta)
