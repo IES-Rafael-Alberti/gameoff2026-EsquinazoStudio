@@ -46,7 +46,6 @@ var _pausa := 0.0
 
 func _ready() -> void:
 	super._ready()
-	collision_layer = 2 # capa 2: así las otras sierras la detectan
 	_inicio = global_position
 	_cuerpo = get_node_or_null("Cuerpo") as CollisionObject2D
 	if _cuerpo != null:

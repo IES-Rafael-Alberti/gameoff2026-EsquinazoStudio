@@ -16,8 +16,6 @@ var _enfriamiento := 0.0
 
 func _ready() -> void:
 	add_to_group("peligro")
-	collision_layer = 0 # no es un obstáculo por sí mismo
-	collision_mask = 1  # detecta al jugador
 
 
 func _physics_process(delta: float) -> void:

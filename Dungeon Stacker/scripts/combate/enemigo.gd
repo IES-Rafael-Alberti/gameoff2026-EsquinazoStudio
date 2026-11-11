@@ -90,8 +90,6 @@ func _crear_zona_contacto() -> void:
 	for hijo in get_children():
 		if hijo is CollisionShape2D:
 			_zona_contacto = Area2D.new()
-			_zona_contacto.collision_layer = 0
-			_zona_contacto.collision_mask = 1
 			var forma := CollisionShape2D.new()
 			forma.shape = hijo.shape
 			forma.position = hijo.position

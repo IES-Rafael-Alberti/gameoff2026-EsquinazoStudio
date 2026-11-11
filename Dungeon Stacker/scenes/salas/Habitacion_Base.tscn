@@ -59,6 +59,7 @@ direccion = 3
 [node name="ZonaEntrada" type="Area2D" parent="." unique_id=180062892]
 position = Vector2(928, 512)
 collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="Forma" type="CollisionShape2D" parent="ZonaEntrada" unique_id=990661461]
