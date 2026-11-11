@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dh1mck3g2dd3p"]
+
+[ext_resource type="Script" uid="uid://dudk05umivk68" path="res://scripts/trampas/sierra.gd" id="1_fbe2b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqhdy"]
+radius = 26.0
+
+[node name="Sierra" type="Area2D" unique_id=807437377]
+script = ExtResource("1_fbe2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=649842274]
+shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="Cuerpo" type="AnimatableBody2D" parent="." unique_id=605821812]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo" unique_id=312529464]
+shape = SubResource("CircleShape2D_gqhdy")
+
+[node name="Visual" type="Node2D" parent="." unique_id=354997395]
+
+[node name="ColorRect" type="ColorRect" parent="Visual" unique_id=1556319390]
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0

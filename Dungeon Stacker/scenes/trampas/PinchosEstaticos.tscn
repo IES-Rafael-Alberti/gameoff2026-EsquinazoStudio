@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b71t1yh8nlc7v"]
+
+[ext_resource type="Script" uid="uid://bmx1eqpgqwp2b" path="res://scripts/trampas/peligro.gd" id="1_phg2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdy"]
+size = Vector2(64, 64)
+
+[node name="PinchosEstaticos" type="Area2D" unique_id=204095970]
+script = ExtResource("1_phg2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
+shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Cuerpo" type="StaticBody2D" parent="." unique_id=611208799]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo" unique_id=863476468]
+shape = SubResource("RectangleShape2D_gqhdy")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=310914039]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0

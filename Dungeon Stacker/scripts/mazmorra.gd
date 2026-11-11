@@ -25,14 +25,17 @@ var _activa := false
 var _vestibulo_inferior: Vestibulo
 var _vestibulo_superior: Vestibulo
 var _camara: Camera2D # solo activa dentro de un vestíbulo
+
 @onready var jugador: CharacterBody2D = $Jugador
 @onready var _interfaz: CanvasLayer = $Interfaz
 @onready var _minimapa: Minimapa = $Interfaz/Minimapa
 @onready var _etiqueta: Label = $Interfaz/Etiqueta
+@onready var _barra_vida: BarraVida = $Interfaz/BarraVida
 
 func _ready() -> void:
 	_interfaz.visible = false
 	_minimapa.configurar(self)
+	_barra_vida.configurar(jugador.vida)
 	_camara = Camera2D.new()
 	_camara.enabled = false
 	add_child(_camara)

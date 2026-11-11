@@ -20,6 +20,10 @@ const NOMBRES_PIEZAS := ["I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P",
 ## solo cuentan los biomas y categorías que tienen al menos una sala.
 @export var CONTENIDO: ContenidoSalas
 
+@export_group("Vida")
+## Vida que recupera el jugador al terminar el nivel. 0 = no se cura al terminar.
+@export_range(0, 99) var CURACION_FIN_NIVEL := 1
+
 @export_group("Piezas")
 ## Qué piezas pueden salir en este nivel: marca las casillas. Por defecto, todas.
 @export_flags("I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P", "+", "-", "C") var PIEZAS_NIVEL: int = 16383

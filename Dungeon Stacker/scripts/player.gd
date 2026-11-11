@@ -6,7 +6,7 @@ signal murio
 @export var speed: float = 150.0
 
 @export_group("Combate")
-@export var vida_maxima := 1
+@export var vida_maxima := 3
 @export var dano_ataque := 1
 ## Distancia desde el centro del jugador hasta el centro del golpe (píxeles).
 @export var alcance_ataque := 40.0
@@ -14,12 +14,25 @@ signal murio
 ## Segundos desde que empieza la animación de ataque hasta que el golpe hace daño.
 @export var retardo_golpe := 0.1
 
+@export_group("Daño recibido")
+## Segundos sin poder recibir daño tras un golpe (el sprite parpadea).
+@export var invulnerabilidad := 1.0
+## Velocidad (px/s) del retroceso cuando el daño tiene un origen.
+@export var fuerza_retroceso := 260.0
+## Segundos que dura el retroceso, durante los cuales no se controla al personaje.
+@export var duracion_retroceso := 0.15
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _hitbox: CollisionShape2D = $HitboxPersonaje
 
 var vida: Vida
 var attacking := false
 var last_direction: String = "South"
+
+var _tiempo_invulnerable := 0.0
+var _tiempo_retroceso := 0.0
+var _velocidad_retroceso := Vector2.ZERO
+var _tween_parpadeo: Tween
 
 func _ready() -> void:
 	add_to_group("jugador")
@@ -29,6 +42,14 @@ func _ready() -> void:
 	vida.murio.connect(_on_vida_murio)
 	
 func _physics_process(delta: float) -> void:
+	_tiempo_invulnerable = maxf(_tiempo_invulnerable - delta, 0.0)
+
+	# Retroceso tras un golpe: manda sobre el control y sobre el ataque.
+	if _tiempo_retroceso > 0.0:
+		_tiempo_retroceso -= delta
+		velocity = _velocidad_retroceso
+		move_and_slide()
+		return
 
 	if attacking:
 		velocity = Vector2.ZERO
@@ -73,7 +94,7 @@ func _empujar_cajas(direccion: Vector2, delta: float) -> void:
 		var caja := choque.get_collider() as Caja
 		# Solo cuenta si el jugador realmente avanza hacia la caja.
 		if caja != null and direccion.dot(-choque.get_normal()) > 0.5:
-			caja.empujar(choque.get_normal(), delta)
+			caja.empujar(choque.get_normal(), delta, self)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not event.is_echo():
@@ -94,8 +115,41 @@ func centro() -> Vector2:
 	return _hitbox.global_position
 
 
-func recibir_dano(cantidad: int) -> void:
+func esta_invulnerable() -> bool:
+	return _tiempo_invulnerable > 0.0
+
+
+## origen: punto global de donde viene el daño. Si se indica, el jugador retrocede alejándose de él.
+func recibir_dano(cantidad: int, origen := Vector2.INF) -> void:
+	if esta_invulnerable() or not vida.esta_viva():
+		return
 	vida.recibir_dano(cantidad)
+	if not vida.esta_viva():
+		return
+	_tiempo_invulnerable = invulnerabilidad
+	_parpadear()
+	if origen != Vector2.INF:
+		var direccion := (centro() - origen).normalized()
+		if direccion == Vector2.ZERO:
+			direccion = -_vector_de(last_direction)
+		_velocidad_retroceso = direccion * fuerza_retroceso
+		_tiempo_retroceso = duracion_retroceso
+
+
+func curar(cantidad: int) -> void:
+	vida.curar(cantidad)
+
+
+## El sprite parpadea mientras dura la invulnerabilidad.
+func _parpadear() -> void:
+	if _tween_parpadeo != null:
+		_tween_parpadeo.kill()
+	var ciclos := maxi(int(invulnerabilidad / 0.2), 1) # 0 ciclos serían infinitos
+	_tween_parpadeo = create_tween()
+	_tween_parpadeo.set_loops(ciclos)
+	_tween_parpadeo.tween_property(sprite, "modulate:a", 0.3, 0.1)
+	_tween_parpadeo.tween_property(sprite, "modulate:a", 1.0, 0.1)
+	_tween_parpadeo.finished.connect(func(): sprite.modulate.a = 1.0)
 
 
 ## Daña a todos los enemigos dentro de un círculo delante del jugador.
