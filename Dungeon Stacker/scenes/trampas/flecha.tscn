@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://daqmumcnvj6ey"]
+
+[node name="Flecha" type="Area2D" unique_id=1452019037]
+collision_layer = 0
+collision_mask = 63
