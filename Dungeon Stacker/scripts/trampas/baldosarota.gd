@@ -14,7 +14,6 @@ var _rota := false
 var _textura_rota: Texture2D
 var _textura_vacio: Texture2D
 
-
 func _ready() -> void:
 	add_to_group("baldosa_rota")
 	collision_layer = 0
@@ -34,11 +33,9 @@ func _ready() -> void:
 		vacio.filter_clip = true
 		_textura_vacio = vacio
 
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("jugador"):
 		_jugador_dentro = true
-
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("jugador") or not _jugador_dentro:
@@ -50,7 +47,6 @@ func _on_body_exited(body: Node2D) -> void:
 	if _textura_vacio != null:
 		_sprite.texture = _textura_vacio
 	rota.emit(self)
-
 
 ## La sala la devuelve a su estado inicial.
 func restaurar() -> void:
