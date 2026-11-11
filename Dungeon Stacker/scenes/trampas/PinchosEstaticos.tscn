@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://b71t1yh8nlc7v"]
 
 [ext_resource type="Script" uid="uid://bmx1eqpgqwp2b" path="res://scripts/trampas/peligro.gd" id="1_phg2q"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_777ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
 size = Vector2(68, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdy"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("2_777ab")
+region = Rect2(512, 2048, 512, 512)
+filter_clip = true
 
 [node name="PinchosEstaticos" type="Area2D" unique_id=204095970]
 collision_layer = 0
@@ -21,8 +27,6 @@ shape = SubResource("RectangleShape2D_mjkrw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo" unique_id=863476468]
 shape = SubResource("RectangleShape2D_gqhdy")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=310914039]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=777123668]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_mjkrw")

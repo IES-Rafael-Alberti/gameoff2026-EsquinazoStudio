@@ -1,17 +1,25 @@
 [gd_scene format=3 uid="uid://dh1mck3g2dd3p"]
 
 [ext_resource type="Script" uid="uid://dudk05umivk68" path="res://scripts/trampas/sierra.gd" id="1_fbe2b"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_oucs1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
-radius = 30.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gqhdy"]
-radius = 26.0
+radius = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("2_oucs1")
+region = Rect2(1024, 2048, 512, 512)
+filter_clip = true
 
 [node name="Sierra" type="Area2D" unique_id=807437377]
 collision_layer = 16
 collision_mask = 10
 script = ExtResource("1_fbe2b")
+velocidad_retorno = 180.0
+velocidad_giro = 1440.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=649842274]
 shape = SubResource("CircleShape2D_mjkrw")
@@ -23,8 +31,6 @@ shape = SubResource("CircleShape2D_gqhdy")
 
 [node name="Visual" type="Node2D" parent="." unique_id=354997395]
 
-[node name="ColorRect" type="ColorRect" parent="Visual" unique_id=1556319390]
-offset_left = -28.0
-offset_top = -28.0
-offset_right = 28.0
-offset_bottom = 28.0
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=1873715623]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_mjkrw")

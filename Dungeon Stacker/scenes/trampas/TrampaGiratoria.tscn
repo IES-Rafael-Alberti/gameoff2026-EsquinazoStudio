@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c7yon63rgn1n2"]
+
+[ext_resource type="Script" uid="uid://ddipy26b1um0l" path="res://scripts/trampas/trampa_giratoria.gd" id="1_88pq1"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_df4qp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oucs1"]
+atlas = ExtResource("2_df4qp")
+region = Rect2(1536, 2048, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5d5b"]
+atlas = ExtResource("2_df4qp")
+region = Rect2(2048, 2048, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bflry"]
+atlas = ExtResource("2_df4qp")
+region = Rect2(2560, 2048, 512, 512)
+filter_clip = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+radius = 32.0
+
+[node name="TrampaGiratoria" type="Area2D" unique_id=27660831]
+scale = Vector2(0.125, 0.125)
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_88pq1")
+sprite_centro = SubResource("AtlasTexture_oucs1")
+sprite_intermedio = SubResource("AtlasTexture_k5d5b")
+sprite_punta = SubResource("AtlasTexture_bflry")
+
+[node name="Centro" type="StaticBody2D" parent="." unique_id=1863198919]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Centro" unique_id=1687563694]
+shape = SubResource("CircleShape2D_mjkrw")
