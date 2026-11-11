@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bxhh0ggwx4wua"]
+
+[ext_resource type="Script" uid="uid://e8l02b8lhn1v" path="res://scripts/trampas/mina.gd" id="1_amd8h"]
+[ext_resource type="Script" uid="uid://bmx1eqpgqwp2b" path="res://scripts/trampas/peligro.gd" id="1_wcqh4"]
+[ext_resource type="Texture2D" uid="uid://bk8yfljy4l5fd" path="res://assets/sprites/spritesheets/Explosión Spritesheet.png" id="2_1qbtr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcqh4"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww2my"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amd8h"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qbtr"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fec0x"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic4x2"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec57y"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsjny"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxswq"]
+atlas = ExtResource("2_1qbtr")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(192, 192)
+
+[node name="Mina" type="Node2D" unique_id=1893609633]
+script = ExtResource("1_amd8h")
+fotogramas_bomba = Array[Texture2D]([SubResource("AtlasTexture_wcqh4"), SubResource("AtlasTexture_ww2my"), SubResource("AtlasTexture_amd8h"), SubResource("AtlasTexture_1qbtr"), SubResource("AtlasTexture_fec0x"), SubResource("AtlasTexture_ic4x2"), SubResource("AtlasTexture_ec57y")])
+fotogramas_explosion = Array[Texture2D]([SubResource("AtlasTexture_fsjny"), SubResource("AtlasTexture_xxswq")])
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=897096720]
+scale = Vector2(0.125, 0.125)
+
+[node name="Deteccion" type="Area2D" parent="." unique_id=1995997728]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deteccion" unique_id=1988659721]
+light_mask = 0
+visibility_layer = 2
+shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="Explosion" type="Area2D" parent="." unique_id=1226012364]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_wcqh4")
+activo = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion" unique_id=513194584]
+shape = SubResource("RectangleShape2D_mjkrw")

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dsmduuy2d15mb"]
+
+[ext_resource type="Script" uid="uid://bgnpulmrcw67d" path="res://scripts/trampas/cofre_falso.gd" id="1_i27fr"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_es1uj"]
+[ext_resource type="PackedScene" uid="uid://3usamd7xkrha" path="res://scenes/enemigos/EnemigoEstatico.tscn" id="2_spu2g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i27fr"]
+atlas = ExtResource("2_es1uj")
+region = Rect2(3072, 1539, 512, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(32, 32)
+
+[node name="CofreFalso" type="StaticBody2D" unique_id=551623583]
+script = ExtResource("1_i27fr")
+modos_apertura = 2
+escena_enemigo = ExtResource("2_spu2g")
+sprite_cerrado = SubResource("AtlasTexture_i27fr")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1597095340]
+scale = Vector2(0.125, 0.125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=215767733]
+shape = SubResource("RectangleShape2D_mjkrw")

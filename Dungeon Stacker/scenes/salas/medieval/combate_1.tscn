@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/Sierra.tscn" id="5_vx6af"]
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="6_5a78g"]
 [ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="7_0lhjv"]
+[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="8_amvy4"]
+[ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/mina.tscn" id="9_6u2yx"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fckqq")]
 
@@ -45,3 +47,9 @@ position = Vector2(1056, 640)
 [node name="TrampaGiratoria" parent="Trampas" index="3" unique_id=27660831 instance=ExtResource("7_0lhjv")]
 position = Vector2(736, 256)
 cantidad_palos = 5
+
+[node name="CofreFalso" parent="." index="7" unique_id=551623583 instance=ExtResource("8_amvy4")]
+position = Vector2(800, 832)
+
+[node name="Mina" parent="." index="8" unique_id=1893609633 instance=ExtResource("9_6u2yx")]
+position = Vector2(608, 832)

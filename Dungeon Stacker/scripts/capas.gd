@@ -9,6 +9,7 @@ extends RefCounted
 ##   CAJAS:    las cajas empujables
 ##   ENEMIGOS: los enemigos
 ##   SIERRAS:  las sierras (su zona de daño y, si no son atravesables, su cuerpo)
+##   TRAMPAS:  la zona de daño de todos los Peligro (la pone peligro.gd por código)
 ## Las zonas que solo detectan (placas, zona de entrada, umbral de puerta, zonas de daño)
 ## no están en ninguna capa: solo tienen máscara para elegir qué detectan.
 
@@ -17,6 +18,7 @@ const JUGADOR := 2
 const CAJAS := 4
 const ENEMIGOS := 8
 const SIERRAS := 16
+const TRAMPAS := 32
 
 
 ## true si el nodo es un cuerpo o área que está en alguna de las capas indicadas.
