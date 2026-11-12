@@ -9,7 +9,7 @@ region = Rect2(4096, 1536, 512, 512)
 filter_clip = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8t3h"]
-size = Vector2(7.925, 64)
+size = Vector2(64, 14)
 
 [node name="Flecha" type="Area2D" unique_id=1452019037]
 collision_layer = 0
@@ -21,5 +21,5 @@ scale = Vector2(0.125, 0.125)
 texture = SubResource("AtlasTexture_mjkrw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2115557304]
-position = Vector2(-1, 0)
+position = Vector2(9.536743e-07, 2)
 shape = SubResource("RectangleShape2D_g8t3h")
