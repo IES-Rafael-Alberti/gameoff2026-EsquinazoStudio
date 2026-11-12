@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cnuehqo222ou6"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_3vd16"]
+[ext_resource type="PackedScene" uid="uid://b6gcy3tgbshv2" path="res://scenes/_Componentes/Puzle.tscn" id="2_defej"]
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="3_r8bpl"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="4_3fim5"]
+[ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/Sierra.tscn" id="5_nxijn"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_3vd16")]
+
+[node name="Puzle" parent="." index="4" unique_id=454960009 instance=ExtResource("2_defej")]
+
+[node name="Caja" parent="Puzle" index="0" unique_id=1664255518 instance=ExtResource("3_r8bpl")]
+position = Vector2(1184, 512)
+
+[node name="Placa" parent="Puzle" index="1" unique_id=909371902 instance=ExtResource("4_3fim5")]
+position = Vector2(608, 512)
+activa_jugador = false
+se_queda_activa = true
+
+[node name="Trampa" type="Node2D" parent="." index="5" unique_id=2022522853]
+
+[node name="Sierra" parent="Trampa" index="0" unique_id=807437377 instance=ExtResource("5_nxijn")]
+position = Vector2(864, 672)
+
+[node name="Sierra2" parent="Trampa" index="1" unique_id=1691062250 instance=ExtResource("5_nxijn")]
+position = Vector2(1120, 320)
+
+[node name="Sierra8" parent="Trampa" index="2" unique_id=1189066750 instance=ExtResource("5_nxijn")]
+position = Vector2(1120, 672)
+
+[node name="Sierra3" parent="Trampa" index="3" unique_id=1779515494 instance=ExtResource("5_nxijn")]
+position = Vector2(992, 320)
+
+[node name="Sierra4" parent="Trampa" index="4" unique_id=1535797669 instance=ExtResource("5_nxijn")]
+position = Vector2(864, 320)
+
+[node name="Sierra5" parent="Trampa" index="5" unique_id=172842232 instance=ExtResource("5_nxijn")]
+position = Vector2(736, 672)
+
+[node name="Sierra6" parent="Trampa" index="6" unique_id=822997109 instance=ExtResource("5_nxijn")]
+position = Vector2(736, 320)
+
+[node name="Sierra7" parent="Trampa" index="7" unique_id=1654702269 instance=ExtResource("5_nxijn")]
+position = Vector2(992, 672)

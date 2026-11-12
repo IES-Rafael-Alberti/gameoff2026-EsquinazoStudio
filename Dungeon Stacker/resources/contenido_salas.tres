@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://cf31yyhmx7s7f" path="res://scripts/contenido_salas.gd" id="2_efurq"]
 [ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="3_qw038"]
 [ext_resource type="Script" uid="uid://d20qapcko8rat" path="res://scripts/entrada_sala.gd" id="4_iehwp"]
-[ext_resource type="PackedScene" uid="uid://dk01icknxxntc" path="res://scenes/salas/medieval/vacia_1.tscn" id="5_ut0hs"]
-[ext_resource type="PackedScene" uid="uid://dv80ngbap45nx" path="res://scenes/salas/medieval/vacia_2.tscn" id="6_a87yp"]
+[ext_resource type="PackedScene" uid="uid://dk01icknxxntc" path="res://scenes/salas/Experimento/vacia_1.tscn" id="5_ut0hs"]
+[ext_resource type="PackedScene" uid="uid://dv80ngbap45nx" path="res://scenes/salas/Experimento/vacia_2.tscn" id="6_a87yp"]
 [ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="7_iehwp"]
-[ext_resource type="PackedScene" uid="uid://bb4wfd8vxexr4" path="res://scenes/salas/medieval/combate_1.tscn" id="8_ut0hs"]
+[ext_resource type="PackedScene" uid="uid://bb4wfd8vxexr4" path="res://scenes/salas/Experimento/combate_1.tscn" id="8_ut0hs"]
 [ext_resource type="Resource" uid="uid://ckfpqisg5v4hy" path="res://resources/categorias/Puzle.tres" id="9_a87yp"]
-[ext_resource type="PackedScene" uid="uid://barcgehdmu58o" path="res://scenes/salas/medieval/puzle_1.tscn" id="10_lrx8v"]
-[ext_resource type="PackedScene" uid="uid://dls2oygd7eq1e" path="res://scenes/salas/medieval/puzle_2.tscn" id="11_lrx8v"]
+[ext_resource type="PackedScene" uid="uid://barcgehdmu58o" path="res://scenes/salas/Experimento/puzle_1.tscn" id="10_lrx8v"]
+[ext_resource type="PackedScene" uid="uid://dls2oygd7eq1e" path="res://scenes/salas/Experimento/puzle_2.tscn" id="11_lrx8v"]
 
 [sub_resource type="Resource" id="Resource_rdg03"]
 script = ExtResource("4_iehwp")
