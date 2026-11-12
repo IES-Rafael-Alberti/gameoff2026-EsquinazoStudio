@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="4_3fim5"]
 [ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/Sierra.tscn" id="5_nxijn"]
 
-[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_3vd16")]
+[node name="Puzzle1" unique_id=1972970273 instance=ExtResource("1_3vd16")]
 
 [node name="Puzle" parent="." index="4" unique_id=454960009 instance=ExtResource("2_defej")]
 

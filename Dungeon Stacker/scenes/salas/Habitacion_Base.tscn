@@ -61,6 +61,11 @@ use_texture_padding = false
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 5:3/0 = 0
 5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+6:4/0 = 0
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSet" id="TileSet_mjkrw"]
 tile_size = Vector2i(512, 512)
@@ -70,7 +75,7 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_egxel")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
-size = Vector2(768, 768)
+size = Vector2(831, 831)
 
 [node name="HabitacionBase" type="Node2D" unique_id=1972970273]
 script = ExtResource("1_qdygs")
@@ -105,6 +110,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="Forma" type="CollisionShape2D" parent="ZonaEntrada" unique_id=990661461]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_mjkrw")
 
 [node name="Entradas" type="Node2D" parent="." unique_id=1763109299]
