@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://ckfpqisg5v4hy" path="res://resources/categorias/Puzle.tres" id="9_a87yp"]
 [ext_resource type="PackedScene" uid="uid://barcgehdmu58o" path="res://scenes/salas/medieval/puzle_1.tscn" id="10_lrx8v"]
 [ext_resource type="PackedScene" uid="uid://dls2oygd7eq1e" path="res://scenes/salas/medieval/puzle_2.tscn" id="11_lrx8v"]
+[ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="12_sp1qh"]
+[ext_resource type="PackedScene" uid="uid://urphqbsc2b4q" path="res://scenes/salas/medieval/experimento.tscn" id="13_unh5j"]
 
 [sub_resource type="Resource" id="Resource_rdg03"]
 script = ExtResource("4_iehwp")
@@ -57,9 +59,20 @@ categoria = ExtResource("9_a87yp")
 salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_01lro"), SubResource("Resource_34xlu")])
 metadata/_custom_type_script = "uid://c6684rv0ysdpf"
 
+[sub_resource type="Resource" id="Resource_y0le7"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("13_unh5j")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_rvgmg"]
+script = ExtResource("2_3vuvy")
+categoria = ExtResource("12_sp1qh")
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_y0le7")])
+metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+
 [sub_resource type="Resource" id="Resource_g7xdy"]
 script = ExtResource("1_g7xdy")
-categorias = Array[ExtResource("2_3vuvy")]([SubResource("Resource_efurq"), SubResource("Resource_i21ei"), SubResource("Resource_nbnxg")])
+categorias = Array[ExtResource("2_3vuvy")]([SubResource("Resource_efurq"), SubResource("Resource_i21ei"), SubResource("Resource_nbnxg"), SubResource("Resource_rvgmg")])
 metadata/_custom_type_script = "uid://cvem01iwwrqy3"
 
 [resource]
