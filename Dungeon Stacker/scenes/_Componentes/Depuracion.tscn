@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://fh0uea1b1jkc"]
+
+[ext_resource type="Script" uid="uid://c8t5g8r60y3ag" path="res://scripts/utilidades/Depuracion.gd" id="1_wrle8"]
+[ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="2_8u7po"]
+[ext_resource type="PackedScene" uid="uid://b0220mivt75da" path="res://scenes/mazmorra/interfaz_mazmorra.tscn" id="3_0s3qi"]
+
+[node name="Depuracion" type="Node2D" unique_id=1550064695]
+script = ExtResource("1_wrle8")
+
+[node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_8u7po")]
+
+[node name="Interfaz" parent="." unique_id=1995162197 instance=ExtResource("3_0s3qi")]

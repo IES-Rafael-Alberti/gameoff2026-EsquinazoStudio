@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/Cerradura.tscn" id="5_xr6p8"]
 [ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/Llave.tscn" id="6_7npea"]
 [ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/Sierra.tscn" id="6_d10aq"]
-[ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="7_0o3jv"]
-[ext_resource type="PackedScene" uid="uid://b0220mivt75da" path="res://scenes/mazmorra/interfaz_mazmorra.tscn" id="8_odsc1"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="9_d10aq"]
 [ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="9_odsc1"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_dglvb")]
@@ -57,15 +56,12 @@ position = Vector2(928, 576)
 [node name="Sierra" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=807437377 instance=ExtResource("6_d10aq")]
 position = Vector2(1184, 256)
 
-[node name="player" parent="." index="8" unique_id=802599124 instance=ExtResource("7_0o3jv")]
-position = Vector2(864.0001, 480)
-
-[node name="Interfaz" parent="." index="9" unique_id=1995162197 instance=ExtResource("8_odsc1")]
-
-[node name="Llave" parent="." index="10" unique_id=1477622593 instance=ExtResource("6_7npea")]
+[node name="Llave" parent="." index="8" unique_id=1477622593 instance=ExtResource("6_7npea")]
 position = Vector2(1056, 576)
 
-[node name="PocionCuracion" parent="." index="11" unique_id=1110925366 instance=ExtResource("9_odsc1")]
+[node name="PocionCuracion" parent="." index="9" unique_id=1110925366 instance=ExtResource("9_odsc1")]
 position = Vector2(928, 384)
+
+[node name="Depuracion" parent="." index="10" unique_id=1550064695 instance=ExtResource("9_d10aq")]
 
 [editable path="Puzle"]
