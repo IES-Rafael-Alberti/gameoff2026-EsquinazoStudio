@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b71t1yh8nlc7v"]
+
+[ext_resource type="Script" uid="uid://bmx1eqpgqwp2b" path="res://scripts/trampas/peligro.gd" id="1_phg2q"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_777ab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(68, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("2_777ab")
+region = Rect2(512, 2048, 512, 512)
+filter_clip = true
+
+[node name="PinchosEstaticos" type="Area2D" unique_id=204095970]
+collision_layer = 32
+collision_mask = 10
+script = ExtResource("1_phg2q")
+retroceso = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
+shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Sprite0-1" type="Sprite2D" parent="." unique_id=1258677299]
+position = Vector2(-15.999999, 16)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Sprite1-1" type="Sprite2D" parent="." unique_id=1714056493]
+position = Vector2(16, 16)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Sprite0-0" type="Sprite2D" parent="." unique_id=1568855434]
+position = Vector2(-15.999999, -15.999999)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Sprite1-0" type="Sprite2D" parent="." unique_id=2017441774]
+position = Vector2(16, -15.999999)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_mjkrw")

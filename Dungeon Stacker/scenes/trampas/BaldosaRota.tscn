@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dt7tjvqhc66qh"]
+
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_c2wvs"]
+[ext_resource type="Script" uid="uid://2ttfr78cvkr8" path="res://scripts/trampas/baldosarota.gd" id="2_d32fi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("1_c2wvs")
+region = Rect2(0, 1536, 512, 512)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(64, 64)
+
+[node name="BaldosaRota" type="Area2D" unique_id=500927486]
+script = ExtResource("2_d32fi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1560515397]
+z_index = 1
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=561485158]
+shape = SubResource("RectangleShape2D_mjkrw")

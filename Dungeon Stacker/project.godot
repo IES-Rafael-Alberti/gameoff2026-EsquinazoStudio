@@ -30,6 +30,15 @@ attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Muros"
+2d_physics/layer_2="Jugador"
+2d_physics/layer_3="Cajas"
+2d_physics/layer_4="Enemigos"
+2d_physics/layer_5="Sierras"
+2d_physics/layer_6="Trampas"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

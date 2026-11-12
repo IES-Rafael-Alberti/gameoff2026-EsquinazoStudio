@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="3_01lro"]
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="4_01lro"]
 [ext_resource type="PackedScene" uid="uid://tm4tdhpxq5fj" path="res://scenes/puzles/BotonReinicio.tscn" id="5_u1t38"]
+[ext_resource type="PackedScene" uid="uid://cdmt18kwxydad" path="res://scenes/puzles/placa_invisible.tscn" id="6_f1bi6"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_oty05")]
 
@@ -30,5 +31,11 @@ activa_jugador = false
 [node name="Caja" parent="Puzle" index="4" unique_id=1664255518 instance=ExtResource("4_01lro")]
 position = Vector2(928, 512)
 
-[node name="BotonReinicio" parent="Puzle" index="5" unique_id=2127740881 instance=ExtResource("5_u1t38")]
+[node name="Caja2" parent="Puzle" index="5" unique_id=119300932 instance=ExtResource("4_01lro")]
+position = Vector2(544, 672)
+
+[node name="BotonReinicio" parent="Puzle" index="6" unique_id=2127740881 instance=ExtResource("5_u1t38")]
 position = Vector2(736, 192)
+
+[node name="PlacaInvisible" parent="Puzle" index="7" unique_id=51903626 instance=ExtResource("6_f1bi6")]
+position = Vector2(544, 736)

@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://81xbgurlhsa4" path="res://scripts/mazmorra.gd" id="1_s31mj"]
 [ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="2_pu7ub"]
 [ext_resource type="Script" uid="uid://bqddph4t53tq1" path="res://scripts/mazmorra/minimapa.gd" id="3_0puqh"]
+[ext_resource type="Script" uid="uid://b4njy5n0prnas" path="res://scripts/mazmorra/barra_vida.gd" id="4_qb32i"]
 
 [node name="Mazmorra" type="Node2D" unique_id=1787572250]
 script = ExtResource("1_s31mj")
 
 [node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_pu7ub")]
 position = Vector2(607, 483.00003)
+vida_maxima = 4
 
 [node name="Interfaz" type="CanvasLayer" parent="." unique_id=23799330]
 
@@ -33,3 +35,12 @@ offset_bottom = 50.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 28
 metadata/_edit_use_anchors_ = true
+
+[node name="BarraVida" type="HBoxContainer" parent="Interfaz" unique_id=242148612]
+offset_left = 10.0
+offset_top = 56.0
+offset_right = 50.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+script = ExtResource("4_qb32i")
