@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://1kqsldwjmcy7"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_rjxse"]
+[ext_resource type="PackedScene" uid="uid://b6gcy3tgbshv2" path="res://scenes/_Componentes/Puzle.tscn" id="2_nrspi"]
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="3_h2efd"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="4_sfnvn"]
+[ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/lanzaflechas.tscn" id="5_8w0ek"]
+[ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="6_nrspi"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_rjxse")]
+
+[node name="Puzle" parent="." index="4" unique_id=454960009 instance=ExtResource("2_nrspi")]
+
+[node name="Caja" parent="Puzle" index="0" unique_id=1664255518 instance=ExtResource("3_h2efd")]
+position = Vector2(608, 256)
+
+[node name="Placa" parent="Puzle" index="1" unique_id=909371902 instance=ExtResource("4_sfnvn")]
+position = Vector2(1312, 896)
+activa_jugador = false
+
+[node name="Trampas" type="Node2D" parent="." index="5" unique_id=2012468487]
+
+[node name="Lanzaflechas" parent="Trampas" index="0" unique_id=1219705292 instance=ExtResource("5_8w0ek")]
+position = Vector2(672, 128)
+rotation = 1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas6" parent="Trampas" index="1" unique_id=1556025003 instance=ExtResource("5_8w0ek")]
+position = Vector2(800, 128)
+rotation = 1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas7" parent="Trampas" index="2" unique_id=473013176 instance=ExtResource("5_8w0ek")]
+position = Vector2(1056, 128)
+rotation = 1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas8" parent="Trampas" index="3" unique_id=1463043160 instance=ExtResource("5_8w0ek")]
+position = Vector2(1184, 128)
+rotation = 1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas2" parent="Trampas" index="4" unique_id=797344475 instance=ExtResource("5_8w0ek")]
+position = Vector2(672, 896)
+rotation = -1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas3" parent="Trampas" index="5" unique_id=764247658 instance=ExtResource("5_8w0ek")]
+position = Vector2(800, 896)
+rotation = -1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas4" parent="Trampas" index="6" unique_id=2078233865 instance=ExtResource("5_8w0ek")]
+position = Vector2(1056, 896)
+rotation = -1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="Lanzaflechas5" parent="Trampas" index="7" unique_id=870678771 instance=ExtResource("5_8w0ek")]
+position = Vector2(1184, 896)
+rotation = -1.5707964
+cooldown = 1.0
+flechas_por_tanda = 5
+
+[node name="CharacterBody2D" parent="." index="6" unique_id=802599124 instance=ExtResource("6_nrspi")]
+position = Vector2(1280, 480)
