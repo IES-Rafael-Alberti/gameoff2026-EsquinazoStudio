@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddipy26b1um0l" path="res://scripts/trampas/trampa_giratoria.gd" id="1_88pq1"]
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_df4qp"]
+[ext_resource type="Script" uid="uid://cbdw87fav6ajs" path="res://scripts/utilidades/bloqueo_navegacion.gd" id="3_aiopr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oucs1"]
 atlas = ExtResource("2_df4qp")
@@ -34,3 +35,9 @@ sprite_punta = SubResource("AtlasTexture_bflry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Centro" unique_id=1687563694]
 shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=120313008]
+radius = 40.0
+
+[node name="BloqueoNavegacion" type="Node2D" parent="." unique_id=1645886206]
+script = ExtResource("3_aiopr")

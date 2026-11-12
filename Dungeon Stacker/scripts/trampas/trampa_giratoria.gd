@@ -5,6 +5,9 @@ extends Peligro
 ## Los palos dañan al jugador y a los enemigos que andan; el centro bloquea pero no daña.
 ## En el editor: capa ninguna, máscara Jugador + Enemigos (como cualquier Peligro).
 ## Los palos se construyen al ejecutar, así que en el editor solo se ve el cuerpo del centro.
+##
+## Si tiene un hijo NavigationObstacle2D, su radio se ajusta solo al alcance de los palos
+## más un margen, para que los enemigos que andan esquiven todo el círculo que barren.
 
 @export_group("Palos")
 ## Palos repartidos a ángulos iguales: 2 = uno cada 180°, 3 = uno cada 120°...
@@ -23,6 +26,14 @@ extends Peligro
 @export var velocidad_giro := 90.0
 ## Ángulo con el que empieza, en grados.
 @export var angulo_inicial := 0.0
+## Segundos que tarda en empezar a girar tras aparecer. 0 = gira al instante.
+## Durante el retardo se queda quieta, pero sigue haciendo daño al tocarla.
+@export var retardo_activacion := 0.0
+
+@export_group("Navegación")
+## Píxeles que se suman al alcance de los palos para el radio del NavigationObstacle2D.
+## Tiene que cubrir al menos el cuerpo del enemigo (16 px) más un poco de holgura.
+@export var margen_obstaculo := 32.0
 
 @export_group("Sprites")
 @export var sprite_centro: Texture2D
@@ -32,6 +43,7 @@ extends Peligro
 @export var escala_sprites := 0.125
 
 var _angulo := 0.0 # radianes
+var _tiempo_para_girar := 0.0 # segundos que faltan para empezar a girar
 var _brazos: Node2D # contiene los sprites de los palos y del centro; es lo que gira
 var _zonas: Array[CollisionShape2D] = []
 var _desfases: Array[float] = [] # ángulo de cada palo respecto al giro general
@@ -41,12 +53,17 @@ var _distancia_zona := 0.0 # del centro al medio de la zona de daño de un palo
 func _ready() -> void:
 	super._ready()
 	_angulo = deg_to_rad(angulo_inicial)
+	_tiempo_para_girar = maxf(retardo_activacion, 0.0)
 	_construir()
+	_ajustar_obstaculo()
 	_aplicar_giro()
 
 
 func _physics_process(delta: float) -> void:
-	super._physics_process(delta) # daño por contacto
+	super._physics_process(delta) # daño por contacto, también durante el retardo
+	if _tiempo_para_girar > 0.0:
+		_tiempo_para_girar -= delta
+		return
 	_angulo += deg_to_rad(velocidad_giro) * delta
 	_aplicar_giro()
 
@@ -88,6 +105,16 @@ func _construir() -> void:
 	# El centro gira con los palos y se dibuja encima de ellos.
 	_brazos.add_child(_crear_pieza(sprite_centro, Vector2.ZERO,
 			Vector2.ONE * 56.0, Color(0.25, 0.25, 0.3)))
+
+
+## Ajusta el radio del obstáculo de navegación (si lo hay): del centro al borde exterior de
+## la punta (lo que barren los palos) más margen_obstaculo.
+func _ajustar_obstaculo() -> void:
+	var obstaculo := get_node_or_null("NavigationObstacle2D") as NavigationObstacle2D
+	if obstaculo == null:
+		return
+	var alcance := maxi(longitud, 1) * separacion_piezas + separacion_piezas / 2.0
+	obstaculo.radius = alcance + margen_obstaculo
 
 
 ## Pone los sprites y las zonas de daño en el ángulo actual.

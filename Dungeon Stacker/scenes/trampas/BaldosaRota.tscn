@@ -11,6 +11,12 @@ filter_clip = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
 size = Vector2(64, 64)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_asod4"]
+vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
+agent_radius = 0.0
+
 [node name="BaldosaRota" type="Area2D" unique_id=500927486]
 script = ExtResource("2_d32fi")
 
@@ -21,3 +27,6 @@ texture = SubResource("AtlasTexture_mjkrw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=561485158]
 shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Navegacion" type="NavigationRegion2D" parent="." unique_id=563222036]
+navigation_polygon = SubResource("NavigationPolygon_asod4")

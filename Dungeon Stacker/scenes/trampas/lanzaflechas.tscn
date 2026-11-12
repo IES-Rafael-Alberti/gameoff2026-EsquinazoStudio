@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_22ldp"]
 [ext_resource type="Script" uid="uid://bq25kvgl1do3b" path="res://scripts/trampas/lanzaflechas.gd" id="1_s4uhe"]
+[ext_resource type="Script" uid="uid://cbdw87fav6ajs" path="res://scripts/utilidades/bloqueo_navegacion.gd" id="3_b24nn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
 atlas = ExtResource("1_22ldp")
@@ -21,3 +22,9 @@ texture = SubResource("AtlasTexture_mjkrw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191850040]
 shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=716225539]
+radius = 40.0
+
+[node name="BloqueoNavegacion" type="Node2D" parent="." unique_id=1376972664]
+script = ExtResource("3_b24nn")

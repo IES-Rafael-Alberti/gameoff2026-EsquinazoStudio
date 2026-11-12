@@ -139,6 +139,7 @@ func _direccion_hacia(objetivo: Vector2) -> int:
 func _linea_libre(objetivo: Vector2) -> bool:
 	var mascara := Capas.MUROS | Capas.JUGADOR | Capas.CAJAS | Capas.SIERRAS
 	var consulta := PhysicsRayQueryParameters2D.create(global_position, objetivo, mascara)
+	consulta.collide_with_areas = true
 	consulta.exclude = _propios()
 	var resultado := get_world_2d().direct_space_state.intersect_ray(consulta)
 	if resultado.is_empty():
