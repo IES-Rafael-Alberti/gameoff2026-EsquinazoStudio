@@ -2,8 +2,9 @@ class_name Peligro
 extends Area2D
 ## Base de las trampas que dañan al tocarlas. La forma del Area2D es la zona que hace daño.
 ## Una trampa nueva (sierra, llama...) usa este script o hereda de él.
-## Daña al jugador (que además retrocede) y a los enemigos que andan; los voladores no les afecta.
-## En el editor: sin capa, y máscara Jugador + Enemigos.
+## Daña al jugador (que además retrocede, si retroceso está activo) y a los enemigos que
+## andan; los voladores no les afecta.
+## En el editor: capa Trampas (6), y máscara Jugador + Enemigos.
 
 ## Daño por contacto.
 @export var dano := 1
@@ -13,6 +14,8 @@ extends Area2D
 @export var activo := true
 ## Si también daña a los enemigos que andan.
 @export var danar_enemigos := true
+## Si el jugador retrocede al ser dañado. Desmarcado: recibe el daño sin que lo empujen.
+@export var retroceso := true
 
 # Cuerpo -> segundos que faltan para poder dañarlo otra vez.
 var _enfriamientos := {}
@@ -36,7 +39,8 @@ func _physics_process(delta: float) -> void:
 ## Devuelve true si ha dañado al cuerpo.
 func _danar(cuerpo: Node2D) -> bool:
 	if cuerpo.is_in_group("jugador") and cuerpo.has_method("recibir_dano"):
-		cuerpo.recibir_dano(dano, global_position)
+		var origen := global_position if retroceso else Vector2.INF
+		cuerpo.recibir_dano(dano, origen)
 		return true
 	var enemigo := cuerpo as Enemigo
 	if danar_enemigos and enemigo != null and not enemigo.volador:

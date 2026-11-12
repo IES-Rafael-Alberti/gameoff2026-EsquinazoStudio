@@ -6,9 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
 size = Vector2(68, 68)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdy"]
-size = Vector2(64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
 atlas = ExtResource("2_777ab")
 region = Rect2(512, 2048, 512, 512)
@@ -18,14 +15,10 @@ filter_clip = true
 collision_layer = 32
 collision_mask = 10
 script = ExtResource("1_phg2q")
+retroceso = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
 shape = SubResource("RectangleShape2D_mjkrw")
-
-[node name="Cuerpo" type="StaticBody2D" parent="." unique_id=611208799]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo" unique_id=863476468]
-shape = SubResource("RectangleShape2D_gqhdy")
 
 [node name="Sprite0-1" type="Sprite2D" parent="." unique_id=1258677299]
 position = Vector2(-15.999999, 16)
