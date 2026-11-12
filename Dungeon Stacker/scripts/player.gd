@@ -2,6 +2,7 @@
 extends CharacterBody2D
 
 signal murio
+signal llave_cambiada(tiene: bool)
 
 @export var speed: float = 150.0
 
@@ -28,6 +29,7 @@ signal murio
 
 var vida: Vida
 var attacking := false
+var tiene_llave := false
 var last_direction: String = "South"
 ## True durante la caída al vacío: no se mueve, no ataca y no recibe otro daño.
 var cayendo := false
@@ -170,6 +172,27 @@ func caer_al_vacio(dano: int, destino: Vector2) -> void:
 func curar(cantidad: int) -> void:
 	vida.curar(cantidad)
 
+func recoger_llave() -> bool:
+	if tiene_llave:
+		return false
+	tiene_llave = true
+	llave_cambiada.emit(true)
+	return true
+
+
+func usar_llave() -> bool:
+	if not tiene_llave:
+		return false
+	tiene_llave = false
+	llave_cambiada.emit(false)
+	return true
+
+
+func perder_llave() -> void:
+	if not tiene_llave:
+		return
+	tiene_llave = false
+	llave_cambiada.emit(false)
 
 ## El sprite parpadea mientras dura la invulnerabilidad.
 func _parpadear() -> void:

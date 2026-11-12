@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://luch1xunp51g"]
+
+[ext_resource type="Script" uid="uid://kqaubytxgti5" path="res://scripts/puzles/cerradura.gd" id="1_qx8bx"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_qdjdd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx8bx"]
+atlas = ExtResource("2_qdjdd")
+region = Rect2(4609, 2048.045, 512, 512)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(64, 64)
+
+[node name="Cerradura" type="StaticBody2D" unique_id=1263758423]
+collision_mask = 0
+script = ExtResource("1_qx8bx")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1145319896]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_qx8bx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1710668864]
+shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=243430147]
+radius = 40.0

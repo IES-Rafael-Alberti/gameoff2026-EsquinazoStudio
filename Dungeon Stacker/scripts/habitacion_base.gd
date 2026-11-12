@@ -23,6 +23,7 @@ var datos: CeldaTablero
 var _cerrando := false
 var _tuvo_desafios := false
 var _baldosas_rotas := {}
+var llave_recogida_pos := Vector2i.ZERO
 var _baldosas := {}
 
 ## Puerta por la que se entró en la sala o -1.
@@ -84,6 +85,29 @@ func tiene_desafios_pendientes() -> bool:
 ## Devuelve los puzles sin resolver y sus cajas a su estado inicial.
 func reiniciar_puzles() -> void:
 	_reiniciar_elementos()
+
+func registrar_llave_recogida(pos: Vector2i) -> void:
+	llave_recogida_pos = pos
+	if datos != null and not datos.llaves_recogidas.has(pos):
+		datos.llaves_recogidas.append(pos)
+
+
+func registrar_cerradura_abierta(pos: Vector2i) -> void:
+	if datos != null and not datos.cerraduras_abiertas.has(pos):
+		datos.cerraduras_abiertas.append(pos)
+
+func registrar_curacion_recogida(pos: Vector2i) -> void:
+	if datos != null and not datos.curaciones_recogidas.has(pos):
+		datos.curaciones_recogidas.append(pos)
+
+func devolver_llave_al_salir(jugador) -> void:
+	if jugador == null:
+		return
+	if jugador.tiene_llave and llave_recogida_pos != Vector2i.ZERO and datos != null:
+		datos.llaves_recogidas.erase(llave_recogida_pos)
+	if jugador.has_method("perder_llave"):
+		jugador.perder_llave()
+	llave_recogida_pos = Vector2i.ZERO
 
 func _reiniciar_elementos() -> void:
 	_restaurar_baldosas()
