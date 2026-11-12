@@ -14,7 +14,9 @@
 [ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="11_0g8fp"]
 [ext_resource type="Resource" uid="uid://odv61bfmtlbk" path="res://resources/categorias/TesoroCombate.tres" id="12_u22gr"]
 [ext_resource type="Resource" uid="uid://cm5gfqhkao5nr" path="res://resources/categorias/TesoroCuracion.tres" id="13_bh3c7"]
+[ext_resource type="Resource" uid="uid://bmft83rs5q0u5" path="res://resources/categorias/TesoroPuzle.tres" id="14_d0608"]
 [ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="14_rcahx"]
+[ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="15_spu22"]
 
 [sub_resource type="Resource" id="Resource_ervc2"]
 script = ExtResource("4_c173r")
@@ -49,7 +51,6 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 [sub_resource type="Resource" id="Resource_py3uc"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("11_0g8fp")
-peso = 77.5
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [sub_resource type="Resource" id="Resource_d7syh"]
@@ -64,10 +65,12 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [sub_resource type="Resource" id="Resource_y8n3i"]
 script = ExtResource("4_c173r")
+categoria = ExtResource("14_d0608")
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [sub_resource type="Resource" id="Resource_ae6e5"]
 script = ExtResource("4_c173r")
+categoria = ExtResource("15_spu22")
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [sub_resource type="Resource" id="Resource_skotl"]
