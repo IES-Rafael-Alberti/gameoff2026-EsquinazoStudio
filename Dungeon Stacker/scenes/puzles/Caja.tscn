@@ -63,3 +63,6 @@ shape = SubResource("RectangleShape2D_mjkrw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=134905358]
 libraries/ = SubResource("AnimationLibrary_kwuax")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=697786505]
+radius = 40.0

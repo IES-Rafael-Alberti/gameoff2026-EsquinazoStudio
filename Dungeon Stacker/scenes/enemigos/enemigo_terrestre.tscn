@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c4lm4krh4f4q0"]
+
+[ext_resource type="PackedScene" uid="uid://b4cqci5h5klxp" path="res://scenes/enemigos/EnemigoPerseguidor.tscn" id="1_csgrc"]
+[ext_resource type="Script" uid="uid://j6eqdcqb15ih" path="res://scripts/combate/enemigo_terrestre.gd" id="2_lg3bu"]
+
+[node name="enemigo_terrestre" unique_id=1141728963 instance=ExtResource("1_csgrc")]
+script = ExtResource("2_lg3bu")
+intervalo_ruta = 0.25
+perder_al_salir = false
+
+[node name="ColorRect" parent="." index="1" unique_id=727044555]
+color = Color(1, 0.5294118, 0, 1)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="2" unique_id=114284827]
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 28.0
+neighbor_distance = 150.0
+max_neighbors = 5
+time_horizon_agents = 1.25

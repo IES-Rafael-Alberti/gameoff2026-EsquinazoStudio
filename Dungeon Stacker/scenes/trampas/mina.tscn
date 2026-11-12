@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://e8l02b8lhn1v" path="res://scripts/trampas/mina.gd" id="1_amd8h"]
 [ext_resource type="Script" uid="uid://bmx1eqpgqwp2b" path="res://scripts/trampas/peligro.gd" id="1_wcqh4"]
 [ext_resource type="Texture2D" uid="uid://bk8yfljy4l5fd" path="res://assets/sprites/spritesheets/Explosión Spritesheet.png" id="2_1qbtr"]
+[ext_resource type="Script" uid="uid://cbdw87fav6ajs" path="res://scripts/utilidades/bloqueo_navegacion.gd" id="4_1qbtr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcqh4"]
 atlas = ExtResource("2_1qbtr")
@@ -79,3 +80,6 @@ activo = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion" unique_id=513194584]
 shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="BloqueoNavegacion" type="Node2D" parent="." unique_id=164726033]
+script = ExtResource("4_1qbtr")

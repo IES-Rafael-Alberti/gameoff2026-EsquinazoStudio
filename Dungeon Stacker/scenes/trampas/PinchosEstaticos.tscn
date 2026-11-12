@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmx1eqpgqwp2b" path="res://scripts/trampas/peligro.gd" id="1_phg2q"]
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_777ab"]
+[ext_resource type="Script" uid="uid://cbdw87fav6ajs" path="res://scripts/utilidades/bloqueo_navegacion.gd" id="3_4x5yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
 size = Vector2(68, 68)
@@ -39,3 +40,9 @@ texture = SubResource("AtlasTexture_mjkrw")
 position = Vector2(16, -15.999999)
 scale = Vector2(0.0625, 0.0625)
 texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=103336359]
+radius = 40.0
+
+[node name="BloqueoNavegacion" type="Node2D" parent="." unique_id=225960798]
+script = ExtResource("3_4x5yr")

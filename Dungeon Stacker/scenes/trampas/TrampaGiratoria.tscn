@@ -34,3 +34,6 @@ sprite_punta = SubResource("AtlasTexture_bflry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Centro" unique_id=1687563694]
 shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=120313008]
+radius = 40.0

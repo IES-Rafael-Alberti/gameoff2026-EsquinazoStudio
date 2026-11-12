@@ -10,6 +10,9 @@ var _jugador_dentro := false
 var _rota := false
 
 @onready var _sprite: Sprite2D = $Sprite2D
+## Trozo de malla de navegación de la baldosa: activo mientras está entera, para que los
+## enemigos que andan la puedan cruzar, y desactivado cuando se rompe (es un hueco).
+@onready var _navegacion: NavigationRegion2D = $Navegacion
 
 var _textura_rota: Texture2D
 var _textura_vacio: Texture2D
@@ -46,6 +49,7 @@ func _on_body_exited(body: Node2D) -> void:
 	_rota = true
 	if _textura_vacio != null:
 		_sprite.texture = _textura_vacio
+	_navegacion.enabled = false
 	rota.emit(self)
 
 ## La sala la devuelve a su estado inicial.
@@ -53,3 +57,4 @@ func restaurar() -> void:
 	_rota = false
 	_jugador_dentro = false
 	_sprite.texture = _textura_rota
+	_navegacion.enabled = true
