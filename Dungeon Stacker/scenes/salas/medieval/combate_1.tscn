@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="6_5a78g"]
 [ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="7_0lhjv"]
 [ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="8_amvy4"]
+[ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/lanzaflechas.tscn" id="8_cly1m"]
 [ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/mina.tscn" id="9_6u2yx"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fckqq")]
@@ -47,6 +48,13 @@ position = Vector2(1056, 640)
 [node name="TrampaGiratoria" parent="Trampas" index="3" unique_id=27660831 instance=ExtResource("7_0lhjv")]
 position = Vector2(736, 256)
 cantidad_palos = 5
+
+[node name="Lanzaflechas" parent="Trampas" index="4" unique_id=1219705292 instance=ExtResource("8_cly1m")]
+position = Vector2(672, 576)
+
+[node name="Lanzaflechas2" parent="Trampas" index="5" unique_id=837727228 instance=ExtResource("8_cly1m")]
+position = Vector2(608, 576)
+rotation = -1.5707964
 
 [node name="CofreFalso" parent="." index="7" unique_id=551623583 instance=ExtResource("8_amvy4")]
 position = Vector2(800, 832)
