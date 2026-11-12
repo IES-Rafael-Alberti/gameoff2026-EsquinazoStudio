@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://2ty1yri2og33" path="res://scripts/habitacion_base.gd" id="1_qdygs"]
 [ext_resource type="Script" uid="uid://by7grrqd14lxk" path="res://scripts/utilidades/capa_suelo.gd" id="3_7pj2k"]
 [ext_resource type="PackedScene" uid="uid://lms712vs40ot" path="res://scenes/puerta.tscn" id="3_egxel"]
+[ext_resource type="PackedScene" uid="uid://b6gcy3tgbshv2" path="res://scenes/_Componentes/Puzle.tscn" id="5_3bv12"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4usg8"]
 vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
@@ -157,3 +158,11 @@ position = Vector2(928, 896)
 
 [node name="EntradaOeste" type="Marker2D" parent="Entradas" unique_id=1563922289]
 position = Vector2(544, 512)
+
+[node name="Puzle" parent="." unique_id=454960009 instance=ExtResource("5_3bv12")]
+
+[node name="Trampas" type="Node2D" parent="." unique_id=1202946194]
+
+[node name="Enemigos" type="Node2D" parent="." unique_id=1091375848]
+
+[editable path="Puzle"]

@@ -27,19 +27,14 @@ var _vestibulo_superior: Vestibulo
 var _camara: Camera2D # solo activa dentro de un vestíbulo
 
 @onready var jugador: CharacterBody2D = $Jugador
-@onready var _interfaz: CanvasLayer = $Interfaz
-@onready var _minimapa: Minimapa = $Interfaz/Minimapa
-@onready var _etiqueta: Label = $Interfaz/Etiqueta
-@onready var _barra_vida: BarraVida = $Interfaz/BarraVida
+@onready var _interfaz: InterfazMazmorra = $Interfaz
 
 func _ready() -> void:
+	_interfaz.configurar(self, jugador.vida)
 	_interfaz.visible = false
-	_minimapa.configurar(self)
-	_barra_vida.configurar(jugador.vida)
 	_camara = Camera2D.new()
 	_camara.enabled = false
 	add_child(_camara)
-
 
 func _process(_delta: float) -> void:
 	if _camara.enabled:
@@ -97,7 +92,7 @@ func generar(matriz: Array) -> void:
 			if matriz[y][x] != null:
 				celdas[Vector2i(x, y)] = matriz[y][x]
 	_asegurar_vestibulos()
-	_minimapa.refrescar()
+	_interfaz.refrescar_minimapa()
 
 
 ## Crea los vestíbulos la primera vez que se conoce el número de columnas.
@@ -196,7 +191,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	move_child(habitacion_actual, 0) # detrás del jugador
 	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda), entrada)
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
-	habitacion_actual.desafios_resueltos.connect(_minimapa.refrescar)
+	habitacion_actual.desafios_resueltos.connect(_interfaz.refrescar_minimapa)
 
 	# El punto de entrada es donde queda el centro del cuerpo, no los pies.
 	var centro_cuerpo := CENTRO_HABITACION if entrada < 0 else habitacion_actual.punto_de_entrada(entrada)
@@ -220,7 +215,7 @@ func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 		jugador.global_position = vestibulo.posicion_entrada(columna)
 	_actualizar_camara()
 	_actualizar_etiqueta()
-	_minimapa.refrescar()
+	_interfaz.refrescar_minimapa()
 	print("Vestíbulo ", Lugar.keys()[donde], " columna ", columna)
 
 
@@ -276,18 +271,18 @@ func _letra_de(categoria: CategoriaSala) -> String:
 func _actualizar_etiqueta() -> void:
 	match lugar:
 		Lugar.VESTIBULO_INFERIOR:
-			_etiqueta.text = "Vestíbulo inferior"
+			_interfaz.mostrar_texto("Vestíbulo inferior")
 		Lugar.VESTIBULO_SUPERIOR:
-			_etiqueta.text = "Vestíbulo superior"
+			_interfaz.mostrar_texto("Vestíbulo superior")
 		Lugar.SALA:
 			var celda: CeldaTablero = celdas[celda_actual]
 			var estado := " [resuelta]" if celda.resuelta else ""
-			_etiqueta.text = "Sala %s [%s]%s" % [
+			_interfaz.mostrar_texto("Sala %s [%s]%s" % [
 				celda_actual,
 				_letra_de(celda.categoria),
 				estado
-			]
-	_minimapa.refrescar()
+			])
+	_interfaz.refrescar_minimapa()
 
 ## Se llama al pasar de tetris a mazmorra.
 func sincronizar(matriz: Array) -> void:
@@ -298,7 +293,7 @@ func sincronizar(matriz: Array) -> void:
 
 	generar(matriz)
 	_actualizar_puertas_vestibulos()
-	_minimapa.refrescar()
+	_interfaz.refrescar_minimapa()
 
 	# Si estabas en un vestíbulo, sigues en él: solo cambian sus puertas.
 	if lugar == Lugar.VESTIBULO_INFERIOR or lugar == Lugar.VESTIBULO_SUPERIOR:
@@ -332,4 +327,4 @@ func _actualizar_columna_vestibulo() -> void:
 	var columna := vestibulo.columna_cercana(jugador.global_position)
 	if columna != columna_vestibulo:
 		columna_vestibulo = columna
-		_minimapa.refrescar()
+		_interfaz.refrescar_minimapa()

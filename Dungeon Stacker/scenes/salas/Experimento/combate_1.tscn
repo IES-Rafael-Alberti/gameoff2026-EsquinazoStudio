@@ -21,54 +21,52 @@ offset_right = 860.0
 offset_bottom = 423.0
 text = "COMBATE 1"
 
-[node name="Enemigos" type="Node2D" parent="." index="4" unique_id=1825924326]
-
-[node name="EnemigoEstatico" parent="Enemigos" index="0" unique_id=985281501 instance=ExtResource("2_46aam")]
-position = Vector2(668, 351)
-
-[node name="EnemigoEstatico2" parent="Enemigos" index="1" unique_id=1002324315 instance=ExtResource("2_46aam")]
-position = Vector2(923, 351)
-
-[node name="EnemigoEstatico3" parent="Enemigos" index="2" unique_id=2093607761 instance=ExtResource("2_46aam")]
-position = Vector2(1157, 351)
-
-[node name="EnemigoPerseguidor" parent="Enemigos" index="3" unique_id=592405911 instance=ExtResource("3_msgi3")]
-position = Vector2(1248, 832)
-
-[node name="EnemigoVolador" parent="Enemigos" index="4" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
-visible = false
-position = Vector2(1120, 544)
-
-[node name="Trampas" type="Node2D" parent="." index="5" unique_id=289536306]
-
-[node name="PinchosEstaticos" parent="Trampas" index="0" unique_id=204095970 instance=ExtResource("4_msgi3")]
+[node name="PinchosEstaticos" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=204095970 instance=ExtResource("4_msgi3")]
 position = Vector2(736, 704)
 
-[node name="Sierra" parent="Trampas" index="1" unique_id=807437377 instance=ExtResource("5_vx6af")]
+[node name="Sierra" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=807437377 instance=ExtResource("5_vx6af")]
 position = Vector2(1248, 640)
 
-[node name="Sierra2" parent="Trampas" index="2" unique_id=479028434 instance=ExtResource("5_vx6af")]
+[node name="Sierra2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=479028434 instance=ExtResource("5_vx6af")]
 position = Vector2(1248, 384)
 
-[node name="Sierra3" parent="Trampas" index="3" unique_id=1958529755 instance=ExtResource("5_vx6af")]
+[node name="Sierra3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1958529755 instance=ExtResource("5_vx6af")]
 position = Vector2(768, 384)
 
-[node name="Caja" parent="Trampas" index="4" unique_id=1664255518 instance=ExtResource("6_5a78g")]
+[node name="Caja" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=1664255518 instance=ExtResource("6_5a78g")]
 position = Vector2(1056, 640)
 
-[node name="TrampaGiratoria" parent="Trampas" index="5" unique_id=27660831 instance=ExtResource("7_0lhjv")]
+[node name="TrampaGiratoria" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="5" unique_id=27660831 instance=ExtResource("7_0lhjv")]
 position = Vector2(736, 256)
 cantidad_palos = 5
 
-[node name="Lanzaflechas" parent="Trampas" index="6" unique_id=1219705292 instance=ExtResource("8_cly1m")]
+[node name="Lanzaflechas" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="6" unique_id=1219705292 instance=ExtResource("8_cly1m")]
 position = Vector2(672, 576)
 
-[node name="Lanzaflechas2" parent="Trampas" index="7" unique_id=837727228 instance=ExtResource("8_cly1m")]
+[node name="Lanzaflechas2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="7" unique_id=837727228 instance=ExtResource("8_cly1m")]
 position = Vector2(608, 576)
 rotation = -1.5707964
 
-[node name="CofreFalso" parent="." index="7" unique_id=551623583 instance=ExtResource("8_amvy4")]
+[node name="Mina" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="8" unique_id=1893609633 instance=ExtResource("9_6u2yx")]
+position = Vector2(608, 832)
+
+[node name="CofreFalso" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=551623583 instance=ExtResource("8_amvy4")]
 position = Vector2(800, 832)
 
-[node name="Mina" parent="." index="8" unique_id=1893609633 instance=ExtResource("9_6u2yx")]
-position = Vector2(608, 832)
+[node name="EnemigoEstatico" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=985281501 instance=ExtResource("2_46aam")]
+position = Vector2(668, 351)
+
+[node name="EnemigoEstatico2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1002324315 instance=ExtResource("2_46aam")]
+position = Vector2(923, 351)
+
+[node name="EnemigoEstatico3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=2093607761 instance=ExtResource("2_46aam")]
+position = Vector2(1157, 351)
+
+[node name="EnemigoPerseguidor" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=592405911 instance=ExtResource("3_msgi3")]
+position = Vector2(1248, 832)
+
+[node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
+visible = false
+position = Vector2(1120, 544)
+
+[editable path="Puzle"]

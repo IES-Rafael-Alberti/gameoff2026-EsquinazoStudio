@@ -6,6 +6,8 @@ var _placas: Array[Node] = []
 
 func _ready() -> void:
 	_recoger_placas(self)
+	if _placas.is_empty():
+		return
 	for placa in _placas:
 		placa.activada.connect(_comprobar)
 	super._ready()

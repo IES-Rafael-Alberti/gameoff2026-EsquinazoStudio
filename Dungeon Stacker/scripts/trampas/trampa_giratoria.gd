@@ -26,6 +26,9 @@ extends Peligro
 @export var velocidad_giro := 90.0
 ## Ángulo con el que empieza, en grados.
 @export var angulo_inicial := 0.0
+## Segundos que tarda en empezar a girar tras aparecer. 0 = gira al instante.
+## Durante el retardo se queda quieta, pero sigue haciendo daño al tocarla.
+@export var retardo_activacion := 0.0
 
 @export_group("Navegación")
 ## Píxeles que se suman al alcance de los palos para el radio del NavigationObstacle2D.
@@ -40,6 +43,7 @@ extends Peligro
 @export var escala_sprites := 0.125
 
 var _angulo := 0.0 # radianes
+var _tiempo_para_girar := 0.0 # segundos que faltan para empezar a girar
 var _brazos: Node2D # contiene los sprites de los palos y del centro; es lo que gira
 var _zonas: Array[CollisionShape2D] = []
 var _desfases: Array[float] = [] # ángulo de cada palo respecto al giro general
@@ -49,13 +53,17 @@ var _distancia_zona := 0.0 # del centro al medio de la zona de daño de un palo
 func _ready() -> void:
 	super._ready()
 	_angulo = deg_to_rad(angulo_inicial)
+	_tiempo_para_girar = maxf(retardo_activacion, 0.0)
 	_construir()
 	_ajustar_obstaculo()
 	_aplicar_giro()
 
 
 func _physics_process(delta: float) -> void:
-	super._physics_process(delta) # daño por contacto
+	super._physics_process(delta) # daño por contacto, también durante el retardo
+	if _tiempo_para_girar > 0.0:
+		_tiempo_para_girar -= delta
+		return
 	_angulo += deg_to_rad(velocidad_giro) * delta
 	_aplicar_giro()
 
