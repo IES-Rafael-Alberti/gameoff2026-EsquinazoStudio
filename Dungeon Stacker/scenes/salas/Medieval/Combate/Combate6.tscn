@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b4i52pa0n7n43"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fptbq"]
+[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="2_unhqg"]
+[ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="3_wk3he"]
+[ext_resource type="PackedScene" uid="uid://bqq8ymcexgt6" path="res://scenes/enemigos/patrulla.tscn" id="4_p3moo"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fptbq")]
+
+[node name="PinchosEstaticos" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=204095970 instance=ExtResource("2_unhqg")]
+position = Vector2(928, 448)
+
+[node name="PinchosEstaticos3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=740244193 instance=ExtResource("2_unhqg")]
+position = Vector2(928, 576)
+
+[node name="PinchosEstaticos4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=1501741245 instance=ExtResource("2_unhqg")]
+position = Vector2(992, 512)
+
+[node name="PinchosEstaticos5" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1703938377 instance=ExtResource("2_unhqg")]
+position = Vector2(864, 512)
+
+[node name="PinchosEstaticos2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=15972861 instance=ExtResource("2_unhqg")]
+position = Vector2(927, 510)
+
+[node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("3_wk3he")]
+position = Vector2(864, 448)
+
+[node name="enemigo_terrestre2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=937276367 instance=ExtResource("3_wk3he")]
+position = Vector2(992, 576)
+
+[node name="enemigo_terrestre3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=776284015 instance=ExtResource("3_wk3he")]
+position = Vector2(864, 576)
+
+[node name="enemigo_terrestre4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=2063170201 instance=ExtResource("3_wk3he")]
+position = Vector2(992, 448)
+
+[node name="Patrulla" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1739202080 instance=ExtResource("4_p3moo")]
+position = Vector2(544, 128)
+velocidad = 120.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla" index="2" unique_id=2007286649]
+position = Vector2(768, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla" index="3" unique_id=1273855505]
+position = Vector2(768, 768)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla" index="4" unique_id=412450739]
+position = Vector2(0, 768)
+
+[node name="Patrulla2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=133744660 instance=ExtResource("4_p3moo")]
+position = Vector2(1312, 128)
+velocidad = 120.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla2" index="2" unique_id=1098613640]
+position = Vector2(0, 768)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla2" index="3" unique_id=1840077922]
+position = Vector2(-768, 768)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla2" index="4" unique_id=619229441]
+position = Vector2(-768, 0)
+
+[editable path="Puzle"]

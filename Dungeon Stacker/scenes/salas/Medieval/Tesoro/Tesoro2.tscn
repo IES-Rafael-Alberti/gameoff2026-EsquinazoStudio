@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="3_2lk26"]
 [ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/Cerradura.tscn" id="4_jod2r"]
 [ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="5_i52gg"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="6_2lk26"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_tng3b")]
 
@@ -26,7 +25,5 @@ position = Vector2(736, 704)
 
 [node name="enemigo_terrestre2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=604947473 instance=ExtResource("5_i52gg")]
 position = Vector2(1120, 320)
-
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("6_2lk26")]
 
 [editable path="Puzle"]
