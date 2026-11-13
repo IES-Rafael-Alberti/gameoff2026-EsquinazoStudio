@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/mina.tscn" id="4_3s1pw"]
 [ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="5_qte3j"]
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="6_1jkyv"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="7_88kly"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_q24ea")]
 
@@ -69,7 +68,5 @@ position = Vector2(608, 896)
 usar_rango = true
 piezas_minimas = 3
 piezas_maximas = 6
-
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("7_88kly")]
 
 [editable path="Puzle"]
