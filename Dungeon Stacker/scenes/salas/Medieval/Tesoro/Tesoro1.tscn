@@ -5,10 +5,11 @@
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_x18jg")]
 
-[node name="CofreBotin" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=2110658979 instance=ExtResource("2_iktuw")]
-margen_contacto = 8.0
-
 [node name="Enemigos" parent="." index="6" unique_id=1091375848]
 position = Vector2(928, 512)
+
+[node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=2110658979 instance=ExtResource("2_iktuw")]
+position = Vector2(928, 512)
+margen_contacto = 8.0
 
 [editable path="Puzle"]

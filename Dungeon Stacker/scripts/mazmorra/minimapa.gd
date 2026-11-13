@@ -1,11 +1,7 @@
 class_name Minimapa
 extends Control
 
-const MARGEN := 24.0
-const TAM_MAXIMO := 280.0
 const SEPARACION := 2.0
-const TAM_MIN_CELDA := 10.0
-const TAM_MAX_CELDA := 28.0
 
 const COLOR_FONDO := Color(0.05, 0.05, 0.08, 0.82)
 const COLOR_BORDE := Color(0.85, 0.85, 0.9, 0.9)
@@ -15,9 +11,19 @@ const COLOR_ACTUAL := Color(1, 1, 1, 1)
 const COLOR_LETRA := Color(1, 1, 1, 1)
 const ESPACIO_VESTIBULO := 12.0
 const COLOR_VESTIBULO := Color(0.55, 0.75, 1.0, 0.9)
+
+## Distancia (píxeles) del minimapa al borde superior derecho de la pantalla.
+@export var margen := 24.0
+## Lado máximo (píxeles) que puede ocupar la rejilla, en su dimensión mayor.
+@export var tam_maximo := 480.0
+## Lado mínimo de cada casilla del minimapa (píxeles).
+@export var tam_min_celda := 10.0
+## Lado máximo de cada casilla del minimapa (píxeles).
+@export var tam_max_celda := 48.0
+
 var mazmorra: Mazmorra
 
-var _tam_celda := TAM_MAX_CELDA
+var _tam_celda := 0.0
 var _ancho := 0.0
 var _alto := 0.0
 var _origen := Vector2.ZERO
@@ -43,21 +49,21 @@ func _recalcular_tamano() -> void:
 		return
 
 	var mayor := maxi(mazmorra._columnas, mazmorra._filas)
-	var disponible := TAM_MAXIMO - SEPARACION * 2.0
+	var disponible := tam_maximo - SEPARACION * 2.0
 	_tam_celda = clampf(
 		floorf((disponible - SEPARACION * (mayor - 1)) / mayor),
-		TAM_MIN_CELDA,
-		TAM_MAX_CELDA
+		tam_min_celda,
+		tam_max_celda
 	)
 	_ancho = mazmorra._columnas * _tam_celda + SEPARACION * (mazmorra._columnas + 1)
 	var alto_rejilla := mazmorra._filas * _tam_celda + SEPARACION * (mazmorra._filas + 1)
 	_alto = alto_rejilla + ESPACIO_VESTIBULO * 2.0
 	_origen = Vector2(SEPARACION, SEPARACION + ESPACIO_VESTIBULO)
 
-	offset_left = -MARGEN - _ancho
-	offset_right = -MARGEN
-	offset_top = MARGEN
-	offset_bottom = MARGEN + _alto
+	offset_left = -margen - _ancho
+	offset_right = -margen
+	offset_top = margen
+	offset_bottom = margen + _alto
 
 
 func _draw() -> void:
