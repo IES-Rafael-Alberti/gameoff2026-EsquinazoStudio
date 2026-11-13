@@ -26,5 +26,5 @@ sources/0 = SubResource("TileSetAtlasSource_ukfnj")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1035547311]
 scale = Vector2(0.125, 0.125)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 80, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 80, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 80)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 80, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_v0mg6")
