@@ -68,7 +68,6 @@ position = Vector2(1157, 351)
 position = Vector2(1184, 192)
 
 [node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
-visible = false
 position = Vector2(1120, 544)
 
 [node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=19484404 instance=ExtResource("12_ivv0d")]
