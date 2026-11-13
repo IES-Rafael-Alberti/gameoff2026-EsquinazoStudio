@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="2_unhqg"]
 [ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="3_wk3he"]
 [ext_resource type="PackedScene" uid="uid://bqq8ymcexgt6" path="res://scenes/enemigos/patrulla.tscn" id="4_p3moo"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="5_wk3he"]
 
 [node name="HabitacionBase2" unique_id=1972970273 instance=ExtResource("1_fptbq")]
 
@@ -86,7 +85,5 @@ position = Vector2(768, -768)
 
 [node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla4" index="4" unique_id=441409032]
 position = Vector2(768, 0)
-
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("5_wk3he")]
 
 [editable path="Puzle"]
