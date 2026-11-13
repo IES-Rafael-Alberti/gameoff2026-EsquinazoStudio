@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://np8ohljjb1bc"]
+[gd_scene format=3 uid="uid://b1x40c87m1j8v"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_m7rph"]
 [ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="2_637tf"]
