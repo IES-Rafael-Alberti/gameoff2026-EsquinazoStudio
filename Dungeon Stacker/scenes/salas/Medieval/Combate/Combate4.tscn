@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://coyrs0y0unnia"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_0yqhs"]
+[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="2_gybs0"]
+[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="3_rbd86"]
+[ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="4_w5sjj"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_0yqhs")]
+
+[node name="TrampaGiratoria" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=27660831 instance=ExtResource("2_gybs0")]
+position = Vector2(928, 512)
+cantidad_palos = 3
+longitud = 8
+velocidad_giro = 45.0
+
+[node name="Pinchos" type="Node2D" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=61608488]
+
+[node name="PinchosEstaticos" parent="Trampas/Pinchos" index="0" unique_id=204095970 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 448)
+
+[node name="PinchosEstaticos2" parent="Trampas/Pinchos" index="1" unique_id=640375617 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 576)
+
+[node name="PinchosEstaticos25" parent="Trampas/Pinchos" index="2" unique_id=725660922 instance=ExtResource("3_rbd86")]
+position = Vector2(992, 896)
+
+[node name="PinchosEstaticos26" parent="Trampas/Pinchos" index="3" unique_id=150094804 instance=ExtResource("3_rbd86")]
+position = Vector2(1056, 896)
+
+[node name="PinchosEstaticos27" parent="Trampas/Pinchos" index="4" unique_id=293535135 instance=ExtResource("3_rbd86")]
+position = Vector2(1120, 896)
+
+[node name="PinchosEstaticos28" parent="Trampas/Pinchos" index="5" unique_id=107669947 instance=ExtResource("3_rbd86")]
+position = Vector2(1184, 896)
+
+[node name="PinchosEstaticos29" parent="Trampas/Pinchos" index="6" unique_id=547372344 instance=ExtResource("3_rbd86")]
+position = Vector2(1248, 896)
+
+[node name="PinchosEstaticos30" parent="Trampas/Pinchos" index="7" unique_id=1599906595 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 896)
+
+[node name="PinchosEstaticos31" parent="Trampas/Pinchos" index="8" unique_id=937071924 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 832)
+
+[node name="PinchosEstaticos32" parent="Trampas/Pinchos" index="9" unique_id=2035337971 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 768)
+
+[node name="PinchosEstaticos33" parent="Trampas/Pinchos" index="10" unique_id=1051389284 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 640)
+
+[node name="PinchosEstaticos34" parent="Trampas/Pinchos" index="11" unique_id=1692190942 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 704)
+
+[node name="PinchosEstaticos3" parent="Trampas/Pinchos" index="12" unique_id=304590485 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 448)
+
+[node name="PinchosEstaticos4" parent="Trampas/Pinchos" index="13" unique_id=537735180 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 384)
+
+[node name="PinchosEstaticos5" parent="Trampas/Pinchos" index="14" unique_id=452521793 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 320)
+
+[node name="PinchosEstaticos6" parent="Trampas/Pinchos" index="15" unique_id=1909192136 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 256)
+
+[node name="PinchosEstaticos7" parent="Trampas/Pinchos" index="16" unique_id=1679068162 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 192)
+
+[node name="PinchosEstaticos8" parent="Trampas/Pinchos" index="17" unique_id=387704683 instance=ExtResource("3_rbd86")]
+position = Vector2(1312, 128)
+
+[node name="PinchosEstaticos9" parent="Trampas/Pinchos" index="18" unique_id=181535005 instance=ExtResource("3_rbd86")]
+position = Vector2(1248, 128)
+
+[node name="PinchosEstaticos10" parent="Trampas/Pinchos" index="19" unique_id=380408838 instance=ExtResource("3_rbd86")]
+position = Vector2(1184, 128)
+
+[node name="PinchosEstaticos11" parent="Trampas/Pinchos" index="20" unique_id=2062295133 instance=ExtResource("3_rbd86")]
+position = Vector2(1120, 128)
+
+[node name="PinchosEstaticos12" parent="Trampas/Pinchos" index="21" unique_id=1982158620 instance=ExtResource("3_rbd86")]
+position = Vector2(1056, 128)
+
+[node name="PinchosEstaticos13" parent="Trampas/Pinchos" index="22" unique_id=919320505 instance=ExtResource("3_rbd86")]
+position = Vector2(992, 128)
+
+[node name="PinchosEstaticos14" parent="Trampas/Pinchos" index="23" unique_id=1596632672 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 576)
+
+[node name="PinchosEstaticos35" parent="Trampas/Pinchos" index="24" unique_id=1302699186 instance=ExtResource("3_rbd86")]
+position = Vector2(608, 896)
+
+[node name="PinchosEstaticos41" parent="Trampas/Pinchos" index="25" unique_id=996802257 instance=ExtResource("3_rbd86")]
+position = Vector2(800, 896)
+
+[node name="PinchosEstaticos44" parent="Trampas/Pinchos" index="26" unique_id=1248840871 instance=ExtResource("3_rbd86")]
+position = Vector2(864, 896)
+
+[node name="PinchosEstaticos42" parent="Trampas/Pinchos" index="27" unique_id=339295953 instance=ExtResource("3_rbd86")]
+position = Vector2(736, 896)
+
+[node name="PinchosEstaticos43" parent="Trampas/Pinchos" index="28" unique_id=1068303655 instance=ExtResource("3_rbd86")]
+position = Vector2(672, 896)
+
+[node name="PinchosEstaticos36" parent="Trampas/Pinchos" index="29" unique_id=176574037 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 896)
+
+[node name="PinchosEstaticos37" parent="Trampas/Pinchos" index="30" unique_id=779970726 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 832)
+
+[node name="PinchosEstaticos38" parent="Trampas/Pinchos" index="31" unique_id=1144561074 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 768)
+
+[node name="PinchosEstaticos39" parent="Trampas/Pinchos" index="32" unique_id=1324339385 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 704)
+
+[node name="PinchosEstaticos40" parent="Trampas/Pinchos" index="33" unique_id=1650202267 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 640)
+
+[node name="PinchosEstaticos15" parent="Trampas/Pinchos" index="34" unique_id=1638973792 instance=ExtResource("3_rbd86")]
+position = Vector2(864, 128)
+
+[node name="PinchosEstaticos16" parent="Trampas/Pinchos" index="35" unique_id=388851639 instance=ExtResource("3_rbd86")]
+position = Vector2(800, 128)
+
+[node name="PinchosEstaticos17" parent="Trampas/Pinchos" index="36" unique_id=853071747 instance=ExtResource("3_rbd86")]
+position = Vector2(736, 128)
+
+[node name="PinchosEstaticos18" parent="Trampas/Pinchos" index="37" unique_id=1411527592 instance=ExtResource("3_rbd86")]
+position = Vector2(672, 128)
+
+[node name="PinchosEstaticos19" parent="Trampas/Pinchos" index="38" unique_id=1730525166 instance=ExtResource("3_rbd86")]
+position = Vector2(608, 128)
+
+[node name="PinchosEstaticos20" parent="Trampas/Pinchos" index="39" unique_id=1918542856 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 384)
+
+[node name="PinchosEstaticos21" parent="Trampas/Pinchos" index="40" unique_id=1245676189 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 320)
+
+[node name="PinchosEstaticos22" parent="Trampas/Pinchos" index="41" unique_id=869643428 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 256)
+
+[node name="PinchosEstaticos23" parent="Trampas/Pinchos" index="42" unique_id=130669714 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 192)
+
+[node name="PinchosEstaticos24" parent="Trampas/Pinchos" index="43" unique_id=1597504010 instance=ExtResource("3_rbd86")]
+position = Vector2(544, 128)
+
+[node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("4_w5sjj")]
+position = Vector2(1248, 832)
+
+[node name="EnemigoVolador2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1389037990 instance=ExtResource("4_w5sjj")]
+position = Vector2(608, 832)
+
+[node name="EnemigoVolador3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=616970143 instance=ExtResource("4_w5sjj")]
+position = Vector2(1248, 192)
+
+[node name="EnemigoVolador4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=500833176 instance=ExtResource("4_w5sjj")]
+position = Vector2(608, 192)
+
+[editable path="Puzle"]
