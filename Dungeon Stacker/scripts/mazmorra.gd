@@ -3,6 +3,9 @@ extends Node2D
 
 enum Lugar { NINGUNO, VESTIBULO_INFERIOR, VESTIBULO_SUPERIOR, SALA }
 
+## El jugador ha conseguido piezas para el tetris (cofres...). Lo conecta Juego.
+signal piezas_obtenidas(cantidad: int)
+
 ## Sala base: se usa cuando no hay ninguna sala en el pool que toca.
 const ESCENA_HABITACION := preload("res://scenes/salas/Habitacion_Base.tscn")
 ## Centro de la habitación, en coordenadas de la propia habitación.
@@ -193,6 +196,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda), entrada)
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	habitacion_actual.desafios_resueltos.connect(_interfaz.refrescar_minimapa)
+	habitacion_actual.piezas_obtenidas.connect(piezas_obtenidas.emit)
 
 	# El punto de entrada es donde queda el centro del cuerpo, no los pies.
 	var centro_cuerpo := CENTRO_HABITACION if entrada < 0 else habitacion_actual.punto_de_entrada(entrada)

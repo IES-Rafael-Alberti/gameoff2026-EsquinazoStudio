@@ -7,6 +7,8 @@ signal puertas_abiertas
 signal desafios_resueltos
 ## El jugador ha cruzado una puerta abierta.
 signal puerta_cruzada(puerta: Puerta)
+## Un cofre de la sala ha dado piezas para el tetris.
+signal piezas_obtenidas(cantidad: int)
 
 @export_flags("Norte", "Este", "Sur", "Oeste") var conexiones_iniciales := 15
 @export var dano_vacio := 1
@@ -99,6 +101,15 @@ func registrar_cerradura_abierta(pos: Vector2i) -> void:
 func registrar_curacion_recogida(pos: Vector2i) -> void:
 	if datos != null and not datos.curaciones_recogidas.has(pos):
 		datos.curaciones_recogidas.append(pos)
+
+func registrar_cofre_abierto(pos: Vector2i) -> void:
+	if datos != null and not datos.cofres_abiertos.has(pos):
+		datos.cofres_abiertos.append(pos)
+
+## Lo llama un cofre al abrirse. La mazmorra lo reenvía y el juego lo suma al tetris.
+func entregar_piezas(cantidad: int) -> void:
+	if cantidad > 0:
+		piezas_obtenidas.emit(cantidad)
 
 func devolver_llave_al_salir(jugador) -> void:
 	if jugador == null:

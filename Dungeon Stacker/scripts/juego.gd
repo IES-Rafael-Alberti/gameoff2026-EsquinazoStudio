@@ -13,6 +13,8 @@ var _pantalla_muerte: PantallaMuerte
 func _ready() -> void:
 	# Los pools de salas son del nivel: viven en su configuración y los comparten tetris y mazmorra.
 	_mazmorra.contenido = _tetris.Configuracion.CONTENIDO
+	# Las piezas que se consiguen en la mazmorra (cofres...) se suman al tetris.
+	_mazmorra.piezas_obtenidas.connect(_tetris.agregar_piezas)
 	# Se empieza en la mazmorra, en la zona de spawn del vestíbulo inferior.
 	_mazmorra.sincronizar(_tetris.tablero)
 	_aplicar_modo()
