@@ -30,7 +30,7 @@ velocidad_giro = 50.0
 
 [node name="TrampaGiratoria4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1812906164 instance=ExtResource("3_ll7gr")]
 position = Vector2(736, 704)
-cantidad_palos = 12
+cantidad_palos = 4
 longitud = 4
 velocidad_giro = 50.0
 
