@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_x18jg"]
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="2_iktuw"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="3_mkum3"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_x18jg")]
 
@@ -11,5 +12,7 @@ position = Vector2(928, 512)
 [node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=2110658979 instance=ExtResource("2_iktuw")]
 position = Vector2(928, 512)
 margen_contacto = 8.0
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("3_mkum3")]
 
 [editable path="Puzle"]
