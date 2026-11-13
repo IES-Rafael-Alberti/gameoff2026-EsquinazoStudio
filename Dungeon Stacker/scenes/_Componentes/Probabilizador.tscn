@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ftaippyffeyq"]
+
+[ext_resource type="Script" uid="uid://cd4itoas1twq6" path="res://scripts/utilidades/aparicion_aleatoria.gd" id="1_sarxp"]
+
+[node name="Probabilizador" type="Node2D" unique_id=1708072780]
+script = ExtResource("1_sarxp")

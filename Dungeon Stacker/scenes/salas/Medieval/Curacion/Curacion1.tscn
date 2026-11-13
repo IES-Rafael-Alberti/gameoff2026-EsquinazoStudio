@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b5chuo82pdocj"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_vftj3"]
+[ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="2_edy38"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_vftj3")]
+
+[node name="PocionCuracion" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=1110925366 instance=ExtResource("2_edy38")]
+position = Vector2(928, 512)
+
+[editable path="Puzle"]
