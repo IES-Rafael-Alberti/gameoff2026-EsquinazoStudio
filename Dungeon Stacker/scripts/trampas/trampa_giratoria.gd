@@ -134,6 +134,7 @@ func _crear_pieza(textura: Texture2D, posicion: Vector2, tamano_marcador: Vector
 		sprite.texture = textura
 		sprite.scale = Vector2.ONE * escala_sprites
 		sprite.position = posicion
+		sprite.z_index = 2
 		return sprite
 	var mitad := tamano_marcador / 2.0
 	var marcador := Polygon2D.new()
