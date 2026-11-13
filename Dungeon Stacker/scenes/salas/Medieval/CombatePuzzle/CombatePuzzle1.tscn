@@ -12,6 +12,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAACAAAAAAAAAAI
 
 [node name="Cerradura" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=1263758423 instance=ExtResource("2_erex1")]
 position = Vector2(928, 512)
+cuenta_como_requisito = true
 
 [node name="Llave" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=1477622593 instance=ExtResource("3_oh24u")]
 position = Vector2(544, 384)
