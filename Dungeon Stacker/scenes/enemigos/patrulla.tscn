@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bqq8ymcexgt6"]
+
+[ext_resource type="Script" uid="uid://ki0uyya5kosd" path="res://scripts/combate/patrulla.gd" id="1_rvrbt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+radius = 20.0
+
+[node name="Patrulla" type="CharacterBody2D" unique_id=1739202080]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_rvrbt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1768972680]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.42144266, 0.0022865958, 0.79177505, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=909950401]
+shape = SubResource("CircleShape2D_mjkrw")

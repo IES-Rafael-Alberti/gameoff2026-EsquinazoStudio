@@ -9,6 +9,10 @@
 atlas = ExtResource("2_es1uj")
 region = Rect2(3072, 1539, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vath8"]
+atlas = ExtResource("2_es1uj")
+region = Rect2(3072, 2560, 512, 512)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
 size = Vector2(32, 32)
 
@@ -17,6 +21,7 @@ script = ExtResource("1_i27fr")
 modos_apertura = 2
 escena_enemigo = ExtResource("2_spu2g")
 sprite_cerrado = SubResource("AtlasTexture_i27fr")
+sprite_abierto = SubResource("AtlasTexture_vath8")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1597095340]
 scale = Vector2(0.125, 0.125)

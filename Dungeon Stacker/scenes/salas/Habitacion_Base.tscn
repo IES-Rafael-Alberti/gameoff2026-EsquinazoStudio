@@ -165,4 +165,6 @@ position = Vector2(544, 512)
 
 [node name="Enemigos" type="Node2D" parent="." unique_id=1091375848]
 
+[node name="Objetos" type="Node2D" parent="." unique_id=653114024]
+
 [editable path="Puzle"]

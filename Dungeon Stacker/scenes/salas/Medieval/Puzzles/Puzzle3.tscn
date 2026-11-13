@@ -4,12 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="3_h2efd"]
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="4_sfnvn"]
 [ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/lanzaflechas.tscn" id="5_8w0ek"]
-[ext_resource type="PackedScene" uid="uid://c73hukwnehhpi" path="res://scenes/player.tscn" id="6_nrspi"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_rjxse")]
-
-[node name="CharacterBody2D" parent="." index="4" unique_id=802599124 instance=ExtResource("6_nrspi")]
-position = Vector2(1280, 480)
 
 [node name="Caja" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=1664255518 instance=ExtResource("3_h2efd")]
 position = Vector2(608, 256)

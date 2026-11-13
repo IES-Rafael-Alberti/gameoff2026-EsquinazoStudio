@@ -7,6 +7,8 @@ signal puertas_abiertas
 signal desafios_resueltos
 ## El jugador ha cruzado una puerta abierta.
 signal puerta_cruzada(puerta: Puerta)
+## Un cofre de la sala ha dado piezas para el tetris.
+signal piezas_obtenidas(cantidad: int)
 
 @export_flags("Norte", "Este", "Sur", "Oeste") var conexiones_iniciales := 15
 @export var dano_vacio := 1
@@ -23,6 +25,7 @@ var datos: CeldaTablero
 var _cerrando := false
 var _tuvo_desafios := false
 var _baldosas_rotas := {}
+var llave_recogida_pos := Vector2i.ZERO
 var _baldosas := {}
 
 ## Puerta por la que se entró en la sala o -1.
@@ -84,6 +87,38 @@ func tiene_desafios_pendientes() -> bool:
 ## Devuelve los puzles sin resolver y sus cajas a su estado inicial.
 func reiniciar_puzles() -> void:
 	_reiniciar_elementos()
+
+func registrar_llave_recogida(pos: Vector2i) -> void:
+	llave_recogida_pos = pos
+	if datos != null and not datos.llaves_recogidas.has(pos):
+		datos.llaves_recogidas.append(pos)
+
+
+func registrar_cerradura_abierta(pos: Vector2i) -> void:
+	if datos != null and not datos.cerraduras_abiertas.has(pos):
+		datos.cerraduras_abiertas.append(pos)
+
+func registrar_curacion_recogida(pos: Vector2i) -> void:
+	if datos != null and not datos.curaciones_recogidas.has(pos):
+		datos.curaciones_recogidas.append(pos)
+
+func registrar_cofre_abierto(pos: Vector2i) -> void:
+	if datos != null and not datos.cofres_abiertos.has(pos):
+		datos.cofres_abiertos.append(pos)
+
+## Lo llama un cofre al abrirse. La mazmorra lo reenvía y el juego lo suma al tetris.
+func entregar_piezas(cantidad: int) -> void:
+	if cantidad > 0:
+		piezas_obtenidas.emit(cantidad)
+
+func devolver_llave_al_salir(jugador) -> void:
+	if jugador == null:
+		return
+	if jugador.tiene_llave and llave_recogida_pos != Vector2i.ZERO and datos != null:
+		datos.llaves_recogidas.erase(llave_recogida_pos)
+	if jugador.has_method("perder_llave"):
+		jugador.perder_llave()
+	llave_recogida_pos = Vector2i.ZERO
 
 func _reiniciar_elementos() -> void:
 	_restaurar_baldosas()

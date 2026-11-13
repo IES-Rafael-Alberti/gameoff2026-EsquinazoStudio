@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://cai0wd26gj7fg" path="res://scripts/mazmorra/interfaz_mazmorra.gd" id="1_1dm4y"]
 [ext_resource type="Script" uid="uid://bqddph4t53tq1" path="res://scripts/mazmorra/minimapa.gd" id="2_yjn0g"]
 [ext_resource type="Script" uid="uid://b4njy5n0prnas" path="res://scripts/mazmorra/barra_vida.gd" id="3_f00u8"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="4_f00u8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjn0g"]
+atlas = ExtResource("4_f00u8")
+region = Rect2(4648, 1660, 408, 164)
+filter_clip = true
 
 [node name="Interfaz" type="CanvasLayer" unique_id=1995162197]
 script = ExtResource("1_1dm4y")
@@ -17,6 +23,7 @@ offset_bottom = 40.0
 grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("2_yjn0g")
+metadata/_edit_use_anchors_ = true
 
 [node name="Etiqueta" type="Label" parent="." unique_id=678796577]
 anchors_preset = -1
@@ -26,6 +33,7 @@ offset_right = 410.0
 offset_bottom = 50.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 28
+metadata/_edit_use_anchors_ = true
 
 [node name="BarraVida" type="HBoxContainer" parent="." unique_id=487677871]
 offset_left = 10.0
@@ -35,3 +43,15 @@ offset_bottom = 96.0
 mouse_filter = 2
 theme_override_constants/separation = 6
 script = ExtResource("3_f00u8")
+metadata/_edit_use_anchors_ = true
+
+[node name="Llave" type="TextureRect" parent="." unique_id=1807170972]
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 104.0
+offset_right = 74.0
+offset_bottom = 130.0
+texture = SubResource("AtlasTexture_yjn0g")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true

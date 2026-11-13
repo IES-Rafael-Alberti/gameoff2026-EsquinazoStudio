@@ -6,27 +6,22 @@
 [ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="3_qw038"]
 [ext_resource type="Script" uid="uid://d20qapcko8rat" path="res://scripts/entrada_sala.gd" id="4_iehwp"]
 [ext_resource type="PackedScene" uid="uid://6l8auo85ffv5" path="res://scenes/salas/Medieval/Vacio/Vacio1.tscn" id="5_a87yp"]
+[ext_resource type="PackedScene" uid="uid://c65d55crihwa" path="res://scenes/salas/Medieval/Combate/Combate1.tscn" id="5_lrx8v"]
+[ext_resource type="Resource" uid="uid://b2jry5pe8wn07" path="res://resources/categorias/Curación.tres" id="6_nf070"]
+[ext_resource type="PackedScene" uid="uid://b5chuo82pdocj" path="res://scenes/salas/Medieval/Curacion/Curacion1.tscn" id="7_h8flc"]
 [ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="7_iehwp"]
-[ext_resource type="PackedScene" uid="uid://bb4wfd8vxexr4" path="res://scenes/salas/Experimento/combate_1.tscn" id="8_ut0hs"]
+[ext_resource type="PackedScene" uid="uid://cnuehqo222ou6" path="res://scenes/salas/Medieval/Puzzles/Puzzle1.tscn" id="7_l7mkl"]
+[ext_resource type="PackedScene" uid="uid://dyt8si78i3ibx" path="res://scenes/salas/Medieval/Puzzles/Puzzle2.tscn" id="8_31ls5"]
 [ext_resource type="Resource" uid="uid://ckfpqisg5v4hy" path="res://resources/categorias/Puzle.tres" id="9_a87yp"]
-[ext_resource type="PackedScene" uid="uid://barcgehdmu58o" path="res://scenes/salas/Experimento/puzle_1.tscn" id="10_lrx8v"]
-[ext_resource type="PackedScene" uid="uid://dls2oygd7eq1e" path="res://scenes/salas/Experimento/puzle_2.tscn" id="11_lrx8v"]
-
-[sub_resource type="Resource" id="Resource_lryb0"]
-script = ExtResource("4_iehwp")
-escena = ExtResource("5_a87yp")
-peso = 0.0
-metadata/_custom_type_script = "uid://d20qapcko8rat"
-
-[sub_resource type="Resource" id="Resource_efurq"]
-script = ExtResource("2_3vuvy")
-categoria = ExtResource("3_qw038")
-salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_lryb0")])
-metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+[ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="9_lrx8v"]
+[ext_resource type="PackedScene" uid="uid://1kqsldwjmcy7" path="res://scenes/salas/Medieval/Puzzles/Puzzle3.tscn" id="9_nf070"]
+[ext_resource type="PackedScene" uid="uid://b7fnregmfkplq" path="res://scenes/salas/Medieval/Puzzles/Puzzle4.tscn" id="10_h8flc"]
+[ext_resource type="PackedScene" uid="uid://c48tvr27wgs32" path="res://scenes/salas/Medieval/Tesoro/Tesoro1.tscn" id="12_hcrte"]
+[ext_resource type="PackedScene" uid="uid://d3d1jgjmc3sk4" path="res://scenes/salas/Medieval/Vacio/Vacio2.tscn" id="15_xy8kh"]
 
 [sub_resource type="Resource" id="Resource_n51ts"]
 script = ExtResource("4_iehwp")
-escena = ExtResource("8_ut0hs")
+escena = ExtResource("5_lrx8v")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_i21ei"]
@@ -35,25 +30,73 @@ categoria = ExtResource("7_iehwp")
 salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_n51ts")])
 metadata/_custom_type_script = "uid://c6684rv0ysdpf"
 
+[sub_resource type="Resource" id="Resource_8bxkb"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("7_h8flc")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_edy38"]
+script = ExtResource("2_3vuvy")
+categoria = ExtResource("6_nf070")
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_8bxkb")])
+metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+
 [sub_resource type="Resource" id="Resource_01lro"]
 script = ExtResource("4_iehwp")
-escena = ExtResource("10_lrx8v")
+escena = ExtResource("7_l7mkl")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_34xlu"]
 script = ExtResource("4_iehwp")
-escena = ExtResource("11_lrx8v")
+escena = ExtResource("8_31ls5")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_eyd8l"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("9_nf070")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_sp1qh"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("10_h8flc")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_nbnxg"]
 script = ExtResource("2_3vuvy")
 categoria = ExtResource("9_a87yp")
-salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_01lro"), SubResource("Resource_34xlu")])
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_01lro"), SubResource("Resource_34xlu"), SubResource("Resource_eyd8l"), SubResource("Resource_sp1qh")])
+metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+
+[sub_resource type="Resource" id="Resource_unh5j"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("12_hcrte")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_iktuw"]
+script = ExtResource("2_3vuvy")
+categoria = ExtResource("9_lrx8v")
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_unh5j")])
+metadata/_custom_type_script = "uid://c6684rv0ysdpf"
+
+[sub_resource type="Resource" id="Resource_lryb0"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("5_a87yp")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_l7mkl"]
+script = ExtResource("4_iehwp")
+escena = ExtResource("15_xy8kh")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
+[sub_resource type="Resource" id="Resource_efurq"]
+script = ExtResource("2_3vuvy")
+categoria = ExtResource("3_qw038")
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_lryb0"), SubResource("Resource_l7mkl")])
 metadata/_custom_type_script = "uid://c6684rv0ysdpf"
 
 [sub_resource type="Resource" id="Resource_g7xdy"]
 script = ExtResource("1_g7xdy")
-categorias = Array[ExtResource("2_3vuvy")]([SubResource("Resource_efurq"), SubResource("Resource_i21ei"), SubResource("Resource_nbnxg")])
+categorias = Array[ExtResource("2_3vuvy")]([SubResource("Resource_i21ei"), SubResource("Resource_edy38"), SubResource("Resource_nbnxg"), SubResource("Resource_iktuw"), SubResource("Resource_efurq")])
 metadata/_custom_type_script = "uid://cvem01iwwrqy3"
 
 [resource]

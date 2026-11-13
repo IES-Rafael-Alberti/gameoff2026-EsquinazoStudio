@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="8_amvy4"]
 [ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/lanzaflechas.tscn" id="8_cly1m"]
 [ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/mina.tscn" id="9_6u2yx"]
+[ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="12_ivv0d"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="12_jqfdg"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fckqq")]
 
@@ -63,10 +65,15 @@ position = Vector2(923, 351)
 position = Vector2(1157, 351)
 
 [node name="EnemigoPerseguidor" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=592405911 instance=ExtResource("3_msgi3")]
-position = Vector2(1248, 832)
+position = Vector2(1184, 192)
 
 [node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
 visible = false
 position = Vector2(1120, 544)
+
+[node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=19484404 instance=ExtResource("12_ivv0d")]
+position = Vector2(544, 128)
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("12_jqfdg")]
 
 [editable path="Puzle"]

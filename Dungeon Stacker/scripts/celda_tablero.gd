@@ -8,9 +8,18 @@ var resuelta := false
 ## Variante de sala elegida del pool la primera vez que se entra. Se mantiene mientras
 ## exista esta celda, para que al volver siempre sea la misma sala.
 var escena_sala: PackedScene
+## Número al azar fijo de esta celda, sorteado al crearla. Sirve para decisiones al azar de
+## la sala que deben salir siempre igual al volver a ella (ver AparicionAleatoria).
+var semilla := randi()
 ## Posiciones de las minas de esta sala que ya han explotado, para que no vuelvan a salir
 ## al recargar la sala. Desaparecen con la celda.
 var minas_explotadas: Array[Vector2i] = []
+var llaves_recogidas: Array[Vector2i] = []
+var cerraduras_abiertas: Array[Vector2i] = []
+var curaciones_recogidas: Array[Vector2i] = []
+## Posiciones de los cofres de botín de esta sala que ya se han abierto: vuelven a aparecer
+## abiertos y vacíos al recargar la sala.
+var cofres_abiertos: Array[Vector2i] = []
 
 func _init(p_textura: Texture2D = null, p_categoria: CategoriaSala = null, p_bioma: int = Catalogo.Bioma.MEDIEVAL) -> void:
 	textura_fondo = p_textura

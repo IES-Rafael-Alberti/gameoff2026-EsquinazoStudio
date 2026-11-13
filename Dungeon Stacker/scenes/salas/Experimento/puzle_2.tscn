@@ -1,22 +1,20 @@
 [gd_scene format=3 uid="uid://dls2oygd7eq1e"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_ly3t3"]
-[ext_resource type="Script" uid="uid://dfsbvy8ilcej7" path="res://scripts/puzles/puzle_secuencia.gd" id="2_34xlu"]
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="3_3jqit"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_ly3t3")]
 
-[node name="Puzle" type="Node2D" parent="." index="3" unique_id=1833906530]
-script = ExtResource("2_34xlu")
-
-[node name="Placa1" parent="Puzle" index="0" unique_id=909371902 instance=ExtResource("3_3jqit")]
+[node name="Placa1" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=909371902 instance=ExtResource("3_3jqit")]
 position = Vector2(736, 384)
 se_queda_activa = true
 
-[node name="Placa2" parent="Puzle" index="1" unique_id=1043288404 instance=ExtResource("3_3jqit")]
+[node name="Placa2" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=1043288404 instance=ExtResource("3_3jqit")]
 position = Vector2(928, 384)
 se_queda_activa = true
 
-[node name="Placa3" parent="Puzle" index="2" unique_id=1709783090 instance=ExtResource("3_3jqit")]
+[node name="Placa3" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="2" unique_id=1709783090 instance=ExtResource("3_3jqit")]
 position = Vector2(1120, 384)
 se_queda_activa = true
+
+[editable path="Puzle"]
