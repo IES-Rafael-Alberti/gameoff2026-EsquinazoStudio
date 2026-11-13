@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="2_unhqg"]
 [ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="3_wk3he"]
 [ext_resource type="PackedScene" uid="uid://bqq8ymcexgt6" path="res://scenes/enemigos/patrulla.tscn" id="4_p3moo"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="5_wk3he"]
 
-[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fptbq")]
+[node name="HabitacionBase2" unique_id=1972970273 instance=ExtResource("1_fptbq")]
 
 [node name="PinchosEstaticos" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=204095970 instance=ExtResource("2_unhqg")]
 position = Vector2(928, 448)
@@ -59,5 +60,33 @@ position = Vector2(-768, 768)
 
 [node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla2" index="4" unique_id=619229441]
 position = Vector2(-768, 0)
+
+[node name="Patrulla3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="6" unique_id=35589511 instance=ExtResource("4_p3moo")]
+position = Vector2(1312, 896)
+velocidad = 120.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla3" index="2" unique_id=217637085]
+position = Vector2(-768, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla3" index="3" unique_id=103641171]
+position = Vector2(-768, -768)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla3" index="4" unique_id=938286655]
+position = Vector2(0, -768)
+
+[node name="Patrulla4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="7" unique_id=1623711386 instance=ExtResource("4_p3moo")]
+position = Vector2(544, 896)
+velocidad = 120.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla4" index="2" unique_id=377829004]
+position = Vector2(0, -768)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla4" index="3" unique_id=1620307255]
+position = Vector2(768, -768)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla4" index="4" unique_id=441409032]
+position = Vector2(768, 0)
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("5_wk3he")]
 
 [editable path="Puzle"]
