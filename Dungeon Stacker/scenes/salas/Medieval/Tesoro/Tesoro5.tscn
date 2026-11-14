@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://c8nkd6ljwsxdk"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_184b2"]
+[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="2_gkbhv"]
+[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="3_c0h2b"]
+[ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="3_hytv1"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="5_ntevo"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_184b2")]
+
+[node name="ZonaEntrada" parent="." index="2" unique_id=180062892]
+visible = false
+
+[node name="Forma" parent="ZonaEntrada" index="0" unique_id=990661461]
+visible = false
+
+[node name="CofreFalso" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=551623583 instance=ExtResource("2_gkbhv")]
+position = Vector2(1056, 384)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso9" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=983737567 instance=ExtResource("2_gkbhv")]
+position = Vector2(1184, 384)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso10" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="2" unique_id=308600062 instance=ExtResource("2_gkbhv")]
+position = Vector2(1184, 512)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso11" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="3" unique_id=675306118 instance=ExtResource("2_gkbhv")]
+position = Vector2(1184, 640)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso12" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="4" unique_id=1442084881 instance=ExtResource("2_gkbhv")]
+position = Vector2(1184, 768)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso13" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="5" unique_id=1360088332 instance=ExtResource("2_gkbhv")]
+position = Vector2(928, 768)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso15" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="6" unique_id=1912836365 instance=ExtResource("2_gkbhv")]
+position = Vector2(800, 768)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso16" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="7" unique_id=1315051029 instance=ExtResource("2_gkbhv")]
+position = Vector2(672, 768)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso17" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="8" unique_id=1467337208 instance=ExtResource("2_gkbhv")]
+position = Vector2(672, 640)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso18" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="9" unique_id=1925747301 instance=ExtResource("2_gkbhv")]
+position = Vector2(672, 512)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso19" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="10" unique_id=1615017582 instance=ExtResource("2_gkbhv")]
+position = Vector2(672, 384)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso20" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="11" unique_id=1161853068 instance=ExtResource("2_gkbhv")]
+position = Vector2(672, 256)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso21" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="12" unique_id=1423863325 instance=ExtResource("2_gkbhv")]
+position = Vector2(800, 256)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso22" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="13" unique_id=475216032 instance=ExtResource("2_gkbhv")]
+position = Vector2(928, 256)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso23" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="14" unique_id=1400548563 instance=ExtResource("2_gkbhv")]
+position = Vector2(1056, 256)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso24" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="15" unique_id=1530332162 instance=ExtResource("2_gkbhv")]
+position = Vector2(1184, 256)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso14" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="16" unique_id=691023521 instance=ExtResource("2_gkbhv")]
+position = Vector2(1056, 768)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="17" unique_id=2123274076 instance=ExtResource("2_gkbhv")]
+position = Vector2(928, 384)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="18" unique_id=498541972 instance=ExtResource("2_gkbhv")]
+position = Vector2(800, 512)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso4" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="19" unique_id=2114765201 instance=ExtResource("2_gkbhv")]
+position = Vector2(928, 512)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso5" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="20" unique_id=1375392244 instance=ExtResource("2_gkbhv")]
+position = Vector2(1056, 512)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso6" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="21" unique_id=403452168 instance=ExtResource("2_gkbhv")]
+position = Vector2(1056, 640)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso7" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="22" unique_id=650118251 instance=ExtResource("2_gkbhv")]
+position = Vector2(928, 640)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreFalso8" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="23" unique_id=1193940404 instance=ExtResource("2_gkbhv")]
+position = Vector2(800, 640)
+escena_enemigo = ExtResource("3_hytv1")
+
+[node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="24" unique_id=2110658979 instance=ExtResource("3_c0h2b")]
+position = Vector2(800, 384)
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("5_ntevo")]
+
+[editable path="Puzle"]
