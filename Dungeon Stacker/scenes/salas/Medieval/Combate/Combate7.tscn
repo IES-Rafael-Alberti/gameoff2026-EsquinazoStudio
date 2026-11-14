@@ -118,153 +118,155 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAACAAAAAAAAAAI
 tile_set = SubResource("TileSet_mjkrw")
 script = ExtResource("3_m7f63")
 
-[node name="Pinchos" type="Node2D" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=778749784]
+[node name="Pinchos" type="Node2D" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=778749784]
 
-[node name="PinchosEstaticos" parent="Puzle/Pinchos" index="0" unique_id=204095970 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos" parent="Trampas/Pinchos" index="0" unique_id=204095970 instance=ExtResource("2_xx2yp")]
 position = Vector2(928, 512)
 
-[node name="PinchosEstaticos10" parent="Puzle/Pinchos" index="1" unique_id=1545279900 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos10" parent="Trampas/Pinchos" index="1" unique_id=1545279900 instance=ExtResource("2_xx2yp")]
 position = Vector2(992, 576)
 
-[node name="PinchosEstaticos11" parent="Puzle/Pinchos" index="2" unique_id=2043400233 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos11" parent="Trampas/Pinchos" index="2" unique_id=2043400233 instance=ExtResource("2_xx2yp")]
 position = Vector2(864, 576)
 
-[node name="PinchosEstaticos12" parent="Puzle/Pinchos" index="3" unique_id=1897906997 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos12" parent="Trampas/Pinchos" index="3" unique_id=1897906997 instance=ExtResource("2_xx2yp")]
 position = Vector2(992, 448)
 
-[node name="PinchosEstaticos13" parent="Puzle/Pinchos" index="4" unique_id=858484966 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos13" parent="Trampas/Pinchos" index="4" unique_id=858484966 instance=ExtResource("2_xx2yp")]
 position = Vector2(864, 448)
 
-[node name="PinchosEstaticos2" parent="Puzle/Pinchos" index="5" unique_id=1052154383 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos2" parent="Trampas/Pinchos" index="5" unique_id=1052154383 instance=ExtResource("2_xx2yp")]
 position = Vector2(1056, 512)
 
-[node name="PinchosEstaticos3" parent="Puzle/Pinchos" index="6" unique_id=49576728 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos3" parent="Trampas/Pinchos" index="6" unique_id=49576728 instance=ExtResource("2_xx2yp")]
 position = Vector2(928, 640)
 
-[node name="PinchosEstaticos4" parent="Puzle/Pinchos" index="7" unique_id=1819490263 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos4" parent="Trampas/Pinchos" index="7" unique_id=1819490263 instance=ExtResource("2_xx2yp")]
 position = Vector2(800, 512)
 
-[node name="PinchosEstaticos5" parent="Puzle/Pinchos" index="8" unique_id=1540748810 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos5" parent="Trampas/Pinchos" index="8" unique_id=1540748810 instance=ExtResource("2_xx2yp")]
 position = Vector2(928, 384)
 
-[node name="PinchosEstaticos6" parent="Puzle/Pinchos" index="9" unique_id=1507926825 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos6" parent="Trampas/Pinchos" index="9" unique_id=1507926825 instance=ExtResource("2_xx2yp")]
 position = Vector2(928, 576)
 
-[node name="PinchosEstaticos7" parent="Puzle/Pinchos" index="10" unique_id=209153729 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos7" parent="Trampas/Pinchos" index="10" unique_id=209153729 instance=ExtResource("2_xx2yp")]
 position = Vector2(864, 512)
 
-[node name="PinchosEstaticos8" parent="Puzle/Pinchos" index="11" unique_id=468909772 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos8" parent="Trampas/Pinchos" index="11" unique_id=468909772 instance=ExtResource("2_xx2yp")]
 position = Vector2(992, 512)
 
-[node name="PinchosEstaticos9" parent="Puzle/Pinchos" index="12" unique_id=1264800713 instance=ExtResource("2_xx2yp")]
+[node name="PinchosEstaticos9" parent="Trampas/Pinchos" index="12" unique_id=1264800713 instance=ExtResource("2_xx2yp")]
 position = Vector2(928, 448)
 
-[node name="BaldosaRota" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=500927486 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota" type="Node2D" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=1740639615]
+
+[node name="BaldosaRota" parent="Trampas/BaldosaRota" index="0" unique_id=500927486 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 128)
 
-[node name="BaldosaRota2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=613175371 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota2" parent="Trampas/BaldosaRota" index="1" unique_id=613175371 instance=ExtResource("5_oxclx")]
 position = Vector2(672, 128)
 
-[node name="BaldosaRota3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=2022462948 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota3" parent="Trampas/BaldosaRota" index="2" unique_id=2022462948 instance=ExtResource("5_oxclx")]
 position = Vector2(608, 128)
 
-[node name="BaldosaRota4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=851484524 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota4" parent="Trampas/BaldosaRota" index="3" unique_id=851484524 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 256)
 
-[node name="BaldosaRota5" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=1177393141 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota5" parent="Trampas/BaldosaRota" index="4" unique_id=1177393141 instance=ExtResource("5_oxclx")]
 position = Vector2(672, 256)
 
-[node name="BaldosaRota6" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="5" unique_id=301193360 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota6" parent="Trampas/BaldosaRota" index="5" unique_id=301193360 instance=ExtResource("5_oxclx")]
 position = Vector2(608, 256)
 
-[node name="BaldosaRota7" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="6" unique_id=256197771 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota7" parent="Trampas/BaldosaRota" index="6" unique_id=256197771 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 192)
 
-[node name="BaldosaRota8" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="7" unique_id=199794393 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota8" parent="Trampas/BaldosaRota" index="7" unique_id=199794393 instance=ExtResource("5_oxclx")]
 position = Vector2(672, 192)
 
-[node name="BaldosaRota9" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="8" unique_id=348476516 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota9" parent="Trampas/BaldosaRota" index="8" unique_id=348476516 instance=ExtResource("5_oxclx")]
 position = Vector2(608, 192)
 
-[node name="BaldosaRota10" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=1533246397 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota10" parent="Trampas/BaldosaRota" index="9" unique_id=1533246397 instance=ExtResource("5_oxclx")]
 position = Vector2(1184, 768)
 
-[node name="BaldosaRota11" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="10" unique_id=1179310760 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota11" parent="Trampas/BaldosaRota" index="10" unique_id=1179310760 instance=ExtResource("5_oxclx")]
 position = Vector2(1248, 768)
 
-[node name="BaldosaRota12" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="11" unique_id=796808435 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota12" parent="Trampas/BaldosaRota" index="11" unique_id=796808435 instance=ExtResource("5_oxclx")]
 position = Vector2(1312, 768)
 
-[node name="BaldosaRota13" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="12" unique_id=1320729337 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota13" parent="Trampas/BaldosaRota" index="12" unique_id=1320729337 instance=ExtResource("5_oxclx")]
 position = Vector2(1184, 832)
 
-[node name="BaldosaRota14" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="13" unique_id=1620227603 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota14" parent="Trampas/BaldosaRota" index="13" unique_id=1620227603 instance=ExtResource("5_oxclx")]
 position = Vector2(1248, 832)
 
-[node name="BaldosaRota15" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="14" unique_id=742416727 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota15" parent="Trampas/BaldosaRota" index="14" unique_id=742416727 instance=ExtResource("5_oxclx")]
 position = Vector2(1312, 832)
 
-[node name="BaldosaRota16" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="15" unique_id=2120842150 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota16" parent="Trampas/BaldosaRota" index="15" unique_id=2120842150 instance=ExtResource("5_oxclx")]
 position = Vector2(1184, 896)
 
-[node name="BaldosaRota17" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="16" unique_id=1560743540 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota17" parent="Trampas/BaldosaRota" index="16" unique_id=1560743540 instance=ExtResource("5_oxclx")]
 position = Vector2(1248, 896)
 
-[node name="BaldosaRota18" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="17" unique_id=526537191 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota18" parent="Trampas/BaldosaRota" index="17" unique_id=526537191 instance=ExtResource("5_oxclx")]
 position = Vector2(1312, 896)
 
-[node name="BaldosaRota19" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="18" unique_id=944046571 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota19" parent="Trampas/BaldosaRota" index="18" unique_id=944046571 instance=ExtResource("5_oxclx")]
 position = Vector2(1184, 256)
 
-[node name="BaldosaRota20" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="19" unique_id=250209535 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota20" parent="Trampas/BaldosaRota" index="19" unique_id=250209535 instance=ExtResource("5_oxclx")]
 position = Vector2(1248, 256)
 
-[node name="BaldosaRota21" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="20" unique_id=2123331812 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota21" parent="Trampas/BaldosaRota" index="20" unique_id=2123331812 instance=ExtResource("5_oxclx")]
 position = Vector2(1312, 256)
 
-[node name="BaldosaRota22" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="21" unique_id=1800394469 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota22" parent="Trampas/BaldosaRota" index="21" unique_id=1800394469 instance=ExtResource("5_oxclx")]
 position = Vector2(1184, 192)
 
-[node name="BaldosaRota23" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="22" unique_id=80998552 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota23" parent="Trampas/BaldosaRota" index="22" unique_id=80998552 instance=ExtResource("5_oxclx")]
 position = Vector2(1248, 192)
 
-[node name="BaldosaRota24" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="23" unique_id=683777769 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota24" parent="Trampas/BaldosaRota" index="23" unique_id=683777769 instance=ExtResource("5_oxclx")]
 position = Vector2(1312, 192)
 
-[node name="BaldosaRota25" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="24" unique_id=1056608219 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota25" parent="Trampas/BaldosaRota" index="24" unique_id=1056608219 instance=ExtResource("5_oxclx")]
 position = Vector2(1312, 128)
 
-[node name="BaldosaRota26" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="25" unique_id=328158553 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota26" parent="Trampas/BaldosaRota" index="25" unique_id=328158553 instance=ExtResource("5_oxclx")]
 position = Vector2(1248, 128)
 
-[node name="BaldosaRota27" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="26" unique_id=209214831 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota27" parent="Trampas/BaldosaRota" index="26" unique_id=209214831 instance=ExtResource("5_oxclx")]
 position = Vector2(1184, 128)
 
-[node name="BaldosaRota28" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="27" unique_id=1551193475 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota28" parent="Trampas/BaldosaRota" index="27" unique_id=1551193475 instance=ExtResource("5_oxclx")]
 position = Vector2(672, 896)
 
-[node name="BaldosaRota29" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="28" unique_id=230917834 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota29" parent="Trampas/BaldosaRota" index="28" unique_id=230917834 instance=ExtResource("5_oxclx")]
 position = Vector2(608, 896)
 
-[node name="BaldosaRota30" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="29" unique_id=1921925317 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota30" parent="Trampas/BaldosaRota" index="29" unique_id=1921925317 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 896)
 
-[node name="BaldosaRota31" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="30" unique_id=1238052959 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota31" parent="Trampas/BaldosaRota" index="30" unique_id=1238052959 instance=ExtResource("5_oxclx")]
 position = Vector2(672, 832)
 
-[node name="BaldosaRota32" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="31" unique_id=1189256561 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota32" parent="Trampas/BaldosaRota" index="31" unique_id=1189256561 instance=ExtResource("5_oxclx")]
 position = Vector2(608, 832)
 
-[node name="BaldosaRota33" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="32" unique_id=134891012 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota33" parent="Trampas/BaldosaRota" index="32" unique_id=134891012 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 832)
 
-[node name="BaldosaRota34" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="33" unique_id=1658964832 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota34" parent="Trampas/BaldosaRota" index="33" unique_id=1658964832 instance=ExtResource("5_oxclx")]
 position = Vector2(672, 768)
 
-[node name="BaldosaRota35" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="34" unique_id=1848224022 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota35" parent="Trampas/BaldosaRota" index="34" unique_id=1848224022 instance=ExtResource("5_oxclx")]
 position = Vector2(608, 768)
 
-[node name="BaldosaRota36" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="35" unique_id=1437088055 instance=ExtResource("5_oxclx")]
+[node name="BaldosaRota36" parent="Trampas/BaldosaRota" index="35" unique_id=1437088055 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 768)
 
 [node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("3_piqk1")]

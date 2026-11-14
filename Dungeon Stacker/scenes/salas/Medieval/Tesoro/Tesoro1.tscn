@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_x18jg"]
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="2_iktuw"]
 
-[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_x18jg")]
+[node name="HabitacionBase3" unique_id=1972970273 instance=ExtResource("1_x18jg")]
 
 [node name="Enemigos" parent="." index="6" unique_id=1091375848]
 position = Vector2(928, 512)
