@@ -64,7 +64,7 @@ func construir(columnas: int) -> void:
 		_puertas.append(puerta)
 		_celdas_puerta[Vector2i((puerta.position / _tam_celda).floor())] = true
 		x += tamano_tramo.x
-	_estampar(capa_extremo, Vector2i(x, 0)) # cierra la pared del final
+	_estampar(capa_extremo, Vector2i(x, 0), true) # cierra la pared del final
 
 	_columnas_celdas = x + ancho_extremo
 	_filas_celdas = tamano_tramo.y
@@ -103,15 +103,18 @@ func posicion_spawn() -> Vector2:
 
 
 ## Copia los tiles pintados de una plantilla en la capa, a partir de una celda destino.
-func _estampar(plantilla: TileMapLayer, destino: Vector2i) -> void:
-	var base := plantilla.get_used_rect().position
-	for celda in plantilla.get_used_cells():
-		_capa.set_cell(
-			destino + celda - base,
-			plantilla.get_cell_source_id(celda),
-			plantilla.get_cell_atlas_coords(celda),
-			plantilla.get_cell_alternative_tile(celda)
-		)
+func _estampar(origen: TileMapLayer, destino: Vector2i, flip_h := false) -> void:
+	var rect := origen.get_used_rect()
+	for celda in origen.get_used_cells():
+		var posicion := celda - rect.position
+		if flip_h:
+			posicion.x = rect.size.x - 1 - posicion.x
+		var atlas := origen.get_cell_atlas_coords(celda)
+		var source_id := origen.get_cell_source_id(celda)
+		var alternativa := origen.get_cell_alternative_tile(celda)
+		if flip_h:
+			alternativa = alternativa ^ TileSetAtlasSource.TRANSFORM_FLIP_H
+		_capa.set_cell(destino + posicion, source_id, atlas, alternativa)
 
 
 ## Pega la zona centrada, con su primera fila sobre la última fila del vestíbulo (la pared).
