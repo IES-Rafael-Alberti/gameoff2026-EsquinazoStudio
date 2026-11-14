@@ -4,15 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="2_gkbhv"]
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="3_c0h2b"]
 [ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="3_hytv1"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="5_ntevo"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_184b2")]
-
-[node name="ZonaEntrada" parent="." index="2" unique_id=180062892]
-visible = false
-
-[node name="Forma" parent="ZonaEntrada" index="0" unique_id=990661461]
-visible = false
 
 [node name="CofreFalso" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=551623583 instance=ExtResource("2_gkbhv")]
 position = Vector2(1056, 384)
@@ -112,7 +105,5 @@ escena_enemigo = ExtResource("3_hytv1")
 
 [node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="24" unique_id=2110658979 instance=ExtResource("3_c0h2b")]
 position = Vector2(800, 384)
-
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("5_ntevo")]
 
 [editable path="Puzle"]
