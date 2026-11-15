@@ -9,6 +9,9 @@ extends Peligro
 ## Si tiene hijos NavigationObstacle2D y/o BloqueoNavegacion, su radio se ajusta solo al
 ## alcance de los palos más margen_obstaculo, para que los enemigos que andan esquiven y no
 ## planifiquen rutas por todo el círculo que barren.
+##
+## Con retardo_inicio > 0 la trampa espera quieta, en su ángulo inicial y haciendo daño, esos
+## segundos contados desde que el jugador entra en la sala, y entonces empieza a girar.
 
 @export_group("Palos")
 ## Palos repartidos a ángulos iguales: 2 = uno cada 180°, 3 = uno cada 120°...
@@ -27,6 +30,9 @@ extends Peligro
 @export var velocidad_giro := 90.0
 ## Ángulo con el que empieza, en grados.
 @export var angulo_inicial := 0.0
+## Segundos que espera quieta antes de empezar a girar, contados desde que el jugador entra
+## en la sala. 0 = gira desde que se carga la sala.
+@export_range(0.0, 60.0, 0.1, "or_greater") var retardo_inicio := 0.0
 
 @export_group("Navegación")
 ## Píxeles que se suman al alcance de los palos para el radio del NavigationObstacle2D y
@@ -46,6 +52,8 @@ var _brazos: Node2D # contiene los sprites de los palos y del centro; es lo que 
 var _zonas: Array[CollisionShape2D] = []
 var _desfases: Array[float] = [] # ángulo de cada palo respecto al giro general
 var _distancia_zona := 0.0 # del centro al medio de la zona de daño de un palo
+var _girando := true
+var _espera := 0.0
 
 
 func _ready() -> void:
@@ -54,12 +62,39 @@ func _ready() -> void:
 	_construir()
 	_ajustar_obstaculo()
 	_aplicar_giro()
+	if retardo_inicio > 0.0:
+		_girando = false
+		_espera = retardo_inicio
+		set_physics_process(true)
+		var sala := _sala_de_la_trampa()
+		if sala != null:
+			# Hasta que el jugador no entra no empieza a contar.
+			_espera = -1.0
+			sala.jugador_entro.connect(_empezar_cuenta, CONNECT_ONE_SHOT)
 
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta) # daño por contacto
+	if not _girando:
+		if _espera < 0.0:
+			return # esperando a que entre el jugador
+		_espera -= delta
+		if _espera > 0.0:
+			return
+		_girando = true
 	_angulo += deg_to_rad(velocidad_giro) * delta
 	_aplicar_giro()
+
+
+func _empezar_cuenta() -> void:
+	_espera = retardo_inicio
+
+
+func _sala_de_la_trampa() -> Habitacion:
+	var nodo := get_parent()
+	while nodo != null and not nodo is Habitacion:
+		nodo = nodo.get_parent()
+	return nodo as Habitacion
 
 
 ## Crea los palos (sprites y zonas de daño) y el sprite del centro.
