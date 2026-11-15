@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dd8d8bsc2aj45"]
+
+[ext_resource type="Script" uid="uid://bmicqv2oq5nad" path="res://scripts/combate/spawner.gd" id="1_n6q2y"]
+[ext_resource type="PackedScene" uid="uid://b4cqci5h5klxp" path="res://scenes/enemigos/EnemigoPerseguidor.tscn" id="2_77tyf"]
+[ext_resource type="Script" uid="uid://j6eqdcqb15ih" path="res://scripts/combate/enemigo_terrestre.gd" id="3_ps4ly"]
+
+[sub_resource type="PackedScene" id="PackedScene_bv0tb"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("enemigo_terrestre", "script", "intervalo_ruta", "perder_al_salir", "ColorRect", "color", "NavigationAgent2D", "NavigationAgent2D", "path_postprocessing", "avoidance_enabled", "radius", "neighbor_distance", "max_neighbors", "time_horizon_agents"),
+"node_count": 3,
+"node_ids": PackedInt32Array(1141728963, 727044555, 114284827),
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 3, 1, 1, 2, 2, 3, 3, 0, 1073741824, -1, 2147483647, 524292, -1, 1, 5, 4, 0, 1073741825, 0, 7, 786438, -1, 6, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 0),
+"variants": [ExtResource("2_77tyf"), ExtResource("3_ps4ly"), 0.25, false, Color(1, 0.5294118, 0, 1), 1, true, 28.0, 150.0, 5, 1.25],
+"version": 3
+}
+
+[node name="Spawner" type="Node2D" unique_id=272867690]
+script = ExtResource("1_n6q2y")
+escena_enemigo = SubResource("PackedScene_bv0tb")
