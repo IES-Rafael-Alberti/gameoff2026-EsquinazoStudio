@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://6jktwjog7nwq"]
+
+[ext_resource type="Script" uid="uid://dts5ry1adxeln" path="res://scripts/trampas/lanzallamas.gd" id="1_ec1jy"]
+[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_u0pjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(512, 2560, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0pjl"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(1536, 2560, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6erux"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(3584, 2560, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjkrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0pjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6erux")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8220"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(2048, 2560, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7beia"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(4096, 2560, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqhdy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8220")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7beia")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl0o8"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(2560, 2560, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw7gf"]
+atlas = ExtResource("2_u0pjl")
+region = Rect2(4608, 2560, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_asod4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl0o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw7gf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lanzallamas" type="Area2D" unique_id=1214608391]
+collision_layer = 32
+collision_mask = 10
+script = ExtResource("1_ec1jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=56016021]
+shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Arma" type="Sprite2D" parent="." unique_id=1532166558]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_mjkrw")
+
+[node name="Llama" type="Node2D" parent="." unique_id=1167871085]
+visible = false
+
+[node name="Inicio" type="AnimatedSprite2D" parent="Llama" unique_id=1084624154]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_mjkrw")
+
+[node name="Centro" type="AnimatedSprite2D" parent="Llama" unique_id=1915064626]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_gqhdy")
+
+[node name="Fin" type="AnimatedSprite2D" parent="Llama" unique_id=294305507]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_asod4")
