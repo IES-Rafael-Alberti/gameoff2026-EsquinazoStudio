@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bnyacbnu4yr60"]
+
+[ext_resource type="PackedScene" uid="uid://bwqjyb85nbq6s" path="res://scenes/enemigos/EnemigoEstadosBase.tscn" id="1_rnhib"]
+[ext_resource type="Script" uid="uid://jrcjsddk14os" path="res://scripts/combate/EnemigoMaquinaEstado/enemigo_estados_terrestre.gd" id="2_tnkp4"]
+
+[node name="EnemigoEstadosBase" unique_id=661418023 instance=ExtResource("1_rnhib")]
+script = ExtResource("2_tnkp4")
+intervalo_ruta = 0.25
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4" unique_id=1587483118]
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 28.0
+neighbor_distance = 150.0
+max_neighbors = 5
+time_horizon_agents = 1.25
