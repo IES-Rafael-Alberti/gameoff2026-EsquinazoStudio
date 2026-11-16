@@ -15,11 +15,12 @@ extends TileMapLayer
 ## a la sala las casillas siguen como se dejaron.
 ##
 ## Estructura: un TileMapLayer con este script, en la sala. La placa puede estar donde quieras
-## en ella: se arrastra a "placa" en el inspector.
+## en ella: se arrastran a "placas" en el inspector.
 
-## Placa que lo activa. Conviene que no se quede activada (se_queda_activa desmarcado) para
-## poder pisarla otra vez. No tiene por qué ser un desafío.
-@export var placa: Placa
+## Placas que lo activan: pisar cualquiera de ellas alterna. Conviene que no se queden
+## activadas (se_queda_activa desmarcado) para poder pisarlas otra vez. No tienen por qué ser
+## un desafío.
+@export var placas: Array[Placa] = []
 
 @export_group("Marcas (en esta capa)")
 ## Coordenadas en el atlas de la marca que significa "aquí empieza una roca".
@@ -74,10 +75,11 @@ func _ready() -> void:
 		_suelo.set_cell(casilla, origen, tile, _suelo.get_cell_alternative_tile(casilla))
 		_celdas.append(casilla)
 
-	if placa == null:
-		push_warning("El cambiador %s no tiene placa asignada." % name)
-	else:
-		placa.activada.connect(_alternar)
+	if placas.is_empty():
+		push_warning("El cambiador %s no tiene ninguna placa asignada." % name)
+	for placa in placas:
+		if placa != null:
+			placa.activada.connect(_alternar)
 
 	# Se dejó alternado en una visita anterior: se vuelve a aplicar.
 	if _habitacion.datos != null and _habitacion.datos.cambiadores_alternados.has(_clave()):

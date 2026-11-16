@@ -7,7 +7,7 @@ extends Peligro
 ## Ciclo: [retardo_inicio] -> espera -> aviso (el arma parpadea en rojo) -> llama activa -> espera
 ## -> aviso -> ... Con "infinita" la llama se queda encendida para siempre tras el primer aviso.
 ## Se puede apagar y encender desde fuera (puzles, placas): encender(), apagar(), alternar(),
-## o arrastrando una Placa al campo "placa".
+## o arrastrando una o varias Placas al campo "placas".
 ##
 ## El daño es el de Peligro, pero aquí por defecto es continuo (intervalo_dano = 0: daña cada
 ## paso de física y confía en la invulnerabilidad del jugador) y sin retroceso.
@@ -25,9 +25,9 @@ extends Peligro
 
 enum Fase { APAGADA, ESPERANDO_JUGADOR, RETARDO, ESPERA, AVISO, ACTIVA }
 
-## Placa que enciende y apaga el lanzallamas: cada vez que se pisa, alterna. No tiene por qué
-## ser un desafío. Vacío = no hay botón.
-@export var placa: Placa
+## Placas que encienden y apagan el lanzallamas: pisar cualquiera de ellas alterna. No tienen
+## por qué ser un desafío. Vacío = no hay botón.
+@export var placas: Array[Placa] = []
 ## false: empieza apagado y hay que encenderlo (placa, encender()).
 @export var empieza_encendido := true
 
@@ -35,7 +35,7 @@ enum Fase { APAGADA, ESPERANDO_JUGADOR, RETARDO, ESPERA, AVISO, ACTIVA }
 ## Piezas del centro entre el inicio y el fin. 0 = solo arma + inicio + fin.
 @export_range(0, 30) var longitud := 3
 ## Distancia entre los centros de dos piezas seguidas (píxeles). Igual al tamaño de la pieza.
-var separacion := 64.0
+@export var separacion := 64.0
 ## Ancho de la zona que hace daño (píxeles).
 @export var grosor_dano := 40.0
 
@@ -85,8 +85,9 @@ func _ready() -> void:
 	activo = false # el daño solo está activo mientras la llama está encendida
 	_poner_llama(false)
 
-	if placa != null:
-		placa.activada.connect(alternar)
+	for placa in placas:
+		if placa != null:
+			placa.activada.connect(alternar)
 	if not empieza_encendido:
 		return
 
