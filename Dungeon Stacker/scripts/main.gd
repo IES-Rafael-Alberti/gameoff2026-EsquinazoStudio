@@ -51,32 +51,28 @@ func _ready() -> void:
 	actualizar_contador()
 
 func _process(delta: float) -> void:
-	if not juego_activo:
-		return
-	controlador_pieza.procesar_caida(delta)
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_R:
+	if Input.is_action_just_pressed("reiniciar"):
 		reiniciar_tetris()
 		return
 
 	if not juego_activo:
 		return
 
-	if event is InputEventKey:
-		if event.keycode == KEY_DOWN:
-			controlador_pieza.soft_drop_activo = event.pressed
-		if event.pressed and not event.echo:
-			if event.keycode == KEY_LEFT:
-				controlador_pieza.mover_pieza(Vector2i(-1, 0))
-			elif event.keycode == KEY_RIGHT:
-				controlador_pieza.mover_pieza(Vector2i(1, 0))
-			elif event.keycode == KEY_Z:
-				controlador_pieza.rotar_pieza(-1)
-			elif event.keycode == KEY_X or event.keycode == KEY_UP:
-				controlador_pieza.rotar_pieza(1)
-			elif event.keycode == KEY_SPACE:
-				controlador_pieza.hard_drop()
+	if Input.is_action_just_pressed("mover_izquierda"):
+		controlador_pieza.mover_pieza(Vector2i(-1, 0))
+	elif Input.is_action_just_pressed("mover_derecha"):
+		controlador_pieza.mover_pieza(Vector2i(1, 0))
+	elif Input.is_action_just_pressed("mover_arriba"):
+		controlador_pieza.rotar_pieza(1)
+	elif Input.is_action_just_pressed("rotar_izquierda"):
+		controlador_pieza.rotar_pieza(-1)
+	elif Input.is_action_just_pressed("rotar_derecha"):
+		controlador_pieza.rotar_pieza(1)
+	elif Input.is_action_just_pressed("accion"):
+		controlador_pieza.hard_drop()
+
+	controlador_pieza.soft_drop_activo = Input.is_action_pressed("mover_abajo")
+	controlador_pieza.procesar_caida(delta)
 
 func crear_tablero() -> void:
 	tablero_nodo.crear_tablero()
