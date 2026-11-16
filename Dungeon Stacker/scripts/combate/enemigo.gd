@@ -11,6 +11,8 @@ extends CharacterBody2D
 ## como desafío (las puertas no se cierran) y desaparecen con la sala al salir de ella.
 ## Además, al aparecer se quedan bloqueados unos instantes (bloqueo_invocado): no se mueven,
 ## no hacen daño y no reciben daño, para que el jugador no se los encuentre de golpe.
+## Quien los invoca también puede poner cuenta_como_desafio = false (spawner): entonces no
+## se registran como desafío ni siquiera en una sala sin despejar, y no bloquean las puertas.
 
 signal murio
 
@@ -28,6 +30,10 @@ signal murio
 
 ## Lo pone a true quien lo crea por código (cofre falso...) ANTES de añadirlo a la escena.
 var invocado := false
+
+## Lo pone a false quien lo crea por código (spawner...) ANTES de añadirlo a la escena si
+## no debe contar como desafío de la sala. Por defecto sí cuenta.
+var cuenta_como_desafio := true
 
 var vida: Vida
 
@@ -49,7 +55,8 @@ func _ready() -> void:
 	if habitacion != null:
 		var sala_despejada: bool = habitacion.datos != null and habitacion.datos.resuelta
 		if not sala_despejada:
-			habitacion.registrar_desafio(self)
+			if cuenta_como_desafio:
+				habitacion.registrar_desafio(self)
 		elif not invocado:
 			# Sala ya despejada: no hay enemigos al volver.
 			queue_free()
