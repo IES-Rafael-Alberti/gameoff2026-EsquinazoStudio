@@ -1,16 +1,18 @@
 class_name CambiadorBaldosas
 extends TileMapLayer
-## Cambia baldosas de la sala cuando se pisa una Placa: en las casillas indicadas, las que
-## tienen el tile A pasan a tener el B y las que tienen el B pasan a tener el A. Cada vez que
-## se pisa la placa se alterna otra vez.
+## Alterna entre rocas y baldosas en las casillas que marcas, cuando se pisa una Placa.
 ##
-## Este nodo ES la capa de marcas: las casillas a cambiar se indican pintándolas en él (con
-## cualquier tile, solo importa qué celdas están pintadas). Tiene que usar la misma cuadrícula
-## que el suelo de la sala: mismo tamaño de celda y alineado con él. En el editor se ve; en
-## juego se oculta y no colisiona ni navega.
+## Este nodo ES la capa de marcas: pintas en él dos tipos de marca, "roca" y "baldosa". Al
+## cargar la sala, bajo cada marca de roca se pone el tile de roca en el suelo y bajo cada
+## marca de baldosa el de baldosa (solo donde el suelo tiene uno de los tiles de la lista
+## "sobrescribibles", por ejemplo los tiles con la X roja). Cada vez que se pisa la placa, las
+## rocas pasan a baldosas y las baldosas a rocas.
+##
+## Tiene que usar la misma cuadrícula que el suelo de la sala: mismo tamaño de celda y
+## alineado con él. En el editor se ve; en juego se oculta y no colisiona ni navega.
 ##
 ## El estado se guarda en la celda de la sala (CeldaTablero.cambiadores_alternados): al volver
-## a la sala las baldosas siguen como se dejaron.
+## a la sala las casillas siguen como se dejaron.
 ##
 ## Estructura: un TileMapLayer con este script, en la sala. La placa puede estar donde quieras
 ## en ella: se arrastra a "placa" en el inspector.
@@ -19,15 +21,24 @@ extends TileMapLayer
 ## poder pisarla otra vez. No tiene por qué ser un desafío.
 @export var placa: Placa
 
-@export_group("Tiles")
-## Coordenadas en el atlas del tile A.
-@export var tile_a := Vector2i(1, 3)
-## Coordenadas en el atlas del tile B.
-@export var tile_b := Vector2i(0, 1)
+@export_group("Marcas (en esta capa)")
+## Coordenadas en el atlas de la marca que significa "aquí empieza una roca".
+@export var marca_roca := Vector2i(0, 0)
+## Coordenadas en el atlas de la marca que significa "aquí empieza una baldosa".
+@export var marca_baldosa := Vector2i(1, 0)
+
+@export_group("Tiles del suelo")
+## Coordenadas en el atlas del suelo del tile de roca.
+@export var tile_roca := Vector2i(1, 3)
+## Coordenadas en el atlas del suelo del tile de baldosa.
+@export var tile_baldosa := Vector2i(0, 1)
+## Tiles del suelo que el cambiador puede sobrescribir al cargar la sala bajo una marca. Si el
+## tile que hay es otro (un muro, por ejemplo), esa casilla no se toca y no cambia nunca.
+@export var sobrescribibles: Array[Vector2i] = [Vector2i(0, 1), Vector2i(2, 1), Vector2i(8, 1)]
 
 var _habitacion: Habitacion
 var _suelo: TileMapLayer
-## Casillas del suelo (no de Marcas) que se intercambian.
+## Casillas del suelo (no de esta capa) que cambian.
 var _celdas: Array[Vector2i] = []
 var _alternado := false
 
@@ -45,10 +56,23 @@ func _ready() -> void:
 	collision_enabled = false
 	navigation_enabled = false
 
-	# Se pasa cada casilla marcada a la casilla del suelo que queda en el mismo sitio.
+	# Estado inicial: cada marca pone su tile en la casilla del suelo que queda en el mismo sitio.
 	for celda in get_used_cells():
+		var atlas := get_cell_atlas_coords(celda)
+		var tile := Vector2i(-1, -1)
+		if atlas == marca_roca:
+			tile = tile_roca
+		elif atlas == marca_baldosa:
+			tile = tile_baldosa
+		else:
+			continue
 		var global := to_global(map_to_local(celda))
-		_celdas.append(_suelo.local_to_map(_suelo.to_local(global)))
+		var casilla := _suelo.local_to_map(_suelo.to_local(global))
+		var origen := _suelo.get_cell_source_id(casilla)
+		if origen == -1 or not _suelo.get_cell_atlas_coords(casilla) in sobrescribibles:
+			continue
+		_suelo.set_cell(casilla, origen, tile, _suelo.get_cell_alternative_tile(casilla))
+		_celdas.append(casilla)
 
 	if placa == null:
 		push_warning("El cambiador %s no tiene placa asignada." % name)
@@ -56,7 +80,7 @@ func _ready() -> void:
 		placa.activada.connect(_alternar)
 
 	# Se dejó alternado en una visita anterior: se vuelve a aplicar.
-	if _habitacion != null and _habitacion.datos != null and _habitacion.datos.cambiadores_alternados.has(_clave()):
+	if _habitacion.datos != null and _habitacion.datos.cambiadores_alternados.has(_clave()):
 		_intercambiar()
 		_alternado = true
 
@@ -74,7 +98,7 @@ func _alternar() -> void:
 		lista.erase(_clave())
 
 
-## A pasa a B y B pasa a A en las casillas marcadas. El resto de casillas no se tocan.
+## Las rocas pasan a baldosas y las baldosas a rocas en las casillas marcadas.
 func _intercambiar() -> void:
 	for celda in _celdas:
 		var origen := _suelo.get_cell_source_id(celda)
@@ -82,10 +106,10 @@ func _intercambiar() -> void:
 			continue
 		var atlas := _suelo.get_cell_atlas_coords(celda)
 		var alternativa := _suelo.get_cell_alternative_tile(celda)
-		if atlas == tile_a:
-			_suelo.set_cell(celda, origen, tile_b, alternativa)
-		elif atlas == tile_b:
-			_suelo.set_cell(celda, origen, tile_a, alternativa)
+		if atlas == tile_roca:
+			_suelo.set_cell(celda, origen, tile_baldosa, alternativa)
+		elif atlas == tile_baldosa:
+			_suelo.set_cell(celda, origen, tile_roca, alternativa)
 
 
 ## Identifica este cambiador dentro de su sala: su ruta desde la sala. No sirve la posición
