@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drbhgjlfsj32r"]
 
 [ext_resource type="Script" uid="uid://balpfg8mv5506" path="res://scripts/puzles/cambiador_baldosas.gd" id="1_gjaxe"]
-[ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_hgdt0"]
+[ext_resource type="Texture2D" uid="uid://q3p0f6htxt3k" path="res://assets/sprites/tiles/cambiador.png" id="1_hgdt0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iljc2"]
 texture = ExtResource("1_hgdt0")
