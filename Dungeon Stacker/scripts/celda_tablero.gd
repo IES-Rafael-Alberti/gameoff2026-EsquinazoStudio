@@ -20,6 +20,9 @@ var curaciones_recogidas: Array[Vector2i] = []
 ## Posiciones de los cofres de botín de esta sala que ya se han abierto: vuelven a aparecer
 ## abiertos y vacíos al recargar la sala.
 var cofres_abiertos: Array[Vector2i] = []
+## Rutas (desde la sala) de los CambiadorBaldosas de esta sala que están ahora mismo
+## "alternados" (con sus baldosas intercambiadas). Al recargar la sala se vuelven a aplicar.
+var cambiadores_alternados: Array[String] = []
 
 func _init(p_textura: Texture2D = null, p_categoria: CategoriaSala = null, p_bioma: int = Catalogo.Bioma.MEDIEVAL) -> void:
 	textura_fondo = p_textura
