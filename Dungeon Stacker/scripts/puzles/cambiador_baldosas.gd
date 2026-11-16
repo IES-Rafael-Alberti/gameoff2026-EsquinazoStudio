@@ -24,9 +24,9 @@ extends TileMapLayer
 
 @export_group("Marcas (en esta capa)")
 ## Coordenadas en el atlas de la marca que significa "aquí empieza una roca".
-@export var marca_roca := Vector2i(0, 0)
+var marca_roca := Vector2i(0, 0)
 ## Coordenadas en el atlas de la marca que significa "aquí empieza una baldosa".
-@export var marca_baldosa := Vector2i(1, 0)
+var marca_baldosa := Vector2i(1, 0)
 
 @export_group("Tiles del suelo")
 ## Coordenadas en el atlas del suelo del tile de roca.

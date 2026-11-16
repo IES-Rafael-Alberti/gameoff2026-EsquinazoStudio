@@ -8,18 +8,18 @@
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_hupk4")]
 
-[node name="Lanzallamas" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1214608391 node_paths=PackedStringArray("placa") instance=ExtResource("2_nn23d")]
+[node name="Lanzallamas" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1214608391 node_paths=PackedStringArray("placas") instance=ExtResource("2_nn23d")]
 position = Vector2(544, 192)
-placa = NodePath("../Placa")
+placas = [NodePath("../Placa"), NodePath("../../Placa")]
 longitud = 0
 
 [node name="Placa" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=909371902 instance=ExtResource("3_0xe0q")]
 position = Vector2(1056, 768)
 
-[node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placa") instance=ExtResource("2_rf64y")]
+[node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("2_rf64y")]
 position = Vector2(0, -32)
 tile_map_data = PackedByteArray("AAAIAA4AAAAAAAEAAAAIAA0AAAAAAAAAAAAIAAwAAAAAAAEAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAEAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAEAAAAKAAwAAAAAAAEAAAAJAAwAAAAAAAEAAAAMAA4AAAAAAAEAAAAMAA0AAAAAAAEAAAAMAAwAAAAAAAEAAAAMAAsAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAAKAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAANAA4AAAAAAAAAAAANAA0AAAAAAAAAAAANAAwAAAAAAAAAAAANAAsAAAAAAAAAAAANAAoAAAAAAAAAAAANAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAA=")
-placa = NodePath("../Placa")
+placas = [NodePath("../Placa")]
 
 [node name="Placa" parent="." index="9" unique_id=388350152 instance=ExtResource("3_0xe0q")]
 position = Vector2(928, 768)
