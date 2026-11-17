@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c8nkd6ljwsxdk"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_184b2"]
-[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="2_gkbhv"]
+[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/medieval/CofreFalso.tscn" id="2_gkbhv"]
 [ext_resource type="PackedScene" uid="uid://cbipux2sba3t7" path="res://scenes/_Componentes/Barajador.tscn" id="2_hytv1"]
-[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="3_c0h2b"]
+[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/medieval/CofreBotin.tscn" id="3_c0h2b"]
 [ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="3_hytv1"]
 [ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="6_hytv1"]
 

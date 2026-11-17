@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://d3d1jgjmc3sk4"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_tngip"]
-[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/BaldosaRota.tscn" id="2_kv3b6"]
+[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/medieval/BaldosaRota.tscn" id="2_kv3b6"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_tngip")]
 

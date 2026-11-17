@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bto6jnyv8rlwj"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fbwvh"]
-[ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/Cerradura.tscn" id="2_erex1"]
-[ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/Llave.tscn" id="3_oh24u"]
+[ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="2_erex1"]
+[ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/medieval/Llave.tscn" id="3_oh24u"]
 [ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="4_oh24u"]
 [ext_resource type="PackedScene" uid="uid://dd8d8bsc2aj45" path="res://scenes/enemigos/spawner.tscn" id="5_oh24u"]
 

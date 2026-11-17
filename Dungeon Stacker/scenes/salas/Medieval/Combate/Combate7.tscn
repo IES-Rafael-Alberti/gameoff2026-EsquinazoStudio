@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_4fdyq"]
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_4oduq"]
-[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="2_xx2yp"]
+[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="2_xx2yp"]
 [ext_resource type="Script" uid="uid://by7grrqd14lxk" path="res://scripts/utilidades/capa_suelo.gd" id="3_m7f63"]
 [ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="3_piqk1"]
-[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/BaldosaRota.tscn" id="5_oxclx"]
+[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/medieval/BaldosaRota.tscn" id="5_oxclx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4usg8"]
 vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)

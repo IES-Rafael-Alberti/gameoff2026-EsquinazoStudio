@@ -1,6 +1,6 @@
 extends Node2D
 
-const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
+const ESCENA_CUADRADO = preload("res://scenes/tetris/cuadrado.tscn")
 
 var forma: Array = []
 var textura_fondo: Texture2D

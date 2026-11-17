@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://c65d55crihwa"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_0jck4"]
-[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="2_1r77j"]
+[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="2_1r77j"]
 [ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="3_phnjx"]
 [ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="4_juxlx"]
 
