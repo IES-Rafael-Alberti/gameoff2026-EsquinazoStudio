@@ -7,6 +7,10 @@
 script = ExtResource("2_tnkp4")
 intervalo_ruta = 0.25
 
+[node name="ZonaGolpe" parent="." index="3" unique_id=2003133916]
+light_mask = 0
+visibility_layer = 2
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="4" unique_id=1587483118]
 path_postprocessing = 1
 avoidance_enabled = true
