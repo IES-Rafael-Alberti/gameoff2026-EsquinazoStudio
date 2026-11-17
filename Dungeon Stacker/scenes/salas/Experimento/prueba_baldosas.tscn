@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://c64povbrdxlc3"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_hupk4"]
-[ext_resource type="PackedScene" uid="uid://6jktwjog7nwq" path="res://scenes/trampas/lanzallamas.tscn" id="2_nn23d"]
-[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/CambiadorBaldosas.tscn" id="2_rf64y"]
-[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/placa.tscn" id="3_0xe0q"]
+[ext_resource type="PackedScene" uid="uid://6jktwjog7nwq" path="res://scenes/trampas/medieval/lanzallamas.tscn" id="2_nn23d"]
+[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/medieval/CambiadorBaldosas.tscn" id="2_rf64y"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="3_0xe0q"]
 [ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="4_2ge6q"]
 [ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="4_3dud8"]
 

@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_tng3b"]
 [ext_resource type="PackedScene" uid="uid://ftaippyffeyq" path="res://scenes/_Componentes/Probabilizador.tscn" id="2_2lk26"]
-[ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/Llave.tscn" id="2_8ve42"]
-[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="3_2lk26"]
-[ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/Cerradura.tscn" id="4_jod2r"]
+[ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/medieval/Llave.tscn" id="2_8ve42"]
+[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/medieval/CofreBotin.tscn" id="3_2lk26"]
+[ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="4_jod2r"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_tng3b")]
 

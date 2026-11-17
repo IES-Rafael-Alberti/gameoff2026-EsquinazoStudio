@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b0lyh4dl8lp1k"]
 
-[ext_resource type="PackedScene" uid="uid://lms712vs40ot" path="res://scenes/puerta.tscn" id="1_4l2vd"]
+[ext_resource type="PackedScene" uid="uid://lms712vs40ot" path="res://scenes/mazmorra/puerta.tscn" id="1_4l2vd"]
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="1_dbgry"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yanfb"]
