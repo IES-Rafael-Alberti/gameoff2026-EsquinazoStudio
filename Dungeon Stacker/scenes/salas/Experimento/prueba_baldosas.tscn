@@ -11,7 +11,6 @@
 [node name="Lanzallamas" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1214608391 node_paths=PackedStringArray("placas") instance=ExtResource("2_nn23d")]
 position = Vector2(544, 192)
 placas = [NodePath("../Placa"), NodePath("../../Placa")]
-longitud = 0
 
 [node name="Placa" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=909371902 instance=ExtResource("3_0xe0q")]
 position = Vector2(1056, 768)
