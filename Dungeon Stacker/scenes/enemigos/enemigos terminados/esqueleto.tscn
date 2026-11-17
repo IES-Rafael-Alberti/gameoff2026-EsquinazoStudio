@@ -467,7 +467,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_1x4i1"]
 resource_name = "muerte"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -673,14 +672,19 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
-size = Vector2(32, 32)
+size = Vector2(48, 40)
 
 [node name="Esqueleto" unique_id=661418023 instance=ExtResource("1_oobep")]
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=1053273587]
 libraries/ = SubResource("AnimationLibrary_b2cy6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaGolpe" parent_id_path=PackedInt32Array(2003133916) index="0" unique_id=402024500]
+[node name="ZonaGolpe" parent="." index="3" unique_id=2003133916]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaGolpe" index="0" unique_id=402024500]
+position = Vector2(40, 0)
 shape = SubResource("RectangleShape2D_mjkrw")
 
 [node name="Ataque" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
