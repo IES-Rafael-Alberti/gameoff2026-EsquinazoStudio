@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://drp53c18xn4pc"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fvmg3"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_1w53o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbglk"]
+texture = ExtResource("2_1w53o")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1w53o"]
+tile_size = Vector2i(512, 512)
+sources/0 = SubResource("TileSetAtlasSource_cbglk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wob5q"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w53o"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbglk"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s4ib"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1i0d"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25tbw"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx4u3"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tch3m"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p77fq"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sh5p"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx61x"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81m07"]
+atlas = ExtResource("2_1w53o")
+region = Rect2(512, 0, 512, 512)
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fvmg3")]
+
+[node name="TileMapLayer" parent="." index="0" unique_id=1996153903]
+tile_set = SubResource("TileSet_1w53o")
+
+[node name="PuertaNorte" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="0" unique_id=1428825819]
+sprite_abierta = SubResource("AtlasTexture_wob5q")
+sprite_cerrada = SubResource("AtlasTexture_1w53o")
+sprite_sellada = SubResource("AtlasTexture_cbglk")
+
+[node name="PuertaEste" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="1" unique_id=1373427372]
+sprite_abierta = SubResource("AtlasTexture_4s4ib")
+sprite_cerrada = SubResource("AtlasTexture_q1i0d")
+sprite_sellada = SubResource("AtlasTexture_25tbw")
+
+[node name="PuertaSur" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="2" unique_id=1809080674]
+sprite_abierta = SubResource("AtlasTexture_sx4u3")
+sprite_cerrada = SubResource("AtlasTexture_tch3m")
+sprite_sellada = SubResource("AtlasTexture_p77fq")
+
+[node name="PuertaOeste" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="3" unique_id=914210556]
+sprite_abierta = SubResource("AtlasTexture_4sh5p")
+sprite_cerrada = SubResource("AtlasTexture_fx61x")
+sprite_sellada = SubResource("AtlasTexture_81m07")
+
+[editable path="Puzle"]
