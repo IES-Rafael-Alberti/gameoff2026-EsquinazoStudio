@@ -128,7 +128,8 @@ func fijar_pieza() -> void:
 		controlador_pieza.forma_actual,
 		controlador_pieza.textura_actual,
 		controlador_pieza.categorias_actuales,
-		controlador_pieza.bioma_actual
+		controlador_pieza.bioma_actual,
+		controlador_pieza.sin_habitacion_actual
 	)
 	tablero_nodo.comprobar_lineas()
 	fixed_blocks.actualizar_tablero(tablero)

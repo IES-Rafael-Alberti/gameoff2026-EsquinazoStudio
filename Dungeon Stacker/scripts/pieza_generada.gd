@@ -7,3 +7,5 @@ var textura_fondo: Texture2D
 var textura_marco: Texture2D
 var categorias: Array[CategoriaSala] = []
 var bioma: int = Catalogo.Bioma.MEDIEVAL
+## Si esta pieza no genera habitaciones: es solo relleno del tablero (sin categorías).
+var sin_habitacion := false

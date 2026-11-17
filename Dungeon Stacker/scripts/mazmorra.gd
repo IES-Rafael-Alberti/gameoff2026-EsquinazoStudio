@@ -86,13 +86,14 @@ func _seguir_jugador() -> void:
 
 
 ## Lee una matriz como la de tablero.matriz: null = sin habitación, CeldaTablero = habitación.
+## Las celdas marcadas sin_habitacion son relleno del tablero y tampoco son sala.
 func generar(matriz: Array) -> void:
 	celdas.clear()
 	_filas = matriz.size()
 	_columnas = 0 if _filas == 0 else matriz[0].size()
 	for y in _filas:
 		for x in matriz[y].size():
-			if matriz[y][x] != null:
+			if matriz[y][x] != null and not matriz[y][x].sin_habitacion:
 				celdas[Vector2i(x, y)] = matriz[y][x]
 	_asegurar_vestibulos()
 	_interfaz.refrescar_minimapa()
