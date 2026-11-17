@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bwqjyb85nbq6s"]
+
+[ext_resource type="Script" uid="uid://bgk47m5aivuix" path="res://scripts/combate/EnemigoMaquinaEstado/enemigo_estados.gd" id="1_hnu70"]
+[ext_resource type="Script" uid="uid://151ebvf38cs1" path="res://scripts/combate/EnemigoMaquinaEstado/maquina_estados.gd" id="2_hp5of"]
+[ext_resource type="Script" uid="uid://cwoicy35jwvsm" path="res://scripts/combate/EnemigoMaquinaEstado/estado_aparicion.gd" id="3_h310c"]
+[ext_resource type="Script" uid="uid://uybsx74rw4bh" path="res://scripts/combate/EnemigoMaquinaEstado/estado_aturdido.gd" id="4_2ir05"]
+[ext_resource type="Script" uid="uid://bjtse3e40hucf" path="res://scripts/combate/EnemigoMaquinaEstado/estado_inactivo.gd" id="5_j7lle"]
+[ext_resource type="Script" uid="uid://c12gdmahswnrh" path="res://scripts/combate/EnemigoMaquinaEstado/estado_volver_a_su_sitio.gd" id="6_6wfw6"]
+[ext_resource type="Script" uid="uid://psu5cos2s0pd" path="res://scripts/combate/EnemigoMaquinaEstado/estado_perseguir.gd" id="7_uw1au"]
+[ext_resource type="Script" uid="uid://blf6tetnftlxi" path="res://scripts/combate/EnemigoMaquinaEstado/estado_muerte.gd" id="8_lgn6u"]
+[ext_resource type="Script" uid="uid://wn1pwtbjcm3d" path="res://scripts/combate/EnemigoMaquinaEstado/estado_ataque.gd" id="9_ocges"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnu70"]
+radius = 16.0
+
+[node name="EnemigoEstadosBase" type="CharacterBody2D" unique_id=661418023]
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_hnu70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=839574352]
+shape = SubResource("CircleShape2D_hnu70")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1053273587]
+
+[node name="ZonaGolpe" type="Area2D" parent="." unique_id=2003133916]
+
+[node name="MaquinaEstados" type="Node" parent="." unique_id=46075694]
+script = ExtResource("2_hp5of")
+
+[node name="Aparicion" type="Node" parent="MaquinaEstados" unique_id=1265225695]
+script = ExtResource("3_h310c")
+
+[node name="Aturdido" type="Node" parent="MaquinaEstados" unique_id=431989161]
+script = ExtResource("4_2ir05")
+
+[node name="Inactivo" type="Node" parent="MaquinaEstados" unique_id=969467728]
+script = ExtResource("5_j7lle")
+
+[node name="VolverASuSitio" type="Node" parent="MaquinaEstados" unique_id=699423932]
+script = ExtResource("6_6wfw6")
+
+[node name="Perseguir" type="Node" parent="MaquinaEstados" unique_id=586746999]
+script = ExtResource("7_uw1au")
+
+[node name="Muerte" type="Node" parent="MaquinaEstados" unique_id=498972612]
+script = ExtResource("8_lgn6u")
+
+[node name="Ataque" type="Node" parent="MaquinaEstados" unique_id=1763796683]
+script = ExtResource("9_ocges")

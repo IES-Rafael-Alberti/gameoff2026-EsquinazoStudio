@@ -67,10 +67,10 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var input_direction := Input.get_vector(
-		"ui_left",
-		"ui_right",
-		"ui_up",
-		"ui_down"
+		"mover_izquierda",
+		"mover_derecha",
+		"mover_arriba",
+		"mover_abajo"
 	)
 
 	velocity = input_direction * speed
@@ -109,7 +109,7 @@ func _empujar_cajas(direccion: Vector2, delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if cayendo:
 		return
-	if event.is_action_pressed("attack") and not event.is_echo():
+	if event.is_action_pressed("accion") and not event.is_echo():
 		if not attacking:
 			attack()
 

@@ -15,7 +15,7 @@ func _ready() -> void:
 	add_child(fondo)
 
 	var texto := Label.new()
-	texto.text = "HAS MUERTO\n\nPulsa R o Enter para reiniciar el nivel"
+	texto.text = "HAS MUERTO\n\nPulsa R o Y para reiniciar el nivel"
 	texto.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	texto.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	texto.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -28,7 +28,6 @@ func mostrar() -> void:
 func _input(event: InputEvent) -> void:
 	if not visible:
 		return
-	if event is InputEventKey and event.pressed and not event.echo \
-			and event.keycode in [KEY_R, KEY_ENTER, KEY_KP_ENTER]:
+	if event.is_action_pressed("reiniciar"):
 		get_viewport().set_input_as_handled()
 		reinicio_pedido.emit()

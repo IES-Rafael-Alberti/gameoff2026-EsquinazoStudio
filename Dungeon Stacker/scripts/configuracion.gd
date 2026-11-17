@@ -28,6 +28,17 @@ const NOMBRES_PIEZAS := ["I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P",
 ## Qué piezas pueden salir en este nivel: marca las casillas. Por defecto, todas.
 @export_flags("I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P", "+", "-", "C") var PIEZAS_NIVEL: int = 16383
 
+## Probabilidad (en %) de que cada pieza que se genera salga SIN habitación: ocupa sitio en el
+## tablero y cuenta para completar líneas, pero no es una sala (las puertas contiguas se sellan
+## y el vestíbulo cierra esa columna). 0 = todas las piezas tienen habitación.
+@export_range(0.0, 100.0, 0.5, "suffix:%") var PROBABILIDAD_SIN_HABITACION := 0.0
+
+## Probabilidad (en %) de que cada pieza que se genera (y que sí tiene habitación) salga SOLO
+## HORIZONTAL: sus salas no tienen puertas al Norte ni al Sur (solo Este y Oeste). Sin
+## protección: una sala así puede quedar aislada, y en la fila de abajo o de arriba cierra la
+## puerta de su columna en el vestíbulo. 0 = ninguna.
+@export_range(0.0, 100.0, 0.5, "suffix:%") var PROBABILIDAD_SOLO_HORIZONTAL := 0.0
+
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
 	get:

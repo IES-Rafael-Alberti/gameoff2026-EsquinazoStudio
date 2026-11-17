@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dtu3yh1sacj6f"]
+
+[ext_resource type="Script" uid="uid://cyu2xqmb2bi1q" path="res://scripts/combate/botin_piezas.gd" id="1_0cq73"]
+
+[node name="BotinPiezas" type="Node" unique_id=2125955471]
+script = ExtResource("1_0cq73")

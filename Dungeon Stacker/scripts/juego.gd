@@ -25,7 +25,7 @@ func _ready() -> void:
 	_mazmorra.jugador.murio.connect(_on_jugador_murio)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SHIFT:
+	if event.is_action_pressed("cambiar_modo"):
 		cambiar_modo()
 
 func cambiar_modo() -> void:
