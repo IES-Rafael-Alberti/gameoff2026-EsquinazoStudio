@@ -7,6 +7,8 @@ var bioma: int = Catalogo.Bioma.MEDIEVAL
 ## Si esta casilla es relleno sin habitación: ocupa el tablero y cuenta para las líneas, pero
 ## la mazmorra no la convierte en sala.
 var sin_habitacion := false
+## Si esta sala solo tiene puertas Este y Oeste (nunca Norte ni Sur).
+var solo_horizontal := false
 var resuelta := false
 ## Variante de sala elegida del pool la primera vez que se entra. Se mantiene mientras
 ## exista esta celda, para que al volver siempre sea la misma sala.

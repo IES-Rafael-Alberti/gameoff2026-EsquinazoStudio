@@ -59,7 +59,8 @@ func fijar_pieza(
 	textura_fondo: Texture2D,
 	categorias: Array,
 	bioma: int = Catalogo.Bioma.MEDIEVAL,
-	sin_habitacion := false
+	sin_habitacion := false,
+	solo_horizontal := false
 ) -> int:
 	var colocadas := 0
 	for i in forma.size():
@@ -72,6 +73,7 @@ func fijar_pieza(
 
 			var nueva := CeldaTablero.new(textura_fondo, categoria, bioma)
 			nueva.sin_habitacion = sin_habitacion
+			nueva.solo_horizontal = solo_horizontal
 			matriz[celda.y][celda.x] = nueva
 			colocadas += 1
 	return colocadas

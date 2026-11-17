@@ -88,7 +88,8 @@ CANTIDAD_PIEZAS = 3
 PESOS_CATEGORIAS = Array[ExtResource("4_c173r")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
 CONTENIDO = ExtResource("3_py3uc")
 PIEZAS_NIVEL = 128
-PROBABILIDAD_SIN_HABITACION = 25.0
+PROBABILIDAD_SIN_HABITACION = 10.0
+PROBABILIDAD_SOLO_HORIZONTAL = 10.0
 metadata/_custom_type_script = "uid://l2dv12p10t3s"
 
 [sub_resource type="Gradient" id="Gradient_spu22"]
