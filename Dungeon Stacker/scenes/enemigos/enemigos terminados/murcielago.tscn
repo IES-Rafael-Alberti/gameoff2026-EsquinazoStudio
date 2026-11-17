@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dilfq8r0jdefq"]
+
+[ext_resource type="PackedScene" uid="uid://bwqjyb85nbq6s" path="res://scenes/enemigos/EnemigoEstadosBase.tscn" id="1_axstx"]
+
+[node name="Murcielago" unique_id=661418023 instance=ExtResource("1_axstx")]
+collision_mask = 0
+volador = true
+
+[node name="ZonaGolpe" parent="." index="2" unique_id=2003133916]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Ataque" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="6" unique_id=1763796683]
+tipo = 1
