@@ -115,14 +115,14 @@ func _dibujar_vestibulos() -> void:
 	for x in mazmorra._columnas:
 		var centro_x := _origen.x + x * paso + _tam_celda * 0.5
 
-		if mazmorra.hay_habitacion(Vector2i(x, 0)):
+		if mazmorra.hay_puerta_a_vestibulo(Vector2i(x, 0)):
 			_dibujar_chevron(
 				Vector2(centro_x, _origen.y - ESPACIO_VESTIBULO * 0.5),
 				true,
 				COLOR_VESTIBULO
 			)
 
-		if mazmorra.hay_habitacion(Vector2i(x, mazmorra._filas - 1)):
+		if mazmorra.hay_puerta_a_vestibulo(Vector2i(x, mazmorra._filas - 1)):
 			var y := _origen.y + mazmorra._filas * paso - SEPARACION + ESPACIO_VESTIBULO * 0.5
 			_dibujar_chevron(Vector2(centro_x, y), false, COLOR_VESTIBULO)
 

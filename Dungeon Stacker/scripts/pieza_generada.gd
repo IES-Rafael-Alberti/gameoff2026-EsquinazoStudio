@@ -9,3 +9,5 @@ var categorias: Array[CategoriaSala] = []
 var bioma: int = Catalogo.Bioma.MEDIEVAL
 ## Si esta pieza no genera habitaciones: es solo relleno del tablero (sin categorías).
 var sin_habitacion := false
+## Si las salas de esta pieza solo tienen puertas Este y Oeste (nunca Norte ni Sur).
+var solo_horizontal := false
