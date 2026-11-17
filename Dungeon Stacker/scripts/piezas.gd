@@ -145,12 +145,24 @@ func generar_pieza() -> PiezaGenerada:
 	pieza.bioma = biomas.pick_random()
 	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
 
+	# Sin habitación: sigue siendo una pieza normal, pero sin categorías (ni icono ni letra).
+	if _sale_sin_habitacion():
+		pieza.sin_habitacion = true
+		return pieza
+
 	var candidatas := _candidatas(pieza.bioma)
 	var pesos := _pesos_de(candidatas)
 	for i in pieza.forma.size():
 		pieza.categorias.append(_elegir_categoria(candidatas, pesos))
 
 	return pieza
+
+## Tira la probabilidad de que la pieza salga sin habitación (PROBABILIDAD_SIN_HABITACION).
+func _sale_sin_habitacion() -> bool:
+	var config = Tetris.de(self).Configuracion
+	if config == null:
+		return false
+	return randf() * 100.0 < config.PROBABILIDAD_SIN_HABITACION
 
 ## Biomas del nivel: los que tienen salas en el ContenidoSalas. Sin pools, Medieval.
 func _obtener_biomas() -> Array[int]:
