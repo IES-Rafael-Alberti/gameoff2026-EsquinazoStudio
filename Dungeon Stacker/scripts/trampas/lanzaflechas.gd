@@ -19,7 +19,7 @@ enum Modo { CONTINUO, TANDAS }
 
 @export_group("Flecha")
 ## Escena de la flecha que dispara. Su raíz debe ser una Flecha.
-@export var escena_flecha: PackedScene = preload("res://scenes/trampas/flecha.tscn")
+@export var escena_flecha: PackedScene = preload("res://scenes/trampas/medieval/flecha.tscn")
 ## Distancia desde el centro del lanzador hasta donde nace la flecha, en píxeles.
 @export var distancia_salida := 40.0
 

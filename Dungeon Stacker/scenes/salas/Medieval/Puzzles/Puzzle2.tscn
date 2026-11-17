@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_rn3a0"]
 [ext_resource type="PackedScene" uid="uid://cdmt18kwxydad" path="res://scenes/puzles/placa_invisible.tscn" id="3_w2l10"]
-[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="4_yrglg"]
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="4_yrglg"]
 
 [node name="Puzzle2" unique_id=1972970273 instance=ExtResource("1_rn3a0")]
 

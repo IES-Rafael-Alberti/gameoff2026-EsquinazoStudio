@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dhifbq4o62bxx"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_tng3b"]
-[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="3_2lk26"]
-[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="3_ll7gr"]
+[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/medieval/CofreBotin.tscn" id="3_2lk26"]
+[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="3_ll7gr"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_tng3b")]
 

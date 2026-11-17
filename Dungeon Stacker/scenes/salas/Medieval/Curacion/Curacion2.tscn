@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://112rw3pm638t"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_iuo5e"]
-[ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/Cerradura.tscn" id="2_3aglm"]
-[ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/Llave.tscn" id="3_px8w1"]
+[ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="2_3aglm"]
+[ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/medieval/Llave.tscn" id="3_px8w1"]
 [ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="4_jmsin"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_iuo5e")]

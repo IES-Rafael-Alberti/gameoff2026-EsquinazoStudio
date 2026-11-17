@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b5jpf0lvth1f4"
+path="res://.godot/imported/Nieve Tetris.ogg-deffa12b336a237595e0d38228b2c725.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Nieve Tetris.ogg"
+dest_files=["res://.godot/imported/Nieve Tetris.ogg-deffa12b336a237595e0d38228b2c725.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

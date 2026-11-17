@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bx1agdn2f4cw7"]
 
 [ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
-[ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/Tetris.tscn" id="2_pew7j"]
+[ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/tetris/Tetris.tscn" id="2_pew7j"]
 [ext_resource type="Resource" uid="uid://blu4dlyhl61tl" path="res://resources/contenido_salas.tres" id="3_py3uc"]
 [ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="4_c173r"]
-[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra.tscn" id="4_ervc2"]
+[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra/mazmorra.tscn" id="4_ervc2"]
 [ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="5_d0608"]
 [ext_resource type="Resource" uid="uid://cbiolwbo0it2y" path="res://resources/categorias/CombateCuracion.tres" id="6_spu22"]
 [ext_resource type="Resource" uid="uid://dfbhvxj5ui1n" path="res://resources/categorias/CombatePuzle.tres" id="7_skotl"]
@@ -87,9 +87,7 @@ TAM_CELDA = 40
 CANTIDAD_PIEZAS = 3
 PESOS_CATEGORIAS = Array[ExtResource("4_c173r")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
 CONTENIDO = ExtResource("3_py3uc")
-PIEZAS_NIVEL = 128
-PROBABILIDAD_SIN_HABITACION = 10.0
-PROBABILIDAD_SOLO_HORIZONTAL = 10.0
+PIEZAS_NIVEL = 2
 metadata/_custom_type_script = "uid://l2dv12p10t3s"
 
 [sub_resource type="Gradient" id="Gradient_spu22"]
