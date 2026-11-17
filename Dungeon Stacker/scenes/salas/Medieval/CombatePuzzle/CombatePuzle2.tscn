@@ -1,0 +1,52 @@
+[gd_scene format=4 uid="uid://ukxxn1d812uy"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_t06gb"]
+[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/medieval/CambiadorBaldosas.tscn" id="2_nxeht"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="2_qw60p"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="3_kusue"]
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="4_gj7oj"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="5_eb33t"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_t06gb")]
+
+[node name="Placa2" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=1012111780 instance=ExtResource("3_kusue")]
+position = Vector2(640, 224)
+
+[node name="Caja" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=1664255518 instance=ExtResource("4_gj7oj")]
+position = Vector2(1216, 224)
+
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("5_eb33t")]
+position = Vector2(800, 512)
+
+[node name="Esqueleto2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1551556010 instance=ExtResource("5_eb33t")]
+position = Vector2(1056, 512)
+
+[node name="Esqueleto3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=967802765 instance=ExtResource("5_eb33t")]
+position = Vector2(544, 320)
+
+[node name="Esqueleto4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1680788979 instance=ExtResource("5_eb33t")]
+position = Vector2(736, 128)
+
+[node name="Esqueleto5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=438541206 instance=ExtResource("5_eb33t")]
+position = Vector2(1312, 320)
+
+[node name="Esqueleto6" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=1051827732 instance=ExtResource("5_eb33t")]
+position = Vector2(1120, 128)
+
+[node name="Esqueleto7" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="6" unique_id=1382776619 instance=ExtResource("5_eb33t")]
+position = Vector2(928, 640)
+
+[node name="Esqueleto8" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="7" unique_id=648657073 instance=ExtResource("5_eb33t")]
+position = Vector2(928, 384)
+
+[node name="Placa" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=909371902 instance=ExtResource("3_kusue")]
+position = Vector2(928, 512)
+
+[node name="CambiadorBaldosas" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("2_nxeht")]
+position = Vector2(512, 96)
+tile_map_data = PackedByteArray("AAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAADAAQAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAA=")
+placas = [NodePath("../Placa")]
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("2_qw60p")]
+
+[editable path="Puzle"]
