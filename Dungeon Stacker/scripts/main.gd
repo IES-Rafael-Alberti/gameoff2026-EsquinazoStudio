@@ -95,7 +95,8 @@ func actualizar_previews() -> void:
 				pieza.forma,
 				pieza.textura_fondo,
 				pieza.textura_marco,
-				pieza.categorias
+				pieza.categorias,
+				pieza.solo_horizontal
 			)
 		else:
 			preview.actualizar_pieza([], null, null, [])

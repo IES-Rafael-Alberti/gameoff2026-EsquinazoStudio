@@ -108,7 +108,7 @@ func actualizar_pieza_actual() -> void:
 		current_piece.actualizar_pieza([], Vector2i.ZERO, textura_actual, marco_actual, categorias_actuales, false)
 		return
 
-	current_piece.actualizar_pieza(forma_actual, posicion_pieza, textura_actual, marco_actual, categorias_actuales, true)
+	current_piece.actualizar_pieza(forma_actual, posicion_pieza, textura_actual, marco_actual, categorias_actuales, true, solo_horizontal_actual)
 
 func actualizar_pieza_fantasma() -> void:
 	if forma_actual.is_empty():
@@ -116,7 +116,7 @@ func actualizar_pieza_fantasma() -> void:
 		return
 
 	var posicion_fantasma = calcular_posicion_fantasma()
-	ghost_piece.actualizar_pieza(forma_actual, posicion_fantasma, textura_actual, marco_actual, categorias_actuales, true)
+	ghost_piece.actualizar_pieza(forma_actual, posicion_fantasma, textura_actual, marco_actual, categorias_actuales, true, solo_horizontal_actual)
 	
 func calcular_posicion_fantasma() -> Vector2i:
 	var posicion_fantasma = posicion_pieza

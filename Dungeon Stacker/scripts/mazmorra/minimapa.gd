@@ -83,6 +83,8 @@ func _draw() -> void:
 			var rect := Rect2(pos, Vector2(_tam_celda, _tam_celda))
 			draw_rect(rect, COLOR_RESUELTA if datos.resuelta else COLOR_PENDIENTE, true)
 			_dibujar_categoria(rect, datos.categoria)
+			if datos.solo_horizontal:
+				_dibujar_marca_horizontal(rect)
 			if mazmorra.lugar == Mazmorra.Lugar.SALA and celda == mazmorra.celda_actual:
 				draw_rect(rect, COLOR_ACTUAL, false, 3.0)
 	_dibujar_vestibulos()
@@ -109,6 +111,25 @@ func _dibujar_categoria(rect: Rect2, categoria: CategoriaSala) -> void:
 	)
 	draw_string_outline(fuente, pos, categoria.letra, HORIZONTAL_ALIGNMENT_LEFT, -1, tam_fuente, 3, Color.BLACK)
 	draw_string(fuente, pos, categoria.letra, HORIZONTAL_ALIGNMENT_LEFT, -1, tam_fuente, COLOR_LETRA)
+
+## Dos flechas pequeñas (izquierda y derecha) abajo de la casilla: sala solo Este y Oeste.
+func _dibujar_marca_horizontal(rect: Rect2) -> void:
+	var d := _tam_celda * 0.18
+	var centro := rect.position + Vector2(rect.size.x * 0.5, rect.size.y - d * 1.2)
+	var hueco := d * 0.3
+	var izquierda := PackedVector2Array([
+		centro + Vector2(-hueco, -d * 0.7),
+		centro + Vector2(-hueco, d * 0.7),
+		centro + Vector2(-hueco - d, 0)
+	])
+	var derecha := PackedVector2Array([
+		centro + Vector2(hueco, -d * 0.7),
+		centro + Vector2(hueco, d * 0.7),
+		centro + Vector2(hueco + d, 0)
+	])
+	draw_colored_polygon(izquierda, COLOR_LETRA)
+	draw_colored_polygon(derecha, COLOR_LETRA)
+
 
 func _dibujar_vestibulos() -> void:
 	var paso := _tam_celda + SEPARACION
