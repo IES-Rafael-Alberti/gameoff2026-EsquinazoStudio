@@ -1,22 +1,11 @@
-class_name Barreras
-extends Node2D
-## Dibuja la textura de barrera encima de cada posición con barrera activa. Va en la escena del
-## Tetris como hijo de Board, justo detrás de FixedBlocks, para quedar encima de las casillas
-## colocadas pero por debajo de la pieza que cae y de su fantasma.
+class_name GrupoBarrera
+extends Resource
+## Un grupo de posiciones barrera del nivel. Las piezas se pueden colocar ahí y cuentan para las
+## líneas, pero mientras la barrera esté activa sus casillas no generan sala. Un objetivo del
+## nivel apaga el grupo por su nombre (Tetris.desactivar_barrera).
 
-var _posiciones: Array[Vector2i] = []
+## Nombre del grupo: es lo que se usa para desactivarlo. Debe ser único en el nivel.
+@export var nombre: StringName = &""
 
-func actualizar(posiciones: Array[Vector2i]) -> void:
-	_posiciones = posiciones
-	queue_redraw()
-
-func _draw() -> void:
-	var tetris := Tetris.de(self)
-	if tetris == null or tetris.Configuracion == null:
-		return
-	var textura: Texture2D = tetris.Configuracion.TEXTURA_BARRERA
-	if textura == null:
-		return
-	var tam: int = tetris.Configuracion.TAM_CELDA
-	for pos in _posiciones:
-		draw_texture_rect(textura, Rect2(Vector2(pos) * tam, Vector2(tam, tam)), false)
+## Posiciones del tablero (x = columna, y = fila; 0 = fila de arriba).
+@export var posiciones: Array[Vector2i] = []
