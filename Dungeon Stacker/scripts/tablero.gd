@@ -12,6 +12,8 @@ func crear_tablero() -> void:
 
 		matriz.append(fila)
 
+	_colocar_casillas_especiales()
+
 
 func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
 	var Configuracion = Tetris.de(self).Configuracion
@@ -29,6 +31,69 @@ func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
 	return false
 
 
+## Pone en el tablero las casillas bloqueadas y las fijas del nivel.
+func _colocar_casillas_especiales() -> void:
+	var Configuracion = Tetris.de(self).Configuracion
+	for pos in Configuracion.CASILLAS_BLOQUEADAS:
+		if not _dentro(pos):
+			push_warning("Casilla bloqueada fuera del tablero: %s" % pos)
+			continue
+		var bloqueada := CeldaTablero.new(Configuracion.TEXTURA_BLOQUEADA)
+		bloqueada.bloqueada = true
+		bloqueada.sin_habitacion = true
+		matriz[pos.y][pos.x] = bloqueada
+	for fija in Configuracion.CASILLAS_FIJAS:
+		if fija == null:
+			continue
+		if not _dentro(fija.posicion):
+			push_warning("Casilla fija fuera del tablero: %s" % fija.posicion)
+			continue
+		if matriz[fija.posicion.y][fija.posicion.x] != null:
+			push_warning("Casilla fija en %s: ya hay otra casilla especial; se ignora." % fija.posicion)
+			continue
+		var celda := CeldaTablero.new(Configuracion.TEXTURA_FIJA)
+		celda.fija = true
+		celda.escena_sala = fija.escena
+		matriz[fija.posicion.y][fija.posicion.x] = celda
+
+
+func _dentro(pos: Vector2i) -> bool:
+	var Configuracion = Tetris.de(self).Configuracion
+	return pos.x >= 0 and pos.x < Configuracion.COLUMNAS and pos.y >= 0 and pos.y < Configuracion.FILAS
+
+
+func _es_inmovil(x: int, y: int) -> bool:
+	var celda = matriz[y][x]
+	return celda != null and celda.es_inmovil()
+
+
+## Una fila está completa si todas sus casillas están ocupadas Y al menos una se puede borrar
+## (una fila hecha solo de casillas fijas o bloqueadas no cuenta).
+func _linea_completa(y: int) -> bool:
+	var hay_borrable := false
+	for x in range(matriz[y].size()):
+		var celda = matriz[y][x]
+		if celda == null:
+			return false
+		if not celda.es_inmovil():
+			hay_borrable = true
+	return hay_borrable
+
+
+## Borra de la fila y las casillas que no son inmóviles. Las inmóviles se quedan donde están.
+## En cada columna, lo que hay encima baja una casilla, hasta toparse con una inmóvil: lo que
+## está apoyado sobre una casilla inmóvil no baja.
+func _borrar_linea(y: int) -> void:
+	for x in range(matriz[y].size()):
+		if _es_inmovil(x, y):
+			continue
+		var r := y
+		while r > 0 and not _es_inmovil(x, r - 1):
+			matriz[r][x] = matriz[r - 1][x]
+			r -= 1
+		matriz[r][x] = null
+
+
 ## Borra las líneas completas y devuelve cuántas ha borrado.
 func comprobar_lineas() -> int:
 	var Configuracion = Tetris.de(self).Configuracion
@@ -36,22 +101,9 @@ func comprobar_lineas() -> int:
 	var lineas := 0
 
 	while y >= 0:
-		var linea_completa = true
-
-		for x in range(Configuracion.COLUMNAS):
-			if matriz[y][x] == null:
-				linea_completa = false
-				break
-
-		if linea_completa:
+		if _linea_completa(y):
 			lineas += 1
-			matriz.remove_at(y)
-
-			var nueva_fila: Array = []
-			for x in range(Configuracion.COLUMNAS):
-				nueva_fila.append(null)
-
-			matriz.push_front(nueva_fila)
+			_borrar_linea(y)
 		else:
 			y -= 1
 

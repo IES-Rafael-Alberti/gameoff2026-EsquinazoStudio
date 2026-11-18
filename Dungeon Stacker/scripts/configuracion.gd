@@ -66,6 +66,19 @@ func es_tesoro(categoria: CategoriaSala) -> bool:
 ## Peso de "pieza aleatoria normal" en el sorteo del pool. Con el pool vacío no importa.
 @export_range(0.0, 100.0, 0.1) var PESO_PIEZA_NORMAL := 10.0
 
+@export_group("Casillas especiales")
+## Habitaciones fijas: aparecen en su coordenada al empezar y no se van al hacer línea.
+@export var CASILLAS_FIJAS: Array[CasillaFija] = []
+
+## Posiciones bloqueadas (x = columna, y = fila): muros que las piezas no atraviesan, no se
+## borran, cuentan para las líneas y no generan sala.
+@export var CASILLAS_BLOQUEADAS: Array[Vector2i] = []
+
+## Textura de fondo de las casillas fijas (sin textura, solo se ve el marco).
+var TEXTURA_FIJA: Texture2D
+## Textura de fondo de las casillas bloqueadas (sin textura, solo se ve el marco).
+var TEXTURA_BLOQUEADA: Texture2D
+
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
 	get:
