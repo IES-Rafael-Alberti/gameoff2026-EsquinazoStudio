@@ -7,6 +7,9 @@ var bioma: int = Catalogo.Bioma.MEDIEVAL
 ## Si esta casilla es relleno sin habitación: ocupa el tablero y cuenta para las líneas, pero
 ## la mazmorra no la convierte en sala.
 var sin_habitacion := false
+## Si la pieza original era sin habitación. sin_habitacion puede ser true solo por estar sobre
+## una barrera activa; al desactivarla vuelve a este valor.
+var sin_habitacion_original := false
 ## Si esta sala solo tiene puertas Este y Oeste (nunca Norte ni Sur).
 var solo_horizontal := false
 ## Casilla fija del nivel (ver CasillaFija): inmóvil, no se borra al hacer línea, y sí es sala.

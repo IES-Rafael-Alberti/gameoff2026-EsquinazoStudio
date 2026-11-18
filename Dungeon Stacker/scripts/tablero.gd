@@ -1,6 +1,8 @@
 extends Node
 
 var matriz: Array = []
+## Posiciones con barrera ACTIVA -> nombre de su grupo.
+var _barreras: Dictionary = {}
 
 func crear_tablero() -> void:
 	matriz.clear()
@@ -13,6 +15,7 @@ func crear_tablero() -> void:
 		matriz.append(fila)
 
 	_colocar_casillas_especiales()
+	_colocar_barreras()
 
 
 func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
@@ -55,6 +58,56 @@ func _colocar_casillas_especiales() -> void:
 		celda.fija = true
 		celda.escena_sala = fija.escena
 		matriz[fija.posicion.y][fija.posicion.x] = celda
+
+
+## Registra las posiciones barrera de todos los grupos del nivel.
+func _colocar_barreras() -> void:
+	_barreras.clear()
+	var Configuracion = Tetris.de(self).Configuracion
+	for grupo in Configuracion.CASILLAS_BARRERA:
+		if grupo == null:
+			continue
+		for pos in grupo.posiciones:
+			if not _dentro(pos):
+				push_warning("Barrera '%s' fuera del tablero: %s" % [grupo.nombre, pos])
+			elif _es_inmovil(pos.x, pos.y):
+				push_warning("Barrera '%s' en %s: ya hay una casilla fija o bloqueada; se ignora." % [grupo.nombre, pos])
+			elif _barreras.has(pos):
+				push_warning("Barrera '%s' en %s: la posición ya es de otro grupo; se ignora." % [grupo.nombre, pos])
+			else:
+				_barreras[pos] = grupo.nombre
+
+
+## Posiciones con barrera activa (para dibujarlas).
+func posiciones_barrera() -> Array[Vector2i]:
+	var posiciones: Array[Vector2i] = []
+	for pos in _barreras:
+		posiciones.append(pos)
+	return posiciones
+
+
+## Apaga un grupo de barreras: sus casillas ocupadas recuperan su sala. Devuelve false si no
+## había ninguna posición activa con ese nombre.
+func desactivar_barrera(grupo: StringName) -> bool:
+	var quitadas: Array[Vector2i] = []
+	for pos in _barreras:
+		if _barreras[pos] == grupo:
+			quitadas.append(pos)
+	for pos in quitadas:
+		_barreras.erase(pos)
+	_aplicar_barreras()
+	return not quitadas.is_empty()
+
+
+## Las casillas colocadas sobre una barrera activa no son sala; fuera de ella, vuelven a lo
+## que eran. Se recalcula por posición, así sigue bien aunque la casilla caiga al borrar líneas.
+func _aplicar_barreras() -> void:
+	for y in range(matriz.size()):
+		for x in range(matriz[y].size()):
+			var celda = matriz[y][x]
+			if celda == null or celda.es_inmovil():
+				continue
+			celda.sin_habitacion = celda.sin_habitacion_original or _barreras.has(Vector2i(x, y))
 
 
 func _dentro(pos: Vector2i) -> bool:
@@ -107,6 +160,7 @@ func comprobar_lineas() -> int:
 		else:
 			y -= 1
 
+	_aplicar_barreras()
 	return lineas
 
 
@@ -130,7 +184,9 @@ func fijar_pieza(
 
 			var nueva := CeldaTablero.new(textura_fondo, categoria, bioma)
 			nueva.sin_habitacion = sin_habitacion
+			nueva.sin_habitacion_original = sin_habitacion
 			nueva.solo_horizontal = solo_horizontal
 			matriz[celda.y][celda.x] = nueva
 			colocadas += 1
+	_aplicar_barreras()
 	return colocadas

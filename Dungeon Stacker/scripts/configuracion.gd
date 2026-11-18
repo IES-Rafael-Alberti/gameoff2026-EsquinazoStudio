@@ -75,9 +75,18 @@ func es_tesoro(categoria: CategoriaSala) -> bool:
 @export var CASILLAS_BLOQUEADAS: Array[Vector2i] = []
 
 ## Textura de fondo de las casillas fijas (sin textura, solo se ve el marco).
-var TEXTURA_FIJA: Texture2D
+@export var TEXTURA_FIJA: Texture2D
 ## Textura de fondo de las casillas bloqueadas (sin textura, solo se ve el marco).
-var TEXTURA_BLOQUEADA: Texture2D
+@export var TEXTURA_BLOQUEADA: Texture2D
+
+@export_group("Barreras")
+## Grupos de posiciones barrera: se puede colocar pieza ahí y cuenta para las líneas, pero no
+## genera sala mientras el grupo esté activo. La posición permanece aunque se borre la línea.
+@export var CASILLAS_BARRERA: Array[GrupoBarrera] = []
+
+## Textura que se dibuja sobre las posiciones con barrera activa (se usa tal cual: hazla
+## semitransparente en la propia imagen).
+@export var TEXTURA_BARRERA: Texture2D
 
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
