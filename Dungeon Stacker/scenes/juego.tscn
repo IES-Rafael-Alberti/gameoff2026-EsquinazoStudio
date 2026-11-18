@@ -84,7 +84,7 @@ categoria = ExtResource("15_spu22")
 peso = 7.0
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
-[sub_resource type="Resource" id="Resource_bh3c7"]
+[sub_resource type="Resource" id="Resource_u22gr"]
 resource_local_to_scene = true
 script = ExtResource("14_rcahx")
 COLUMNAS = 10
@@ -94,6 +94,7 @@ CANTIDAD_PIEZAS = 15
 PESOS_CATEGORIAS = Array[ExtResource("4_c173r")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
 CONTENIDO = ExtResource("3_py3uc")
 PIEZAS_NIVEL = 2
+PROBABILIDAD_SOLO_HORIZONTAL = 95.0
 CATEGORIA_TESORO = ExtResource("11_0g8fp")
 CATEGORIAS_TESORO = Array[ExtResource("3_skotl")]([ExtResource("11_0g8fp"), ExtResource("12_u22gr"), ExtResource("13_bh3c7"), ExtResource("14_d0608")])
 metadata/_custom_type_script = "uid://l2dv12p10t3s"
@@ -113,7 +114,7 @@ size = Vector2(180, 180)
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
-Configuracion = SubResource("Resource_bh3c7")
+Configuracion = SubResource("Resource_u22gr")
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
 

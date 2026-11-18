@@ -86,8 +86,7 @@ func es_tesoro(categoria: CategoriaSala) -> bool:
 
 ## Textura que se dibuja sobre las posiciones con barrera activa (se usa tal cual: hazla
 ## semitransparente en la propia imagen).
-var TEXTURA_BARRERA: Texture2D
-
+var TEXTURA_BARRERA: Texture2D = preload("res://assets/sprites/piezas/Casilla puntos.png")
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
 	get:

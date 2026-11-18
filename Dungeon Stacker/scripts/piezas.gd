@@ -210,9 +210,14 @@ func _desde_escogida(escogida: PiezaEscogida) -> PiezaGenerada:
 		var categoria: CategoriaSala = null
 		if i < escogida.categorias.size():
 			categoria = escogida.categorias[i]
-		if categoria == null:
+		var escena: PackedScene = null
+		if i < escogida.escenas.size():
+			escena = escogida.escenas[i]
+		# Con escena concreta, la categoría es solo para el icono: no se sortea.
+		if categoria == null and escena == null:
 			categoria = _elegir_categoria(candidatas, pesos)
 		pieza.categorias.append(categoria)
+		pieza.escenas.append(escena)
 	return pieza
 
 ## Pieza aleatoria normal, con las probabilidades y pesos del nivel.

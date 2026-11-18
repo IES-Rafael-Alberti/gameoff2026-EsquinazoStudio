@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blvjaebgnqvbq"]
 
 [ext_resource type="Script" uid="uid://duha6hnphuqpj" path="res://scripts/cuadrado.gd" id="1_kdvc6"]
-[ext_resource type="Texture2D" uid="uid://g5udijpeff4o" path="res://BorrarTodoDeAqui/marca_horizontal.png" id="2_82o12"]
+[ext_resource type="Texture2D" uid="uid://qdv7t20m4yvt" path="res://assets/sprites/piezas/Flecha.png" id="2_82o12"]
 
 [node name="Cuadrado" type="Node2D" unique_id=1254677309]
 script = ExtResource("1_kdvc6")
