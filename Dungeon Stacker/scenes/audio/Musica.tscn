@@ -34,3 +34,6 @@ metadata/_custom_type_script = "uid://3y22rycf8akk"
 script = ExtResource("1_4ij01")
 cancion_menu = ExtResource("2_ru1hb")
 pistas_biomas = Array[ExtResource("3_4qdvk")]([SubResource("Resource_4ij01"), SubResource("Resource_au5cx"), SubResource("Resource_akw8f")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=928257756]
+bus = &"Music"

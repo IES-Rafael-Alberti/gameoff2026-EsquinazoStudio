@@ -77,7 +77,8 @@ func es_tesoro(categoria: CategoriaSala) -> bool:
 ## Textura de fondo de las casillas fijas (sin textura, solo se ve el marco).
 @export var TEXTURA_FIJA: Texture2D
 ## Textura de fondo de las casillas bloqueadas (sin textura, solo se ve el marco).
-@export var TEXTURA_BLOQUEADA: Texture2D
+var TEXTURA_BLOQUEADA: Texture2D = preload("res://assets/sprites/piezas/Pieza bloqueada.png")
+
 
 @export_group("Barreras")
 ## Grupos de posiciones barrera: se puede colocar pieza ahí y cuenta para las líneas, pero no

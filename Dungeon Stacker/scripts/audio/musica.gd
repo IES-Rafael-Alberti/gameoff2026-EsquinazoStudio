@@ -26,7 +26,8 @@ enum Modo { TETRIS, MAZMORRA }
 
 const SILENCIO_DB := -80.0
 
-var _player: AudioStreamPlayer
+## Reproductor de la escena Musica.tscn: ahí se elige el bus (Musica) en el inspector.
+@onready var _player: AudioStreamPlayer = $AudioStreamPlayer
 var _sync: AudioStreamSynchronized
 var _tween: Tween
 var _tween_modo: Tween
@@ -42,9 +43,7 @@ var _mezcla := 0.0
 func _ready() -> void:
 	# Que la música siga sonando con el árbol en pausa (pantalla de muerte, etc.).
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	_player = AudioStreamPlayer.new()
 	_player.volume_db = SILENCIO_DB
-	add_child(_player)
 
 
 ## Suena la canción del menú (con fundido si venía de otra cosa).
