@@ -13,6 +13,7 @@ static func de(nodo: Node) -> Tetris:
 @export var MAX_PREVIEWS := 5
 
 @onready var fixed_blocks = $Board/FixedBlocks
+@onready var barreras = $Board/Barreras
 @onready var ghost_piece = $Board/GhostPiece
 @onready var current_piece = $Board/CurrentPiece
 @onready var tablero_nodo = $Board/Tablero
@@ -77,6 +78,7 @@ func _process(delta: float) -> void:
 func crear_tablero() -> void:
 	tablero_nodo.crear_tablero()
 	fixed_blocks.actualizar_tablero(tablero)
+	barreras.actualizar(tablero_nodo.posiciones_barrera())
 
 func refrescar_cola() -> void:
 	var objetivo = mini(piezas_disponibles, mini(MAX_PREVIEWS, previews.size()))
@@ -170,6 +172,13 @@ func _regalar_tesoro(lineas: int) -> void:
 			pieza.categorias[candidatas[i]] = tesoro
 		pendientes -= cambiadas
 	actualizar_previews()
+
+## Apaga un grupo de barreras por su nombre (lo llamará el objetivo del nivel). Las casillas
+## colocadas sobre ellas recuperan su sala.
+func desactivar_barrera(grupo: StringName) -> void:
+	if not tablero_nodo.desactivar_barrera(grupo):
+		push_warning("desactivar_barrera: no hay barrera activa con el nombre '%s'." % grupo)
+	barreras.actualizar(tablero_nodo.posiciones_barrera())
 
 func agregar_piezas(cantidad: int) -> void:
 	if cantidad <= 0:
