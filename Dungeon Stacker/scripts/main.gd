@@ -133,7 +133,8 @@ func fijar_pieza() -> void:
 		controlador_pieza.sin_habitacion_actual,
 		controlador_pieza.solo_horizontal_actual
 	)
-	tablero_nodo.comprobar_lineas()
+	var lineas: int = tablero_nodo.comprobar_lineas()
+	_regalar_tesoro(lineas)
 	fixed_blocks.actualizar_tablero(tablero)
 
 	if colocadas == 0:
@@ -144,6 +145,31 @@ func fijar_pieza() -> void:
 		return
 
 	generar_pieza()
+
+## Por cada línea completada, una casilla de las piezas de la cola pasa a ser Tesoro. Se empieza
+## por la primera pieza; las casillas que ya son de tesoro, las piezas sin habitación y las
+## piezas escogidas se ignoran, y lo que no cabe en una pieza pasa a la siguiente de la cola.
+func _regalar_tesoro(lineas: int) -> void:
+	var tesoro: CategoriaSala = Configuracion.CATEGORIA_TESORO
+	if lineas <= 0 or tesoro == null:
+		return
+
+	var pendientes := lineas
+	for pieza in cola_piezas:
+		if pendientes <= 0:
+			break
+		if pieza.sin_habitacion or pieza.escogida:
+			continue
+		var candidatas: Array[int] = []
+		for i in pieza.categorias.size():
+			if not Configuracion.es_tesoro(pieza.categorias[i]):
+				candidatas.append(i)
+		candidatas.shuffle()
+		var cambiadas := mini(pendientes, candidatas.size())
+		for i in cambiadas:
+			pieza.categorias[candidatas[i]] = tesoro
+		pendientes -= cambiadas
+	actualizar_previews()
 
 func agregar_piezas(cantidad: int) -> void:
 	if cantidad <= 0:
@@ -161,6 +187,7 @@ func reiniciar_tetris() -> void:
 	crear_tablero()
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	cola_piezas.clear()
+	piezas.reiniciar_secuencia()
 	refrescar_cola()
 	generar_pieza()
 	actualizar_contador()

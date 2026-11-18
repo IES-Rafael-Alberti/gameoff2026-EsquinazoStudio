@@ -29,9 +29,11 @@ func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
 	return false
 
 
-func comprobar_lineas() -> void:
+## Borra las líneas completas y devuelve cuántas ha borrado.
+func comprobar_lineas() -> int:
 	var Configuracion = Tetris.de(self).Configuracion
 	var y = Configuracion.FILAS - 1
+	var lineas := 0
 
 	while y >= 0:
 		var linea_completa = true
@@ -42,6 +44,7 @@ func comprobar_lineas() -> void:
 				break
 
 		if linea_completa:
+			lineas += 1
 			matriz.remove_at(y)
 
 			var nueva_fila: Array = []
@@ -51,6 +54,8 @@ func comprobar_lineas() -> void:
 			matriz.push_front(nueva_fila)
 		else:
 			y -= 1
+
+	return lineas
 
 
 func fijar_pieza(
