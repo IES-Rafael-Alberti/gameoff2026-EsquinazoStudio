@@ -9,6 +9,10 @@ var bioma: int = Catalogo.Bioma.MEDIEVAL
 var sin_habitacion := false
 ## Si esta sala solo tiene puertas Este y Oeste (nunca Norte ni Sur).
 var solo_horizontal := false
+## Casilla fija del nivel (ver CasillaFija): inmóvil, no se borra al hacer línea, y sí es sala.
+var fija := false
+## Casilla bloqueada del nivel: muro inmóvil que no se borra, cuenta para las líneas y no es sala.
+var bloqueada := false
 var resuelta := false
 ## Variante de sala elegida del pool la primera vez que se entra. Se mantiene mientras
 ## exista esta celda, para que al volver siempre sea la misma sala.
@@ -33,3 +37,7 @@ func _init(p_textura: Texture2D = null, p_categoria: CategoriaSala = null, p_bio
 	textura_fondo = p_textura
 	categoria = p_categoria
 	bioma = p_bioma
+
+## Las casillas inmóviles no se borran al hacer línea ni caen cuando se borra la de abajo.
+func es_inmovil() -> bool:
+	return fija or bloqueada
