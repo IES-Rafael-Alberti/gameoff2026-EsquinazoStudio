@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ec52h3tn8l2s" path="res://scripts/tetris/casilla_fija.gd" id="3_0g8fp"]
 [ext_resource type="Resource" uid="uid://blu4dlyhl61tl" path="res://resources/contenido_salas.tres" id="3_py3uc"]
 [ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="3_skotl"]
+[ext_resource type="Script" uid="uid://gwn7jo3iiwod" path="res://scripts/tetris/grupo_barrera.gd" id="3_u22gr"]
 [ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="4_c173r"]
 [ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra/mazmorra.tscn" id="4_ervc2"]
 [ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="5_d0608"]
@@ -83,7 +84,7 @@ categoria = ExtResource("15_spu22")
 peso = 7.0
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
-[sub_resource type="Resource" id="Resource_skotl"]
+[sub_resource type="Resource" id="Resource_bh3c7"]
 resource_local_to_scene = true
 script = ExtResource("14_rcahx")
 COLUMNAS = 10
@@ -112,7 +113,7 @@ size = Vector2(180, 180)
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
-Configuracion = SubResource("Resource_skotl")
+Configuracion = SubResource("Resource_bh3c7")
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
 
