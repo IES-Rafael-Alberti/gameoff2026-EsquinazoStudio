@@ -6,6 +6,7 @@ var forma: Array = []
 var textura_fondo: Texture2D
 var textura_marco: Texture2D
 var categorias: Array = []
+var solo_horizontal := false
 
 var _cuadrados: Array = []
 
@@ -14,12 +15,14 @@ func actualizar_pieza(
 	nueva_forma: Array,
 	nueva_textura_fondo: Texture2D,
 	nueva_textura_marco: Texture2D,
-	nuevas_categorias: Array
+	nuevas_categorias: Array,
+	nuevo_solo_horizontal := false
 ) -> void:
 	forma = nueva_forma
 	textura_fondo = nueva_textura_fondo
 	textura_marco = nueva_textura_marco
 	categorias = nuevas_categorias
+	solo_horizontal = nuevo_solo_horizontal
 
 	_asegurar_cuadrados(forma.size())
 	_actualizar_cuadrados()
@@ -69,5 +72,5 @@ func _actualizar_cuadrados() -> void:
 
 		var bloque = forma[i]
 		cuadrado.visible = true
-		cuadrado.configurar(textura_fondo, textura_marco, categoria)
+		cuadrado.configurar(textura_fondo, textura_marco, categoria, null, solo_horizontal)
 		cuadrado.position = origen + Vector2(bloque.x - min_x, bloque.y - min_y) * tam

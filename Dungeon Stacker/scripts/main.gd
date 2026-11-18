@@ -13,6 +13,7 @@ static func de(nodo: Node) -> Tetris:
 @export var MAX_PREVIEWS := 5
 
 @onready var fixed_blocks = $Board/FixedBlocks
+@onready var barreras = $Board/Barreras
 @onready var ghost_piece = $Board/GhostPiece
 @onready var current_piece = $Board/CurrentPiece
 @onready var tablero_nodo = $Board/Tablero
@@ -77,6 +78,7 @@ func _process(delta: float) -> void:
 func crear_tablero() -> void:
 	tablero_nodo.crear_tablero()
 	fixed_blocks.actualizar_tablero(tablero)
+	barreras.actualizar(tablero_nodo.posiciones_barrera())
 
 func refrescar_cola() -> void:
 	var objetivo = mini(piezas_disponibles, mini(MAX_PREVIEWS, previews.size()))
@@ -95,7 +97,8 @@ func actualizar_previews() -> void:
 				pieza.forma,
 				pieza.textura_fondo,
 				pieza.textura_marco,
-				pieza.categorias
+				pieza.categorias,
+				pieza.solo_horizontal
 			)
 		else:
 			preview.actualizar_pieza([], null, null, [])
@@ -132,7 +135,8 @@ func fijar_pieza() -> void:
 		controlador_pieza.sin_habitacion_actual,
 		controlador_pieza.solo_horizontal_actual
 	)
-	tablero_nodo.comprobar_lineas()
+	var lineas: int = tablero_nodo.comprobar_lineas()
+	_regalar_tesoro(lineas)
 	fixed_blocks.actualizar_tablero(tablero)
 
 	if colocadas == 0:
@@ -143,6 +147,38 @@ func fijar_pieza() -> void:
 		return
 
 	generar_pieza()
+
+## Por cada línea completada, una casilla de las piezas de la cola pasa a ser Tesoro. Se empieza
+## por la primera pieza; las casillas que ya son de tesoro, las piezas sin habitación y las
+## piezas escogidas se ignoran, y lo que no cabe en una pieza pasa a la siguiente de la cola.
+func _regalar_tesoro(lineas: int) -> void:
+	var tesoro: CategoriaSala = Configuracion.CATEGORIA_TESORO
+	if lineas <= 0 or tesoro == null:
+		return
+
+	var pendientes := lineas
+	for pieza in cola_piezas:
+		if pendientes <= 0:
+			break
+		if pieza.sin_habitacion or pieza.escogida:
+			continue
+		var candidatas: Array[int] = []
+		for i in pieza.categorias.size():
+			if not Configuracion.es_tesoro(pieza.categorias[i]):
+				candidatas.append(i)
+		candidatas.shuffle()
+		var cambiadas := mini(pendientes, candidatas.size())
+		for i in cambiadas:
+			pieza.categorias[candidatas[i]] = tesoro
+		pendientes -= cambiadas
+	actualizar_previews()
+
+## Apaga un grupo de barreras por su nombre (lo llamará el objetivo del nivel). Las casillas
+## colocadas sobre ellas recuperan su sala.
+func desactivar_barrera(grupo: StringName) -> void:
+	if not tablero_nodo.desactivar_barrera(grupo):
+		push_warning("desactivar_barrera: no hay barrera activa con el nombre '%s'." % grupo)
+	barreras.actualizar(tablero_nodo.posiciones_barrera())
 
 func agregar_piezas(cantidad: int) -> void:
 	if cantidad <= 0:
@@ -160,6 +196,7 @@ func reiniciar_tetris() -> void:
 	crear_tablero()
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	cola_piezas.clear()
+	piezas.reiniciar_secuencia()
 	refrescar_cola()
 	generar_pieza()
 	actualizar_contador()
