@@ -34,7 +34,7 @@ func _actualizar_cuadrados() -> void:
 
 		var celda = celdas[i]
 		cuadrado.visible = true
-		cuadrado.configurar(celda.textura_fondo, Catalogo.marco_bioma(celda.bioma), celda.categoria)
+		cuadrado.configurar(celda.textura_fondo, Catalogo.marco_bioma(celda.bioma), celda.categoria, null, celda.solo_horizontal)
 		cuadrado.poner_en_celda(posiciones[i])
 
 
