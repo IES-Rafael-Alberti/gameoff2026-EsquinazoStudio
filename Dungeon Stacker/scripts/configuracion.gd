@@ -39,6 +39,33 @@ const NOMBRES_PIEZAS := ["I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P",
 ## puerta de su columna en el vestíbulo. 0 = ninguna.
 @export_range(0.0, 100.0, 0.5, "suffix:%") var PROBABILIDAD_SOLO_HORIZONTAL := 0.0
 
+@export_group("Línea completada")
+## Categoría a la que se convierte una casilla por cada línea completada (Tesoro.tres). Vacío =
+## no hace nada.
+@export var CATEGORIA_TESORO: CategoriaSala
+## Categorías que ya son de tesoro y no se convierten (Tesoro, TesoroPuzle, TesoroCombate,
+## TesoroCuracion...). CATEGORIA_TESORO cuenta siempre como tesoro aunque no esté aquí.
+@export var CATEGORIAS_TESORO: Array[CategoriaSala] = []
+
+## Si una categoría ya es de tesoro (y por tanto no se convierte).
+func es_tesoro(categoria: CategoriaSala) -> bool:
+	return categoria != null and (categoria == CATEGORIA_TESORO or CATEGORIAS_TESORO.has(categoria))
+
+@export_group("Piezas escogidas")
+## Primeras piezas del nivel, en orden: la 1ª de la lista es la primera pieza que sale, etc.
+@export var SECUENCIA_INICIAL: Array[PiezaEscogida] = []
+
+## Piezas que salen en un turno concreto (número de pieza del nivel). Si coincide con un turno
+## de la secuencia inicial, gana la secuencia; si dos entradas comparten turno, gana la primera.
+@export var PIEZAS_EN_TURNO: Array[PiezaEnTurno] = []
+
+## Piezas que pueden salir en cualquier momento, con un peso relativo. Compiten en el mismo
+## sorteo que la pieza aleatoria normal, cuyo peso es PESO_PIEZA_NORMAL.
+@export var POOL_PIEZAS: Array[PiezaConPeso] = []
+
+## Peso de "pieza aleatoria normal" en el sorteo del pool. Con el pool vacío no importa.
+@export_range(0.0, 100.0, 0.1) var PESO_PIEZA_NORMAL := 10.0
+
 # Dimensiones calculadas del tablero
 var ANCHO_TABLERO: int:
 	get:
