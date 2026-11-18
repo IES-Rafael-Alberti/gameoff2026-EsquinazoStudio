@@ -1,6 +1,36 @@
 [gd_scene format=3 uid="uid://cjq766e8odwgt"]
 
 [ext_resource type="Script" uid="uid://wjys2u1vq2b5" path="res://scripts/audio/musica.gd" id="1_4ij01"]
+[ext_resource type="AudioStream" uid="uid://bngahershhc67" path="res://assets/sounds/music/Menu.ogg" id="2_ru1hb"]
+[ext_resource type="Script" uid="uid://3y22rycf8akk" path="res://scripts/audio/pista_bioma.gd" id="3_4qdvk"]
+[ext_resource type="AudioStream" uid="uid://dxfyju3ebpe4e" path="res://assets/sounds/music/Mazmorra.ogg" id="4_uvhkj"]
+[ext_resource type="AudioStream" uid="uid://cho0qtt81r6i4" path="res://assets/sounds/music/Mazmorra Tetris.ogg" id="5_tsb81"]
+[ext_resource type="AudioStream" uid="uid://oiywrd4sxud3" path="res://assets/sounds/music/Futuro.ogg" id="6_geheh"]
+[ext_resource type="AudioStream" uid="uid://bc5uyvgx4n56w" path="res://assets/sounds/music/Futuro Tetris.ogg" id="7_a1osk"]
+[ext_resource type="AudioStream" uid="uid://dp8c75ydv6b6j" path="res://assets/sounds/music/Nieve.ogg" id="8_ibg5q"]
+[ext_resource type="AudioStream" uid="uid://b5jpf0lvth1f4" path="res://assets/sounds/music/Nieve Tetris.ogg" id="9_3rh7a"]
+
+[sub_resource type="Resource" id="Resource_4ij01"]
+script = ExtResource("3_4qdvk")
+tetris = ExtResource("5_tsb81")
+mazmorra = ExtResource("4_uvhkj")
+metadata/_custom_type_script = "uid://3y22rycf8akk"
+
+[sub_resource type="Resource" id="Resource_au5cx"]
+script = ExtResource("3_4qdvk")
+bioma = 3
+tetris = ExtResource("7_a1osk")
+mazmorra = ExtResource("6_geheh")
+metadata/_custom_type_script = "uid://3y22rycf8akk"
+
+[sub_resource type="Resource" id="Resource_akw8f"]
+script = ExtResource("3_4qdvk")
+bioma = 2
+tetris = ExtResource("9_3rh7a")
+mazmorra = ExtResource("8_ibg5q")
+metadata/_custom_type_script = "uid://3y22rycf8akk"
 
 [node name="Musica" type="Node" unique_id=24626229]
 script = ExtResource("1_4ij01")
+cancion_menu = ExtResource("2_ru1hb")
+pistas_biomas = Array[ExtResource("3_4qdvk")]([SubResource("Resource_4ij01"), SubResource("Resource_au5cx"), SubResource("Resource_akw8f")])
