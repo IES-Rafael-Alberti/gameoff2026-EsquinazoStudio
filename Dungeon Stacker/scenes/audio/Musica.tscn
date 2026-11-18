@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cjq766e8odwgt"]
+
+[ext_resource type="Script" uid="uid://wjys2u1vq2b5" path="res://scripts/audio/musica.gd" id="1_4ij01"]
+
+[node name="Musica" type="Node" unique_id=24626229]
+script = ExtResource("1_4ij01")
