@@ -14,6 +14,7 @@ tile_size = Vector2i(512, 512)
 sources/0 = SubResource("TileSetAtlasSource_iljc2")
 
 [node name="CambiadorBaldosas" type="TileMapLayer" unique_id=970107115]
+position = Vector2(0, -32)
 scale = Vector2(0.125, 0.125)
 tile_set = SubResource("TileSet_4bh4p")
 script = ExtResource("1_gjaxe")
