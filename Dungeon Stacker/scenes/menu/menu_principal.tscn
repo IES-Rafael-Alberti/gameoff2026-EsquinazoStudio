@@ -81,3 +81,9 @@ text = "EXIT"
 [node name="Opciones" parent="." unique_id=2128798694 instance=ExtResource("2_4yl6o")]
 visible = false
 layout_mode = 1
+
+[connection signal="pressed" from="MenuPrincipal/Iniciar" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Continuar" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/SeleccionNivel" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Opciones" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Salir" to="." method="_on_exit_button_pressed"]
