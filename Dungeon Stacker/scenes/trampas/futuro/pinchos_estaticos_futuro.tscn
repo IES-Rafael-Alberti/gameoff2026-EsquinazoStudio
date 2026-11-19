@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bj1u06wqd7okr"]
+
+[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="1_32bbf"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_q6m6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6m6h"]
+atlas = ExtResource("2_q6m6h")
+region = Rect2(512, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoec0"]
+atlas = ExtResource("2_q6m6h")
+region = Rect2(512, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n771n"]
+atlas = ExtResource("2_q6m6h")
+region = Rect2(512, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs773"]
+atlas = ExtResource("2_q6m6h")
+region = Rect2(512, 2048, 512, 512)
+
+[node name="PinchosEstaticos" unique_id=204095970 instance=ExtResource("1_32bbf")]
+
+[node name="Sprite0-1" parent="." index="1" unique_id=1258677299]
+texture = SubResource("AtlasTexture_q6m6h")
+
+[node name="Sprite1-1" parent="." index="2" unique_id=1714056493]
+texture = SubResource("AtlasTexture_qoec0")
+
+[node name="Sprite0-0" parent="." index="3" unique_id=1568855434]
+texture = SubResource("AtlasTexture_n771n")
+
+[node name="Sprite1-0" parent="." index="4" unique_id=2017441774]
+texture = SubResource("AtlasTexture_qs773")

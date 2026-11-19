@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bu02ov2dgy6c4"]
+
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="1_1dp0p"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_haqri"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haqri"]
+atlas = ExtResource("2_haqri")
+region = Rect2(1536, 512, 512, 512)
+
+[node name="Caja" unique_id=1664255518 instance=ExtResource("1_1dp0p")]
+
+[node name="Sprite" parent="." index="0" unique_id=1584494231]
+texture = SubResource("AtlasTexture_haqri")
