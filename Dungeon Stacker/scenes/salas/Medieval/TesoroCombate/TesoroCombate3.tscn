@@ -1,0 +1,382 @@
+[gd_scene format=4 uid="uid://da7njn7xqtliy"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_865ku"]
+[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/BaldosaRota.tscn" id="2_lvsin"]
+[ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="3_ykfov"]
+[ext_resource type="PackedScene" uid="uid://cbipux2sba3t7" path="res://scenes/_Componentes/Barajador.tscn" id="4_fyxql"]
+[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/CofreBotin.tscn" id="5_k0453"]
+[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="6_cqrhs"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="7_k0453"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_865ku")]
+
+[node name="TileMapLayer" parent="." index="0" unique_id=1996153903]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAACAAAAAAAAAAIAAAADAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAAFAAAAAAAAAAIAAAAGAAAAAAACAAAAAFAHAAAAAAADAAAAADAIAAAAAAADAAAAADAJAAAAAAADAAAAADAKAAAAAAADAAAAADALAAAAAAADAAAAADAMAAAAAAADAAAAADANAAAAAAADAAAAADAOAAAAAAADAAAAADAPAAAAAAADAAAAADAQAAAAAAADAAAAADARAAAAAAADAAAAADASAAAAAAADAAAAADAXAAAAAAAAAAIAAAAdAAAAAAAAAAIAAAATAAAAAAADAAAAADAUAAAAAAADAAAAADAVAAAAAAADAAAAADAWAAAAAAACAAAAADAYAAAAAAAAAAIAAAAZAAAAAAAAAAIAAAAaAAAAAAAAAAIAAAAbAAAAAAAAAAIAAAAcAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAABAAEAAAAAAAIAAAABAAIAAAAAAAIAAAABAAMAAAAAAAIAAAABAAQAAAAAAAIAAAABAAUAAAAAAAIAAAABAAYAAAAAAAIAAAABAAcAAAAAAAIAAAABAAgAAAAAAAIAAAABAAkAAAAAAAIAAAABAAoAAAAAAAIAAAABAAsAAAAAAAIAAAABAAwAAAAAAAIAAAABAA0AAAAAAAIAAAABAA4AAAAAAAIAAAABAA8AAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAIAAAACAA4AAAAAAAIAAAACAA8AAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAADAAMAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAADAAYAAAAAAAIAAAADAAcAAAAAAAIAAAADAAgAAAAAAAIAAAADAAkAAAAAAAIAAAADAAoAAAAAAAIAAAADAAsAAAAAAAIAAAADAAwAAAAAAAIAAAADAA0AAAAAAAIAAAADAA4AAAAAAAIAAAADAA8AAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAAAEAAQAAAAAAAIAAAAEAAUAAAAAAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAAAAAIAAAAEAAgAAAAAAAIAAAAEAAkAAAAAAAIAAAAEAAoAAAAAAAIAAAAEAAsAAAAAAAIAAAAEAAwAAAAAAAIAAAAEAA0AAAAAAAIAAAAEAA4AAAAAAAIAAAAEAA8AAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAIAAAAFAAUAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAIAAAAFAA4AAAAAAAIAAAAFAA8AAAAAAAIAAAAGAAEAAAADAAAAAFAGAAIAAAADAAAAAFAGAAMAAAADAAAAAFAGAAQAAAADAAAAAFAGAAUAAAADAAAAAFAGAAYAAAADAAAAAFAGAAcAAAADAAAAAFAGAAgAAAADAAAAAFAGAAkAAAADAAAAAFAGAAoAAAADAAAAAFAGAAsAAAADAAAAAFAGAAwAAAADAAAAAFAGAA0AAAADAAAAAFAGAA4AAAADAAAAAFAGAA8AAAADAAAAAFAHAAEAAAAAAAAAAFAHAAIAAAABAAAAAFAHAAMAAAABAAAAAFAHAAQAAAABAAAAAFAHAAUAAAABAAAAAFAHAAYAAAABAAAAAFAHAA8AAAAAAAAAAAAIAA4AAAAAAAEAAAAIAA8AAAABAAAAAAAJAAEAAAABAAAAADAJAAIAAAAAAAEAAAAJAAMAAAAAAAEAAAAJAAQAAAAFAAAAAAAJAAUAAAAFAAEAAAAJAAYAAAAFAAEAAAAJAAcAAAAFAAEAAAAJAAgAAAAFAAEAAAAJAAkAAAAFAAEAAAAJAAoAAAAFAAEAAAAJAAsAAAAFAAEAAAAJAAwAAAAFAAIAAAAJAA8AAAABAAAAAAAKAAEAAAABAAAAADAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAAKAAQAAAAFAAAAAAAKAAUAAAAFAAEAAAAKAAYAAAAFAAEAAAAKAAcAAAAFAAEAAAAKAAgAAAAFAAEAAAAKAAkAAAAFAAEAAAAKAAoAAAAFAAEAAAAKAAsAAAAFAAEAAAAKAAwAAAAFAAIAAAAKAA8AAAABAAAAAAALAAEAAAABAAAAADALAAIAAAAAAAEAAAALAAMAAAAAAAEAAAALAAQAAAAFAAAAAAALAAUAAAAFAAEAAAALAAYAAAAFAAEAAAALAAcAAAAFAAEAAAALAAgAAAAFAAEAAAALAAkAAAAFAAEAAAALAAoAAAAFAAEAAAALAAsAAAAFAAEAAAALAAwAAAAFAAIAAAALAA8AAAABAAAAAAAMAAEAAAABAAAAADAMAAIAAAAAAAEAAAAMAAMAAAAEAAEAAAAMAAQAAAAJAAIAAAAMAAUAAAAFAAEAAAAMAAYAAAAFAAEAAAAMAAcAAAAFAAEAAAAMAAgAAAAFAAEAAAAMAAkAAAAFAAEAAAAMAAoAAAAFAAEAAAAMAAsAAAAFAAEAAAAMAAwAAAAJAAAAAAAMAA8AAAABAAAAAAANAAEAAAABAAAAADANAAIAAAAAAAEAAAANAAMAAAAFAAEAAAANAAQAAAAFAAEAAAANAAUAAAAFAAEAAAANAAYAAAAFAAEAAAANAAcAAAAFAAEAAAANAAgAAAAFAAEAAAANAAkAAAAFAAEAAAANAAoAAAAFAAEAAAANAAsAAAAFAAEAAAANAAwAAAAFAAEAAAANAA8AAAABAAAAAAAOAAEAAAABAAEAADAOAAIAAAAAAAEAAAAOAAMAAAAFAAEAAAAOAAQAAAAFAAEAAAAOAAUAAAAFAAEAAAAOAAYAAAAFAAEAAAAOAAcAAAAFAAEAAAAOAAgAAAAFAAEAAAAOAAkAAAAFAAEAAAAOAAoAAAAFAAEAAAAOAAsAAAAFAAEAAAAOAAwAAAAFAAEAAAAOAA8AAAABAAEAAAAPAAEAAAABAAAAADAPAAIAAAAAAAEAAAAPAAMAAAAFAAEAAAAPAAQAAAAFAAEAAAAPAAUAAAAFAAEAAAAPAAYAAAAFAAEAAAAPAAcAAAAFAAEAAAAPAAgAAAAFAAEAAAAPAAkAAAAFAAEAAAAPAAoAAAAFAAEAAAAPAAsAAAAFAAEAAAAPAAwAAAAFAAEAAAAPAA8AAAABAAAAAAAQAAEAAAABAAAAADAQAAIAAAAAAAEAAAAQAAMAAAAGAAEAAAAQAAQAAAAHAAIAAAAQAAUAAAAFAAEAAAAQAAYAAAAFAAEAAAAQAAcAAAAFAAEAAAAQAAgAAAAFAAEAAAAQAAkAAAAFAAEAAAAQAAoAAAAFAAEAAAAQAAsAAAAFAAEAAAAQAAwAAAAHAAAAAAAQAA8AAAABAAAAAAARAAEAAAABAAAAADARAAIAAAAAAAEAAAARAAMAAAAAAAEAAAARAAQAAAAFAAAAAAARAAUAAAAFAAEAAAARAAYAAAAFAAEAAAARAAcAAAAFAAEAAAARAAgAAAAFAAEAAAARAAkAAAAFAAEAAAARAAoAAAAFAAEAAAARAAsAAAAFAAEAAAARAAwAAAAFAAIAAAARAA8AAAABAAAAAAASAAEAAAABAAAAADASAAIAAAAAAAEAAAASAAMAAAAAAAEAAAASAAQAAAAFAAAAAAASAAUAAAAFAAEAAAASAAYAAAAFAAEAAAASAAcAAAAFAAEAAAASAAgAAAAFAAEAAAASAAkAAAAFAAEAAAASAAoAAAAFAAEAAAASAAsAAAAFAAEAAAASAAwAAAAFAAIAAAASAA8AAAABAAAAAAATAAEAAAABAAAAADATAAIAAAAAAAEAAAATAAMAAAAAAAEAAAATAAQAAAAFAAAAAAATAAUAAAAFAAEAAAATAAYAAAAFAAEAAAATAAcAAAAFAAEAAAATAAgAAAAFAAEAAAATAAkAAAAFAAEAAAATAAoAAAAFAAEAAAATAAsAAAAFAAEAAAATAAwAAAAFAAIAAAATAA8AAAABAAAAAAAUAA4AAAAAAAEAAAAUAA8AAAABAAAAAAAVAAEAAAAAAAAAADAVAAIAAAABAAAAAGAVAAMAAAABAAAAAGAVAAQAAAABAAAAAGAVAAUAAAABAAAAAGAVAAYAAAABAAAAAGAVAA8AAAAAAAAAAGAWAAEAAAADAAAAAGAWAAIAAAADAAAAAGAWAAMAAAADAAAAAGAWAAQAAAADAAAAAGAWAAUAAAADAAAAAGAWAAYAAAADAAAAAGAWAAcAAAADAAAAAGAWAAgAAAADAAAAAGAWAAkAAAADAAAAAGAWAAoAAAADAAAAAGAWAAsAAAADAAAAAGAWAAwAAAADAAAAAGAWAA0AAAADAAAAAGAWAA4AAAADAAAAAGAWAA8AAAADAAAAAGAXAAEAAAAAAAIAAAAXAAIAAAAAAAIAAAAXAAMAAAAAAAIAAAAXAAQAAAAAAAIAAAAXAAUAAAAAAAIAAAAXAAYAAAAAAAIAAAAXAAcAAAAAAAIAAAAXAAgAAAAAAAIAAAAXAAkAAAAAAAIAAAAXAAoAAAAAAAIAAAAXAAsAAAAAAAIAAAAXAAwAAAAAAAIAAAAXAA0AAAAAAAIAAAAXAA4AAAAAAAIAAAAXAA8AAAAAAAIAAAAYAAEAAAAAAAIAAAAYAAIAAAAAAAIAAAAYAAMAAAAAAAIAAAAYAAQAAAAAAAIAAAAYAAUAAAAAAAIAAAAYAAYAAAAAAAIAAAAYAAcAAAAAAAIAAAAYAAgAAAAAAAIAAAAYAAkAAAAAAAIAAAAYAAoAAAAAAAIAAAAYAAsAAAAAAAIAAAAYAAwAAAAAAAIAAAAYAA0AAAAAAAIAAAAYAA4AAAAAAAIAAAAYAA8AAAAAAAIAAAAZAAEAAAAAAAIAAAAZAAIAAAAAAAIAAAAZAAMAAAAAAAIAAAAZAAQAAAAAAAIAAAAZAAUAAAAAAAIAAAAZAAYAAAAAAAIAAAAZAAcAAAAAAAIAAAAZAAgAAAAAAAIAAAAZAAkAAAAAAAIAAAAZAAoAAAAAAAIAAAAZAAsAAAAAAAIAAAAZAAwAAAAAAAIAAAAZAA0AAAAAAAIAAAAZAA4AAAAAAAIAAAAZAA8AAAAAAAIAAAAaAAEAAAAAAAIAAAAaAAIAAAAAAAIAAAAaAAMAAAAAAAIAAAAaAAQAAAAAAAIAAAAaAAUAAAAAAAIAAAAaAAYAAAAAAAIAAAAaAAcAAAAAAAIAAAAaAAgAAAAAAAIAAAAaAAkAAAAAAAIAAAAaAAoAAAAAAAIAAAAaAAsAAAAAAAIAAAAaAAwAAAAAAAIAAAAaAA0AAAAAAAIAAAAaAA4AAAAAAAIAAAAaAA8AAAAAAAIAAAAbAAEAAAAAAAIAAAAbAAIAAAAAAAIAAAAbAAMAAAAAAAIAAAAbAAQAAAAAAAIAAAAbAAUAAAAAAAIAAAAbAAYAAAAAAAIAAAAbAAcAAAAAAAIAAAAbAAgAAAAAAAIAAAAbAAkAAAAAAAIAAAAbAAoAAAAAAAIAAAAbAAsAAAAAAAIAAAAbAAwAAAAAAAIAAAAbAA0AAAAAAAIAAAAbAA4AAAAAAAIAAAAbAA8AAAAAAAIAAAAcAAEAAAAAAAIAAAAcAAIAAAAAAAIAAAAcAAMAAAAAAAIAAAAcAAQAAAAAAAIAAAAcAAUAAAAAAAIAAAAcAAYAAAAAAAIAAAAcAAcAAAAAAAIAAAAcAAgAAAAAAAIAAAAcAAkAAAAAAAIAAAAcAAoAAAAAAAIAAAAcAAsAAAAAAAIAAAAcAAwAAAAAAAIAAAAcAA0AAAAAAAIAAAAcAA4AAAAAAAIAAAAcAA8AAAAAAAIAAAAdAAEAAAAAAAIAAAAdAAIAAAAAAAIAAAAdAAMAAAAAAAIAAAAdAAQAAAAAAAIAAAAdAAUAAAAAAAIAAAAdAAYAAAAAAAIAAAAdAAcAAAAAAAIAAAAdAAgAAAAAAAIAAAAdAAkAAAAAAAIAAAAdAAoAAAAAAAIAAAAdAAsAAAAAAAIAAAAdAAwAAAAAAAIAAAAdAA0AAAAAAAIAAAAdAA4AAAAAAAIAAAAdAA8AAAAAAAIAAAAHAAgAAAABAAEAAFAHAAkAAAABAAAAAFAHAAoAAAABAAAAAFAHAAsAAAABAAAAAFAHAAwAAAABAAAAAFAHAA0AAAABAAAAAFAVAAgAAAABAAEAAGAVAAkAAAABAAAAAGAVAAoAAAABAAAAAGAVAAsAAAABAAAAAGAVAAwAAAABAAAAAGAVAA0AAAABAAAAAGAIAAEAAAABAAAAADAUAAEAAAABAAAAADAVAAcAAAABAAAAAGAVAA4AAAABAAAAAGAHAA4AAAABAAAAAFAHAAcAAAABAAAAAFAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAUAAIAAAAAAAEAAAAUAAMAAAAAAAEAAAAUAAQAAAAAAAEAAAAUAAUAAAAAAAEAAAAUAAYAAAAAAAEAAAAUAAcAAAAAAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAIAAoAAAAAAAEAAAAIAAsAAAAAAAEAAAAIAAwAAAAAAAEAAAAIAA0AAAAAAAEAAAAJAA4AAAAAAAEAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAEAAAANAA4AAAAAAAEAAAAOAA4AAAAAAAEAAAAPAA4AAAAAAAEAAAAQAA4AAAAAAAEAAAARAA4AAAAAAAEAAAASAA4AAAAAAAEAAAATAA4AAAAAAAEAAAAUAA0AAAAAAAEAAAAUAAwAAAAAAAEAAAAUAAsAAAAAAAEAAAAUAAoAAAAAAAEAAAAUAAkAAAAAAAEAAAAUAAgAAAAAAAEAAAATAA0AAAAAAAEAAAASAA0AAAAAAAEAAAARAA0AAAAAAAEAAAAQAA0AAAAGAAEAAAAPAA0AAAAFAAEAAAAOAA0AAAAFAAEAAAANAA0AAAAFAAEAAAAMAA0AAAAEAAEAAAAKAA0AAAAAAAEAAAALAA0AAAAAAAEAAAAJAA0AAAAAAAEAAAAFAAQAAAAAAAIAAAAAABAAAAAAAAIAAAABABAAAAAAAAIAAAACABAAAAAAAAIAAAADABAAAAAAAAIAAAAEABAAAAAAAAIAAAAFABAAAAAAAAIAAAAGABAAAAACAAAAAAAHABAAAAADAAAAAAAIABAAAAADAAAAAAAJABAAAAADAAAAAAAKABAAAAADAAAAAAALABAAAAADAAAAAAAMABAAAAADAAAAAAANABAAAAADAAAAAAAOABAAAAADAAAAAAAPABAAAAADAAAAAAAQABAAAAADAAAAAAARABAAAAADAAAAAAASABAAAAADAAAAAAATABAAAAADAAAAAAAUABAAAAADAAAAAAAVABAAAAADAAAAAAAWABAAAAACAAAAAGAXABAAAAAAAAIAAAAYABAAAAAAAAIAAAAZABAAAAAAAAIAAAAaABAAAAAAAAIAAAAbABAAAAAAAAIAAAAcABAAAAAAAAIAAAAdABAAAAAAAAIAAAA=")
+
+[node name="BaldosaRota10" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=88758345 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 256)
+
+[node name="BaldosaRota11" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=597077273 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 320)
+
+[node name="BaldosaRota12" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=814805821 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 384)
+
+[node name="BaldosaRota13" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1483566174 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 448)
+
+[node name="BaldosaRota14" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=1196850823 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 512)
+
+[node name="BaldosaRota15" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="5" unique_id=1650461542 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 576)
+
+[node name="BaldosaRota16" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="6" unique_id=1590613225 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 640)
+
+[node name="BaldosaRota17" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="7" unique_id=993240442 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 704)
+
+[node name="BaldosaRota18" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="8" unique_id=1231093972 instance=ExtResource("2_lvsin")]
+position = Vector2(608, 768)
+
+[node name="BaldosaRota19" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=102089839 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 768)
+
+[node name="BaldosaRota20" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="10" unique_id=639378703 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 704)
+
+[node name="BaldosaRota21" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="11" unique_id=2030555426 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 640)
+
+[node name="BaldosaRota22" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="12" unique_id=276273982 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 640)
+
+[node name="BaldosaRota23" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="13" unique_id=500927486 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 576)
+
+[node name="BaldosaRota24" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="14" unique_id=1754394352 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 512)
+
+[node name="BaldosaRota25" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="15" unique_id=1822702597 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 448)
+
+[node name="BaldosaRota26" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="16" unique_id=1858581310 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 384)
+
+[node name="BaldosaRota27" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="17" unique_id=547825127 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 320)
+
+[node name="BaldosaRota28" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="18" unique_id=1092689411 instance=ExtResource("2_lvsin")]
+position = Vector2(672, 256)
+
+[node name="BaldosaRota29" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="19" unique_id=96248044 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 256)
+
+[node name="BaldosaRota30" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="20" unique_id=415289374 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 320)
+
+[node name="BaldosaRota31" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="21" unique_id=1875376857 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 384)
+
+[node name="BaldosaRota32" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="22" unique_id=1854183061 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 448)
+
+[node name="BaldosaRota33" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="23" unique_id=379223038 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 512)
+
+[node name="BaldosaRota34" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="24" unique_id=923281407 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 576)
+
+[node name="BaldosaRota35" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="25" unique_id=1600377344 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 640)
+
+[node name="BaldosaRota36" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="26" unique_id=962075505 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 704)
+
+[node name="BaldosaRota37" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="27" unique_id=1492935075 instance=ExtResource("2_lvsin")]
+position = Vector2(736, 768)
+
+[node name="BaldosaRota38" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="28" unique_id=1221199261 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 768)
+
+[node name="BaldosaRota39" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="29" unique_id=1619032422 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 832)
+
+[node name="BaldosaRota41" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="30" unique_id=1529542527 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 704)
+
+[node name="BaldosaRota42" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="31" unique_id=107348930 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 640)
+
+[node name="BaldosaRota43" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="32" unique_id=1075889891 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 576)
+
+[node name="BaldosaRota44" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="33" unique_id=513214910 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 512)
+
+[node name="BaldosaRota45" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="34" unique_id=1582438124 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 448)
+
+[node name="BaldosaRota46" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="35" unique_id=411482013 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 384)
+
+[node name="BaldosaRota47" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="36" unique_id=1676015556 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 320)
+
+[node name="BaldosaRota48" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="37" unique_id=2108894334 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 256)
+
+[node name="BaldosaRota49" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="38" unique_id=242518715 instance=ExtResource("2_lvsin")]
+position = Vector2(800, 192)
+
+[node name="BaldosaRota55" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="39" unique_id=838188091 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 192)
+
+[node name="BaldosaRota56" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="40" unique_id=1441870565 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 256)
+
+[node name="BaldosaRota57" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="41" unique_id=741562496 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 256)
+
+[node name="BaldosaRota58" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="42" unique_id=1058209980 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 256)
+
+[node name="BaldosaRota59" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="43" unique_id=301473829 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 256)
+
+[node name="BaldosaRota69" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="44" unique_id=773986830 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 768)
+
+[node name="BaldosaRota70" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="45" unique_id=102950204 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 768)
+
+[node name="BaldosaRota71" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="46" unique_id=1731764201 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 768)
+
+[node name="BaldosaRota72" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="47" unique_id=1504147806 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 768)
+
+[node name="BaldosaRota73" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="48" unique_id=1294283370 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 832)
+
+[node name="BaldosaRota78" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="49" unique_id=432701107 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 832)
+
+[node name="BaldosaRota79" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="50" unique_id=863999549 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 768)
+
+[node name="BaldosaRota80" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="51" unique_id=1296650592 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 704)
+
+[node name="BaldosaRota81" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="52" unique_id=1819970780 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 640)
+
+[node name="BaldosaRota82" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="53" unique_id=1201890069 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 576)
+
+[node name="BaldosaRota83" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="54" unique_id=1713414070 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 512)
+
+[node name="BaldosaRota84" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="55" unique_id=1406214573 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 448)
+
+[node name="BaldosaRota85" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="56" unique_id=961072542 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 384)
+
+[node name="BaldosaRota86" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="57" unique_id=1312730027 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 320)
+
+[node name="BaldosaRota87" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="58" unique_id=1860686106 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 256)
+
+[node name="BaldosaRota88" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="59" unique_id=75316396 instance=ExtResource("2_lvsin")]
+position = Vector2(864, 192)
+
+[node name="BaldosaRota89" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="60" unique_id=2102301161 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 192)
+
+[node name="BaldosaRota90" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="61" unique_id=1069458902 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 192)
+
+[node name="BaldosaRota91" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="62" unique_id=1814529217 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 256)
+
+[node name="BaldosaRota92" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="63" unique_id=1481238503 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 256)
+
+[node name="BaldosaRota93" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="64" unique_id=1305680175 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 320)
+
+[node name="BaldosaRota94" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="65" unique_id=1812029740 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 320)
+
+[node name="BaldosaRota95" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="66" unique_id=1330165064 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 320)
+
+[node name="BaldosaRota96" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="67" unique_id=1980369776 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 320)
+
+[node name="BaldosaRota97" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="68" unique_id=1673326272 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 320)
+
+[node name="BaldosaRota98" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="69" unique_id=1797474864 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 320)
+
+[node name="BaldosaRota99" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="70" unique_id=167146244 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 384)
+
+[node name="BaldosaRota100" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="71" unique_id=784220081 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 384)
+
+[node name="BaldosaRota101" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="72" unique_id=247603117 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 384)
+
+[node name="BaldosaRota102" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="73" unique_id=657811091 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 384)
+
+[node name="BaldosaRota103" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="74" unique_id=309937767 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 384)
+
+[node name="BaldosaRota104" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="75" unique_id=1832156537 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 384)
+
+[node name="BaldosaRota105" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="76" unique_id=416979288 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 448)
+
+[node name="BaldosaRota106" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="77" unique_id=1112904154 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 448)
+
+[node name="BaldosaRota107" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="78" unique_id=12692056 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 448)
+
+[node name="BaldosaRota108" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="79" unique_id=1367574681 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 448)
+
+[node name="BaldosaRota109" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="80" unique_id=919984676 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 448)
+
+[node name="BaldosaRota110" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="81" unique_id=1346557623 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 448)
+
+[node name="BaldosaRota111" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="82" unique_id=1777506522 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 512)
+
+[node name="BaldosaRota112" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="83" unique_id=1929671320 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 512)
+
+[node name="BaldosaRota113" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="84" unique_id=1879981372 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 512)
+
+[node name="BaldosaRota114" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="85" unique_id=1498184943 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 512)
+
+[node name="BaldosaRota115" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="86" unique_id=1443281674 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 512)
+
+[node name="BaldosaRota116" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="87" unique_id=1649407932 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 512)
+
+[node name="BaldosaRota117" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="88" unique_id=1531804532 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 576)
+
+[node name="BaldosaRota118" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="89" unique_id=779023686 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 576)
+
+[node name="BaldosaRota119" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="90" unique_id=288042062 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 576)
+
+[node name="BaldosaRota120" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="91" unique_id=1192594973 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 576)
+
+[node name="BaldosaRota121" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="92" unique_id=861323020 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 576)
+
+[node name="BaldosaRota122" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="93" unique_id=450084026 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 576)
+
+[node name="BaldosaRota123" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="94" unique_id=1170800144 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 640)
+
+[node name="BaldosaRota124" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="95" unique_id=1763350376 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 640)
+
+[node name="BaldosaRota125" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="96" unique_id=1083749362 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 640)
+
+[node name="BaldosaRota126" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="97" unique_id=768561622 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 640)
+
+[node name="BaldosaRota127" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="98" unique_id=59060240 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 640)
+
+[node name="BaldosaRota128" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="99" unique_id=1410450652 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 640)
+
+[node name="BaldosaRota129" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="100" unique_id=1544187011 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 704)
+
+[node name="BaldosaRota130" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="101" unique_id=781076058 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 704)
+
+[node name="BaldosaRota131" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="102" unique_id=293688749 instance=ExtResource("2_lvsin")]
+position = Vector2(1056, 704)
+
+[node name="BaldosaRota132" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="103" unique_id=1539459900 instance=ExtResource("2_lvsin")]
+position = Vector2(1120, 704)
+
+[node name="BaldosaRota133" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="104" unique_id=1232240139 instance=ExtResource("2_lvsin")]
+position = Vector2(1184, 704)
+
+[node name="BaldosaRota134" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="105" unique_id=401646057 instance=ExtResource("2_lvsin")]
+position = Vector2(1248, 704)
+
+[node name="BaldosaRota135" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="106" unique_id=1090106415 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 768)
+
+[node name="BaldosaRota136" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="107" unique_id=493957218 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 768)
+
+[node name="BaldosaRota137" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="108" unique_id=649229055 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 768)
+
+[node name="BaldosaRota138" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="109" unique_id=116036211 instance=ExtResource("2_lvsin")]
+position = Vector2(928, 832)
+
+[node name="BaldosaRota139" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="110" unique_id=1392869916 instance=ExtResource("2_lvsin")]
+position = Vector2(992, 832)
+
+[node name="Murcielago2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("3_ykfov")]
+position = Vector2(1056, 384)
+
+[node name="Murcielago" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1238111418 instance=ExtResource("3_ykfov")]
+position = Vector2(800, 384)
+
+[node name="Murcielago3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1714483411 instance=ExtResource("3_ykfov")]
+position = Vector2(928, 512)
+
+[node name="Murcielago4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=76902565 instance=ExtResource("3_ykfov")]
+position = Vector2(800, 640)
+
+[node name="Murcielago5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1076631576 instance=ExtResource("3_ykfov")]
+position = Vector2(1056, 640)
+
+[node name="Barajador" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=573189021 instance=ExtResource("4_fyxql")]
+position = Vector2(1298.64, 568.2226)
+
+[node name="CofreBotin" parent="Objetos/Barajador" index="0" unique_id=2110658979 instance=ExtResource("5_k0453")]
+position = Vector2(-690.64, -376.2226)
+
+[node name="CofreFalso" parent="Objetos/Barajador" index="1" unique_id=551623583 instance=ExtResource("6_cqrhs")]
+position = Vector2(-50.640015, -376.2226)
+escena_enemigo = ExtResource("7_k0453")
+
+[node name="CofreFalso2" parent="Objetos/Barajador" index="2" unique_id=1302939341 instance=ExtResource("6_cqrhs")]
+position = Vector2(-50.640015, 263.7774)
+escena_enemigo = ExtResource("7_k0453")
+
+[node name="CofreFalso3" parent="Objetos/Barajador" index="3" unique_id=1196579923 instance=ExtResource("6_cqrhs")]
+position = Vector2(-690.64, 263.7774)
+escena_enemigo = ExtResource("7_k0453")
+
+[editable path="Puzle"]

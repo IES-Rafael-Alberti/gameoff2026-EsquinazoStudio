@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cu2risgn7np4d"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fv6gq"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fv6gq")]
+
+[editable path="Puzle"]
