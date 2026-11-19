@@ -7,3 +7,11 @@ var textura_fondo: Texture2D
 var textura_marco: Texture2D
 var categorias: Array[CategoriaSala] = []
 var bioma: int = Catalogo.Bioma.MEDIEVAL
+## Si esta pieza no genera habitaciones: es solo relleno del tablero (sin categorías).
+var sin_habitacion := false
+## Si las salas de esta pieza solo tienen puertas Este y Oeste (nunca Norte ni Sur).
+var solo_horizontal := false
+## Si viene de una PiezaEscogida (diseñada a mano): el tesoro por línea no la modifica.
+var escogida := false
+## Escena de sala concreta de cada cuadrado (mismo orden que `categorias`); null = del pool.
+var escenas: Array[PackedScene] = []

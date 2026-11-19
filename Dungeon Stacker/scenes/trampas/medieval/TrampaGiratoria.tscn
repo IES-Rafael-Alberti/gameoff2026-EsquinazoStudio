@@ -26,10 +26,22 @@ radius = 32.0
 collision_layer = 32
 collision_mask = 10
 script = ExtResource("1_88pq1")
+cantidad_palos = null
+longitud = null
 separacion_piezas = 40.0
+grosor_dano = null
+velocidad_giro = null
+angulo_inicial = null
+margen_obstaculo = null
 sprite_centro = SubResource("AtlasTexture_oucs1")
 sprite_intermedio = SubResource("AtlasTexture_k5d5b")
 sprite_punta = SubResource("AtlasTexture_bflry")
+escala_sprites = null
+dano = null
+intervalo_dano = null
+activo = null
+danar_enemigos = null
+retroceso = null
 
 [node name="Centro" type="StaticBody2D" parent="." unique_id=1863198919]
 

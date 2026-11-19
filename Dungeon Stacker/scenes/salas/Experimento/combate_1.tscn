@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://3usamd7xkrha" path="res://scenes/enemigos/EnemigoEstatico.tscn" id="2_46aam"]
 [ext_resource type="PackedScene" uid="uid://b4cqci5h5klxp" path="res://scenes/enemigos/EnemigoPerseguidor.tscn" id="3_msgi3"]
 [ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="4_3nt8i"]
-[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/PinchosEstaticos.tscn" id="4_msgi3"]
-[ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/Sierra.tscn" id="5_vx6af"]
-[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/Caja.tscn" id="6_5a78g"]
-[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="7_0lhjv"]
-[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/CofreFalso.tscn" id="8_amvy4"]
-[ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/lanzaflechas.tscn" id="8_cly1m"]
-[ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/mina.tscn" id="9_6u2yx"]
+[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="4_msgi3"]
+[ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/medieval/Sierra.tscn" id="5_vx6af"]
+[ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="6_5a78g"]
+[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="7_0lhjv"]
+[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/medieval/CofreFalso.tscn" id="8_amvy4"]
+[ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/medieval/lanzaflechas.tscn" id="8_cly1m"]
+[ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/medieval/mina.tscn" id="9_6u2yx"]
 [ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="12_ivv0d"]
 [ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="12_jqfdg"]
 
@@ -68,7 +68,6 @@ position = Vector2(1157, 351)
 position = Vector2(1184, 192)
 
 [node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
-visible = false
 position = Vector2(1120, 544)
 
 [node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=19484404 instance=ExtResource("12_ivv0d")]

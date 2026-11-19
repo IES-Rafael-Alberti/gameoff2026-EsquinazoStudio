@@ -1,3 +1,4 @@
+
 class_name Tetris
 extends Node2D
 
@@ -13,6 +14,7 @@ static func de(nodo: Node) -> Tetris:
 @export var MAX_PREVIEWS := 5
 
 @onready var fixed_blocks = $Board/FixedBlocks
+@onready var barreras = $Board/Barreras
 @onready var ghost_piece = $Board/GhostPiece
 @onready var current_piece = $Board/CurrentPiece
 @onready var tablero_nodo = $Board/Tablero
@@ -24,11 +26,15 @@ static func de(nodo: Node) -> Tetris:
 	$SidePanel/NextPiece5,
 ]
 @onready var piezas_label = $SidePanel/PiezasLabel
+## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
+@onready var hold_panel = get_node_or_null("SidePanel/HoldPiece")
 @onready var piezas = $Piezas
 @onready var controlador_pieza = $ControladorPieza
 
 var piezas_disponibles: int = 0
 var cola_piezas: Array[PiezaGenerada] = []
+## Pieza en la reserva (null = vacía). Cuenta como pieza pendiente del nivel.
+var pieza_guardada: PiezaGenerada = null
 var bloqueado: bool = false
 var juego_activo := true
 
@@ -51,36 +57,35 @@ func _ready() -> void:
 	actualizar_contador()
 
 func _process(delta: float) -> void:
-	if not juego_activo:
-		return
-	controlador_pieza.procesar_caida(delta)
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_R:
+	if Input.is_action_just_pressed("reiniciar"):
 		reiniciar_tetris()
 		return
 
 	if not juego_activo:
 		return
 
-	if event is InputEventKey:
-		if event.keycode == KEY_DOWN:
-			controlador_pieza.soft_drop_activo = event.pressed
-		if event.pressed and not event.echo:
-			if event.keycode == KEY_LEFT:
-				controlador_pieza.mover_pieza(Vector2i(-1, 0))
-			elif event.keycode == KEY_RIGHT:
-				controlador_pieza.mover_pieza(Vector2i(1, 0))
-			elif event.keycode == KEY_Z:
-				controlador_pieza.rotar_pieza(-1)
-			elif event.keycode == KEY_X or event.keycode == KEY_UP:
-				controlador_pieza.rotar_pieza(1)
-			elif event.keycode == KEY_SPACE:
-				controlador_pieza.hard_drop()
+	if Input.is_action_just_pressed("mover_izquierda"):
+		controlador_pieza.mover_pieza(Vector2i(-1, 0))
+	elif Input.is_action_just_pressed("mover_derecha"):
+		controlador_pieza.mover_pieza(Vector2i(1, 0))
+	elif Input.is_action_just_pressed("mover_arriba"):
+		controlador_pieza.rotar_pieza(1)
+	elif Input.is_action_just_pressed("rotar_izquierda"):
+		controlador_pieza.rotar_pieza(-1)
+	elif Input.is_action_just_pressed("rotar_derecha"):
+		controlador_pieza.rotar_pieza(1)
+	elif Input.is_action_just_pressed("accion"):
+		controlador_pieza.hard_drop()
+	elif InputMap.has_action("guardar_pieza") and Input.is_action_just_pressed("guardar_pieza"):
+		guardar_pieza()
+
+	controlador_pieza.soft_drop_activo = Input.is_action_pressed("mover_abajo")
+	controlador_pieza.procesar_caida(delta)
 
 func crear_tablero() -> void:
 	tablero_nodo.crear_tablero()
 	fixed_blocks.actualizar_tablero(tablero)
+	barreras.actualizar(tablero_nodo.posiciones_barrera())
 
 func refrescar_cola() -> void:
 	var objetivo = mini(piezas_disponibles, mini(MAX_PREVIEWS, previews.size()))
@@ -99,7 +104,8 @@ func actualizar_previews() -> void:
 				pieza.forma,
 				pieza.textura_fondo,
 				pieza.textura_marco,
-				pieza.categorias
+				pieza.categorias,
+				pieza.solo_horizontal
 			)
 		else:
 			preview.actualizar_pieza([], null, null, [])
@@ -108,7 +114,14 @@ func generar_pieza() -> void:
 	if not juego_activo or bloqueado:
 		return
 	if piezas_disponibles <= 0:
-		controlador_pieza.limpiar_pieza()
+		# Sin piezas en la cola: si hay una guardada, sale ella (no se puede dejar atascada).
+		if pieza_guardada != null:
+			var sacada := pieza_guardada
+			pieza_guardada = null
+			controlador_pieza.establecer_pieza(sacada)
+			actualizar_hold()
+		else:
+			controlador_pieza.limpiar_pieza()
 		actualizar_contador()
 		return
 
@@ -132,9 +145,12 @@ func fijar_pieza() -> void:
 		controlador_pieza.forma_actual,
 		controlador_pieza.textura_actual,
 		controlador_pieza.categorias_actuales,
-		controlador_pieza.bioma_actual
+		controlador_pieza.bioma_actual,
+		controlador_pieza.sin_habitacion_actual,
+		controlador_pieza.solo_horizontal_actual
 	)
-	tablero_nodo.comprobar_lineas()
+	var lineas: int = tablero_nodo.comprobar_lineas()
+	_regalar_tesoro(lineas)
 	fixed_blocks.actualizar_tablero(tablero)
 
 	if colocadas == 0:
@@ -145,6 +161,78 @@ func fijar_pieza() -> void:
 		return
 
 	generar_pieza()
+
+## Guarda la pieza que cae en la reserva y saca la que había. Sin límite de usos. Con la reserva
+## vacía, la pieza actual se guarda y entra la primera de la cola (gasta una pieza del contador).
+## La pieza que sale aparece arriba, sin rotar.
+func guardar_pieza() -> void:
+	if not juego_activo or bloqueado or controlador_pieza.pieza_actual == null:
+		return
+	var actual: PiezaGenerada = controlador_pieza.pieza_actual
+
+	if pieza_guardada == null:
+		if piezas_disponibles <= 0:
+			return
+		if cola_piezas.is_empty():
+			cola_piezas.append(piezas.generar_pieza())
+		var siguiente: PiezaGenerada = cola_piezas.pop_front()
+		pieza_guardada = actual
+		controlador_pieza.establecer_pieza(siguiente)
+		piezas_disponibles -= 1
+		refrescar_cola()
+	else:
+		var sacada := pieza_guardada
+		pieza_guardada = actual
+		controlador_pieza.establecer_pieza(sacada)
+
+	actualizar_hold()
+	actualizar_contador()
+
+func actualizar_hold() -> void:
+	if hold_panel == null:
+		return
+	if pieza_guardada == null:
+		hold_panel.actualizar_pieza([], null, null, [])
+	else:
+		hold_panel.actualizar_pieza(
+			pieza_guardada.forma,
+			pieza_guardada.textura_fondo,
+			pieza_guardada.textura_marco,
+			pieza_guardada.categorias,
+			pieza_guardada.solo_horizontal
+		)
+
+## Por cada línea completada, una casilla de las piezas de la cola pasa a ser Tesoro. Se empieza
+## por la primera pieza; las casillas que ya son de tesoro, las piezas sin habitación y las
+## piezas escogidas se ignoran, y lo que no cabe en una pieza pasa a la siguiente de la cola.
+func _regalar_tesoro(lineas: int) -> void:
+	var tesoro: CategoriaSala = Configuracion.CATEGORIA_TESORO
+	if lineas <= 0 or tesoro == null:
+		return
+
+	var pendientes := lineas
+	for pieza in cola_piezas:
+		if pendientes <= 0:
+			break
+		if pieza.sin_habitacion or pieza.escogida:
+			continue
+		var candidatas: Array[int] = []
+		for i in pieza.categorias.size():
+			if not Configuracion.es_tesoro(pieza.categorias[i]):
+				candidatas.append(i)
+		candidatas.shuffle()
+		var cambiadas := mini(pendientes, candidatas.size())
+		for i in cambiadas:
+			pieza.categorias[candidatas[i]] = tesoro
+		pendientes -= cambiadas
+	actualizar_previews()
+
+## Apaga un grupo de barreras por su nombre (lo llamará el objetivo del nivel). Las casillas
+## colocadas sobre ellas recuperan su sala.
+func desactivar_barrera(grupo: StringName) -> void:
+	if not tablero_nodo.desactivar_barrera(grupo):
+		push_warning("desactivar_barrera: no hay barrera activa con el nombre '%s'." % grupo)
+	barreras.actualizar(tablero_nodo.posiciones_barrera())
 
 func agregar_piezas(cantidad: int) -> void:
 	if cantidad <= 0:
@@ -162,6 +250,9 @@ func reiniciar_tetris() -> void:
 	crear_tablero()
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	cola_piezas.clear()
+	pieza_guardada = null
+	actualizar_hold()
+	piezas.reiniciar_secuencia()
 	refrescar_cola()
 	generar_pieza()
 	actualizar_contador()
@@ -172,4 +263,5 @@ func actualizar_contador() -> void:
 	var actual = 0
 	if controlador_pieza.pieza_actual != null:
 		actual = 1
-	piezas_label.text = "PIEZAS: %d" % (piezas_disponibles + actual)
+	var guardada := 1 if pieza_guardada != null else 0
+	piezas_label.text = "PIEZAS: %d" % (piezas_disponibles + actual + guardada)

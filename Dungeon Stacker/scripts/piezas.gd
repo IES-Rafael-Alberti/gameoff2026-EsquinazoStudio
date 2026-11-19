@@ -1,3 +1,4 @@
+
 extends Node
 # Todas las piezas de Tetris
 
@@ -133,7 +134,95 @@ func pieza_aleatoria() -> String:
 		push_warning("PIEZAS_NIVEL no tiene ninguna pieza marcada; usando todas.")
 	return FORMAS.keys().pick_random()
 
+## Cuántas piezas se han generado en este nivel (la 1ª pieza es el turno 1).
+var _generadas := 0
+
+## Vuelve a empezar la cuenta de turnos (al reiniciar el nivel).
+func reiniciar_secuencia() -> void:
+	_generadas = 0
+
 func generar_pieza() -> PiezaGenerada:
+	_generadas += 1
+	var escogida := _escogida_para_turno(_generadas)
+	if escogida == null:
+		escogida = _escogida_del_pool()
+	if escogida != null:
+		return _desde_escogida(escogida)
+	return _pieza_normal()
+
+## Pieza escogida que toca en este turno: primero la secuencia inicial, luego los turnos concretos.
+func _escogida_para_turno(turno: int) -> PiezaEscogida:
+	var config = Tetris.de(self).Configuracion
+	if config == null:
+		return null
+	if turno >= 1 and turno <= config.SECUENCIA_INICIAL.size():
+		var de_secuencia: PiezaEscogida = config.SECUENCIA_INICIAL[turno - 1]
+		if de_secuencia != null:
+			return de_secuencia
+	for entrada in config.PIEZAS_EN_TURNO:
+		if entrada != null and entrada.pieza != null and entrada.turno == turno:
+			return entrada.pieza
+	return null
+
+## Sorteo con peso entre las piezas del pool y la pieza normal. null = sale una normal.
+func _escogida_del_pool() -> PiezaEscogida:
+	var config = Tetris.de(self).Configuracion
+	if config == null or config.POOL_PIEZAS.is_empty():
+		return null
+	var total := maxf(config.PESO_PIEZA_NORMAL, 0.0)
+	for entrada in config.POOL_PIEZAS:
+		if entrada != null and entrada.pieza != null:
+			total += maxf(entrada.peso, 0.0)
+	if total <= 0.0:
+		return null
+	var umbral := randf() * total
+	var acumulado := 0.0
+	for entrada in config.POOL_PIEZAS:
+		if entrada == null or entrada.pieza == null:
+			continue
+		acumulado += maxf(entrada.peso, 0.0)
+		if umbral < acumulado:
+			return entrada.pieza
+	return null
+
+## Construye la pieza a partir de una PiezaEscogida.
+func _desde_escogida(escogida: PiezaEscogida) -> PiezaGenerada:
+	if not FORMAS.has(escogida.forma):
+		push_error("PiezaEscogida con forma desconocida '%s': se genera una pieza normal." % escogida.forma)
+		return _pieza_normal()
+
+	var pieza = PiezaGenerada.new()
+	pieza.nombre = escogida.forma
+	pieza.escogida = true
+	pieza.forma = FORMAS[escogida.forma]
+	pieza.textura_fondo = TEXTURAS_COLOR[escogida.forma]
+	pieza.bioma = escogida.bioma
+	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
+
+	if escogida.sin_habitacion:
+		pieza.sin_habitacion = true
+		return pieza
+
+	pieza.solo_horizontal = escogida.solo_horizontal
+
+	var candidatas := _candidatas(pieza.bioma)
+	var pesos := _pesos_de(candidatas)
+	for i in pieza.forma.size():
+		var categoria: CategoriaSala = null
+		if i < escogida.categorias.size():
+			categoria = escogida.categorias[i]
+		var escena: PackedScene = null
+		if i < escogida.escenas.size():
+			escena = escogida.escenas[i]
+		# Con escena concreta, la categoría es solo para el icono: no se sortea.
+		if categoria == null and escena == null:
+			categoria = _elegir_categoria(candidatas, pesos)
+		pieza.categorias.append(categoria)
+		pieza.escenas.append(escena)
+	return pieza
+
+## Pieza aleatoria normal, con las probabilidades y pesos del nivel.
+func _pieza_normal() -> PiezaGenerada:
 	var nombre = pieza_aleatoria()
 
 	var pieza = PiezaGenerada.new()
@@ -145,12 +234,34 @@ func generar_pieza() -> PiezaGenerada:
 	pieza.bioma = biomas.pick_random()
 	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
 
+	# Sin habitación: sigue siendo una pieza normal, pero sin categorías (ni icono ni letra).
+	if _sale_sin_habitacion():
+		pieza.sin_habitacion = true
+		return pieza
+
+	pieza.solo_horizontal = _sale_solo_horizontal()
+
 	var candidatas := _candidatas(pieza.bioma)
 	var pesos := _pesos_de(candidatas)
 	for i in pieza.forma.size():
 		pieza.categorias.append(_elegir_categoria(candidatas, pesos))
 
 	return pieza
+
+## Tira la probabilidad de que la pieza salga sin habitación (PROBABILIDAD_SIN_HABITACION).
+func _sale_sin_habitacion() -> bool:
+	var config = Tetris.de(self).Configuracion
+	if config == null:
+		return false
+	return randf() * 100.0 < config.PROBABILIDAD_SIN_HABITACION
+
+## Tira la probabilidad de que la pieza salga solo horizontal (PROBABILIDAD_SOLO_HORIZONTAL).
+## Solo se tira para piezas con habitación (las otras salen antes de llegar aquí).
+func _sale_solo_horizontal() -> bool:
+	var config = Tetris.de(self).Configuracion
+	if config == null:
+		return false
+	return randf() * 100.0 < config.PROBABILIDAD_SOLO_HORIZONTAL
 
 ## Biomas del nivel: los que tienen salas en el ContenidoSalas. Sin pools, Medieval.
 func _obtener_biomas() -> Array[int]:
@@ -191,16 +302,13 @@ func _pesos_de(candidatas: Array[CategoriaSala]) -> Array[float]:
 func _elegir_categoria(candidatas: Array[CategoriaSala], pesos: Array[float]) -> CategoriaSala:
 	if candidatas.is_empty():
 		return null
-
 	var total := 0.0
 	for peso in pesos:
 		total += peso
-
 	var umbral := randf() * total
 	var acumulado := 0.0
 	for i in candidatas.size():
 		acumulado += pesos[i]
 		if umbral <= acumulado:
 			return candidatas[i]
-
 	return candidatas[-1]

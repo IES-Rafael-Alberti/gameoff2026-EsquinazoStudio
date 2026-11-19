@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cbipux2sba3t7"]
+
+[ext_resource type="Script" uid="uid://dyiboi372636a" path="res://scripts/utilidades/barajador.gd" id="1_jrqnw"]
+
+[node name="Barajador" type="Node2D" unique_id=573189021]
+script = ExtResource("1_jrqnw")

@@ -86,13 +86,14 @@ func _seguir_jugador() -> void:
 
 
 ## Lee una matriz como la de tablero.matriz: null = sin habitación, CeldaTablero = habitación.
+## Las celdas marcadas sin_habitacion son relleno del tablero y tampoco son sala.
 func generar(matriz: Array) -> void:
 	celdas.clear()
 	_filas = matriz.size()
 	_columnas = 0 if _filas == 0 else matriz[0].size()
 	for y in _filas:
 		for x in matriz[y].size():
-			if matriz[y][x] != null:
+			if matriz[y][x] != null and not matriz[y][x].sin_habitacion:
 				celdas[Vector2i(x, y)] = matriz[y][x]
 	_asegurar_vestibulos()
 	_interfaz.refrescar_minimapa()
@@ -123,8 +124,8 @@ func _crear_vestibulo(tipo: Vestibulo.Tipo) -> Vestibulo:
 ## Una puerta del vestíbulo se abre si hay sala en el tablero justo en esa columna.
 func _actualizar_puertas_vestibulos() -> void:
 	for x in _columnas:
-		_vestibulo_inferior.establecer_puerta(x, hay_habitacion(Vector2i(x, _filas - 1)))
-		_vestibulo_superior.establecer_puerta(x, hay_habitacion(Vector2i(x, 0)))
+		_vestibulo_inferior.establecer_puerta(x, hay_puerta_a_vestibulo(Vector2i(x, _filas - 1)))
+		_vestibulo_superior.establecer_puerta(x, hay_puerta_a_vestibulo(Vector2i(x, 0)))
 
 
 ## Un vestíbulo inactivo no está en el árbol, así que no puede colisionar con nada.
@@ -255,11 +256,27 @@ func hay_conexion(celda: Vector2i) -> bool:
 func categoria_de(celda: Vector2i) -> CategoriaSala:
 	return celdas[celda].categoria
 
+## La sala de esta celda solo tiene puertas Este y Oeste.
+func es_solo_horizontal(celda: Vector2i) -> bool:
+	return celdas.has(celda) and celdas[celda].solo_horizontal
+
+## La celda tiene una sala con puerta hacia el vestíbulo (las salas solo horizontales no).
+func hay_puerta_a_vestibulo(celda: Vector2i) -> bool:
+	return hay_habitacion(celda) and not es_solo_horizontal(celda)
+
+## Pasar de una celda a la de al lado en esa dirección: vertical solo si ninguna de las dos
+## salas es solo horizontal (así las puertas de los dos lados coinciden siempre).
+func _paso_permitido(celda: Vector2i, vector: Vector2i) -> bool:
+	if vector.y == 0:
+		return true
+	return not es_solo_horizontal(celda) and not es_solo_horizontal(celda + vector)
+
 ## Devuelve {Puerta.Direccion: bool}: en qué direcciones hay algo conectado.
 func vecinos_de(celda: Vector2i) -> Dictionary:
 	var vecinos := {}
 	for dir in Puerta.Direccion.values():
-		vecinos[dir] = hay_conexion(celda + Puerta.vector_de(dir))
+		var vector := Puerta.vector_de(dir)
+		vecinos[dir] = hay_conexion(celda + vector) and _paso_permitido(celda, vector)
 	return vecinos
 
 func describir_vecinos(celda: Vector2i) -> String:

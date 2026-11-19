@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bc5uyvgx4n56w"
+path="res://.godot/imported/Futuro Tetris.ogg-4ddcccdb3142248dc356d7f9b3589119.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Futuro Tetris.ogg"
+dest_files=["res://.godot/imported/Futuro Tetris.ogg-4ddcccdb3142248dc356d7f9b3589119.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

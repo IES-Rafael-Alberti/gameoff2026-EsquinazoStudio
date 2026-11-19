@@ -1,10 +1,14 @@
+
 [gd_scene format=3 uid="uid://bx1agdn2f4cw7"]
 
 [ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
-[ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/Tetris.tscn" id="2_pew7j"]
+[ext_resource type="PackedScene" uid="uid://dybwwc21vgycb" path="res://scenes/tetris/Tetris.tscn" id="2_pew7j"]
+[ext_resource type="Script" uid="uid://ec52h3tn8l2s" path="res://scripts/tetris/casilla_fija.gd" id="3_0g8fp"]
 [ext_resource type="Resource" uid="uid://blu4dlyhl61tl" path="res://resources/contenido_salas.tres" id="3_py3uc"]
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="3_skotl"]
+[ext_resource type="Script" uid="uid://gwn7jo3iiwod" path="res://scripts/tetris/grupo_barrera.gd" id="3_u22gr"]
 [ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="4_c173r"]
-[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra.tscn" id="4_ervc2"]
+[ext_resource type="PackedScene" uid="uid://bevmdwiaqd1if" path="res://scenes/mazmorra/mazmorra.tscn" id="4_ervc2"]
 [ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="5_d0608"]
 [ext_resource type="Resource" uid="uid://cbiolwbo0it2y" path="res://resources/categorias/CombateCuracion.tres" id="6_spu22"]
 [ext_resource type="Resource" uid="uid://dfbhvxj5ui1n" path="res://resources/categorias/CombatePuzle.tres" id="7_skotl"]
@@ -17,6 +21,10 @@
 [ext_resource type="Resource" uid="uid://bmft83rs5q0u5" path="res://resources/categorias/TesoroPuzle.tres" id="14_d0608"]
 [ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="14_rcahx"]
 [ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="15_spu22"]
+[ext_resource type="Script" uid="uid://bu1ykkrbfef2d" path="res://scripts/tetris/pieza_en_turno.gd" id="17_yp23v"]
+[ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="18_0g8fp"]
+[ext_resource type="Script" uid="uid://42ajtkgl04rp" path="res://scripts/ui/controles_tactiles.gd" id="18_spu22"]
+[ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="19_u22gr"]
 
 [sub_resource type="Resource" id="Resource_ervc2"]
 script = ExtResource("4_c173r")
@@ -48,51 +56,163 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 [sub_resource type="Resource" id="Resource_c173r"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("10_yp23v")
-metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_py3uc"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("11_0g8fp")
 peso = 3.5
-metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_d7syh"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("12_u22gr")
-metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_pncoq"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("13_bh3c7")
-metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_y8n3i"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("14_d0608")
-metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_ae6e5"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("15_spu22")
 peso = 7.0
-metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
-[sub_resource type="Resource" id="Resource_skotl"]
+[sub_resource type="Resource" id="Resource_u22gr"]
 resource_local_to_scene = true
 script = ExtResource("14_rcahx")
 COLUMNAS = 10
 FILAS = 20
 TAM_CELDA = 40
-CANTIDAD_PIEZAS = 3
+CANTIDAD_PIEZAS = 15
 PESOS_CATEGORIAS = Array[ExtResource("4_c173r")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
 CONTENIDO = ExtResource("3_py3uc")
 PIEZAS_NIVEL = 2
+CATEGORIA_TESORO = ExtResource("11_0g8fp")
+CATEGORIAS_TESORO = Array[ExtResource("3_skotl")]([ExtResource("11_0g8fp"), ExtResource("12_u22gr"), ExtResource("13_bh3c7"), ExtResource("14_d0608")])
 metadata/_custom_type_script = "uid://l2dv12p10t3s"
+
+[sub_resource type="Gradient" id="Gradient_spu22"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjkrw"]
+gradient = SubResource("Gradient_spu22")
+width = 160
+height = 160
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdy"]
+size = Vector2(180, 180)
 
 [node name="Juego" type="Node" unique_id=1710010088]
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
-Configuracion = SubResource("Resource_skotl")
+Configuracion = SubResource("Resource_u22gr")
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
+
+[node name="ControlesTactiles" type="CanvasLayer" parent="." unique_id=431361171]
+layer = 40
+script = ExtResource("18_spu22")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="ControlesTactiles" unique_id=2041898598]
+offset_left = 50.0
+offset_top = 720.0
+offset_right = 390.0
+offset_bottom = 1060.0
+joystick_size = 240.0
+tip_size = 110.0
+deadzone_ratio = 0.15
+action_left = &"mover_izquierda"
+action_right = &"mover_derecha"
+action_up = &"mover_arriba"
+action_down = &"mover_abajo"
+
+[node name="BotonRotarDer" type="TouchScreenButton" parent="ControlesTactiles" unique_id=911350923]
+self_modulate = Color(1, 1, 1, 0.25)
+position = Vector2(1360, 780)
+texture_normal = SubResource("GradientTexture2D_mjkrw")
+shape = SubResource("RectangleShape2D_gqhdy")
+shape_visible = false
+action = "rotar_derecha"
+
+[node name="Label" type="Label" parent="ControlesTactiles/BotonRotarDer" unique_id=1468519100]
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 64
+text = "↻"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonRotarIzq" type="TouchScreenButton" parent="ControlesTactiles" unique_id=2118160007]
+self_modulate = Color(1, 1, 1, 0.25)
+position = Vector2(1560, 780)
+texture_normal = SubResource("GradientTexture2D_mjkrw")
+shape = SubResource("RectangleShape2D_gqhdy")
+shape_visible = false
+action = "rotar_izquierda"
+
+[node name="Label" type="Label" parent="ControlesTactiles/BotonRotarIzq" unique_id=1139566676]
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 56
+text = "↺"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonAccion" type="TouchScreenButton" parent="ControlesTactiles" unique_id=263245171]
+self_modulate = Color(1, 1, 1, 0.25)
+position = Vector2(1560, 600)
+texture_normal = SubResource("GradientTexture2D_mjkrw")
+shape = SubResource("RectangleShape2D_gqhdy")
+shape_visible = false
+action = "accion"
+
+[node name="Label" type="Label" parent="ControlesTactiles/BotonAccion" unique_id=1156895470]
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 64
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonModo" type="TouchScreenButton" parent="ControlesTactiles" unique_id=22342896]
+self_modulate = Color(1, 1, 1, 0.25)
+position = Vector2(1360, 600)
+texture_normal = SubResource("GradientTexture2D_mjkrw")
+shape = SubResource("RectangleShape2D_gqhdy")
+shape_visible = false
+action = "cambiar_modo"
+
+[node name="Label" type="Label" parent="ControlesTactiles/BotonModo" unique_id=662712]
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 40
+text = "SHIFT"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BotonPausa" type="TouchScreenButton" parent="ControlesTactiles" unique_id=1357206867]
+self_modulate = Color(1, 1, 1, 0.25)
+position = Vector2(47, 576)
+texture_normal = SubResource("GradientTexture2D_mjkrw")
+shape = SubResource("RectangleShape2D_gqhdy")
+shape_visible = false
+action = "pausa"
+
+[node name="Label" type="Label" parent="ControlesTactiles/BotonPausa" unique_id=1131412200]
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 64
+text = "||"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
