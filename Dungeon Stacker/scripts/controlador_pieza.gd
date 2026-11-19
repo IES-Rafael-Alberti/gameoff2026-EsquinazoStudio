@@ -11,6 +11,7 @@ var forma_actual: Array = []
 var textura_actual: Texture2D
 var marco_actual: Texture2D
 var categorias_actuales: Array[CategoriaSala] = []
+var escenas_actuales: Array[PackedScene] = []
 var bioma_actual: int = Catalogo.Bioma.MEDIEVAL
 var sin_habitacion_actual := false
 var solo_horizontal_actual := false
@@ -88,6 +89,7 @@ func limpiar_pieza() -> void:
 	textura_actual = null
 	marco_actual = null
 	categorias_actuales.clear()
+	escenas_actuales = []
 	bioma_actual = Catalogo.Bioma.MEDIEVAL
 	sin_habitacion_actual = false
 	solo_horizontal_actual = false
@@ -108,7 +110,7 @@ func actualizar_pieza_actual() -> void:
 		current_piece.actualizar_pieza([], Vector2i.ZERO, textura_actual, marco_actual, categorias_actuales, false)
 		return
 
-	current_piece.actualizar_pieza(forma_actual, posicion_pieza, textura_actual, marco_actual, categorias_actuales, true)
+	current_piece.actualizar_pieza(forma_actual, posicion_pieza, textura_actual, marco_actual, categorias_actuales, true, solo_horizontal_actual)
 
 func actualizar_pieza_fantasma() -> void:
 	if forma_actual.is_empty():
@@ -116,7 +118,7 @@ func actualizar_pieza_fantasma() -> void:
 		return
 
 	var posicion_fantasma = calcular_posicion_fantasma()
-	ghost_piece.actualizar_pieza(forma_actual, posicion_fantasma, textura_actual, marco_actual, categorias_actuales, true)
+	ghost_piece.actualizar_pieza(forma_actual, posicion_fantasma, textura_actual, marco_actual, categorias_actuales, true, solo_horizontal_actual)
 	
 func calcular_posicion_fantasma() -> Vector2i:
 	var posicion_fantasma = posicion_pieza
@@ -218,6 +220,7 @@ func establecer_pieza(pieza: PiezaGenerada) -> bool:
 	textura_actual = pieza.textura_fondo
 	marco_actual = pieza.textura_marco
 	categorias_actuales = pieza.categorias
+	escenas_actuales = pieza.escenas
 	posicion_pieza = calcular_posicion_spawn(forma_actual)
 	estado_rotacion = 0
 	temporizador = 0.0

@@ -1,8 +1,11 @@
 [gd_resource type="Resource" script_class="Configuracion_Tablero" format=3 uid="uid://cpr5say8kgftu"]
 
+[ext_resource type="Script" uid="uid://gwn7jo3iiwod" path="res://scripts/tetris/grupo_barrera.gd" id="1_jmfxg"]
 [ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="1_xttdm"]
+[ext_resource type="Script" uid="uid://ec52h3tn8l2s" path="res://scripts/tetris/casilla_fija.gd" id="2_d74ni"]
 [ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="2_peso"]
 [ext_resource type="Resource" uid="uid://blu4dlyhl61tl" path="res://resources/contenido_salas.tres" id="3_cont"]
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="3_hcyvm"]
 [ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="5_d0608"]
 [ext_resource type="Resource" uid="uid://cbiolwbo0it2y" path="res://resources/categorias/CombateCuracion.tres" id="6_spu22"]
 [ext_resource type="Resource" uid="uid://dfbhvxj5ui1n" path="res://resources/categorias/CombatePuzle.tres" id="7_skotl"]
@@ -12,6 +15,9 @@
 [ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="11_0g8fp"]
 [ext_resource type="Resource" uid="uid://odv61bfmtlbk" path="res://resources/categorias/TesoroCombate.tres" id="12_u22gr"]
 [ext_resource type="Resource" uid="uid://cm5gfqhkao5nr" path="res://resources/categorias/TesoroCuracion.tres" id="13_bh3c7"]
+[ext_resource type="Script" uid="uid://bu1ykkrbfef2d" path="res://scripts/tetris/pieza_en_turno.gd" id="15_khdex"]
+[ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="16_weax8"]
+[ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="17_l7y0s"]
 
 [sub_resource type="Resource" id="Resource_ervc2"]
 script = ExtResource("2_peso")
@@ -70,7 +76,7 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 resource_local_to_scene = true
 script = ExtResource("1_xttdm")
 COLUMNAS = 10
-FILAS = 10
+FILAS = 20
 TAM_CELDA = 40
 CANTIDAD_PIEZAS = 15
 PESOS_CATEGORIAS = Array[ExtResource("2_peso")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])

@@ -1,12 +1,13 @@
 extends Node2D
 
-const ESCENA_CUADRADO = preload("res://scenes/cuadrado.tscn")
+const ESCENA_CUADRADO = preload("res://scenes/tetris/cuadrado.tscn")
 
 var forma: Array = []
 var posicion: Vector2i = Vector2i.ZERO
 var textura_fondo: Texture2D
 var textura_marco: Texture2D
 var categorias: Array = []
+var solo_horizontal := false
 var visible_pieza: bool = false
 
 var _cuadrados: Array = []
@@ -18,13 +19,15 @@ func actualizar_pieza(
 	nueva_textura_fondo: Texture2D,
 	nueva_textura_marco: Texture2D,
 	nuevas_categorias: Array,
-	mostrar: bool
+	mostrar: bool,
+	nuevo_solo_horizontal := false
 ) -> void:
 	forma = nueva_forma
 	posicion = nueva_posicion
 	textura_fondo = nueva_textura_fondo
 	textura_marco = nueva_textura_marco
 	categorias = nuevas_categorias
+	solo_horizontal = nuevo_solo_horizontal
 	visible_pieza = mostrar
 
 	_asegurar_cuadrados(forma.size())
@@ -53,5 +56,5 @@ func _actualizar_cuadrados() -> void:
 			categoria = categorias[i]
 
 		cuadrado.visible = true
-		cuadrado.configurar(textura_fondo, textura_marco, categoria)
+		cuadrado.configurar(textura_fondo, textura_marco, categoria, null, solo_horizontal)
 		cuadrado.poner_en_celda(posicion + forma[i])

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d13g2aba8o5hu" path="res://scripts/grid_background.gd" id="3_5xuig"]
 [ext_resource type="Script" uid="uid://dxm2rn25xq6v" path="res://scripts/tablero.gd" id="4_5jpfg"]
 [ext_resource type="Script" uid="uid://dbdb60dew3vhi" path="res://scripts/fixed_blocks.gd" id="5_10yl2"]
+[ext_resource type="Script" uid="uid://cmok3qxmm02po" path="res://scripts/tetris/barreras.gd" id="6_d0ktp"]
 [ext_resource type="Script" uid="uid://cpo0eoojwa5p5" path="res://scripts/ghost_piece.gd" id="6_mtfya"]
 [ext_resource type="Script" uid="uid://bkqgf036amws2" path="res://scripts/current_piece.gd" id="7_4f33l"]
 [ext_resource type="Script" uid="uid://dflrhf5ww8hu2" path="res://scripts/piezas.gd" id="8_5r8ga"]
@@ -35,6 +36,9 @@ script = ExtResource("4_5jpfg")
 [node name="FixedBlocks" type="Node2D" parent="Board" unique_id=1485467602]
 z_index = 1
 script = ExtResource("5_10yl2")
+
+[node name="Barreras" type="Node2D" parent="Board" unique_id=747675031]
+script = ExtResource("6_d0ktp")
 
 [node name="GhostPiece" type="Node2D" parent="Board" unique_id=2051215285]
 z_index = 2
@@ -72,6 +76,10 @@ offset_top = 40.0
 offset_right = 60.0
 offset_bottom = 63.0
 text = "SIGUIENTES"
+
+[node name="HoldPiece" type="Node2D" parent="SidePanel" unique_id=2042075291]
+position = Vector2(180, 150)
+script = ExtResource("10_kjx5x")
 
 [node name="NextPiece1" type="Node2D" parent="SidePanel" unique_id=729437495]
 position = Vector2(60, 150)

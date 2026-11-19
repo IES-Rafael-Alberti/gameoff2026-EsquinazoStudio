@@ -1,6 +1,8 @@
+
 [gd_scene format=3 uid="uid://blvjaebgnqvbq"]
 
 [ext_resource type="Script" uid="uid://duha6hnphuqpj" path="res://scripts/cuadrado.gd" id="1_kdvc6"]
+[ext_resource type="Texture2D" uid="uid://qdv7t20m4yvt" path="res://assets/sprites/piezas/Flecha.png" id="2_82o12"]
 
 [node name="Cuadrado" type="Node2D" unique_id=1254677309]
 script = ExtResource("1_kdvc6")
@@ -14,6 +16,12 @@ centered = false
 
 [node name="Icono" type="Sprite2D" parent="." unique_id=628423082]
 z_index = 2
+centered = false
+
+[node name="MarcaHorizontal" type="Sprite2D" parent="." unique_id=1767325399]
+visible = false
+z_index = 4
+texture = ExtResource("2_82o12")
 centered = false
 
 [node name="LetraCategoria" type="Label" parent="." unique_id=1721001575]

@@ -11,7 +11,7 @@ const NOMBRES_BIOMA := {
 
 const RUTAS_MARCO_BIOMA := {
 	1: "res://assets/sprites/piezas/Marco medieval.png",
-	2: "",
+	2: "res://assets/sprites/piezas/Marco futuro.png",
 	3: "",
 }
 

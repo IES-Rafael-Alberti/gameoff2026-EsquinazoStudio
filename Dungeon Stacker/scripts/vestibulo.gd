@@ -10,11 +10,11 @@ signal puerta_cruzada(columna: int)
 
 enum Tipo { INFERIOR, SUPERIOR }
 
-const ESCENA_TRAMO := preload("res://scenes/vestibulo_tramo.tscn")
-const ESCENA_EXTREMO := preload("res://scenes/vestibulo_extremo.tscn")
-const ESCENA_PUERTA := preload("res://scenes/puerta.tscn")
-const ESCENA_ZONA_INFERIOR := preload("res://scenes/vestibulo_zona_inferior.tscn")
-const ESCENA_ZONA_SUPERIOR := preload("res://scenes/vestibulo_zona_superior.tscn")
+const ESCENA_TRAMO := preload("res://scenes/mazmorra/vestibulo_tramo.tscn")
+const ESCENA_EXTREMO := preload("res://scenes/mazmorra/vestibulo_extremo.tscn")
+const ESCENA_PUERTA := preload("res://scenes/mazmorra/puerta.tscn")
+const ESCENA_ZONA_INFERIOR := preload("res://scenes/mazmorra/vestibulo_zona_inferior.tscn")
+const ESCENA_ZONA_SUPERIOR := preload("res://scenes/mazmorra/vestibulo_zona_superior.tscn")
 
 @export var tipo := Tipo.INFERIOR
 ## Dónde aparece el jugador respecto al centro de su puerta, hacia dentro del vestíbulo.
