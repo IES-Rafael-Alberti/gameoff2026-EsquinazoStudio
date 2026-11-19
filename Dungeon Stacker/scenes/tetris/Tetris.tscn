@@ -77,6 +77,10 @@ offset_right = 60.0
 offset_bottom = 63.0
 text = "SIGUIENTES"
 
+[node name="HoldPiece" type="Node2D" parent="SidePanel" unique_id=2042075291]
+position = Vector2(180, 150)
+script = ExtResource("10_kjx5x")
+
 [node name="NextPiece1" type="Node2D" parent="SidePanel" unique_id=729437495]
 position = Vector2(60, 150)
 script = ExtResource("10_kjx5x")

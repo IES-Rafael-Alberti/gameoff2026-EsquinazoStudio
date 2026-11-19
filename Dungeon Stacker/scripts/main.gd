@@ -1,3 +1,4 @@
+
 class_name Tetris
 extends Node2D
 
@@ -25,11 +26,15 @@ static func de(nodo: Node) -> Tetris:
 	$SidePanel/NextPiece5,
 ]
 @onready var piezas_label = $SidePanel/PiezasLabel
+## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
+@onready var hold_panel = get_node_or_null("SidePanel/HoldPiece")
 @onready var piezas = $Piezas
 @onready var controlador_pieza = $ControladorPieza
 
 var piezas_disponibles: int = 0
 var cola_piezas: Array[PiezaGenerada] = []
+## Pieza en la reserva (null = vacía). Cuenta como pieza pendiente del nivel.
+var pieza_guardada: PiezaGenerada = null
 var bloqueado: bool = false
 var juego_activo := true
 
@@ -71,6 +76,8 @@ func _process(delta: float) -> void:
 		controlador_pieza.rotar_pieza(1)
 	elif Input.is_action_just_pressed("accion"):
 		controlador_pieza.hard_drop()
+	elif InputMap.has_action("guardar_pieza") and Input.is_action_just_pressed("guardar_pieza"):
+		guardar_pieza()
 
 	controlador_pieza.soft_drop_activo = Input.is_action_pressed("mover_abajo")
 	controlador_pieza.procesar_caida(delta)
@@ -107,7 +114,14 @@ func generar_pieza() -> void:
 	if not juego_activo or bloqueado:
 		return
 	if piezas_disponibles <= 0:
-		controlador_pieza.limpiar_pieza()
+		# Sin piezas en la cola: si hay una guardada, sale ella (no se puede dejar atascada).
+		if pieza_guardada != null:
+			var sacada := pieza_guardada
+			pieza_guardada = null
+			controlador_pieza.establecer_pieza(sacada)
+			actualizar_hold()
+		else:
+			controlador_pieza.limpiar_pieza()
 		actualizar_contador()
 		return
 
@@ -147,6 +161,46 @@ func fijar_pieza() -> void:
 		return
 
 	generar_pieza()
+
+## Guarda la pieza que cae en la reserva y saca la que había. Sin límite de usos. Con la reserva
+## vacía, la pieza actual se guarda y entra la primera de la cola (gasta una pieza del contador).
+## La pieza que sale aparece arriba, sin rotar.
+func guardar_pieza() -> void:
+	if not juego_activo or bloqueado or controlador_pieza.pieza_actual == null:
+		return
+	var actual: PiezaGenerada = controlador_pieza.pieza_actual
+
+	if pieza_guardada == null:
+		if piezas_disponibles <= 0:
+			return
+		if cola_piezas.is_empty():
+			cola_piezas.append(piezas.generar_pieza())
+		var siguiente: PiezaGenerada = cola_piezas.pop_front()
+		pieza_guardada = actual
+		controlador_pieza.establecer_pieza(siguiente)
+		piezas_disponibles -= 1
+		refrescar_cola()
+	else:
+		var sacada := pieza_guardada
+		pieza_guardada = actual
+		controlador_pieza.establecer_pieza(sacada)
+
+	actualizar_hold()
+	actualizar_contador()
+
+func actualizar_hold() -> void:
+	if hold_panel == null:
+		return
+	if pieza_guardada == null:
+		hold_panel.actualizar_pieza([], null, null, [])
+	else:
+		hold_panel.actualizar_pieza(
+			pieza_guardada.forma,
+			pieza_guardada.textura_fondo,
+			pieza_guardada.textura_marco,
+			pieza_guardada.categorias,
+			pieza_guardada.solo_horizontal
+		)
 
 ## Por cada línea completada, una casilla de las piezas de la cola pasa a ser Tesoro. Se empieza
 ## por la primera pieza; las casillas que ya son de tesoro, las piezas sin habitación y las
@@ -196,6 +250,8 @@ func reiniciar_tetris() -> void:
 	crear_tablero()
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	cola_piezas.clear()
+	pieza_guardada = null
+	actualizar_hold()
 	piezas.reiniciar_secuencia()
 	refrescar_cola()
 	generar_pieza()
@@ -207,4 +263,5 @@ func actualizar_contador() -> void:
 	var actual = 0
 	if controlador_pieza.pieza_actual != null:
 		actual = 1
-	piezas_label.text = "PIEZAS: %d" % (piezas_disponibles + actual)
+	var guardada := 1 if pieza_guardada != null else 0
+	piezas_label.text = "PIEZAS: %d" % (piezas_disponibles + actual + guardada)

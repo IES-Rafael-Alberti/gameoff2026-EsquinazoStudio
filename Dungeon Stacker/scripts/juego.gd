@@ -17,6 +17,8 @@ func _ready() -> void:
 	_mazmorra.piezas_obtenidas.connect(_tetris.agregar_piezas)
 	# Se empieza en la mazmorra, en la zona de spawn del vestíbulo inferior.
 	_mazmorra.sincronizar(_tetris.tablero)
+	# La música empieza en el bioma medieval; el cambio de bioma se conectará más adelante.
+	Musica.iniciar_juego(Catalogo.Bioma.MEDIEVAL, Musica.Modo.MAZMORRA)
 	_aplicar_modo()
 
 	_pantalla_muerte = PantallaMuerte.new()
@@ -45,18 +47,16 @@ func _aplicar_modo() -> void:
 	_activar(_mazmorra, modo == Modo.MAZMORRA)
 	_mazmorra.set_activa(modo == Modo.MAZMORRA)
 	print("Modo: ", Modo.keys()[modo])
-
+	Musica.cambiar_modo(Musica.Modo.TETRIS if modo == Modo.TETRIS else Musica.Modo.MAZMORRA)
 
 func _activar(nodo: CanvasItem, activo: bool) -> void:
 	nodo.visible = activo
 	nodo.process_mode = Node.PROCESS_MODE_INHERIT if activo else Node.PROCESS_MODE_DISABLED
 
-
 ## El jugador ha llegado a 0 de vida: se congela todo y se ofrece reiniciar el nivel.
 func _on_jugador_murio() -> void:
 	get_tree().paused = true
 	_pantalla_muerte.mostrar()
-
 
 ## Reinicia solo este nivel (tablero, mazmorra y vida desde cero).
 func reiniciar_nivel() -> void:

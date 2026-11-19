@@ -13,3 +13,5 @@ var sin_habitacion := false
 var solo_horizontal := false
 ## Si viene de una PiezaEscogida (diseñada a mano): el tesoro por línea no la modifica.
 var escogida := false
+## Escena de sala concreta de cada cuadrado (mismo orden que `categorias`); null = del pool.
+var escenas: Array[PackedScene] = []

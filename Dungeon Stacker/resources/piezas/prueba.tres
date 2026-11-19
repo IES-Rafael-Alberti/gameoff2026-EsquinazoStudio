@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PiezaEscogida" format=3 uid="uid://cjq61qt1ak45q"]
+
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_3i80p"]
+[ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="2_l8e8n"]
+
+[resource]
+script = ExtResource("2_l8e8n")
+metadata/_custom_type_script = "uid://cgs80e6cfm5qy"
