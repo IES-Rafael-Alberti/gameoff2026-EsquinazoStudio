@@ -1,8 +1,10 @@
+
 extends Node
 
 var matriz: Array = []
 ## Posiciones con barrera ACTIVA -> nombre de su grupo.
 var _barreras: Dictionary = {}
+
 
 func crear_tablero() -> void:
 	matriz.clear()
@@ -171,7 +173,8 @@ func fijar_pieza(
 	categorias: Array,
 	bioma: int = Catalogo.Bioma.MEDIEVAL,
 	sin_habitacion := false,
-	solo_horizontal := false
+	solo_horizontal := false,
+	escenas: Array = []
 ) -> int:
 	var colocadas := 0
 	for i in forma.size():
@@ -186,6 +189,8 @@ func fijar_pieza(
 			nueva.sin_habitacion = sin_habitacion
 			nueva.sin_habitacion_original = sin_habitacion
 			nueva.solo_horizontal = solo_horizontal
+			if i < escenas.size():
+				nueva.escena_sala = escenas[i]
 			matriz[celda.y][celda.x] = nueva
 			colocadas += 1
 	_aplicar_barreras()

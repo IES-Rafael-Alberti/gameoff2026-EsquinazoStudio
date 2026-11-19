@@ -1,195 +1,180 @@
-extends Node
+class_name TrampaGiratoria
+extends Peligro
+## Trampa giratoria: un centro fijo y sólido del que salen N palos a ángulos iguales que
+## giran sin parar y sin que nada los frene (atraviesan muros, cajas y lo que sea).
+## Los palos dañan al jugador y a los enemigos que andan; el centro bloquea pero no daña.
+## En el editor: capa ninguna, máscara Jugador + Enemigos (como cualquier Peligro).
+## Los palos se construyen al ejecutar, así que en el editor solo se ve el cuerpo del centro.
+##
+## Si tiene hijos NavigationObstacle2D y/o BloqueoNavegacion, su radio se ajusta solo al
+## alcance de los palos más margen_obstaculo, para que los enemigos que andan esquiven y no
+## planifiquen rutas por todo el círculo que barren.
+##
+## Con retardo_inicio > 0 la trampa espera quieta, en su ángulo inicial y haciendo daño, esos
+## segundos contados desde que el jugador entra en la sala, y entonces empieza a girar.
 
-var matriz: Array = []
-## Posiciones con barrera ACTIVA -> nombre de su grupo.
-var _barreras: Dictionary = {}
+@export_group("Palos")
+## Palos repartidos a ángulos iguales: 2 = uno cada 180°, 3 = uno cada 120°...
+@export_range(1, 12) var cantidad_palos := 2
+## Piezas de cada palo sin contar el centro: la última es la punta y el resto, intermedias.
+## Longitud 5 = 4 intermedios + la punta.
+@export_range(1, 20) var longitud := 3
+## Distancia entre los centros de dos piezas seguidas (píxeles). Para que se toquen, igual
+## al tamaño visible de la pieza.
+@export var separacion_piezas := 64.0
+## Ancho de la zona que hace daño a lo largo del palo (píxeles).
+@export var grosor_dano := 24.0
 
-func crear_tablero() -> void:
-	matriz.clear()
-	var Configuracion = Tetris.de(self).Configuracion
-	for y in range(Configuracion.FILAS):
-		var fila: Array = []
-		for x in range(Configuracion.COLUMNAS):
-			fila.append(null)
+@export_group("Giro")
+## Grados por segundo. Negativo gira en sentido contrario. Siempre a velocidad constante.
+@export var velocidad_giro := 90.0
+## Ángulo con el que empieza, en grados.
+@export var angulo_inicial := 0.0
+## Segundos que espera quieta antes de empezar a girar, contados desde que el jugador entra
+## en la sala. 0 = gira desde que se carga la sala.
+@export_range(0.0, 60.0, 0.1, "or_greater") var retardo_inicio := 0.0
 
-		matriz.append(fila)
+@export_group("Navegación")
+## Píxeles que se suman al alcance de los palos para el radio del NavigationObstacle2D y
+## del BloqueoNavegacion. Tiene que cubrir al menos el cuerpo del enemigo (16 px) más un
+## poco de holgura.
+@export var margen_obstaculo := 32.0
 
-	_colocar_casillas_especiales()
-	_colocar_barreras()
+@export_group("Sprites")
+@export var sprite_centro: Texture2D
+@export var sprite_intermedio: Texture2D
+@export var sprite_punta: Texture2D
+## Escala de los sprites (0.125 para arte de 512 px en casillas de 64).
+@export var escala_sprites := 0.125
 
-
-func comprobar_colision(posicion: Vector2i, forma: Array) -> bool:
-	var Configuracion = Tetris.de(self).Configuracion
-	for bloque in forma:
-		var celda = posicion + bloque
-		if celda.x < 0 or celda.x >= Configuracion.COLUMNAS:
-			return true
-
-		if celda.y >= Configuracion.FILAS:
-			return true
-
-		if celda.y >= 0 and matriz[celda.y][celda.x] != null:
-			return true
-
-	return false
-
-
-## Pone en el tablero las casillas bloqueadas y las fijas del nivel.
-func _colocar_casillas_especiales() -> void:
-	var Configuracion = Tetris.de(self).Configuracion
-	for pos in Configuracion.CASILLAS_BLOQUEADAS:
-		if not _dentro(pos):
-			push_warning("Casilla bloqueada fuera del tablero: %s" % pos)
-			continue
-		var bloqueada := CeldaTablero.new(Configuracion.TEXTURA_BLOQUEADA)
-		bloqueada.bloqueada = true
-		bloqueada.sin_habitacion = true
-		matriz[pos.y][pos.x] = bloqueada
-	for fija in Configuracion.CASILLAS_FIJAS:
-		if fija == null:
-			continue
-		if not _dentro(fija.posicion):
-			push_warning("Casilla fija fuera del tablero: %s" % fija.posicion)
-			continue
-		if matriz[fija.posicion.y][fija.posicion.x] != null:
-			push_warning("Casilla fija en %s: ya hay otra casilla especial; se ignora." % fija.posicion)
-			continue
-		var celda := CeldaTablero.new(Configuracion.TEXTURA_FIJA)
-		celda.fija = true
-		celda.escena_sala = fija.escena
-		matriz[fija.posicion.y][fija.posicion.x] = celda
+var _angulo := 0.0 # radianes
+var _brazos: Node2D # contiene los sprites de los palos y del centro; es lo que gira
+var _zonas: Array[CollisionShape2D] = []
+var _desfases: Array[float] = [] # ángulo de cada palo respecto al giro general
+var _distancia_zona := 0.0 # del centro al medio de la zona de daño de un palo
+var _girando := true
+var _espera := 0.0
 
 
-## Registra las posiciones barrera de todos los grupos del nivel.
-func _colocar_barreras() -> void:
-	_barreras.clear()
-	var Configuracion = Tetris.de(self).Configuracion
-	for grupo in Configuracion.CASILLAS_BARRERA:
-		if grupo == null:
-			continue
-		for pos in grupo.posiciones:
-			if not _dentro(pos):
-				push_warning("Barrera '%s' fuera del tablero: %s" % [grupo.nombre, pos])
-			elif _es_inmovil(pos.x, pos.y):
-				push_warning("Barrera '%s' en %s: ya hay una casilla fija o bloqueada; se ignora." % [grupo.nombre, pos])
-			elif _barreras.has(pos):
-				push_warning("Barrera '%s' en %s: la posición ya es de otro grupo; se ignora." % [grupo.nombre, pos])
-			else:
-				_barreras[pos] = grupo.nombre
+func _ready() -> void:
+	super._ready()
+	_angulo = deg_to_rad(angulo_inicial)
+	_construir()
+	_ajustar_obstaculo()
+	_aplicar_giro()
+	if retardo_inicio > 0.0:
+		_girando = false
+		_espera = retardo_inicio
+		set_physics_process(true)
+		var sala := _sala_de_la_trampa()
+		if sala != null:
+			# Hasta que el jugador no entra no empieza a contar.
+			_espera = -1.0
+			sala.jugador_entro.connect(_empezar_cuenta, CONNECT_ONE_SHOT)
 
 
-## Posiciones con barrera activa (para dibujarlas).
-func posiciones_barrera() -> Array[Vector2i]:
-	var posiciones: Array[Vector2i] = []
-	for pos in _barreras:
-		posiciones.append(pos)
-	return posiciones
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta) # daño por contacto
+	if not _girando:
+		if _espera < 0.0:
+			return # esperando a que entre el jugador
+		_espera -= delta
+		if _espera > 0.0:
+			return
+		_girando = true
+	_angulo += deg_to_rad(velocidad_giro) * delta
+	_aplicar_giro()
 
 
-## Apaga un grupo de barreras: sus casillas ocupadas recuperan su sala. Devuelve false si no
-## había ninguna posición activa con ese nombre.
-func desactivar_barrera(grupo: StringName) -> bool:
-	var quitadas: Array[Vector2i] = []
-	for pos in _barreras:
-		if _barreras[pos] == grupo:
-			quitadas.append(pos)
-	for pos in quitadas:
-		_barreras.erase(pos)
-	_aplicar_barreras()
-	return not quitadas.is_empty()
+func _empezar_cuenta() -> void:
+	_espera = retardo_inicio
 
 
-## Las casillas colocadas sobre una barrera activa no son sala; fuera de ella, vuelven a lo
-## que eran. Se recalcula por posición, así sigue bien aunque la casilla caiga al borrar líneas.
-func _aplicar_barreras() -> void:
-	for y in range(matriz.size()):
-		for x in range(matriz[y].size()):
-			var celda = matriz[y][x]
-			if celda == null or celda.es_inmovil():
-				continue
-			celda.sin_habitacion = celda.sin_habitacion_original or _barreras.has(Vector2i(x, y))
+func _sala_de_la_trampa() -> Habitacion:
+	var nodo := get_parent()
+	while nodo != null and not nodo is Habitacion:
+		nodo = nodo.get_parent()
+	return nodo as Habitacion
 
 
-func _dentro(pos: Vector2i) -> bool:
-	var Configuracion = Tetris.de(self).Configuracion
-	return pos.x >= 0 and pos.x < Configuracion.COLUMNAS and pos.y >= 0 and pos.y < Configuracion.FILAS
+## Crea los palos (sprites y zonas de daño) y el sprite del centro.
+func _construir() -> void:
+	_brazos = Node2D.new()
+	add_child(_brazos)
+
+	var palos := maxi(cantidad_palos, 1)
+	var largo := maxi(longitud, 1)
+	# La zona de un palo va desde el borde del centro hasta el final de la punta.
+	_distancia_zona = (largo + 1) * separacion_piezas / 2.0
+
+	for i in palos:
+		var desfase := TAU * i / palos
+		_desfases.append(desfase)
+
+		var palo := Node2D.new()
+		palo.rotation = desfase
+		_brazos.add_child(palo)
+		for j in range(1, largo + 1):
+			var punta := j == largo
+			palo.add_child(_crear_pieza(
+				sprite_punta if punta else sprite_intermedio,
+				Vector2(j * separacion_piezas, 0.0),
+				Vector2(separacion_piezas, grosor_dano),
+				Color(0.9, 0.2, 0.2) if punta else Color(0.7, 0.7, 0.7)))
+
+		# Una CollisionShape2D solo funciona como hija directa del Area2D: se coloca y
+		# se gira a mano en _aplicar_giro().
+		var forma := RectangleShape2D.new()
+		forma.size = Vector2(largo * separacion_piezas, grosor_dano)
+		var zona := CollisionShape2D.new()
+		zona.shape = forma
+		add_child(zona)
+		_zonas.append(zona)
+
+	# El centro gira con los palos y se dibuja encima de ellos.
+	_brazos.add_child(_crear_pieza(sprite_centro, Vector2.ZERO,
+			Vector2.ONE * 56.0, Color(0.25, 0.25, 0.3)))
 
 
-func _es_inmovil(x: int, y: int) -> bool:
-	var celda = matriz[y][x]
-	return celda != null and celda.es_inmovil()
+## Ajusta, si existen, el radio del obstáculo de evitación y el del bloqueo de navegación:
+## del centro al borde exterior de la punta (lo que barren los palos) más margen_obstaculo.
+## El BloqueoNavegacion lee su radio en un diferido, así que llega a tiempo.
+func _ajustar_obstaculo() -> void:
+	var alcance := maxi(longitud, 1) * separacion_piezas + separacion_piezas / 2.0
+	var radio := alcance + margen_obstaculo
+
+	var obstaculo := get_node_or_null("NavigationObstacle2D") as NavigationObstacle2D
+	if obstaculo != null:
+		obstaculo.radius = radio
+
+	var bloqueo := get_node_or_null("BloqueoNavegacion") as BloqueoNavegacion
+	if bloqueo != null:
+		bloqueo.radio = radio
 
 
-## Una fila está completa si todas sus casillas están ocupadas Y al menos una se puede borrar
-## (una fila hecha solo de casillas fijas o bloqueadas no cuenta).
-func _linea_completa(y: int) -> bool:
-	var hay_borrable := false
-	for x in range(matriz[y].size()):
-		var celda = matriz[y][x]
-		if celda == null:
-			return false
-		if not celda.es_inmovil():
-			hay_borrable = true
-	return hay_borrable
+## Pone los sprites y las zonas de daño en el ángulo actual.
+func _aplicar_giro() -> void:
+	_brazos.rotation = _angulo
+	for i in _zonas.size():
+		var angulo := _angulo + _desfases[i]
+		_zonas[i].rotation = angulo
+		_zonas[i].position = Vector2.from_angle(angulo) * _distancia_zona
 
 
-## Borra de la fila y las casillas que no son inmóviles. Las inmóviles se quedan donde están.
-## En cada columna, lo que hay encima baja una casilla, hasta toparse con una inmóvil: lo que
-## está apoyado sobre una casilla inmóvil no baja.
-func _borrar_linea(y: int) -> void:
-	for x in range(matriz[y].size()):
-		if _es_inmovil(x, y):
-			continue
-		var r := y
-		while r > 0 and not _es_inmovil(x, r - 1):
-			matriz[r][x] = matriz[r - 1][x]
-			r -= 1
-		matriz[r][x] = null
-
-
-## Borra las líneas completas y devuelve cuántas ha borrado.
-func comprobar_lineas() -> int:
-	var Configuracion = Tetris.de(self).Configuracion
-	var y = Configuracion.FILAS - 1
-	var lineas := 0
-
-	while y >= 0:
-		if _linea_completa(y):
-			lineas += 1
-			_borrar_linea(y)
-		else:
-			y -= 1
-
-	_aplicar_barreras()
-	return lineas
-
-
-func fijar_pieza(
-	posicion: Vector2i,
-	forma: Array,
-	textura_fondo: Texture2D,
-	categorias: Array,
-	bioma: int = Catalogo.Bioma.MEDIEVAL,
-	sin_habitacion := false,
-	solo_horizontal := false,
-	escenas: Array = []
-) -> int:
-	var colocadas := 0
-	for i in forma.size():
-		var celda = posicion + forma[i]
-
-		if celda.y >= 0 and celda.y < matriz.size():
-			var categoria: CategoriaSala = null
-			if i < categorias.size():
-				categoria = categorias[i]
-
-			var nueva := CeldaTablero.new(textura_fondo, categoria, bioma)
-			nueva.sin_habitacion = sin_habitacion
-			nueva.sin_habitacion_original = sin_habitacion
-			nueva.solo_horizontal = solo_horizontal
-			if i < escenas.size():
-				nueva.escena_sala = escenas[i]
-			matriz[celda.y][celda.x] = nueva
-			colocadas += 1
-	_aplicar_barreras()
-	return colocadas
+## Un sprite, o un rectángulo de color si todavía no hay textura.
+func _crear_pieza(textura: Texture2D, posicion: Vector2, tamano_marcador: Vector2,
+		color: Color) -> Node2D:
+	if textura != null:
+		var sprite := Sprite2D.new()
+		sprite.texture = textura
+		sprite.scale = Vector2.ONE * escala_sprites
+		sprite.position = posicion
+		sprite.z_index = 2
+		return sprite
+	var mitad := tamano_marcador / 2.0
+	var marcador := Polygon2D.new()
+	marcador.polygon = PackedVector2Array([
+		-mitad, Vector2(mitad.x, -mitad.y), mitad, Vector2(-mitad.x, mitad.y)])
+	marcador.color = color
+	marcador.position = posicion
+	return marcador
