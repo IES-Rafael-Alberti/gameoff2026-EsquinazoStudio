@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/medieval/CambiadorBaldosas.tscn" id="2_mguoe"]
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="2_tgfgy"]
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="3_leiif"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="5_yl7xx"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_m27o4")]
 
@@ -22,14 +21,11 @@ position = Vector2(608, 192)
 [node name="Caja2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=315949702 instance=ExtResource("3_leiif")]
 position = Vector2(1248, 832)
 
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("5_yl7xx")]
-
-[node name="CambiadorBaldosas" parent="." index="9" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("2_mguoe")]
-position = Vector2(0, -32)
+[node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("2_mguoe")]
 tile_map_data = PackedByteArray("AAAIAAwAAAAAAAEAAAAJAAwAAAAAAAEAAAAKAAwAAAAAAAEAAAAKAA0AAAAAAAEAAAAKAA4AAAAAAAEAAAASAAIAAAAAAAEAAAASAAMAAAAAAAEAAAASAAQAAAAAAAEAAAATAAQAAAAAAAEAAAAUAAQAAAAAAAEAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAA=")
 placas = [NodePath("../Placa")]
 
-[node name="Placa" parent="." index="10" unique_id=859975174 instance=ExtResource("2_tgfgy")]
+[node name="Placa" parent="." index="9" unique_id=859975174 instance=ExtResource("2_tgfgy")]
 position = Vector2(928, 512)
 
 [editable path="Puzle"]
