@@ -24,10 +24,14 @@ script = ExtResource("4_iehwp")
 escena = ExtResource("5_lrx8v")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
+[sub_resource type="Resource" id="Resource_uredf"]
+script = ExtResource("4_iehwp")
+metadata/_custom_type_script = "uid://d20qapcko8rat"
+
 [sub_resource type="Resource" id="Resource_i21ei"]
 script = ExtResource("2_3vuvy")
 categoria = ExtResource("7_iehwp")
-salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_n51ts")])
+salas = Array[ExtResource("4_iehwp")]([SubResource("Resource_n51ts"), SubResource("Resource_uredf")])
 metadata/_custom_type_script = "uid://c6684rv0ysdpf"
 
 [sub_resource type="Resource" id="Resource_8bxkb"]
