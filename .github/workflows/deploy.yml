@@ -20,4 +20,4 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
         run: |
-          butler push ./build "Esquina Studio/Dungeon Stacker:html5"
+          butler push ./build "esquina-studio/dungeon-stacker:html5"
