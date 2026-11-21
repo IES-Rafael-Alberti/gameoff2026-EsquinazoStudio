@@ -37,9 +37,6 @@ velocidad_giro = 50.0
 [node name="Murcielago" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("4_bf3bt")]
 position = Vector2(928, 448)
 
-[node name="Murcielago2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1577987231 instance=ExtResource("4_bf3bt")]
-position = Vector2(928, 576)
-
 [node name="Objetos" parent="." index="7" unique_id=653114024]
 position = Vector2(0, -1)
 
