@@ -490,12 +490,14 @@ rango = 200.0
 velocidad_embestida = 1000.0
 
 [node name="SpriteMovimiento" type="Sprite2D" parent="." index="4" unique_id=293824979]
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_vrtqg")
 hframes = 3
 
 [node name="SpriteMuerte" type="Sprite2D" parent="." index="5" unique_id=1806796683]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_mramu")
 hframes = 3
