@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://epcan2t8w62i"]
+
+[ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/medieval/mina.tscn" id="1_mfwfc"]
+[ext_resource type="Texture2D" uid="uid://bur1smk7tlyvo" path="res://assets/sprites/spritesheets/Mina Futuro Animación.png" id="2_npwhq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npwhq"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gcoc"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdfd5"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvkph"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giw7b"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u87hm"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6rw1"]
+atlas = ExtResource("2_npwhq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keb70"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b0kr"]
+atlas = ExtResource("2_npwhq")
+region = Rect2(1024, 1024, 512, 512)
+
+[node name="Mina" unique_id=1893609633 instance=ExtResource("1_mfwfc")]
+fotogramas_bomba = Array[Texture2D]([SubResource("AtlasTexture_npwhq"), SubResource("AtlasTexture_1gcoc"), SubResource("AtlasTexture_tdfd5"), SubResource("AtlasTexture_qvkph"), SubResource("AtlasTexture_giw7b"), SubResource("AtlasTexture_u87hm"), SubResource("AtlasTexture_k6rw1")])
+fotogramas_explosion = Array[Texture2D]([SubResource("AtlasTexture_keb70"), SubResource("AtlasTexture_2b0kr")])

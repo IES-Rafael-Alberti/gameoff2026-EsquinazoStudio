@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/medieval/BaldosaRota.tscn" id="2_5k68d"]
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="3_b4peg"]
 [ext_resource type="PackedScene" uid="uid://tm4tdhpxq5fj" path="res://scenes/puzles/medieval/BotonReinicio.tscn" id="4_b4peg"]
+[ext_resource type="PackedScene" uid="uid://qr0mqvci2n8n" path="res://scenes/trampas/futuro/baldosa_rota_futuro.tscn" id="4_g1hk6"]
 [ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="5_xr6p8"]
 [ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/medieval/Llave.tscn" id="6_7npea"]
 [ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/medieval/Sierra.tscn" id="6_d10aq"]
@@ -23,14 +24,16 @@ offset_right = 860.0
 offset_bottom = 423.0
 text = "VACIA 1"
 
-[node name="Cerradura" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=1263758423 node_paths=PackedStringArray("desafio") instance=ExtResource("5_xr6p8")]
+[node name="Cerradura" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=1263758423 instance=ExtResource("5_xr6p8")]
 position = Vector2(800, 640)
-desafio = NodePath("..")
 
 [node name="Caja" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=1664255518 instance=ExtResource("3_b4peg")]
 position = Vector2(608, 448)
 
-[node name="BaldosaRota" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=500927486 instance=ExtResource("2_5k68d")]
+[node name="BaldosaRota" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="2" unique_id=500927486 instance=ExtResource("4_g1hk6")]
+position = Vector2(736, 384)
+
+[node name="BaldosaRota" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=895793220 instance=ExtResource("2_5k68d")]
 position = Vector2(608, 384)
 
 [node name="BaldosaRota2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=1284094005 instance=ExtResource("2_5k68d")]

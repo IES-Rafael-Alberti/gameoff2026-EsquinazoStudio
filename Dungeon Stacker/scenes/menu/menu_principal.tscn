@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://dj2nxkf615ihj"]
 
 [ext_resource type="Script" uid="uid://c1mjxmaicm7gj" path="res://scripts/ui/boton_cambio_menu.gd" id="1_ytm4j"]
-
-[sub_resource type="GDScript" id="GDScript_ytm4j"]
-script/source = "extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-"
+[ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_4yl6o"]
 
 [node name="Menu" type="Control" unique_id=1079454129]
 layout_mode = 3
@@ -16,145 +10,80 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ytm4j")
 metadata/_edit_horizontal_guides_ = [1080.0]
 metadata/_edit_vertical_guides_ = [1921.0]
 
-[node name="MenuPrincipal" type="Control" parent="." unique_id=11004105]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MenuPrincipal" type="Panel" parent="." unique_id=997857503]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 18.759
+anchor_bottom = 7.2750006
+offset_left = 704.0
+offset_top = 192.0
+offset_right = -34801.28
+offset_bottom = -6961.0005
 
 [node name="Titulo" type="Label" parent="MenuPrincipal" unique_id=1283631926]
 layout_mode = 0
-offset_left = 746.0
-offset_top = 152.0
-offset_right = 1131.0
-offset_bottom = 207.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 449.0
+offset_bottom = 128.0
 theme_override_font_sizes/font_size = 40
 text = "DUNGEON STACKER"
 
 [node name="Iniciar" type="Button" parent="MenuPrincipal" unique_id=977525131]
 layout_mode = 0
-offset_left = 877.0
-offset_top = 560.0
-offset_right = 1004.0
-offset_bottom = 623.0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 255.0
 theme_override_font_sizes/font_size = 40
 text = "START"
 
 [node name="Continuar" type="Button" parent="MenuPrincipal" unique_id=1425424495]
 layout_mode = 0
-offset_left = 849.0
-offset_top = 572.0
-offset_right = 1063.0
-offset_bottom = 635.0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 255.0
 theme_override_font_sizes/font_size = 40
 text = "CONTINUE"
 
 [node name="SeleccionNivel" type="Button" parent="MenuPrincipal" unique_id=1717628227]
 layout_mode = 0
-offset_left = 867.0
-offset_top = 667.0
-offset_right = 995.0
-offset_bottom = 730.0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 448.0
+offset_bottom = 383.0
 theme_override_font_sizes/font_size = 40
-text = "Levels"
+text = "LEVELS"
 
-[node name="Opciones" type="Button" parent="MenuPrincipal" unique_id=1356230576 node_paths=PackedStringArray("menu_actual", "menu_destino")]
+[node name="Opciones" type="Button" parent="MenuPrincipal" unique_id=1356230576]
 layout_mode = 0
-offset_left = 852.0
-offset_top = 801.0
-offset_right = 1036.0
-offset_bottom = 864.0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 448.0
+offset_bottom = 511.0
 theme_override_font_sizes/font_size = 40
 text = "OPTIONS"
-script = ExtResource("1_ytm4j")
-menu_actual = NodePath("..")
-menu_destino = NodePath("../../Opciones")
 
 [node name="Salir" type="Button" parent="MenuPrincipal" unique_id=858273588]
 layout_mode = 0
-offset_left = 899.0
-offset_top = 911.0
-offset_right = 989.0
-offset_bottom = 974.0
+offset_left = 64.0
+offset_top = 576.0
+offset_right = 448.0
+offset_bottom = 639.0
 theme_override_font_sizes/font_size = 40
 text = "EXIT"
 
-[node name="Opciones" type="Control" parent="." unique_id=959583586]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = SubResource("GDScript_ytm4j")
+[node name="Opciones" parent="." unique_id=2128798694 instance=ExtResource("2_4yl6o")]
+visible = false
+layout_mode = 1
 
-[node name="Titulo" type="Label" parent="Opciones" unique_id=147475172]
-layout_mode = 0
-offset_left = 746.0
-offset_top = 152.0
-offset_right = 1131.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 40
-text = "DUNGEON STACKER"
-
-[node name="MasterLabel" type="Label" parent="Opciones" unique_id=1813220604]
-layout_mode = 0
-offset_left = 746.0
-offset_top = 152.0
-offset_right = 1131.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 40
-text = "DUNGEON STACKER"
-
-[node name="Master" type="HScrollBar" parent="Opciones" unique_id=1502022763]
-layout_mode = 0
-offset_left = 713.0
-offset_top = 833.0
-offset_right = 836.0
-offset_bottom = 841.0
-
-[node name="MusicLabel" type="Label" parent="Opciones" unique_id=2087387828]
-layout_mode = 0
-offset_left = 746.0
-offset_top = 152.0
-offset_right = 1131.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 40
-text = "DUNGEON STACKER"
-
-[node name="Music" type="HScrollBar" parent="Opciones" unique_id=1887667011]
-layout_mode = 0
-offset_left = 713.0
-offset_top = 847.0
-offset_right = 838.0
-offset_bottom = 855.0
-
-[node name="SFXLabel" type="Label" parent="Opciones" unique_id=713181326]
-layout_mode = 0
-offset_left = 746.0
-offset_top = 152.0
-offset_right = 1131.0
-offset_bottom = 207.0
-theme_override_font_sizes/font_size = 40
-text = "DUNGEON STACKER"
-
-[node name="SFX" type="HScrollBar" parent="Opciones" unique_id=203402519]
-layout_mode = 0
-offset_left = 720.0
-offset_top = 864.0
-offset_right = 834.0
-offset_bottom = 872.0
-
-[node name="Volver" type="Button" parent="Opciones" unique_id=861260192 node_paths=PackedStringArray("menu_actual", "menu_destino")]
-layout_mode = 0
-offset_left = 859.0
-offset_top = 913.0
-offset_right = 1024.0
-offset_bottom = 976.0
-theme_override_font_sizes/font_size = 40
-text = "RETURN"
-script = ExtResource("1_ytm4j")
-menu_actual = NodePath("..")
-menu_destino = NodePath("../../MenuPrincipal")
-
-[connection signal="pressed" from="MenuPrincipal/Opciones" to="MenuPrincipal/Opciones" method="_on_pressed"]
-[connection signal="pressed" from="Opciones/Volver" to="Opciones/Volver" method="_on_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Iniciar" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Continuar" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/SeleccionNivel" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Opciones" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/Salir" to="." method="_on_exit_button_pressed"]

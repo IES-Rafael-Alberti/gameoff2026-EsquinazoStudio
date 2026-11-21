@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dv80ngbap45nx"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_lj8p8"]
+[ext_resource type="PackedScene" uid="uid://cr1sbt4p38t8p" path="res://scenes/puzles/futuro/Laser.tscn" id="2_gjjdr"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="3_gc3dj"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="3_mcubk"]
+[ext_resource type="PackedScene" uid="uid://diln7rinq7few" path="res://scenes/trampas/futuro/sierra_futuro.tscn" id="5_fio3j"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_lj8p8")]
 
@@ -10,3 +14,22 @@ offset_top = 400.0
 offset_right = 860.0
 offset_bottom = 423.0
 text = "VACIA 2"
+
+[node name="Laser" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1590120396 node_paths=PackedStringArray("placas") instance=ExtResource("2_gjjdr")]
+position = Vector2(544, 576)
+placas = [NodePath("../../Objetos/Placa2"), NodePath("../../Objetos/Placa")]
+longitud = 11
+
+[node name="Placa2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=909371902 instance=ExtResource("3_gc3dj")]
+position = Vector2(928, 416)
+
+[node name="Placa" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=520616001 instance=ExtResource("3_gc3dj")]
+position = Vector2(928, 704)
+
+[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("3_mcubk")]
+position = Vector2(0, 32)
+
+[node name="Sierra" parent="." index="10" unique_id=807437377 instance=ExtResource("5_fio3j")]
+position = Vector2(672, 448)
+
+[editable path="Puzle"]

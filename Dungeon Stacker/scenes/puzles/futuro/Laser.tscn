@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://cr1sbt4p38t8p"]
+
+[ext_resource type="Script" uid="uid://d0p3qibis7idp" path="res://scripts/trampas/laser.gd" id="1_w2j2x"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_biir2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o64qf"]
+atlas = ExtResource("2_biir2")
+region = Rect2(3584, 2560, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktgtd"]
+atlas = ExtResource("2_biir2")
+region = Rect2(2048, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27voq"]
+atlas = ExtResource("2_biir2")
+region = Rect2(3584, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0rj0"]
+atlas = ExtResource("2_biir2")
+region = Rect2(2048, 2560, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqhdy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o64qf")
+}],
+"loop": 1,
+"name": &"apagado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktgtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27voq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0rj0")
+}],
+"loop": 1,
+"name": &"encendido",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7rga"]
+atlas = ExtResource("2_biir2")
+region = Rect2(2560, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8hxi"]
+atlas = ExtResource("2_biir2")
+region = Rect2(4096, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr8va"]
+atlas = ExtResource("2_biir2")
+region = Rect2(2560, 2560, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_asod4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7rga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8hxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr8va")
+}],
+"loop": 1,
+"name": &"encendido",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk7et"]
+atlas = ExtResource("2_biir2")
+region = Rect2(4608, 2560, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m37q"]
+atlas = ExtResource("2_biir2")
+region = Rect2(3072, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsnn5"]
+atlas = ExtResource("2_biir2")
+region = Rect2(4608, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6isg"]
+atlas = ExtResource("2_biir2")
+region = Rect2(3072, 2560, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r06le"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk7et")
+}],
+"loop": 1,
+"name": &"apagado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m37q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsnn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6isg")
+}],
+"loop": 1,
+"name": &"encendido",
+"speed": 5.0
+}]
+
+[node name="Laser" type="Area2D" unique_id=1590120396]
+collision_layer = 32
+collision_mask = 10
+script = ExtResource("1_w2j2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537885625]
+
+[node name="EmisorA" type="AnimatedSprite2D" parent="." unique_id=2045593491]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_gqhdy")
+animation = &"apagado"
+
+[node name="Centro" type="AnimatedSprite2D" parent="." unique_id=1404920205]
+z_index = 1
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_asod4")
+animation = &"encendido"
+
+[node name="EmisorB" type="AnimatedSprite2D" parent="." unique_id=1607085334]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_r06le")
+animation = &"apagado"
+
+[node name="Bloqueo" type="StaticBody2D" parent="." unique_id=1222470930]
+
+[node name="EmisorA" type="CollisionShape2D" parent="Bloqueo" unique_id=331397833]
+
+[node name="EmisorB" type="CollisionShape2D" parent="Bloqueo" unique_id=521773348]
+
+[node name="BloqueoHaz" type="StaticBody2D" parent="." unique_id=504448727]
+light_mask = 0
+
+[node name="Haz" type="CollisionShape2D" parent="BloqueoHaz" unique_id=919836830]
