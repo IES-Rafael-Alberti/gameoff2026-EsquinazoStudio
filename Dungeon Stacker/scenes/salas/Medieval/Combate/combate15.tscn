@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_yh7q2"]
 [ext_resource type="PackedScene" uid="uid://6jktwjog7nwq" path="res://scenes/trampas/medieval/lanzallamas.tscn" id="2_kubdi"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="3_i0aox"]
 [ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="3_kubdi"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_yh7q2")]
@@ -76,7 +75,5 @@ position = Vector2(1248, 192)
 
 [node name="Murcielago3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=643991172 instance=ExtResource("3_kubdi")]
 position = Vector2(608, 192)
-
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("3_i0aox")]
 
 [editable path="Puzle"]

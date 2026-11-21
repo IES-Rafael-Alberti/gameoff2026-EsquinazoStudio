@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://cb7r4fcpmkeim"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_el6ah"]
+[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/medieval/CambiadorBaldosas.tscn" id="2_a82a0"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="3_a82a0"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="3_h27w3"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_el6ah")]
+position = Vector2(-1, 0)
+
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("3_a82a0")]
+position = Vector2(929, 512)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Esqueleto2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=947682111 instance=ExtResource("3_a82a0")]
+position = Vector2(1057, 384)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Esqueleto3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1671995367 instance=ExtResource("3_a82a0")]
+position = Vector2(1057, 640)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Esqueleto4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1321359447 instance=ExtResource("3_a82a0")]
+position = Vector2(801, 384)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Esqueleto5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=697147194 instance=ExtResource("3_a82a0")]
+position = Vector2(673, 256)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Esqueleto7" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=567366666 instance=ExtResource("3_a82a0")]
+position = Vector2(1185, 768)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Esqueleto8" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="6" unique_id=708574864 instance=ExtResource("3_a82a0")]
+position = Vector2(1185, 256)
+deteccion = 1
+radio_deteccion = 100.0
+
+[node name="Placa" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=909371902 instance=ExtResource("3_h27w3")]
+position = Vector2(545, 896)
+
+[node name="Placa2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1993378503 instance=ExtResource("3_h27w3")]
+position = Vector2(673, 768)
+
+[node name="Placa3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="2" unique_id=1506975586 instance=ExtResource("3_h27w3")]
+position = Vector2(801, 640)
+
+[node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("2_a82a0")]
+position = Vector2(831.84064, 928.0856)
+tile_map_data = PackedByteArray("AAACAPj/AAAAAAAAAAABAPj/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAACAPn/AAAAAAAAAAD+//f/AAAAAAEAAAD+//j/AAAAAAEAAAD+//b/AAAAAAEAAAD///b/AAAAAAEAAAAAAPb/AAAAAAEAAAABAPb/AAAAAAEAAAACAPb/AAAAAAEAAAADAPb/AAAAAAEAAAAEAPb/AAAAAAEAAAAEAPf/AAAAAAEAAAAEAPj/AAAAAAEAAAAEAPn/AAAAAAEAAAAEAPr/AAAAAAEAAAAEAPv/AAAAAAEAAAAEAPz/AAAAAAEAAAADAPz/AAAAAAEAAAACAPz/AAAAAAEAAAABAPz/AAAAAAEAAAAAAPz/AAAAAAEAAAD///z/AAAAAAEAAAD+//z/AAAAAAEAAAD+//v/AAAAAAEAAAD+//r/AAAAAAEAAAD+//n/AAAAAAEAAAAGAPX/AAAAAAAAAAAGAPb/AAAAAAAAAAAGAPf/AAAAAAAAAAAGAPT/AAAAAAAAAAAFAPT/AAAAAAAAAAAEAPT/AAAAAAAAAAADAPT/AAAAAAAAAAACAPT/AAAAAAAAAAABAPT/AAAAAAAAAAAAAPT/AAAAAAAAAAD///T/AAAAAAAAAAD+//T/AAAAAAAAAAD9//T/AAAAAAAAAAD8//T/AAAAAAAAAAD8//X/AAAAAAAAAAD8//b/AAAAAAAAAAD8//f/AAAAAAAAAAD8//j/AAAAAAAAAAD8//n/AAAAAAAAAAD8//r/AAAAAAAAAAD8//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPj/AAAAAAAAAAA=")
+placas = [NodePath("../Objetos/Placa"), NodePath("../Objetos/Placa2"), NodePath("../Objetos/Placa3")]
+
+[editable path="Puzle"]
