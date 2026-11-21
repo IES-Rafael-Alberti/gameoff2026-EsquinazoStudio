@@ -136,10 +136,10 @@ scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_r06le")
 animation = &"apagado"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1222470930]
+[node name="Bloqueo" type="StaticBody2D" parent="." unique_id=1222470930]
 
-[node name="EmisorA" type="CollisionShape2D" parent="StaticBody2D" unique_id=331397833]
+[node name="EmisorA" type="CollisionShape2D" parent="Bloqueo" unique_id=331397833]
 
-[node name="EmisorB" type="CollisionShape2D" parent="StaticBody2D" unique_id=521773348]
+[node name="Haz" type="CollisionShape2D" parent="Bloqueo" unique_id=919836830]
 
-[node name="Haz" type="CollisionShape2D" parent="StaticBody2D" unique_id=919836830]
+[node name="EmisorB" type="CollisionShape2D" parent="Bloqueo" unique_id=521773348]
