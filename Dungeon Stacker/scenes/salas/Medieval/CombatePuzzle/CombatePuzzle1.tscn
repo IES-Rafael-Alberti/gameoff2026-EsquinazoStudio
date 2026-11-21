@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fbwvh"]
 [ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="2_erex1"]
 [ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/medieval/Llave.tscn" id="3_oh24u"]
-[ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="4_oh24u"]
 [ext_resource type="PackedScene" uid="uid://dd8d8bsc2aj45" path="res://scenes/enemigos/spawner.tscn" id="5_oh24u"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="6_5vmi6"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fbwvh")]
 
@@ -18,21 +18,14 @@ cuenta_como_requisito = true
 [node name="Llave" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=1477622593 instance=ExtResource("3_oh24u")]
 position = Vector2(544, 384)
 
-[node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("4_oh24u")]
-position = Vector2(1056, 512)
-
-[node name="enemigo_terrestre2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1432985925 instance=ExtResource("4_oh24u")]
-position = Vector2(1184, 512)
-
-[node name="enemigo_terrestre3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1222750394 instance=ExtResource("4_oh24u")]
-position = Vector2(672, 512)
-
-[node name="Spawner" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=272867690 instance=ExtResource("5_oh24u")]
+[node name="Spawner" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=272867690 instance=ExtResource("5_oh24u")]
 position = Vector2(1.1373749, 2.1053314)
-escena_enemigo = ExtResource("4_oh24u")
-intervalo = 3.0
+escena_enemigo = ExtResource("6_5vmi6")
 
 [node name="Marker2D" type="Marker2D" parent="Enemigos/Spawner" index="0" unique_id=928751394]
 position = Vector2(862.8626, 509.89465)
+
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=661418023 instance=ExtResource("6_5vmi6")]
+position = Vector2(672, 576)
 
 [editable path="Puzle"]

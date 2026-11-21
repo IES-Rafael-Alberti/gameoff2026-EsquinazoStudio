@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="3_cqrhs"]
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="4_om1lm"]
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="6_1xv1a"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="6_5ib3u"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="9_7iae3"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_865ku")]
 
@@ -23,17 +25,17 @@ position = Vector2(1248, 768)
 position = Vector2(928, 512)
 activa_jugador = false
 
-[node name="Murcielago" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("2_ykfov")]
-position = Vector2(864, 448)
-
-[node name="Murcielago2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=78798197 instance=ExtResource("2_ykfov")]
-position = Vector2(992, 576)
-
-[node name="Murcielago3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1367686817 instance=ExtResource("2_ykfov")]
+[node name="Murcielago3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1367686817 instance=ExtResource("2_ykfov")]
 position = Vector2(864, 576)
 
-[node name="Murcielago4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1018675548 instance=ExtResource("2_ykfov")]
+[node name="Murcielago4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1018675548 instance=ExtResource("2_ykfov")]
 position = Vector2(992, 448)
+
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=661418023 instance=ExtResource("6_5ib3u")]
+position = Vector2(864, 448)
+
+[node name="Esqueleto2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=771896218 instance=ExtResource("6_5ib3u")]
+position = Vector2(992, 576)
 
 [node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("6_1xv1a")]
 position = Vector2(1248, 896)
@@ -44,5 +46,7 @@ position = Vector2(1184, 192)
 [node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("3_bolb6")]
 tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAA=")
 placas = [NodePath("../Objetos/Placa2")]
+
+[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("9_7iae3")]
 
 [editable path="Puzle"]
