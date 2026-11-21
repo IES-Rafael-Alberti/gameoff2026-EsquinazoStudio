@@ -26,11 +26,13 @@ position = Vector2(992, 512)
 
 [node name="Probabilizador" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="4" unique_id=1708072780 instance=ExtResource("5_4uesr")]
 position = Vector2(736, 832)
+probabilidad_eliminar = 35.0
 
 [node name="Llave" parent="Puzle/Probabilizador" index="0" unique_id=1477622593 instance=ExtResource("6_6ttgx")]
 position = Vector2(-64, 0)
 
 [node name="Probabilizador2" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="5" unique_id=481167391 instance=ExtResource("5_4uesr")]
+probabilidad_eliminar = 35.0
 
 [node name="Llave2" parent="Puzle/Probabilizador2" index="0" unique_id=1832546219 instance=ExtResource("6_6ttgx")]
 position = Vector2(736, 832)

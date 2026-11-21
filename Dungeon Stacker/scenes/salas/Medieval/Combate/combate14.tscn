@@ -1,0 +1,341 @@
+[gd_scene format=4 uid="uid://xdjf3lwevqx5"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_545ph"]
+[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/medieval/BaldosaRota.tscn" id="2_qwfin"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="2_vnrba"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="3_177bq"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_545ph")]
+
+[node name="TileMapLayer" parent="." index="0" unique_id=1996153903]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAACAAAAAAAAAAIAAAADAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAAFAAAAAAAAAAIAAAAGAAAAAAACAAAAAFAHAAAAAAADAAAAADAIAAAAAAADAAAAADAJAAAAAAADAAAAADAKAAAAAAADAAAAADALAAAAAAADAAAAADAMAAAAAAADAAAAADANAAAAAAADAAAAADAOAAAAAAADAAAAADAPAAAAAAADAAAAADAQAAAAAAADAAAAADARAAAAAAADAAAAADASAAAAAAADAAAAADAXAAAAAAAAAAIAAAAdAAAAAAAAAAIAAAATAAAAAAADAAAAADAUAAAAAAADAAAAADAVAAAAAAADAAAAADAWAAAAAAACAAAAADAYAAAAAAAAAAIAAAAZAAAAAAAAAAIAAAAaAAAAAAAAAAIAAAAbAAAAAAAAAAIAAAAcAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAABAAEAAAAAAAIAAAABAAIAAAAAAAIAAAABAAMAAAAAAAIAAAABAAQAAAAAAAIAAAABAAUAAAAAAAIAAAABAAYAAAAAAAIAAAABAAcAAAAAAAIAAAABAAgAAAAAAAIAAAABAAkAAAAAAAIAAAABAAoAAAAAAAIAAAABAAsAAAAAAAIAAAABAAwAAAAAAAIAAAABAA0AAAAAAAIAAAABAA4AAAAAAAIAAAABAA8AAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAACAAMAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAAAAAIAAAACAAYAAAAAAAIAAAACAAcAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAIAAAACAAoAAAAAAAIAAAACAAsAAAAAAAIAAAACAAwAAAAAAAIAAAACAA0AAAAAAAIAAAACAA4AAAAAAAIAAAACAA8AAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAADAAMAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAADAAYAAAAAAAIAAAADAAcAAAAAAAIAAAADAAgAAAAAAAIAAAADAAkAAAAAAAIAAAADAAoAAAAAAAIAAAADAAsAAAAAAAIAAAADAAwAAAAAAAIAAAADAA0AAAAAAAIAAAADAA4AAAAAAAIAAAADAA8AAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAAAEAAQAAAAAAAIAAAAEAAUAAAAAAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAAAAAIAAAAEAAgAAAAAAAIAAAAEAAkAAAAAAAIAAAAEAAoAAAAAAAIAAAAEAAsAAAAAAAIAAAAEAAwAAAAAAAIAAAAEAA0AAAAAAAIAAAAEAA4AAAAAAAIAAAAEAA8AAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAIAAAAFAAUAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAIAAAAFAAoAAAAAAAIAAAAFAAsAAAAAAAIAAAAFAAwAAAAAAAIAAAAFAA0AAAAAAAIAAAAFAA4AAAAAAAIAAAAFAA8AAAAAAAIAAAAGAAEAAAADAAAAAFAGAAIAAAADAAAAAFAGAAMAAAADAAAAAFAGAAQAAAADAAAAAFAGAAUAAAADAAAAAFAGAAYAAAADAAAAAFAGAAcAAAADAAAAAFAGAAgAAAADAAAAAFAGAAkAAAADAAAAAFAGAAoAAAADAAAAAFAGAAsAAAADAAAAAFAGAAwAAAADAAAAAFAGAA0AAAADAAAAAFAGAA4AAAADAAAAAFAGAA8AAAADAAAAAFAHAAEAAAAAAAAAAFAHAAIAAAABAAAAAFAHAAMAAAABAAAAAFAHAAQAAAABAAAAAFAHAAUAAAABAAAAAFAHAAYAAAABAAAAAFAHAA8AAAAAAAAAAAAIAA4AAAAEAAIAAAAIAA8AAAABAAAAAAAJAAEAAAABAAAAADAJAAIAAAAFAAAAAAAJAAMAAAAFAAEAAAAJAAQAAAAFAAEAAAAJAAUAAAAFAAEAAAAJAAYAAAAFAAIAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAJAAoAAAAFAAAAAAAJAAsAAAAFAAEAAAAJAAwAAAAFAAEAAAAJAA8AAAABAAAAAAAKAAEAAAABAAAAADAKAAIAAAAFAAAAAAAKAAMAAAAFAAEAAAAKAAQAAAAFAAEAAAAKAAUAAAAFAAEAAAAKAAYAAAAFAAIAAAAKAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAAKAAkAAAAAAAEAAAAKAAoAAAAFAAAAAAAKAAsAAAAFAAEAAAAKAAwAAAAFAAEAAAAKAA8AAAABAAAAAAALAAEAAAABAAAAADALAAIAAAAFAAAAAAALAAMAAAAFAAEAAAALAAQAAAAFAAEAAAALAAUAAAAFAAEAAAALAAYAAAAFAAIAAAALAAcAAAAAAAEAAAALAAgAAAAAAAEAAAALAAkAAAAAAAEAAAALAAoAAAAFAAAAAAALAAsAAAAFAAEAAAALAAwAAAAFAAEAAAALAA8AAAABAAAAAAAMAAEAAAABAAAAADAMAAIAAAAGAAAAAAAMAAMAAAAGAAEAAAAMAAQAAAAGAAEAAAAMAAUAAAAGAAEAAAAMAAYAAAAGAAIAAAAMAAcAAAAAAAEAAAAMAAgAAAAAAAEAAAAMAAkAAAAAAAEAAAAMAAoAAAAGAAAAAAAMAAsAAAAGAAEAAAAMAAwAAAAGAAEAAAAMAA8AAAABAAAAAAANAAEAAAABAAAAADANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAANAAQAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAANAAcAAAAAAAEAAAANAAgAAAAAAAEAAAANAAkAAAAAAAEAAAANAAoAAAAAAAEAAAANAAsAAAAAAAEAAAANAAwAAAAAAAEAAAANAA8AAAABAAAAAAAOAAEAAAABAAEAADAOAAIAAAAAAAEAAAAOAAMAAAAAAAEAAAAOAAQAAAAAAAEAAAAOAAUAAAAAAAEAAAAOAAYAAAAAAAEAAAAOAAcAAAAAAAEAAAAOAAgAAAAAAAEAAAAOAAkAAAAAAAEAAAAOAAoAAAAAAAEAAAAOAAsAAAAAAAEAAAAOAAwAAAAAAAEAAAAOAA8AAAABAAEAAAAPAAEAAAABAAAAADAPAAIAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAQAAAAAAAEAAAAPAAUAAAAAAAEAAAAPAAYAAAAAAAEAAAAPAAcAAAAAAAEAAAAPAAgAAAAAAAEAAAAPAAkAAAAAAAEAAAAPAAoAAAAAAAEAAAAPAAsAAAAAAAEAAAAPAAwAAAAAAAEAAAAPAA8AAAABAAAAAAAQAAEAAAABAAAAADAQAAIAAAAEAAAAAAAQAAMAAAAEAAEAAAAQAAQAAAAEAAEAAAAQAAUAAAAEAAEAAAAQAAYAAAAEAAIAAAAQAAcAAAAAAAEAAAAQAAgAAAAAAAEAAAAQAAkAAAAAAAEAAAAQAAoAAAAEAAAAAAAQAAsAAAAEAAEAAAAQAAwAAAAEAAEAAAAQAA8AAAABAAAAAAARAAEAAAABAAAAADARAAIAAAAFAAAAAAARAAMAAAAFAAEAAAARAAQAAAAFAAEAAAARAAUAAAAFAAEAAAARAAYAAAAFAAIAAAARAAcAAAAAAAEAAAARAAgAAAAAAAEAAAARAAkAAAAAAAEAAAARAAoAAAAFAAAAAAARAAsAAAAFAAEAAAARAAwAAAAFAAEAAAARAA8AAAABAAAAAAASAAEAAAABAAAAADASAAIAAAAFAAAAAAASAAMAAAAFAAEAAAASAAQAAAAFAAEAAAASAAUAAAAFAAEAAAASAAYAAAAFAAIAAAASAAcAAAAAAAEAAAASAAgAAAAAAAEAAAASAAkAAAAAAAEAAAASAAoAAAAFAAAAAAASAAsAAAAFAAEAAAASAAwAAAAFAAEAAAASAA8AAAABAAAAAAATAAEAAAABAAAAADATAAIAAAAFAAAAAAATAAMAAAAFAAEAAAATAAQAAAAFAAEAAAATAAUAAAAFAAEAAAATAAYAAAAFAAIAAAATAAgAAAAAAAEAAAATAAkAAAAAAAEAAAATAAoAAAAFAAAAAAATAAsAAAAFAAEAAAATAAwAAAAFAAEAAAATAA8AAAABAAAAAAAUAA4AAAAGAAIAAAAUAA8AAAABAAAAAAAVAAEAAAAAAAAAADAVAAIAAAABAAAAAGAVAAMAAAABAAAAAGAVAAQAAAABAAAAAGAVAAUAAAABAAAAAGAVAAYAAAABAAAAAGAVAA8AAAAAAAAAAGAWAAEAAAADAAAAAGAWAAIAAAADAAAAAGAWAAMAAAADAAAAAGAWAAQAAAADAAAAAGAWAAUAAAADAAAAAGAWAAYAAAADAAAAAGAWAAcAAAADAAAAAGAWAAgAAAADAAAAAGAWAAkAAAADAAAAAGAWAAoAAAADAAAAAGAWAAsAAAADAAAAAGAWAAwAAAADAAAAAGAWAA0AAAADAAAAAGAWAA4AAAADAAAAAGAWAA8AAAADAAAAAGAXAAEAAAAAAAIAAAAXAAIAAAAAAAIAAAAXAAMAAAAAAAIAAAAXAAQAAAAAAAIAAAAXAAUAAAAAAAIAAAAXAAYAAAAAAAIAAAAXAAcAAAAAAAIAAAAXAAgAAAAAAAIAAAAXAAkAAAAAAAIAAAAXAAoAAAAAAAIAAAAXAAsAAAAAAAIAAAAXAAwAAAAAAAIAAAAXAA0AAAAAAAIAAAAXAA4AAAAAAAIAAAAXAA8AAAAAAAIAAAAYAAEAAAAAAAIAAAAYAAIAAAAAAAIAAAAYAAMAAAAAAAIAAAAYAAQAAAAAAAIAAAAYAAUAAAAAAAIAAAAYAAYAAAAAAAIAAAAYAAcAAAAAAAIAAAAYAAgAAAAAAAIAAAAYAAkAAAAAAAIAAAAYAAoAAAAAAAIAAAAYAAsAAAAAAAIAAAAYAAwAAAAAAAIAAAAYAA0AAAAAAAIAAAAYAA4AAAAAAAIAAAAYAA8AAAAAAAIAAAAZAAEAAAAAAAIAAAAZAAIAAAAAAAIAAAAZAAMAAAAAAAIAAAAZAAQAAAAAAAIAAAAZAAUAAAAAAAIAAAAZAAYAAAAAAAIAAAAZAAcAAAAAAAIAAAAZAAgAAAAAAAIAAAAZAAkAAAAAAAIAAAAZAAoAAAAAAAIAAAAZAAsAAAAAAAIAAAAZAAwAAAAAAAIAAAAZAA0AAAAAAAIAAAAZAA4AAAAAAAIAAAAZAA8AAAAAAAIAAAAaAAEAAAAAAAIAAAAaAAIAAAAAAAIAAAAaAAMAAAAAAAIAAAAaAAQAAAAAAAIAAAAaAAUAAAAAAAIAAAAaAAYAAAAAAAIAAAAaAAcAAAAAAAIAAAAaAAgAAAAAAAIAAAAaAAkAAAAAAAIAAAAaAAoAAAAAAAIAAAAaAAsAAAAAAAIAAAAaAAwAAAAAAAIAAAAaAA0AAAAAAAIAAAAaAA4AAAAAAAIAAAAaAA8AAAAAAAIAAAAbAAEAAAAAAAIAAAAbAAIAAAAAAAIAAAAbAAMAAAAAAAIAAAAbAAQAAAAAAAIAAAAbAAUAAAAAAAIAAAAbAAYAAAAAAAIAAAAbAAcAAAAAAAIAAAAbAAgAAAAAAAIAAAAbAAkAAAAAAAIAAAAbAAoAAAAAAAIAAAAbAAsAAAAAAAIAAAAbAAwAAAAAAAIAAAAbAA0AAAAAAAIAAAAbAA4AAAAAAAIAAAAbAA8AAAAAAAIAAAAcAAEAAAAAAAIAAAAcAAIAAAAAAAIAAAAcAAMAAAAAAAIAAAAcAAQAAAAAAAIAAAAcAAUAAAAAAAIAAAAcAAYAAAAAAAIAAAAcAAcAAAAAAAIAAAAcAAgAAAAAAAIAAAAcAAkAAAAAAAIAAAAcAAoAAAAAAAIAAAAcAAsAAAAAAAIAAAAcAAwAAAAAAAIAAAAcAA0AAAAAAAIAAAAcAA4AAAAAAAIAAAAcAA8AAAAAAAIAAAAdAAEAAAAAAAIAAAAdAAIAAAAAAAIAAAAdAAMAAAAAAAIAAAAdAAQAAAAAAAIAAAAdAAUAAAAAAAIAAAAdAAYAAAAAAAIAAAAdAAcAAAAAAAIAAAAdAAgAAAAAAAIAAAAdAAkAAAAAAAIAAAAdAAoAAAAAAAIAAAAdAAsAAAAAAAIAAAAdAAwAAAAAAAIAAAAdAA0AAAAAAAIAAAAdAA4AAAAAAAIAAAAdAA8AAAAAAAIAAAAHAAgAAAABAAEAAFAHAAkAAAABAAAAAFAHAAoAAAABAAAAAFAHAAsAAAABAAAAAFAHAAwAAAABAAAAAFAHAA0AAAABAAAAAFAVAAgAAAABAAEAAGAVAAkAAAABAAAAAGAVAAoAAAABAAAAAGAVAAsAAAABAAAAAGAVAAwAAAABAAAAAGAVAA0AAAABAAAAAGAIAAEAAAABAAAAADAUAAEAAAABAAAAADAVAAcAAAABAAAAAGAVAA4AAAABAAAAAGAHAA4AAAABAAAAAFAHAAcAAAABAAAAAFAIAAIAAAAEAAAAAAAIAAMAAAAEAAEAAAAIAAQAAAAEAAEAAAAIAAUAAAAEAAEAAAAIAAYAAAAEAAIAAAAIAAcAAAAAAAEAAAAUAAIAAAAGAAAAAAAUAAMAAAAGAAEAAAAUAAQAAAAGAAEAAAAUAAUAAAAGAAEAAAAUAAYAAAAGAAIAAAAUAAcAAAAAAAEAAAAIAAgAAAAAAAEAAAAIAAkAAAAAAAEAAAAIAAoAAAAEAAAAAAAIAAsAAAAEAAEAAAAIAAwAAAAEAAEAAAAIAA0AAAAEAAEAAAAJAA4AAAAFAAIAAAAKAA4AAAAFAAIAAAALAA4AAAAFAAIAAAAMAA4AAAAGAAIAAAANAA4AAAAAAAEAAAAOAA4AAAAAAAEAAAAPAA4AAAAAAAEAAAAQAA4AAAAEAAIAAAARAA4AAAAFAAIAAAASAA4AAAAFAAIAAAATAA4AAAAFAAIAAAAUAA0AAAAGAAEAAAAUAAwAAAAGAAEAAAAUAAsAAAAGAAEAAAAUAAoAAAAGAAAAAAAUAAkAAAAAAAEAAAAUAAgAAAAAAAEAAAATAA0AAAAFAAEAAAASAA0AAAAFAAEAAAARAA0AAAAFAAEAAAAQAA0AAAAEAAEAAAAPAA0AAAAAAAEAAAAOAA0AAAAAAAEAAAANAA0AAAAAAAEAAAAMAA0AAAAGAAEAAAAKAA0AAAAFAAEAAAALAA0AAAAFAAEAAAAJAA0AAAAFAAEAAAAFAAQAAAAAAAIAAAAAABAAAAAAAAIAAAABABAAAAAAAAIAAAACABAAAAAAAAIAAAADABAAAAAAAAIAAAAEABAAAAAAAAIAAAAFABAAAAAAAAIAAAAGABAAAAACAAAAAAAHABAAAAADAAAAAAAIABAAAAADAAAAAAAJABAAAAADAAAAAAAKABAAAAADAAAAAAALABAAAAADAAAAAAAMABAAAAADAAAAAAANABAAAAADAAAAAAAOABAAAAADAAAAAAAPABAAAAADAAAAAAAQABAAAAADAAAAAAARABAAAAADAAAAAAASABAAAAADAAAAAAATABAAAAADAAAAAAAUABAAAAADAAAAAAAVABAAAAADAAAAAAAWABAAAAACAAAAAGAXABAAAAAAAAIAAAAYABAAAAAAAAIAAAAZABAAAAAAAAIAAAAaABAAAAAAAAIAAAAbABAAAAAAAAIAAAAcABAAAAAAAAIAAAAdABAAAAAAAAIAAAATAAcAAAAAAAEAAAA=")
+
+[node name="Baldosas" type="Node2D" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=981258509]
+
+[node name="BaldosaRota3" parent="Trampas/Baldosas" index="0" unique_id=500927486 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 384)
+
+[node name="BaldosaRota4" parent="Trampas/Baldosas" index="1" unique_id=712010080 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 384)
+
+[node name="BaldosaRota5" parent="Trampas/Baldosas" index="2" unique_id=1315034801 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 384)
+
+[node name="BaldosaRota" parent="Trampas/Baldosas" index="3" unique_id=1416685773 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 384)
+
+[node name="BaldosaRota2" parent="Trampas/Baldosas" index="4" unique_id=1078716563 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 384)
+
+[node name="BaldosaRota6" parent="Trampas/Baldosas" index="5" unique_id=2139075785 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 128)
+
+[node name="BaldosaRota7" parent="Trampas/Baldosas" index="6" unique_id=1496552720 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 192)
+
+[node name="BaldosaRota8" parent="Trampas/Baldosas" index="7" unique_id=290883398 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 128)
+
+[node name="BaldosaRota9" parent="Trampas/Baldosas" index="8" unique_id=1134595415 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 128)
+
+[node name="BaldosaRota10" parent="Trampas/Baldosas" index="9" unique_id=1375519187 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 128)
+
+[node name="BaldosaRota11" parent="Trampas/Baldosas" index="10" unique_id=1610040728 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 192)
+
+[node name="BaldosaRota12" parent="Trampas/Baldosas" index="11" unique_id=1786863993 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 256)
+
+[node name="BaldosaRota13" parent="Trampas/Baldosas" index="12" unique_id=619510173 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 192)
+
+[node name="BaldosaRota14" parent="Trampas/Baldosas" index="13" unique_id=1158043649 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 192)
+
+[node name="BaldosaRota15" parent="Trampas/Baldosas" index="14" unique_id=1836752912 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 192)
+
+[node name="BaldosaRota16" parent="Trampas/Baldosas" index="15" unique_id=632771938 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 256)
+
+[node name="BaldosaRota17" parent="Trampas/Baldosas" index="16" unique_id=1610976877 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 128)
+
+[node name="BaldosaRota18" parent="Trampas/Baldosas" index="17" unique_id=1161264484 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 256)
+
+[node name="BaldosaRota19" parent="Trampas/Baldosas" index="18" unique_id=241569796 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 256)
+
+[node name="BaldosaRota20" parent="Trampas/Baldosas" index="19" unique_id=1534038646 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 256)
+
+[node name="BaldosaRota21" parent="Trampas/Baldosas" index="20" unique_id=950305558 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 320)
+
+[node name="BaldosaRota22" parent="Trampas/Baldosas" index="21" unique_id=889181332 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 320)
+
+[node name="BaldosaRota23" parent="Trampas/Baldosas" index="22" unique_id=1522995814 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 320)
+
+[node name="BaldosaRota24" parent="Trampas/Baldosas" index="23" unique_id=308838657 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 320)
+
+[node name="BaldosaRota25" parent="Trampas/Baldosas" index="24" unique_id=1237185261 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 320)
+
+[node name="BaldosaRota26" parent="Trampas/Baldosas" index="25" unique_id=1058805021 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 896)
+
+[node name="BaldosaRota27" parent="Trampas/Baldosas" index="26" unique_id=1265456799 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 896)
+
+[node name="BaldosaRota28" parent="Trampas/Baldosas" index="27" unique_id=1050649265 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 896)
+
+[node name="BaldosaRota29" parent="Trampas/Baldosas" index="28" unique_id=1538416928 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 896)
+
+[node name="BaldosaRota30" parent="Trampas/Baldosas" index="29" unique_id=1866579512 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 896)
+
+[node name="BaldosaRota31" parent="Trampas/Baldosas" index="30" unique_id=560544435 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 640)
+
+[node name="BaldosaRota32" parent="Trampas/Baldosas" index="31" unique_id=1350979844 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 704)
+
+[node name="BaldosaRota33" parent="Trampas/Baldosas" index="32" unique_id=838397488 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 640)
+
+[node name="BaldosaRota34" parent="Trampas/Baldosas" index="33" unique_id=1076478906 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 640)
+
+[node name="BaldosaRota35" parent="Trampas/Baldosas" index="34" unique_id=784472247 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 640)
+
+[node name="BaldosaRota36" parent="Trampas/Baldosas" index="35" unique_id=116343514 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 704)
+
+[node name="BaldosaRota37" parent="Trampas/Baldosas" index="36" unique_id=1832172316 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 768)
+
+[node name="BaldosaRota38" parent="Trampas/Baldosas" index="37" unique_id=1636703317 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 704)
+
+[node name="BaldosaRota39" parent="Trampas/Baldosas" index="38" unique_id=708795749 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 704)
+
+[node name="BaldosaRota40" parent="Trampas/Baldosas" index="39" unique_id=624478322 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 704)
+
+[node name="BaldosaRota41" parent="Trampas/Baldosas" index="40" unique_id=1487811013 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 768)
+
+[node name="BaldosaRota42" parent="Trampas/Baldosas" index="41" unique_id=2017608857 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 640)
+
+[node name="BaldosaRota43" parent="Trampas/Baldosas" index="42" unique_id=517080176 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 768)
+
+[node name="BaldosaRota44" parent="Trampas/Baldosas" index="43" unique_id=408560738 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 768)
+
+[node name="BaldosaRota45" parent="Trampas/Baldosas" index="44" unique_id=1750520761 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 768)
+
+[node name="BaldosaRota46" parent="Trampas/Baldosas" index="45" unique_id=598084768 instance=ExtResource("2_qwfin")]
+position = Vector2(800, 832)
+
+[node name="BaldosaRota47" parent="Trampas/Baldosas" index="46" unique_id=1572642990 instance=ExtResource("2_qwfin")]
+position = Vector2(736, 832)
+
+[node name="BaldosaRota48" parent="Trampas/Baldosas" index="47" unique_id=1618585705 instance=ExtResource("2_qwfin")]
+position = Vector2(672, 832)
+
+[node name="BaldosaRota49" parent="Trampas/Baldosas" index="48" unique_id=1770920541 instance=ExtResource("2_qwfin")]
+position = Vector2(608, 832)
+
+[node name="BaldosaRota50" parent="Trampas/Baldosas" index="49" unique_id=1396002521 instance=ExtResource("2_qwfin")]
+position = Vector2(544, 832)
+
+[node name="BaldosaRota51" parent="Trampas/Baldosas" index="50" unique_id=1107338052 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 896)
+
+[node name="BaldosaRota52" parent="Trampas/Baldosas" index="51" unique_id=896994461 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 896)
+
+[node name="BaldosaRota53" parent="Trampas/Baldosas" index="52" unique_id=1072630472 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 896)
+
+[node name="BaldosaRota54" parent="Trampas/Baldosas" index="53" unique_id=277006313 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 896)
+
+[node name="BaldosaRota55" parent="Trampas/Baldosas" index="54" unique_id=1637424946 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 896)
+
+[node name="BaldosaRota56" parent="Trampas/Baldosas" index="55" unique_id=2142468584 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 640)
+
+[node name="BaldosaRota57" parent="Trampas/Baldosas" index="56" unique_id=284956820 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 704)
+
+[node name="BaldosaRota58" parent="Trampas/Baldosas" index="57" unique_id=1042535252 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 640)
+
+[node name="BaldosaRota59" parent="Trampas/Baldosas" index="58" unique_id=1016716219 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 640)
+
+[node name="BaldosaRota60" parent="Trampas/Baldosas" index="59" unique_id=937583197 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 640)
+
+[node name="BaldosaRota61" parent="Trampas/Baldosas" index="60" unique_id=2146704994 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 704)
+
+[node name="BaldosaRota62" parent="Trampas/Baldosas" index="61" unique_id=403872652 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 768)
+
+[node name="BaldosaRota63" parent="Trampas/Baldosas" index="62" unique_id=2127492139 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 704)
+
+[node name="BaldosaRota64" parent="Trampas/Baldosas" index="63" unique_id=91943540 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 704)
+
+[node name="BaldosaRota65" parent="Trampas/Baldosas" index="64" unique_id=1917481027 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 704)
+
+[node name="BaldosaRota66" parent="Trampas/Baldosas" index="65" unique_id=1168407116 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 768)
+
+[node name="BaldosaRota67" parent="Trampas/Baldosas" index="66" unique_id=58322650 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 640)
+
+[node name="BaldosaRota68" parent="Trampas/Baldosas" index="67" unique_id=1971952521 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 768)
+
+[node name="BaldosaRota69" parent="Trampas/Baldosas" index="68" unique_id=1624094032 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 768)
+
+[node name="BaldosaRota70" parent="Trampas/Baldosas" index="69" unique_id=127654490 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 768)
+
+[node name="BaldosaRota71" parent="Trampas/Baldosas" index="70" unique_id=2065715700 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 832)
+
+[node name="BaldosaRota72" parent="Trampas/Baldosas" index="71" unique_id=85423595 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 832)
+
+[node name="BaldosaRota73" parent="Trampas/Baldosas" index="72" unique_id=1067311264 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 832)
+
+[node name="BaldosaRota74" parent="Trampas/Baldosas" index="73" unique_id=1307651209 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 832)
+
+[node name="BaldosaRota75" parent="Trampas/Baldosas" index="74" unique_id=1231596265 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 832)
+
+[node name="BaldosaRota76" parent="Trampas/Baldosas" index="75" unique_id=759218393 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 384)
+
+[node name="BaldosaRota77" parent="Trampas/Baldosas" index="76" unique_id=1555141133 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 384)
+
+[node name="BaldosaRota78" parent="Trampas/Baldosas" index="77" unique_id=1742863880 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 384)
+
+[node name="BaldosaRota79" parent="Trampas/Baldosas" index="78" unique_id=1985117702 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 384)
+
+[node name="BaldosaRota80" parent="Trampas/Baldosas" index="79" unique_id=876064787 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 384)
+
+[node name="BaldosaRota81" parent="Trampas/Baldosas" index="80" unique_id=1030789983 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 128)
+
+[node name="BaldosaRota82" parent="Trampas/Baldosas" index="81" unique_id=1274430577 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 192)
+
+[node name="BaldosaRota83" parent="Trampas/Baldosas" index="82" unique_id=1151127090 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 128)
+
+[node name="BaldosaRota84" parent="Trampas/Baldosas" index="83" unique_id=1501155218 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 128)
+
+[node name="BaldosaRota85" parent="Trampas/Baldosas" index="84" unique_id=1830861537 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 128)
+
+[node name="BaldosaRota86" parent="Trampas/Baldosas" index="85" unique_id=1937989854 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 192)
+
+[node name="BaldosaRota87" parent="Trampas/Baldosas" index="86" unique_id=1659631301 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 256)
+
+[node name="BaldosaRota88" parent="Trampas/Baldosas" index="87" unique_id=1019466520 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 192)
+
+[node name="BaldosaRota89" parent="Trampas/Baldosas" index="88" unique_id=1422445000 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 192)
+
+[node name="BaldosaRota90" parent="Trampas/Baldosas" index="89" unique_id=1163449307 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 192)
+
+[node name="BaldosaRota91" parent="Trampas/Baldosas" index="90" unique_id=1393429162 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 256)
+
+[node name="BaldosaRota92" parent="Trampas/Baldosas" index="91" unique_id=250896979 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 128)
+
+[node name="BaldosaRota93" parent="Trampas/Baldosas" index="92" unique_id=1946008757 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 256)
+
+[node name="BaldosaRota94" parent="Trampas/Baldosas" index="93" unique_id=1178054182 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 256)
+
+[node name="BaldosaRota95" parent="Trampas/Baldosas" index="94" unique_id=144204105 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 256)
+
+[node name="BaldosaRota96" parent="Trampas/Baldosas" index="95" unique_id=2454437 instance=ExtResource("2_qwfin")]
+position = Vector2(1312, 320)
+
+[node name="BaldosaRota97" parent="Trampas/Baldosas" index="96" unique_id=1108105901 instance=ExtResource("2_qwfin")]
+position = Vector2(1248, 320)
+
+[node name="BaldosaRota98" parent="Trampas/Baldosas" index="97" unique_id=2119161321 instance=ExtResource("2_qwfin")]
+position = Vector2(1184, 320)
+
+[node name="BaldosaRota99" parent="Trampas/Baldosas" index="98" unique_id=1413835807 instance=ExtResource("2_qwfin")]
+position = Vector2(1120, 320)
+
+[node name="BaldosaRota100" parent="Trampas/Baldosas" index="99" unique_id=1109190223 instance=ExtResource("2_qwfin")]
+position = Vector2(1056, 320)
+
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("3_177bq")]
+position = Vector2(544, 320)
+
+[node name="Esqueleto3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1899059540 instance=ExtResource("3_177bq")]
+position = Vector2(672, 128)
+
+[node name="Esqueleto5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=657248454 instance=ExtResource("3_177bq")]
+position = Vector2(1184, 128)
+
+[node name="Esqueleto6" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1327936909 instance=ExtResource("3_177bq")]
+position = Vector2(1312, 320)
+
+[node name="Esqueleto8" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1064153491 instance=ExtResource("3_177bq")]
+position = Vector2(1184, 896)
+
+[node name="Esqueleto9" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=473466040 instance=ExtResource("3_177bq")]
+position = Vector2(1312, 704)
+
+[node name="Esqueleto10" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="6" unique_id=1050704417 instance=ExtResource("3_177bq")]
+position = Vector2(544, 704)
+
+[node name="Esqueleto11" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="7" unique_id=1306007707 instance=ExtResource("3_177bq")]
+position = Vector2(672, 896)
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("2_vnrba")]
+
+[editable path="Puzle"]
