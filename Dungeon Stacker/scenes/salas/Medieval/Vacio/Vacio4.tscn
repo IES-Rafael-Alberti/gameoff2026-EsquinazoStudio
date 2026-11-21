@@ -1,8 +1,7 @@
 [gd_scene format=4 uid="uid://cf55g64r2b6qk"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_0vxbk"]
-[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/TrampaGiratoria.tscn" id="2_ou1p0"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="3_ou1p0"]
+[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="2_ou1p0"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_0vxbk")]
 
@@ -14,7 +13,5 @@ position = Vector2(928, 512)
 cantidad_palos = 4
 longitud = 8
 velocidad_giro = 35.0
-
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("3_ou1p0")]
 
 [editable path="Puzle"]
