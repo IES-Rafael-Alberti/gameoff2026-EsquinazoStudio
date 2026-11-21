@@ -19,10 +19,13 @@ extends Peligro
 ##   ├ EmisorA (AnimatedSprite2D)  animaciones "encendido" y "apagado"
 ##   ├ Centro  (AnimatedSprite2D)  animación "encendido"; el script lo repite "longitud" veces
 ##   ├ EmisorB (AnimatedSprite2D)  animaciones "encendido" y "apagado"
-##   └ Bloqueo (StaticBody2D, máscara 0)
-##     ├ EmisorA (CollisionShape2D)  siempre activo (el script lo coloca en el emisor A)
-##     ├ EmisorB (CollisionShape2D)  siempre activo (el script lo coloca en el emisor B)
-##     └ Haz     (CollisionShape2D)  solo activo con el láser encendido (el script ajusta su tamaño)
+##   ├ Bloqueo (StaticBody2D, máscara 0)
+##   │ ├ EmisorA (CollisionShape2D)  siempre activo (el script lo coloca en el emisor A)
+##   │ └ EmisorB (CollisionShape2D)  siempre activo (el script lo coloca en el emisor B)
+##   └ BloqueoHaz (StaticBody2D, máscara 0)
+##     └ Haz (CollisionShape2D)      solo activo con el láser encendido (el script ajusta su tamaño)
+## El haz va en su propio cuerpo para que las sierras lo atraviesen (por el grupo "haz_laser")
+## sin atravesar los emisores.
 ## Las animaciones y su velocidad se hacen en el editor, en el SpriteFrames de cada pieza. El
 ## centro solo se ve encendido; los emisores cambian entre "encendido" y "apagado".
 
@@ -63,7 +66,8 @@ var _piezas_centro: Array[AnimatedSprite2D] = []
 @onready var _zona_dano: CollisionShape2D = $CollisionShape2D
 @onready var _forma_emisor_a: CollisionShape2D = $Bloqueo/EmisorA
 @onready var _forma_emisor_b: CollisionShape2D = $Bloqueo/EmisorB
-@onready var _haz: CollisionShape2D = $Bloqueo/Haz
+@onready var _cuerpo_haz: StaticBody2D = $BloqueoHaz
+@onready var _haz: CollisionShape2D = $BloqueoHaz/Haz
 
 
 func _init() -> void:
@@ -74,6 +78,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	super._ready()
+	_cuerpo_haz.add_to_group(&"haz_laser") # las sierras lo atraviesan
 	_montar()
 	for placa in placas:
 		if placa != null:
