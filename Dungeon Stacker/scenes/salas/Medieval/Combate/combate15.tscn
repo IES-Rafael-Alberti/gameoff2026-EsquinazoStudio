@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cns1oprwd4h3c"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_yh7q2"]
+[ext_resource type="PackedScene" uid="uid://6jktwjog7nwq" path="res://scenes/trampas/medieval/lanzallamas.tscn" id="2_kubdi"]
+[ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="3_kubdi"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_yh7q2")]
+
+[node name="Lanzallamas" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1214608391 instance=ExtResource("2_kubdi")]
+position = Vector2(544, 704)
+longitud = 9
+retardo_inicio = 0.3
+duracion_aviso = 0.4
+parpadeos_aviso = 2
+
+[node name="Lanzallamas4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=988112520 instance=ExtResource("2_kubdi")]
+position = Vector2(544, 320)
+longitud = 9
+retardo_inicio = 0.3
+duracion_aviso = 0.4
+parpadeos_aviso = 2
+
+[node name="Lanzallamas3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=1827447129 instance=ExtResource("2_kubdi")]
+position = Vector2(1312, 704)
+rotation = 3.1415927
+longitud = 9
+retardo_inicio = 0.3
+duracion_aviso = 0.4
+parpadeos_aviso = 2
+
+[node name="Lanzallamas5" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=994714358 instance=ExtResource("2_kubdi")]
+position = Vector2(1312, 320)
+rotation = 3.1415927
+longitud = 9
+retardo_inicio = 0.3
+duracion_aviso = 0.4
+parpadeos_aviso = 2
+
+[node name="Lanzallamas2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=948213230 instance=ExtResource("2_kubdi")]
+position = Vector2(736, 128)
+rotation = 1.5707964
+longitud = 9
+retardo_inicio = 2.5
+duracion_aviso = 0.4
+
+[node name="Lanzallamas8" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="5" unique_id=829716752 instance=ExtResource("2_kubdi")]
+position = Vector2(736, 896)
+rotation = -1.5707964
+longitud = 9
+retardo_inicio = 2.5
+duracion_aviso = 0.4
+
+[node name="Lanzallamas9" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="6" unique_id=1668327291 instance=ExtResource("2_kubdi")]
+position = Vector2(1120, 896)
+rotation = -1.5707964
+longitud = 9
+retardo_inicio = 2.5
+duracion_aviso = 0.4
+
+[node name="Lanzallamas6" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="7" unique_id=703782521 instance=ExtResource("2_kubdi")]
+position = Vector2(1120, 128)
+rotation = 1.5707964
+longitud = 9
+retardo_inicio = 2.5
+duracion_aviso = 0.4
+
+[node name="Murcielago" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("3_kubdi")]
+position = Vector2(608, 832)
+
+[node name="Murcielago4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=387459082 instance=ExtResource("3_kubdi")]
+position = Vector2(1248, 832)
+
+[node name="Murcielago2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1116561994 instance=ExtResource("3_kubdi")]
+position = Vector2(1248, 192)
+
+[node name="Murcielago3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=643991172 instance=ExtResource("3_kubdi")]
+position = Vector2(608, 192)
+
+[editable path="Puzle"]

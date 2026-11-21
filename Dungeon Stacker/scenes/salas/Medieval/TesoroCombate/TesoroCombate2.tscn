@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://dhifbq4o62bxx"]
+[gd_scene format=3 uid="uid://bbv4bg7s0upmd"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_tng3b"]
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/medieval/CofreBotin.tscn" id="3_2lk26"]
 [ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="3_ll7gr"]
+[ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="4_bf3bt"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_tng3b")]
 
@@ -32,5 +33,11 @@ position = Vector2(736, 704)
 cantidad_palos = 4
 longitud = 4
 velocidad_giro = 50.0
+
+[node name="Murcielago" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("4_bf3bt")]
+position = Vector2(928, 448)
+
+[node name="Objetos" parent="." index="7" unique_id=653114024]
+position = Vector2(0, -1)
 
 [editable path="Puzle"]

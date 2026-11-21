@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://dwhdcvc474fhy"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_u8ync"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="2_0nepk"]
+[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/medieval/CambiadorBaldosas.tscn" id="3_p3ceh"]
+[ext_resource type="PackedScene" uid="uid://ftaippyffeyq" path="res://scenes/_Componentes/Probabilizador.tscn" id="3_xoq3c"]
+[ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="4_bv88c"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_u8ync")]
+
+[node name="Placa" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=909371902 instance=ExtResource("2_0nepk")]
+position = Vector2(928, 512)
+
+[node name="Probabilizador" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1708072780 instance=ExtResource("3_xoq3c")]
+probabilidad_eliminar = 25.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador" index="0" unique_id=1110925366 instance=ExtResource("4_bv88c")]
+position = Vector2(608, 192)
+
+[node name="Probabilizador2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="2" unique_id=1584650511 instance=ExtResource("3_xoq3c")]
+probabilidad_eliminar = 25.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador2" index="0" unique_id=1074818361 instance=ExtResource("4_bv88c")]
+position = Vector2(608, 832)
+
+[node name="Probabilizador3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="3" unique_id=1844308098 instance=ExtResource("3_xoq3c")]
+probabilidad_eliminar = 25.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador3" index="0" unique_id=1617217100 instance=ExtResource("4_bv88c")]
+position = Vector2(1248, 832)
+
+[node name="Probabilizador4" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="4" unique_id=96538152 instance=ExtResource("3_xoq3c")]
+probabilidad_eliminar = 25.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador4" index="0" unique_id=1958636273 instance=ExtResource("4_bv88c")]
+position = Vector2(1248, 192)
+
+[node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("3_p3ceh")]
+tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAIAAcAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAANAA4AAAAAAAEAAAANAA0AAAAAAAEAAAAOAA0AAAAAAAEAAAAPAA0AAAAAAAEAAAAPAA4AAAAAAAEAAAAUAAkAAAAAAAEAAAATAAkAAAAAAAEAAAATAAgAAAAAAAEAAAATAAcAAAAAAAEAAAAUAAcAAAAAAAEAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAAOAAMAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAIAAAAAAAEAAAA=")
+placas = [NodePath("../Objetos/Placa")]
+
+[editable path="Puzle"]

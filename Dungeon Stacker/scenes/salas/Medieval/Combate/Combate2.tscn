@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_m7rph"]
 [ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="2_637tf"]
-[ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="3_7vt07"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="3_a2y2p"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_m7rph")]
 
@@ -164,19 +164,19 @@ position = Vector2(1312, 896)
 [node name="PinchosEstaticos49" parent="Trampas/pinchos" index="51" unique_id=1593629175 instance=ExtResource("2_637tf")]
 position = Vector2(1248, 896)
 
-[node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("3_7vt07")]
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("3_a2y2p")]
 position = Vector2(928, 512)
 
-[node name="enemigo_terrestre2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1354963154 instance=ExtResource("3_7vt07")]
-position = Vector2(1056, 640)
+[node name="Esqueleto2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=959837494 instance=ExtResource("3_a2y2p")]
+position = Vector2(736, 640)
 
-[node name="enemigo_terrestre3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=230684027 instance=ExtResource("3_7vt07")]
-position = Vector2(1056, 384)
+[node name="Esqueleto3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1282008119 instance=ExtResource("3_a2y2p")]
+position = Vector2(736, 384)
 
-[node name="enemigo_terrestre4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=34174229 instance=ExtResource("3_7vt07")]
-position = Vector2(800, 384)
+[node name="Esqueleto4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1872561950 instance=ExtResource("3_a2y2p")]
+position = Vector2(1120, 640)
 
-[node name="enemigo_terrestre5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1620386850 instance=ExtResource("3_7vt07")]
-position = Vector2(800, 640)
+[node name="Esqueleto5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1754452643 instance=ExtResource("3_a2y2p")]
+position = Vector2(1120, 384)
 
 [editable path="Puzle"]
