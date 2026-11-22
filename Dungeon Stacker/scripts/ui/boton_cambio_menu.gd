@@ -18,7 +18,7 @@ func _mostrar_principal() -> void:
 	opciones.visible = false
 	niveles.visible = false
 	panel_principal.visible = true
-	boton_continuar.disabled = not Partida.puede_continuar()
+	boton_continuar.visible = Partida.puede_continuar()
 
 ## Señal "cerrado" de Opciones y de Niveles.
 func _on_submenu_cerrado() -> void:
@@ -40,11 +40,3 @@ func _on_options_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
-
-
-func _on_opciones_cerrado() -> void:
-	pass # Replace with function body.
-
-
-func _on_niveles_cerrado() -> void:
-	pass # Replace with function body.

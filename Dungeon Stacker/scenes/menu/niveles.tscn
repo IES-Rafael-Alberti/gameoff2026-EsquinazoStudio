@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cddyd")
-botones_nivel = [NodePath("Panel/Level2Button"), NodePath("Panel/Level3Button"), NodePath("Panel/Level4Button")]
+botones_nivel = [NodePath("Panel/Level1Button"), NodePath("Panel/Level2Button"), NodePath("Panel/Level3Button"), NodePath("Panel/Level4Button")]
 
 [node name="Panel" type="Panel" parent="." unique_id=1903083384]
 layout_mode = 1

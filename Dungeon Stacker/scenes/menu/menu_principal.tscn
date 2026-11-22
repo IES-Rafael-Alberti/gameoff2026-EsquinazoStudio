@@ -97,5 +97,5 @@ layout_mode = 1
 [connection signal="pressed" from="MenuPrincipal/SeleccionNivel" to="." method="_on_level_button_pressed"]
 [connection signal="pressed" from="MenuPrincipal/Opciones" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuPrincipal/Salir" to="." method="_on_exit_button_pressed"]
-[connection signal="cerrado" from="Opciones" to="." method="_on_opciones_cerrado"]
-[connection signal="cerrado" from="Niveles" to="." method="_on_niveles_cerrado"]
+[connection signal="cerrado" from="Opciones" to="." method="_on_submenu_cerrado"]
+[connection signal="cerrado" from="Niveles" to="." method="_on_submenu_cerrado"]
