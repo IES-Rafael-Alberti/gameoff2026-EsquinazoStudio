@@ -97,6 +97,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	super._ready()
+	add_to_group(&"laser") # la sala guarda su estado
 	_cuerpo_haz.add_to_group(&"haz_laser") # las sierras lo atraviesan
 	_montar()
 	for placa in placas:
@@ -109,6 +110,11 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta) # daño por contacto
 	if encendido:
 		_actualizar_corte()
+
+
+## La sala resuelta lo deja como estaba al salir.
+func restaurar(estaba_encendido: bool) -> void:
+	_poner_estado(estaba_encendido)
 
 
 func encender() -> void:

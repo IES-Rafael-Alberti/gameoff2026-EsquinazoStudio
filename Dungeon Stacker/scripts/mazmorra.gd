@@ -143,6 +143,7 @@ func puede_cambiar_modo() -> bool:
 func _descargar_habitacion() -> void:
 	if habitacion_actual == null:
 		return
+	habitacion_actual.guardar_estado()
 	habitacion_actual.devolver_llave_al_salir(jugador)
 	habitacion_actual.cerrar()
 	remove_child(habitacion_actual)

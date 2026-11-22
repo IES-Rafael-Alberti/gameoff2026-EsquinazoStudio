@@ -19,6 +19,9 @@ extends TileMapLayer
 ## anterior en encenderse. Al apagarse, las casillas más cercanas a lo que sigue con corriente se
 ## apagan primero y la oscuridad se aleja. Los receptores reaccionan cuando la luz llega a su
 ## casilla. Al cargar la sala, la red ya aparece encendida y los receptores no reaccionan.
+## Si la sala ya estaba resuelta al cargarla, la red se ajusta al instante a las cajas que haya
+## (sin recorrido de luz) y los receptores no reaccionan: láseres y cambiadores están como se
+## guardaron.
 ##
 ## Estructura: un nodo (por ejemplo "Electricidad") que contiene esta capa y todo lo eléctrico de
 ## la sala. La capa detecta sola, entre todo lo que cuelga de su nodo padre (a cualquier
@@ -55,6 +58,8 @@ var _puentes_activos := {}
 var _celdas_fuente: Array[Vector2i] = []
 # Pasos desde la fuente de cada casilla con corriente, la última vez que se calculó.
 var _distancias := {}
+# La sala ya estaba resuelta cuando se cargó.
+var _resuelta_al_cargar := false
 
 
 func _ready() -> void:
@@ -75,6 +80,8 @@ func _ready() -> void:
 		}
 
 	_descubrir()
+	var sala := _buscar_habitacion()
+	_resuelta_al_cargar = sala != null and sala.datos != null and sala.datos.resuelta
 
 	for fuente in _fuentes:
 		var celda := _celda_de(fuente)
@@ -124,7 +131,20 @@ func _on_puente(puente: PlacaInvisible, activo: bool) -> void:
 		_puentes_activos[celda] = true
 	else:
 		_puentes_activos.erase(celda)
-	_recalcular(false)
+	if _resuelta_al_cargar:
+		_ajustar_al_instante()
+	else:
+		_recalcular(false)
+
+
+## Sala resuelta cargada: pone cada casilla como le toca ya, sin recorrido ni avisos.
+func _ajustar_al_instante() -> void:
+	var objetivo := _alcanzar(_celdas_fuente)
+	_pendientes.clear()
+	for celda in _cables:
+		_aplicar_celda(celda, objetivo.has(celda), false)
+	_distancias = objetivo
+	set_process(false)
 
 
 ## Calcula qué casillas deberían tener corriente y planifica lo que hay que encender o apagar.
@@ -224,3 +244,10 @@ func _aplicar_celda(celda: Vector2i, encender: bool, avisar: bool) -> void:
 
 func _celda_de(nodo: Node2D) -> Vector2i:
 	return local_to_map(to_local(nodo.global_position))
+
+
+func _buscar_habitacion() -> Habitacion:
+	var nodo := get_parent()
+	while nodo != null and not nodo is Habitacion:
+		nodo = nodo.get_parent()
+	return nodo as Habitacion
