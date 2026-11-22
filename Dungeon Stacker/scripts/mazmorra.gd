@@ -11,6 +11,9 @@ const ESCENA_HABITACION := preload("res://scenes/salas/Habitacion_Base.tscn")
 ## Centro de la habitación, en coordenadas de la propia habitación.
 const CENTRO_HABITACION := Vector2(928, 512)
 
+## Bioma cuya música suena en los vestíbulos (las salas usan el de su celda).
+@export var bioma_vestibulos: Catalogo.Bioma = Catalogo.Bioma.MEDIEVAL
+
 ## Pools de salas por bioma y categoría. Lo asigna Juego desde la configuración del nivel.
 var contenido: ContenidoSalas
 
@@ -191,6 +194,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	celda_actual = celda
 	columna_vestibulo = -1
 	var datos_celda: CeldaTablero = celdas[celda]
+	Musica.cambiar_bioma(datos_celda.bioma) # mismo bioma que la sala anterior = no hace nada
 	habitacion_actual = _instanciar_sala(datos_celda)
 	habitacion_actual.datos = datos_celda
 	add_child(habitacion_actual)
@@ -211,6 +215,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 ## Pasa a un vestíbulo. columna >= 0: delante de su puerta; columna < 0: en la zona de spawn.
 func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	_descargar_habitacion()
+	Musica.cambiar_bioma(bioma_vestibulos)
 	lugar = donde
 	columna_vestibulo = columna
 	_mostrar_vestibulo(_vestibulo_inferior, donde == Lugar.VESTIBULO_INFERIOR)
