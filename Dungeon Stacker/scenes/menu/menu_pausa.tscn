@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dp6v54qs0n86i"]
+
+[ext_resource type="Script" uid="uid://c5p67evps11j2" path="res://scripts/ui/pausa.gd" id="1_1mqv3"]
+[ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_48u1o"]
+
+[node name="Menu" type="Control" unique_id=1079454129 node_paths=PackedStringArray("panel_principal", "opciones")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1mqv3")
+panel_principal = NodePath("MenuPausa")
+opciones = NodePath("Opciones")
+metadata/_edit_horizontal_guides_ = [1080.0]
+metadata/_edit_vertical_guides_ = [1921.0]
+
+[node name="MenuPausa" type="Panel" parent="." unique_id=997857503]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 18.759
+anchor_bottom = 7.2750006
+offset_left = 704.0
+offset_top = 128.0
+offset_right = -34801.28
+offset_bottom = -6897.0005
+
+[node name="Titulo" type="Label" parent="MenuPausa" unique_id=1283631926]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 449.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 40
+text = "DUNGEON STACKER"
+
+[node name="Reanudar" type="Button" parent="MenuPausa" unique_id=1425424495]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 448.0
+offset_bottom = 383.0
+theme_override_font_sizes/font_size = 40
+text = "CONTINUE"
+
+[node name="Reiniciar" type="Button" parent="MenuPausa" unique_id=977525131]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 448.0
+offset_bottom = 511.0
+theme_override_font_sizes/font_size = 40
+text = "RESTART"
+
+[node name="Opciones" type="Button" parent="MenuPausa" unique_id=1356230576]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 576.0
+offset_right = 448.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 40
+text = "OPTIONS"
+
+[node name="Menu" type="Button" parent="MenuPausa" unique_id=858273588]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 704.0
+offset_right = 448.0
+offset_bottom = 767.0
+theme_override_font_sizes/font_size = 40
+text = "MENU
+"
+
+[node name="Opciones" parent="." unique_id=2128798694 instance=ExtResource("2_48u1o")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MenuPausa/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="MenuPausa/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="MenuPausa/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="MenuPausa/Menu" to="." method="_on_menu_principal_pressed"]
+[connection signal="cerrado" from="Opciones" to="." method="_on_opciones_cerrado"]

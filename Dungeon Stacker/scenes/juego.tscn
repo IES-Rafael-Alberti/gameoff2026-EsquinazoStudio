@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="18_0g8fp"]
 [ext_resource type="Script" uid="uid://42ajtkgl04rp" path="res://scripts/ui/controles_tactiles.gd" id="18_spu22"]
 [ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="19_u22gr"]
+[ext_resource type="PackedScene" uid="uid://dp6v54qs0n86i" path="res://scenes/menu/menu_pausa.tscn" id="25_bh3c7"]
 
 [sub_resource type="Resource" id="Resource_ervc2"]
 script = ExtResource("4_c173r")
@@ -209,3 +210,7 @@ text = "||"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Menu" parent="." unique_id=1079454129 instance=ExtResource("25_bh3c7")]
+
+[connection signal="reinicio_pedido" from="Menu" to="." method="reiniciar_nivel"]
