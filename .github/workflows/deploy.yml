@@ -16,6 +16,9 @@ jobs:
       - name: Install Butler
         uses: remarkablegames/setup-butler@v2
 
+      - name: Rename HTML to index.html
+        run: mv ./build/dungeon-stacker.html ./build/index.html
+
       - name: Publish game
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
