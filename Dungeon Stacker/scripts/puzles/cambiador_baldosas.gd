@@ -87,6 +87,21 @@ func _ready() -> void:
 		_alternado = true
 
 
+## Para controlarlo desde fuera (electricidad...). "Encendido" = con las baldosas intercambiadas.
+func alternar() -> void:
+	_alternar()
+
+
+func encender() -> void:
+	if not _alternado:
+		_alternar()
+
+
+func apagar() -> void:
+	if _alternado:
+		_alternar()
+
+
 func _alternar() -> void:
 	_intercambiar()
 	_alternado = not _alternado
