@@ -39,6 +39,17 @@ texture_region_size = Vector2i(512, 512)
 6:9/0 = 0
 6:9/0/custom_data_0 = 7
 6:9/0/custom_data_1 = Vector2i(6, 8)
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+6:8/0 = 0
+5:8/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ufol2"]
 tile_size = Vector2i(512, 512)
