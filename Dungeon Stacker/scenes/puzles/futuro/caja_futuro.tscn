@@ -8,6 +8,7 @@ atlas = ExtResource("2_haqri")
 region = Rect2(1536, 512, 512, 512)
 
 [node name="Caja" unique_id=1664255518 instance=ExtResource("1_1dp0p")]
+conduce_electricidad = true
 
 [node name="Sprite" parent="." index="0" unique_id=1584494231]
 texture = SubResource("AtlasTexture_haqri")

@@ -1,4 +1,3 @@
-
 class_name PlacaInvisible
 extends Area2D
 ## Placa invisible. Se activa cuando algo válido está encima:
@@ -11,6 +10,8 @@ signal desactivada
 @export var activa_jugador := true
 @export var activa_caja := true
 @export var se_queda_activa := false
+## Solo cuentan las cajas con "conduce_electricidad" (el puente eléctrico lo activa).
+@export var solo_cajas_conductoras := false
 
 var activa := false
 var _ocupantes: Array[Node2D] = []
@@ -40,8 +41,11 @@ func _on_cuerpo_salio(cuerpo: Node2D) -> void:
 
 
 func _es_valido(cuerpo: Node2D) -> bool:
-	return (activa_jugador and cuerpo.is_in_group("jugador")) \
-		or (activa_caja and cuerpo.is_in_group("caja"))
+	if activa_jugador and cuerpo.is_in_group("jugador"):
+		return true
+	if activa_caja and cuerpo.is_in_group("caja"):
+		return not solo_cajas_conductoras or cuerpo.get("conduce_electricidad") == true
+	return false
 
 
 func _evaluar() -> void:
@@ -61,3 +65,4 @@ func _poner_activa(valor: bool) -> void:
 		activada.emit()
 	else:
 		desactivada.emit()
+		
