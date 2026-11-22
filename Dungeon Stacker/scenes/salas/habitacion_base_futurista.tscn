@@ -2,8 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fvmg3"]
 [ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_1w53o"]
+[ext_resource type="PackedScene" uid="uid://bmgdpwf01wklq" path="res://scenes/puzles/futuro/electricidad/electricidad.tscn" id="3_cbglk"]
+[ext_resource type="PackedScene" uid="uid://catahommqbxjt" path="res://scenes/puzles/futuro/electricidad/fuente_electrica.tscn" id="4_wob5q"]
+[ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="5_25tbw"]
+[ext_resource type="PackedScene" uid="uid://7vdwjeyccxev" path="res://scenes/puzles/futuro/electricidad/receptor_electrico.tscn" id="6_sx4u3"]
+[ext_resource type="PackedScene" uid="uid://bwijvmsmdixob" path="res://scenes/puzles/futuro/electricidad/objetivo_electrica.tscn" id="7_tch3m"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbglk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wob5q"]
 texture = ExtResource("2_1w53o")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
@@ -115,7 +120,7 @@ custom_data_layer_1/name = "conexiones"
 custom_data_layer_1/type = 2
 custom_data_layer_2/name = "encendido"
 custom_data_layer_2/type = 6
-sources/0 = SubResource("TileSetAtlasSource_cbglk")
+sources/0 = SubResource("TileSetAtlasSource_wob5q")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wob5q"]
 atlas = ExtResource("2_1w53o")
@@ -190,5 +195,32 @@ sprite_sellada = SubResource("AtlasTexture_p77fq")
 sprite_abierta = SubResource("AtlasTexture_4sh5p")
 sprite_cerrada = SubResource("AtlasTexture_fx61x")
 sprite_sellada = SubResource("AtlasTexture_81m07")
+
+[node name="Electricidad" type="Node2D" parent="." index="4" unique_id=800480628]
+
+[node name="Electricidad" parent="Electricidad" index="0" unique_id=1564926750 node_paths=PackedStringArray("fuentes", "puentes", "receptores") instance=ExtResource("3_cbglk")]
+fuentes = [NodePath("../Fuentes/Fuente Electrica")]
+puentes = [null]
+receptores = [NodePath("../Receptor/ReceptorElectrico")]
+
+[node name="Fuentes" type="Node2D" parent="Electricidad" index="1" unique_id=1560103062]
+
+[node name="Fuente Electrica" parent="Electricidad/Fuentes" index="0" unique_id=605912163 instance=ExtResource("4_wob5q")]
+position = Vector2(-362, 512)
+
+[node name="Puentes" type="Node2D" parent="Electricidad" index="2" unique_id=446057945]
+
+[node name="Puente Electrico" parent="Electricidad/Puentes" index="0" unique_id=1487050585 instance=ExtResource("5_25tbw")]
+position = Vector2(-362, 640)
+
+[node name="Receptor" type="Node2D" parent="Electricidad" index="3" unique_id=593196618]
+
+[node name="ReceptorElectrico" parent="Electricidad/Receptor" index="0" unique_id=750516404 instance=ExtResource("6_sx4u3")]
+position = Vector2(-362, 768)
+
+[node name="Objetivo" type="Node2D" parent="Electricidad" index="4" unique_id=1507801890]
+
+[node name="Objetivo Electrico" parent="Electricidad/Objetivo" index="0" unique_id=1419127268 instance=ExtResource("7_tch3m")]
+position = Vector2(-362, 896)
 
 [editable path="Puzle"]

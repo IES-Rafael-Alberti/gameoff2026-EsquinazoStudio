@@ -1,0 +1,18 @@
+[gd_scene format=4 uid="uid://c560ycgm3g8rd"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_fcs1e"]
+[ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="2_73djb"]
+[ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="2_xdjh3"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fcs1e")]
+
+[node name="Electricidad" parent="Electricidad" parent_id_path=PackedInt32Array(800480628) index="0" unique_id=1564926750]
+tile_map_data = PackedByteArray("AAAUAAMAAAABAAcAAAATAAMAAAAFAAkAAAATAAQAAAABAAkAAAATAAUAAAABAAkAAAATAAYAAAABAAkAAAATAAcAAAABAAkAAAASAAMAAAACAAkAAAARAAMAAAACAAkAAAAQAAMAAAACAAkAAAAPAAMAAAACAAkAAAAOAAMAAAACAAkAAAANAAMAAAAFAAkAAAANAAQAAAACAAkAAAAOAAQAAAACAAkAAAAPAAQAAAACAAkAAAALAAMAAAACAAkAAAAKAAMAAAACAAkAAAA=")
+
+[node name="Puente Electrico2" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="1" unique_id=1487050585 instance=ExtResource("2_73djb")]
+position = Vector2(800, 192)
+
+[node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("2_xdjh3")]
+position = Vector2(800, 128)
+
+[editable path="Puzle"]
