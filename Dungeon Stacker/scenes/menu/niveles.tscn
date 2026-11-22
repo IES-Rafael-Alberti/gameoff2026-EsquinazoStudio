@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://d2scfefrhbpj1"]
 
-[node name="Opciones" type="Control" unique_id=2128798694]
+[ext_resource type="Script" uid="uid://c0setib6pc3l6" path="res://scripts/ui/niveles.gd" id="1_cddyd"]
+
+[node name="Niveles" type="Control" unique_id=2128798694 node_paths=PackedStringArray("botones_nivel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cddyd")
+botones_nivel = [NodePath("Panel/Level1Button"), NodePath("Panel/Level2Button"), NodePath("Panel/Level3Button"), NodePath("Panel/Level4Button")]
 
 [node name="Panel" type="Panel" parent="." unique_id=1903083384]
 layout_mode = 1
@@ -100,3 +104,9 @@ offset_right = 768.0
 offset_bottom = 799.0
 theme_override_font_sizes/font_size = 40
 text = "RETURN"
+
+[connection signal="pressed" from="Panel/Level1Button" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Panel/Level2Button" to="." method="_on_nivel_1_pressed"]
+[connection signal="pressed" from="Panel/Level3Button" to="." method="_on_nivel_2_pressed"]
+[connection signal="pressed" from="Panel/Level4Button" to="." method="_on_nivel_3_pressed"]
+[connection signal="pressed" from="Panel/Volver" to="." method="_on_volver_pressed"]

@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c1mjxmaicm7gj" path="res://scripts/ui/boton_cambio_menu.gd" id="1_ytm4j"]
 [ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_4yl6o"]
+[ext_resource type="PackedScene" uid="uid://d2scfefrhbpj1" path="res://scenes/menu/niveles.tscn" id="3_28145"]
 
-[node name="Menu" type="Control" unique_id=1079454129]
+[node name="Menu" type="Control" unique_id=1079454129 node_paths=PackedStringArray("panel_principal", "opciones", "niveles", "boton_continuar", "boton_salir")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +12,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ytm4j")
+panel_principal = NodePath("MenuPrincipal")
+opciones = NodePath("Opciones")
+niveles = NodePath("Niveles")
+boton_continuar = NodePath("MenuPrincipal/Continuar")
+boton_salir = NodePath("MenuPrincipal/Salir")
 metadata/_edit_horizontal_guides_ = [1080.0]
 metadata/_edit_vertical_guides_ = [1921.0]
 
@@ -20,9 +26,9 @@ anchors_preset = -1
 anchor_right = 18.759
 anchor_bottom = 7.2750006
 offset_left = 704.0
-offset_top = 192.0
+offset_top = 128.0
 offset_right = -34801.28
-offset_bottom = -6961.0005
+offset_bottom = -6897.0005
 
 [node name="Titulo" type="Label" parent="MenuPrincipal" unique_id=1283631926]
 layout_mode = 0
@@ -36,9 +42,9 @@ text = "DUNGEON STACKER"
 [node name="Iniciar" type="Button" parent="MenuPrincipal" unique_id=977525131]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 192.0
+offset_top = 320.0
 offset_right = 448.0
-offset_bottom = 255.0
+offset_bottom = 383.0
 theme_override_font_sizes/font_size = 40
 text = "START"
 
@@ -54,31 +60,35 @@ text = "CONTINUE"
 [node name="SeleccionNivel" type="Button" parent="MenuPrincipal" unique_id=1717628227]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 320.0
+offset_top = 448.0
 offset_right = 448.0
-offset_bottom = 383.0
+offset_bottom = 511.0
 theme_override_font_sizes/font_size = 40
 text = "LEVELS"
 
 [node name="Opciones" type="Button" parent="MenuPrincipal" unique_id=1356230576]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 448.0
+offset_top = 576.0
 offset_right = 448.0
-offset_bottom = 511.0
+offset_bottom = 639.0
 theme_override_font_sizes/font_size = 40
 text = "OPTIONS"
 
 [node name="Salir" type="Button" parent="MenuPrincipal" unique_id=858273588]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 576.0
+offset_top = 704.0
 offset_right = 448.0
-offset_bottom = 639.0
+offset_bottom = 767.0
 theme_override_font_sizes/font_size = 40
 text = "EXIT"
 
 [node name="Opciones" parent="." unique_id=2128798694 instance=ExtResource("2_4yl6o")]
+visible = false
+layout_mode = 1
+
+[node name="Niveles" parent="." unique_id=211134633 instance=ExtResource("3_28145")]
 visible = false
 layout_mode = 1
 
@@ -87,3 +97,5 @@ layout_mode = 1
 [connection signal="pressed" from="MenuPrincipal/SeleccionNivel" to="." method="_on_level_button_pressed"]
 [connection signal="pressed" from="MenuPrincipal/Opciones" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuPrincipal/Salir" to="." method="_on_exit_button_pressed"]
+[connection signal="cerrado" from="Opciones" to="." method="_on_submenu_cerrado"]
+[connection signal="cerrado" from="Niveles" to="." method="_on_submenu_cerrado"]

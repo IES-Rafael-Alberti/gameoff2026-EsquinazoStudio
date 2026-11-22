@@ -9,6 +9,9 @@ const TAM_CELDA := 64.0
 @export var tiempo_empuje := 0.2
 @export var intercambiar_al_atascar := true
 @export var duracion_movimiento := 0.15
+## Si esta caja conduce la electricidad: solo las cajas conductoras activan los puentes
+## eléctricos que lo exigen.
+@export var conduce_electricidad := false
 
 var _posicion_inicial := Vector2.ZERO
 var _moviendo := false
@@ -134,6 +137,10 @@ func _casilla_libre(centro: Vector2, ignorar: CollisionObject2D = null) -> bool:
 	var excluidos: Array[RID] = [get_rid()]
 	if ignorar != null:
 		excluidos.append(ignorar.get_rid())
+	# El haz de los láseres no la detiene: puede entrar en él y cortarlo.
+	for haz in get_tree().get_nodes_in_group(&"haz_laser"):
+		if haz is CollisionObject2D:
+			excluidos.append(haz.get_rid())
 	consulta.exclude = excluidos
 	return get_world_2d().direct_space_state.intersect_shape(consulta, 1).is_empty()
 

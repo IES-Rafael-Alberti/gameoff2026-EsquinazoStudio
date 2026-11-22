@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="dungeon-stacker"
-run/main_scene="uid://bx1agdn2f4cw7"
+run/main_scene="uid://dj2nxkf615ihj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Musica="*uid://cjq766e8odwgt"
+Partida="*uid://ba6x4siuto7o3"
 
 [display]
 

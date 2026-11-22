@@ -55,6 +55,44 @@ func _ready() -> void:
 			baldosa.rota.connect(_on_baldosa_rota)
 			var celda := _tiles.local_to_map(_tiles.to_local(baldosa.global_position))
 			_baldosas[celda] = baldosa
+	_restaurar_estado()
+
+
+## Si la sala ya estaba resuelta, deja láseres y cajas como se dejaron al salir.
+func _restaurar_estado() -> void:
+	if datos == null or not datos.resuelta:
+		return
+	for nodo in get_tree().get_nodes_in_group("laser"):
+		if is_ancestor_of(nodo) and datos.lasers_encendidos.has(_clave(nodo)):
+			nodo.restaurar(datos.lasers_encendidos[_clave(nodo)])
+	for nodo in get_tree().get_nodes_in_group("caja"):
+		if is_ancestor_of(nodo) and datos.cajas_posicion.has(_clave(nodo)):
+			nodo.global_position = to_global(datos.cajas_posicion[_clave(nodo)])
+
+
+## Con la sala resuelta, anota cómo quedan láseres y cajas para restaurarlos al volver. Lo llama
+## la mazmorra justo antes de descargar la sala.
+func guardar_estado() -> void:
+	if datos == null or not datos.resuelta:
+		return
+	datos.lasers_encendidos.clear()
+	datos.cajas_posicion.clear()
+	for nodo in get_tree().get_nodes_in_group("laser"):
+		if is_ancestor_of(nodo):
+			datos.lasers_encendidos[_clave(nodo)] = nodo.encendido
+	for nodo in get_tree().get_nodes_in_group("caja"):
+		var caja := nodo as Caja
+		if caja == null or not is_ancestor_of(caja):
+			continue
+		# Una caja caída (o reiniciándose) no se guarda: reaparece en su sitio.
+		if caja.cayendo or caja.reiniciando or not caja.visible:
+			continue
+		datos.cajas_posicion[_clave(caja)] = to_local(caja.global_position)
+
+
+## Ruta del nodo dentro de la sala: identifica a cada láser y cada caja entre visitas.
+func _clave(nodo: Node) -> String:
+	return str(get_path_to(nodo))
 
 ## Lo llama la mazmorra justo después de añadir la habitación a la escena.
 func preparar(posicion: Vector2i, celda: CeldaTablero, vecinos: Dictionary, puerta_entrada := -1) -> void:

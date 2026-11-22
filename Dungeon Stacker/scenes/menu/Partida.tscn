@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ba6x4siuto7o3"]
+
+[ext_resource type="Script" uid="uid://dj5ajsb3yu7ea" path="res://scripts/ui/partida.gd" id="1_cqp8k"]
+[ext_resource type="PackedScene" uid="uid://bx1agdn2f4cw7" path="res://scenes/juego.tscn" id="2_usjx2"]
+[ext_resource type="PackedScene" uid="uid://dj2nxkf615ihj" path="res://scenes/menu/menu_principal.tscn" id="3_injly"]
+[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="4_7e8vb"]
+[ext_resource type="Resource" uid="uid://cpr5say8kgftu" path="res://resources/configuracion_tablero_1.tres" id="5_up2fm"]
+
+[node name="Partida" type="Node" unique_id=808435336]
+script = ExtResource("1_cqp8k")
+escena_juego = ExtResource("2_usjx2")
+escena_menu = ExtResource("3_injly")
+configuraciones = Array[ExtResource("4_7e8vb")]([ExtResource("5_up2fm"), ExtResource("5_up2fm"), ExtResource("5_up2fm"), ExtResource("5_up2fm")])

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://7vdwjeyccxev"]
+
+[ext_resource type="Script" uid="uid://qu3jko1mi310" path="res://scripts/puzles/receptor_electrico.gd" id="1_sfwjc"]
+
+[node name="ReceptorElectrico" type="Node2D" unique_id=750516404]
+script = ExtResource("1_sfwjc")

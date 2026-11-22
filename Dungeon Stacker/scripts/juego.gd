@@ -10,6 +10,14 @@ var modo := Modo.MAZMORRA
 
 var _pantalla_muerte: PantallaMuerte
 
+## Antes de que nada del tablero lea su configuración (el padre entra en el árbol antes que sus
+## hijos), se pone la del nivel elegido en el menú. Sin nivel elegido (F6 sobre esta escena)
+## se queda la que lleve el nodo Tetris.
+func _enter_tree() -> void:
+	var configuracion: Configuracion_Tablero = Partida.configuracion_actual()
+	if configuracion != null:
+		(get_node("Tetris") as Tetris).Configuracion = configuracion
+
 func _ready() -> void:
 	# Los pools de salas son del nivel: viven en su configuración y los comparten tetris y mazmorra.
 	_mazmorra.contenido = _tetris.Configuracion.CONTENIDO
@@ -17,7 +25,7 @@ func _ready() -> void:
 	_mazmorra.piezas_obtenidas.connect(_tetris.agregar_piezas)
 	# Se empieza en la mazmorra, en la zona de spawn del vestíbulo inferior.
 	_mazmorra.sincronizar(_tetris.tablero)
-	# La música empieza en el bioma medieval; el cambio de bioma se conectará más adelante.
+	# La música empieza en el bioma medieval; la mazmorra cambia de bioma al entrar en cada sala.
 	Musica.iniciar_juego(Catalogo.Bioma.MEDIEVAL, Musica.Modo.MAZMORRA)
 	_aplicar_modo()
 

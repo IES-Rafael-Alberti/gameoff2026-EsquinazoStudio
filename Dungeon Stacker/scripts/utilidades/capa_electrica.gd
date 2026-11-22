@@ -19,9 +19,18 @@ extends TileMapLayer
 ## anterior en encenderse. Al apagarse, las casillas más cercanas a lo que sigue con corriente se
 ## apagan primero y la oscuridad se aleja. Los receptores reaccionan cuando la luz llega a su
 ## casilla. Al cargar la sala, la red ya aparece encendida y los receptores no reaccionan.
+## Si la sala ya estaba resuelta al cargarla, la red se ajusta al instante a las cajas que haya
+## (sin recorrido de luz) y los receptores no reaccionan: láseres y cambiadores están como se
+## guardaron.
 ##
-## Estructura: un TileMapLayer con este script en la sala, encima del suelo. Fuentes, puentes y
-## receptores se arrastran a las listas del inspector.
+## Estructura: un nodo (por ejemplo "Electricidad") que contiene esta capa y todo lo eléctrico de
+## la sala. La capa detecta sola, entre todo lo que cuelga de su nodo padre (a cualquier
+## profundidad y en cualquier orden):
+##   - las FuenteElectrica,
+##   - las PlacaInvisible, que hacen de puente,
+##   - los nodos con el método recibir_corriente(hay: bool) (ReceptorElectrico, ObjetivoElectrico).
+## Así basta con colocar los nodos dentro de ese padre, sin arrastrarlos a ninguna lista. Dentro de
+## ese padre solo deben ir placas que sean puentes.
 
 const DIRECCIONES: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
 const BITS: Array[int] = [1, 2, 4, 8]
@@ -29,15 +38,13 @@ const DATO_CONEXIONES := "conexiones"
 const DATO_ENCENDIDO := "encendido"
 const SIN_VERSION := Vector2i(-1, -1)
 
-## Bloques que dan corriente siempre. Cada uno sobre una casilla de cable.
-@export var fuentes: Array[FuenteElectrica] = []
-## Placas invisibles que hacen de puente en un hueco: pisadas, la casilla conduce.
-@export var puentes: Array[PlacaInvisible] = []
-## Nodos que reaccionan a la corriente (ReceptorElectrico, ObjetivoElectrico): cualquier nodo con
-## el método recibir_corriente(hay: bool). Cada uno sobre una casilla de cable.
-@export var receptores: Array[Node] = []
 ## Segundos que tarda la luz en pasar de una casilla a la siguiente.
 @export_range(0.0, 2.0, 0.01, "suffix:s") var retardo_casilla := 0.1
+
+# Detectados al cargar entre los hijos del nodo padre.
+var _fuentes: Array[FuenteElectrica] = []
+var _puentes: Array[PlacaInvisible] = []
+var _receptores: Array[Node2D] = []
 
 # Casilla -> {conexiones, fuente (id del atlas), alt, apagado, encendido}
 var _cables := {}
@@ -51,6 +58,8 @@ var _puentes_activos := {}
 var _celdas_fuente: Array[Vector2i] = []
 # Pasos desde la fuente de cada casilla con corriente, la última vez que se calculó.
 var _distancias := {}
+# La sala ya estaba resuelta cuando se cargó.
+var _resuelta_al_cargar := false
 
 
 func _ready() -> void:
@@ -70,18 +79,18 @@ func _ready() -> void:
 			"encendido": datos.get_custom_data(DATO_ENCENDIDO) as Vector2i,
 		}
 
-	for fuente in fuentes:
-		if fuente == null:
-			continue
+	_descubrir()
+	var sala := _buscar_habitacion()
+	_resuelta_al_cargar = sala != null and sala.datos != null and sala.datos.resuelta
+
+	for fuente in _fuentes:
 		var celda := _celda_de(fuente)
 		if not _cables.has(celda):
 			push_warning("%s: la fuente %s no está sobre un cable (casilla %s)." % [name, fuente.name, celda])
 			continue
 		_celdas_fuente.append(celda)
 
-	for puente in puentes:
-		if puente == null:
-			continue
+	for puente in _puentes:
 		puente.activada.connect(_on_puente.bind(puente, true))
 		puente.desactivada.connect(_on_puente.bind(puente, false))
 
@@ -99,13 +108,43 @@ func _process(delta: float) -> void:
 		set_process(false)
 
 
+## Busca las fuentes, los puentes y los receptores entre todo lo que cuelga del nodo padre.
+func _descubrir() -> void:
+	var raiz := get_parent()
+	if raiz == null or raiz is Habitacion:
+		push_warning("%s: pon la capa dentro de un nodo que contenga todo lo eléctrico de la sala (por ejemplo 'Electricidad'), no directamente en la sala." % name)
+		return
+	for nodo in raiz.find_children("*", "", true, false):
+		if nodo == self:
+			continue
+		if nodo is FuenteElectrica:
+			_fuentes.append(nodo)
+		elif nodo is PlacaInvisible:
+			_puentes.append(nodo)
+		elif nodo is Node2D and nodo.has_method("recibir_corriente"):
+			_receptores.append(nodo)
+
+
 func _on_puente(puente: PlacaInvisible, activo: bool) -> void:
 	var celda := _celda_de(puente)
 	if activo:
 		_puentes_activos[celda] = true
 	else:
 		_puentes_activos.erase(celda)
-	_recalcular(false)
+	if _resuelta_al_cargar:
+		_ajustar_al_instante()
+	else:
+		_recalcular(false)
+
+
+## Sala resuelta cargada: pone cada casilla como le toca ya, sin recorrido ni avisos.
+func _ajustar_al_instante() -> void:
+	var objetivo := _alcanzar(_celdas_fuente)
+	_pendientes.clear()
+	for celda in _cables:
+		_aplicar_celda(celda, objetivo.has(celda), false)
+	_distancias = objetivo
+	set_process(false)
 
 
 ## Calcula qué casillas deberían tener corriente y planifica lo que hay que encender o apagar.
@@ -198,10 +237,17 @@ func _aplicar_celda(celda: Vector2i, encender: bool, avisar: bool) -> void:
 		_encendidas.erase(celda)
 	if not avisar:
 		return
-	for receptor in receptores:
-		if receptor is Node2D and _celda_de(receptor) == celda and receptor.has_method("recibir_corriente"):
+	for receptor in _receptores:
+		if _celda_de(receptor) == celda:
 			receptor.recibir_corriente(encender)
 
 
 func _celda_de(nodo: Node2D) -> Vector2i:
 	return local_to_map(to_local(nodo.global_position))
+
+
+func _buscar_habitacion() -> Habitacion:
+	var nodo := get_parent()
+	while nodo != null and not nodo is Habitacion:
+		nodo = nodo.get_parent()
+	return nodo as Habitacion
