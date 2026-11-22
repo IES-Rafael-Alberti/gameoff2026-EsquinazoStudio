@@ -212,5 +212,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Menu" parent="." unique_id=1079454129 instance=ExtResource("25_bh3c7")]
+visible = false
 
 [connection signal="reinicio_pedido" from="Menu" to="." method="reiniciar_nivel"]

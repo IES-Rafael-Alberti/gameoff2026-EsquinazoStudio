@@ -1,5 +1,5 @@
 class_name MenuPausa
-extends CanvasLayer
+extends Control
 ## Menú de pausa. Escena propia que se instancia dentro de juego.tscn, encima del juego.
 ## En el inspector de la raíz: Process > Mode = Always (tiene que funcionar con el árbol en
 ## pausa) y Visible = apagado. Todo se conecta por señales desde el editor.
