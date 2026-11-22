@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://odv61bfmtlbk"]
 
+[ext_resource type="Texture2D" uid="uid://c3nhant6o8dk2" path="res://assets/sprites/icon/TC.png" id="1_cbers"]
 [ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_uaace"]
 
 [resource]
 script = ExtResource("1_uaace")
 nombre = "TesoroCombate"
 letra = "TC"
+icono = ExtResource("1_cbers")
 metadata/_custom_type_script = "uid://iortsm7cn8s0"

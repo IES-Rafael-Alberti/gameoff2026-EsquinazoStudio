@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://dfbhvxj5ui1n"]
 
+[ext_resource type="Texture2D" uid="uid://dw1pgf6quinuv" path="res://assets/sprites/icon/CP.png" id="1_k6sn0"]
 [ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_odqt6"]
 
 [resource]
 script = ExtResource("1_odqt6")
 nombre = "CombatePuzle"
 letra = "CP"
+icono = ExtResource("1_k6sn0")
 metadata/_custom_type_script = "uid://iortsm7cn8s0"

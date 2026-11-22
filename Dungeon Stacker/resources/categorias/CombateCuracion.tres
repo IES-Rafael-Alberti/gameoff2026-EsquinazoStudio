@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://cbiolwbo0it2y"]
 
+[ext_resource type="Texture2D" uid="uid://dhopipv2as6r0" path="res://assets/sprites/icon/CU.png" id="1_dd6a5"]
 [ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_w4fpr"]
 
 [resource]
 script = ExtResource("1_w4fpr")
 nombre = "CombateCuracion"
 letra = "CU"
+icono = ExtResource("1_dd6a5")
 metadata/_custom_type_script = "uid://iortsm7cn8s0"

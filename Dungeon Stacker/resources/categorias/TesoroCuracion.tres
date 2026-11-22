@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="CategoriaSala" format=3 uid="uid://cm5gfqhkao5nr"]
 
+[ext_resource type="Texture2D" uid="uid://bo8pr8bbulset" path="res://assets/sprites/icon/TU.png" id="1_jb5nr"]
 [ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="1_lmmg0"]
 
 [resource]
 script = ExtResource("1_lmmg0")
 nombre = "TesoroCuracion"
 letra = "TU"
+icono = ExtResource("1_jb5nr")
 metadata/_custom_type_script = "uid://iortsm7cn8s0"

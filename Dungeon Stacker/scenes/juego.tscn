@@ -1,4 +1,3 @@
-
 [gd_scene format=3 uid="uid://bx1agdn2f4cw7"]
 
 [ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
@@ -56,34 +55,28 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 [sub_resource type="Resource" id="Resource_c173r"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("10_yp23v")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_py3uc"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("11_0g8fp")
 peso = 3.5
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_d7syh"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("12_u22gr")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_pncoq"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("13_bh3c7")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_y8n3i"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("14_d0608")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_ae6e5"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("15_spu22")
 peso = 7.0
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_u22gr"]
 resource_local_to_scene = true

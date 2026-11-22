@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_5srnv")
 nombre = "Vacia"
-letra = "V"
+letra = ""
 se_resuelve_al_entrar = true
 metadata/_custom_type_script = "uid://iortsm7cn8s0"
