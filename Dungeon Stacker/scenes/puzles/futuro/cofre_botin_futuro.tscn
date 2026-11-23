@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dqjevpvspyh3h"]
+
+[ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/medieval/CofreBotin.tscn" id="1_3ijmn"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_27xjl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27xjl"]
+atlas = ExtResource("2_27xjl")
+region = Rect2(2560, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22wxo"]
+atlas = ExtResource("2_27xjl")
+region = Rect2(2048, 1536, 512, 512)
+
+[node name="CofreBotin" unique_id=2110658979 instance=ExtResource("1_3ijmn")]
+sprite_cerrado = SubResource("AtlasTexture_27xjl")
+sprite_abierto = SubResource("AtlasTexture_22wxo")
