@@ -1,4 +1,3 @@
-
 @tool
 class_name PiezaEscogida
 extends Resource
@@ -29,6 +28,14 @@ extends Resource
 	set(valor):
 		escenas = valor
 		_ajustar_escenas()
+
+## Cuántas veces se gira la pieza 90° en sentido horario al aparecer (0 = como en Piezas.FORMAS).
+## El orden de los cuadrados (categorías y escenas) sigue siendo el de la forma sin girar. La O y
+## la P no se giran.
+@export_range(0, 3) var rotacion_inicial := 0
+
+## Si el jugador puede rotar la pieza mientras cae. Desmarcado = cae siempre como aparece.
+@export var puede_rotar := true
 
 ## Pieza sin habitación (solo relleno del tablero). Si está marcada, ignora las categorías.
 @export var sin_habitacion := false

@@ -1,4 +1,3 @@
-
 class_name Tetris
 extends Node2D
 
@@ -12,6 +11,13 @@ static func de(nodo: Node) -> Tetris:
 
 @export var Configuracion: Configuracion_Tablero
 @export var MAX_PREVIEWS := 5
+
+@export_group("Colocación en pantalla")
+## Dónde queda el centro del tablero en vertical, medido desde abajo (0 = abajo del todo,
+## 1 = arriba del todo, 0,33 = a un tercio). Si el tablero no cabe, se ajusta para no salirse.
+@export_range(0.0, 1.0, 0.01) var altura_centro_desde_abajo := 1.0 / 3.0
+## Separación (px) entre el borde derecho del tablero y el panel lateral.
+@export var separacion_panel := 40.0
 
 @onready var fixed_blocks = $Board/FixedBlocks
 @onready var barreras = $Board/Barreras
@@ -29,6 +35,8 @@ static func de(nodo: Node) -> Tetris:
 ## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
 @onready var hold_panel = get_node_or_null("SidePanel/HoldPiece")
 @onready var piezas = $Piezas
+@onready var _board: Node2D = $Board
+@onready var _panel_lateral: Control = $SidePanel
 @onready var controlador_pieza = $ControladorPieza
 
 var piezas_disponibles: int = 0
@@ -51,10 +59,22 @@ func _ready() -> void:
 	)
 	controlador_pieza.solicitar_fijar_pieza.connect(fijar_pieza)
 	crear_tablero()
+	colocar_tablero()
+	get_viewport().size_changed.connect(colocar_tablero)
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	refrescar_cola()
 	generar_pieza()
 	actualizar_contador()
+
+## Centra el tablero en horizontal, lo sube a la altura elegida y pega el panel lateral a su
+## derecha. Depende del tamaño del tablero del nivel y del de la pantalla.
+func colocar_tablero() -> void:
+	var pantalla := get_viewport_rect().size
+	var tam := Vector2(Configuracion.ANCHO_TABLERO, Configuracion.ALTO_TABLERO)
+	var centro_y := pantalla.y * (1.0 - altura_centro_desde_abajo)
+	var y := clampf(centro_y - tam.y / 2.0, 0.0, maxf(pantalla.y - tam.y, 0.0))
+	_board.position = Vector2((pantalla.x - tam.x) / 2.0, y)
+	_panel_lateral.position.x = _board.position.x + tam.x + separacion_panel
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reiniciar"):
@@ -166,6 +186,8 @@ func fijar_pieza() -> void:
 ## vacía, la pieza actual se guarda y entra la primera de la cola (gasta una pieza del contador).
 ## La pieza que sale aparece arriba, sin rotar.
 func guardar_pieza() -> void:
+	if not Configuracion.PERMITIR_GUARDAR_PIEZA:
+		return
 	if not juego_activo or bloqueado or controlador_pieza.pieza_actual == null:
 		return
 	var actual: PiezaGenerada = controlador_pieza.pieza_actual

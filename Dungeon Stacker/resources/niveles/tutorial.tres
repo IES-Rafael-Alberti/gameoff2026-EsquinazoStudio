@@ -1,0 +1,126 @@
+[gd_resource type="Resource" script_class="Configuracion_Tablero" format=3 uid="uid://bxa6y8k8sk2k1"]
+
+[ext_resource type="Script" uid="uid://gwn7jo3iiwod" path="res://scripts/tetris/grupo_barrera.gd" id="1_3j3ao"]
+[ext_resource type="Script" uid="uid://ec52h3tn8l2s" path="res://scripts/tetris/casilla_fija.gd" id="2_yf526"]
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="3_w28vw"]
+[ext_resource type="Script" uid="uid://cvem01iwwrqy3" path="res://scripts/pool_bioma.gd" id="4_tt7k0"]
+[ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="5_foihi"]
+[ext_resource type="Script" uid="uid://cf31yyhmx7s7f" path="res://scripts/contenido_salas.gd" id="5_qeidx"]
+[ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="6_tf0an"]
+[ext_resource type="Resource" uid="uid://cbiolwbo0it2y" path="res://resources/categorias/CombateCuracion.tres" id="7_7leo0"]
+[ext_resource type="Resource" uid="uid://dfbhvxj5ui1n" path="res://resources/categorias/CombatePuzle.tres" id="8_naql3"]
+[ext_resource type="Resource" uid="uid://b2jry5pe8wn07" path="res://resources/categorias/Curación.tres" id="9_0fffu"]
+[ext_resource type="Resource" uid="uid://ckfpqisg5v4hy" path="res://resources/categorias/Puzle.tres" id="10_vw561"]
+[ext_resource type="Resource" uid="uid://dv8f1mhdewg4u" path="res://resources/categorias/PuzleCuracion.tres" id="11_c3upu"]
+[ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="12_lfihd"]
+[ext_resource type="Resource" uid="uid://odv61bfmtlbk" path="res://resources/categorias/TesoroCombate.tres" id="13_5xgmx"]
+[ext_resource type="Resource" uid="uid://cm5gfqhkao5nr" path="res://resources/categorias/TesoroCuracion.tres" id="14_muavd"]
+[ext_resource type="Resource" uid="uid://bmft83rs5q0u5" path="res://resources/categorias/TesoroPuzle.tres" id="15_yrhyb"]
+[ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="16_lnin1"]
+[ext_resource type="Script" uid="uid://bu1ykkrbfef2d" path="res://scripts/tetris/pieza_en_turno.gd" id="17_du5oe"]
+[ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="18_yjxn0"]
+[ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="19_tjmch"]
+[ext_resource type="PackedScene" uid="uid://bdsh72gtr6yb" path="res://scenes/salas/Medieval/Tutorial/Tutorial1.tscn" id="20_2ilg1"]
+[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="20_jdsqg"]
+[ext_resource type="PackedScene" uid="uid://trqwt4x6dtpf" path="res://scenes/salas/Medieval/Vacio/Vacio6.tscn" id="20_wbero"]
+[ext_resource type="PackedScene" uid="uid://bn4ndrp08flr6" path="res://scenes/salas/Medieval/Tutorial/Tutorial2.tscn" id="21_wbero"]
+[ext_resource type="PackedScene" uid="uid://bvlnqnssehkyo" path="res://scenes/salas/Medieval/Tutorial/Tutorial3.tscn" id="22_tt7k0"]
+[ext_resource type="PackedScene" uid="uid://c48tvr27wgs32" path="res://scenes/salas/Medieval/Tesoro/Tesoro1.tscn" id="24_ln5x1"]
+[ext_resource type="PackedScene" uid="uid://cxg6j72bhdno0" path="res://scenes/salas/Medieval/Vacio/vacio5.tscn" id="26_ln5x1"]
+
+[sub_resource type="Resource" id="Resource_wbero"]
+script = ExtResource("5_qeidx")
+metadata/_custom_type_script = "uid://cf31yyhmx7s7f"
+
+[sub_resource type="Resource" id="Resource_ervc2"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("6_tf0an")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_5g1u2"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("7_7leo0")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_mlgrx"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("8_naql3")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_spu22"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("9_0fffu")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_d0608"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("10_vw561")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_c173r"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("11_c3upu")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_py3uc"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("12_lfihd")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_d7syh"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("13_5xgmx")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_pncoq"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("14_muavd")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_y8n3i"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("15_yrhyb")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_ae6e5"]
+script = ExtResource("5_foihi")
+categoria = ExtResource("16_lnin1")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_7vecx"]
+script = ExtResource("19_tjmch")
+forma = "J"
+escenas = Array[PackedScene]([ExtResource("20_wbero"), ExtResource("20_wbero"), ExtResource("20_2ilg1"), ExtResource("24_ln5x1")])
+rotacion_inicial = 3
+puede_rotar = false
+metadata/_custom_type_script = "uid://cgs80e6cfm5qy"
+
+[sub_resource type="Resource" id="Resource_bt8y5"]
+script = ExtResource("19_tjmch")
+forma = "J"
+escenas = Array[PackedScene]([null, null, null, null])
+rotacion_inicial = 1
+puede_rotar = false
+sin_habitacion = true
+metadata/_custom_type_script = "uid://cgs80e6cfm5qy"
+
+[sub_resource type="Resource" id="Resource_hmu68"]
+script = ExtResource("19_tjmch")
+escenas = Array[PackedScene]([ExtResource("21_wbero"), ExtResource("22_tt7k0"), ExtResource("26_ln5x1"), null])
+rotacion_inicial = 1
+puede_rotar = false
+metadata/_custom_type_script = "uid://cgs80e6cfm5qy"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("20_jdsqg")
+COLUMNAS = 2
+FILAS = 4
+TAM_CELDA = 40
+CANTIDAD_PIEZAS = 1
+PESOS_CATEGORIAS = Array[ExtResource("5_foihi")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
+CONTENIDO = SubResource("Resource_wbero")
+PIEZAS_NIVEL = 16258
+PERMITIR_GUARDAR_PIEZA = false
+SECUENCIA_INICIAL = Array[ExtResource("19_tjmch")]([SubResource("Resource_7vecx"), SubResource("Resource_bt8y5"), SubResource("Resource_hmu68")])
+metadata/_custom_type_script = "uid://l2dv12p10t3s"

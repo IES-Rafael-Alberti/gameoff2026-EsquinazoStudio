@@ -1,4 +1,3 @@
-
 class_name Configuracion_Tablero
 extends Resource
 
@@ -39,6 +38,9 @@ const NOMBRES_PIEZAS := ["I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P",
 ## protección: una sala así puede quedar aislada, y en la fila de abajo o de arriba cierra la
 ## puerta de su columna en el vestíbulo. 0 = ninguna.
 @export_range(0.0, 100.0, 0.5, "suffix:%") var PROBABILIDAD_SOLO_HORIZONTAL := 0.0
+
+## Si el jugador puede guardar piezas en la reserva (acción guardar_pieza) en este nivel.
+@export var PERMITIR_GUARDAR_PIEZA := true
 
 @export_group("Línea completada")
 ## Categoría a la que se convierte una casilla por cada línea completada (Tesoro.tres). Vacío =
@@ -98,7 +100,6 @@ var ALTO_TABLERO: int:
 	get:
 		return FILAS * TAM_CELDA
 
-
 ## Nombres de las piezas marcadas en PIEZAS_NIVEL.
 func piezas_permitidas() -> Array[String]:
 	var permitidas: Array[String] = []
@@ -106,7 +107,6 @@ func piezas_permitidas() -> Array[String]:
 		if PIEZAS_NIVEL & (1 << i):
 			permitidas.append(NOMBRES_PIEZAS[i])
 	return permitidas
-
 
 ## Peso de una categoría: el de la lista si está, y 1 si no.
 func peso_de(categoria: CategoriaSala) -> float:
