@@ -3,29 +3,22 @@
 [ext_resource type="Script" uid="uid://bn22lhfd0tip3" path="res://scripts/puzles/fuente_electrica.gd" id="1_0ia32"]
 [ext_resource type="Texture2D" uid="uid://c546ylo84m7ph" path="res://assets/sprites/spritesheets/Fuente energía spritesheet.png" id="2_0ia32"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ia32"]
+atlas = ExtResource("2_0ia32")
+region = Rect2(0, 0, 513, 514)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ggye"]
 atlas = ExtResource("2_0ia32")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpc7u"]
-atlas = ExtResource("2_0ia32")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_53dgn"]
-atlas = ExtResource("2_0ia32")
-region = Rect2(0, 512, 512, 512)
+region = Rect2(513, 0, 513, 514)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cbglk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0ia32")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2ggye")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mpc7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_53dgn")
 }],
 "loop": 1,
 "name": &"default",
@@ -39,4 +32,4 @@ script = ExtResource("1_0ia32")
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_cbglk")
 autoplay = "default"
-frame_progress = 0.3130306
+frame_progress = 0.01580759
