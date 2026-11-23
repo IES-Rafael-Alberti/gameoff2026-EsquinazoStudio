@@ -114,9 +114,9 @@ text = "PIEZAS: 0"
 
 [node name="Label" type="Label" parent="SidePanel" unique_id=1440733841]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 276.0
-offset_right = 427.0
-offset_bottom = 363.0
+offset_left = -1226.0
+offset_top = 455.0
+offset_right = -949.0
+offset_bottom = 546.0
 text = "Exit reached. Press SPACE/A 
 to continue placing pieces"
