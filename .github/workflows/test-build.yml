@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - 'Dungeon Stacker/**'
 
 jobs:
   build:
@@ -24,32 +26,9 @@ jobs:
 
       - name: Export game for Web
         run: |
-          rm -rf build
           mkdir -p build
           godot --headless --path "Dungeon Stacker" \
             --export-release "Web" "$GITHUB_WORKSPACE/build/dungeon-stacker.html"
 
       - name: Check exported files
-        run: |
-          test -f build/dungeon-stacker.html
-          ls -lah build/
-
-      - name: Install zip
-        run: |
-          if ! command -v zip >/dev/null 2>&1; then
-            apt-get update
-            apt-get install -y zip
-          fi
-
-      - name: Create HTML5 zip
-        run: |
-          mv build/dungeon-stacker.html build/index.html
-          (cd build && find . -type f ! -name 'dungeon-stacker-html5.zip' -printf '%P\n' | zip -@ dungeon-stacker-html5.zip)
-
-      - name: Upload HTML5 zip artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dungeon-stacker-html5-pr-${{ github.event.pull_request.number }}
-          path: build/dungeon-stacker-html5.zip
-          if-no-files-found: error
-          retention-days: 7
+        run: test -f build/dungeon-stacker.html
