@@ -27,7 +27,7 @@ jobs:
           rm -rf build
           mkdir -p build
           godot --headless --path "Dungeon Stacker" \
-            --export-release "Web" build/dungeon-stacker.html
+            --export-release "Web" "$GITHUB_WORKSPACE/build/dungeon-stacker.html"
 
       - name: Check exported files
         run: |
