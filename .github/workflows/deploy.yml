@@ -8,19 +8,49 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.7.2
 
     steps:
-      - name: Download repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install Godot export templates
+        run: |
+          mkdir -p /github/home/.local/share/godot/export_templates/4.7.2.stable
+          wget -q https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          unzip -q Godot_v4.7.2-stable_export_templates.tpz
+          cp -r templates/* /github/home/.local/share/godot/export_templates/4.7.2.stable/
+
+      - name: Export game for Web
+        run: |
+          rm -rf build
+          mkdir -p build
+          godot --headless --path "Dungeon Stacker" \
+            --export-release "Web" "$GITHUB_WORKSPACE/build/dungeon-stacker.html"
+
+      - name: Check exported files
+        run: |
+          test -f build/dungeon-stacker.html
+          ls -lah build/
+
+      - name: Install zip
+        run: |
+          if ! command -v zip >/dev/null 2>&1; then
+            apt-get update
+            apt-get install -y zip
+          fi
+
+      - name: Create HTML5 zip
+        run: |
+          mv build/dungeon-stacker.html build/index.html
+          (cd build && find . -type f ! -name 'dungeon-stacker-html5.zip' -printf '%P\n' | zip -@ dungeon-stacker-html5.zip)
 
       - name: Install Butler
         uses: remarkablegames/setup-butler@v2
-
-      - name: Rename HTML to index.html
-        run: mv ./build/dungeon-stacker.html ./build/index.html
 
       - name: Publish game
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
         run: |
-          butler push ./build "esquina-studio/dungeon-stacker:html5"
+          butler push build/dungeon-stacker-html5.zip "esquina-studio/dungeon-stacker:html5"
