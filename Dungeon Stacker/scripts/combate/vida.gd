@@ -12,14 +12,11 @@ signal murio
 
 var vida := 1
 
-
 func _ready() -> void:
 	vida = vida_maxima
 
-
 func esta_viva() -> bool:
 	return vida > 0
-
 
 func recibir_dano(cantidad: int) -> void:
 	if not esta_viva() or cantidad <= 0:
@@ -40,7 +37,6 @@ func curar(cantidad: int) -> void:
 	curada.emit(vida - antes)
 	cambiada.emit(vida, vida_maxima)
 
-
 ## Sube la vida máxima. Por defecto el contenedor nuevo viene lleno.
 func aumentar_maxima(cantidad: int, rellenar := true) -> void:
 	if cantidad <= 0:
@@ -50,6 +46,11 @@ func aumentar_maxima(cantidad: int, rellenar := true) -> void:
 		vida += cantidad
 	cambiada.emit(vida, vida_maxima)
 
+## Pone la vida actual en un valor concreto (entre 1 y la máxima): al empezar un nivel con la vida
+## con la que se terminó el anterior.
+func establecer(valor: int) -> void:
+	vida = clampi(valor, 1, vida_maxima)
+	cambiada.emit(vida, vida_maxima)
 
 ## Vida completa otra vez (por ejemplo al reiniciar).
 func restaurar() -> void:

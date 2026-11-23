@@ -215,4 +215,5 @@ metadata/_edit_use_anchors_ = true
 [node name="Menu" parent="." unique_id=1079454129 instance=ExtResource("25_bh3c7")]
 visible = false
 
+[connection signal="nivel_completado" from="Mazmorra" to="." method="_on_mazmorra_nivel_completado"]
 [connection signal="reinicio_pedido" from="Menu" to="." method="reiniciar_nivel"]
