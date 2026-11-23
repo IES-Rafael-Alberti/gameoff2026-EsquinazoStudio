@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dj7j6igx7txfw"]
+
+[ext_resource type="PackedScene" uid="uid://bqq8ymcexgt6" path="res://scenes/enemigos/patrulla.tscn" id="1_btfqv"]
+[ext_resource type="Texture2D" uid="uid://ceke3oy3fxn58" path="res://assets/sprites/enemigo/bola de fuego/Bola de fuego.png" id="2_2drdk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cga5m"]
+atlas = ExtResource("2_2drdk")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ltb"]
+atlas = ExtResource("2_2drdk")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjkrw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cga5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ltb")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Patrulla" unique_id=1739202080 instance=ExtResource("1_btfqv")]
+
+[node name="ColorRect" parent="." index="0" unique_id=1768972680]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" unique_id=1516556897]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_mjkrw")
