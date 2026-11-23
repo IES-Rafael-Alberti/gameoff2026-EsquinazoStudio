@@ -1,8 +1,13 @@
-
+class_name Jugador
 extends CharacterBody2D
+## Jugador. Lo que hace en cada momento lo decide su máquina de estados (hijo MaquinaEstados
+## con los estados Inactivo, Caminar, Atacar, Herido, Caer y Muerte); aquí está lo que comparten:
+## vida, daño, invulnerabilidad, llaves y los ayudantes que usan los estados.
 
 signal murio
 signal llave_cambiada(tiene: bool)
+## Terminó la caída al vacío (con el daño ya aplicado y el jugador reaparecido).
+signal caida_terminada
 
 @export var speed: float = 150.0
 
@@ -25,14 +30,12 @@ signal llave_cambiada(tiene: bool)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _hitbox: CollisionShape2D = $HitboxPersonaje
-@onready var _animacion_caida: AnimationPlayer = $AnimacionCaida
+@onready var animacion_caida: AnimationPlayer = $Animacion/AnimacionCaida
+@onready var maquina: JugadorMaquina = $MaquinaEstados
 
 var vida: Vida
-var attacking := false
 var tiene_llave := false
 var last_direction: String = "South"
-## True durante la caída al vacío: no se mueve, no ataca y no recibe otro daño.
-var cayendo := false
 
 var _tiempo_invulnerable := 0.0
 var _tiempo_retroceso := 0.0
@@ -45,58 +48,51 @@ func _ready() -> void:
 	vida.vida_maxima = vida_maxima
 	add_child(vida)
 	vida.murio.connect(_on_vida_murio)
+	maquina.iniciar(self)
 	
 func _physics_process(delta: float) -> void:
 	_tiempo_invulnerable = maxf(_tiempo_invulnerable - delta, 0.0)
+	maquina.fisica(delta)
 
-	# Cayendo al vacío: sin control mientras dura la animación.
-	if cayendo:
-		velocity = Vector2.ZERO
+
+func _input(event: InputEvent) -> void:
+	maquina.entrada(event)
+
+
+## Dirección que marca el input de movimiento (vector de longitud 0 a 1).
+func direccion_input() -> Vector2:
+	return Input.get_vector("mover_izquierda", "mover_derecha", "mover_arriba", "mover_abajo")
+
+
+## Guarda hacia dónde mira según un vector de movimiento.
+func actualizar_direccion(direccion: Vector2) -> void:
+	if direccion == Vector2.ZERO:
 		return
-
-	# Retroceso tras un golpe: manda sobre el control y sobre el ataque.
-	if _tiempo_retroceso > 0.0:
-		_tiempo_retroceso -= delta
-		velocity = _velocidad_retroceso
-		move_and_slide()
-		return
-
-	if attacking:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
-
-	var input_direction := Input.get_vector(
-		"mover_izquierda",
-		"mover_derecha",
-		"mover_arriba",
-		"mover_abajo"
-	)
-
-	velocity = input_direction * speed
-	move_and_slide()
-	_empujar_cajas(input_direction, delta)
-	if input_direction != Vector2.ZERO:
-		if abs(input_direction.x) > abs(input_direction.y):
-			last_direction = "East" if input_direction.x > 0 else "West"
-		else:
-			last_direction = "South" if input_direction.y > 0 else "North"
-		sprite.play("Walk_" + last_direction)
+	if abs(direccion.x) > abs(direccion.y):
+		last_direction = "East" if direccion.x > 0 else "West"
 	else:
-		play_idle()
+		last_direction = "South" if direccion.y > 0 else "North"
 
 
-func play_idle() -> void:
-	var idle_anim = "Idle_" + last_direction
-	if sprite.sprite_frames.has_animation(idle_anim):
-		sprite.play(idle_anim)
-	else:
-		sprite.play("Walk_" + last_direction)
-		sprite.frame = 0
+## Reproduce "<prefijo>_<dirección>" (por ejemplo Walk_North). Si esa animación no existe, se
+## queda con la que estaba.
+func animar(prefijo: String) -> void:
+	var nombre := prefijo + "_" + last_direction
+	if sprite.sprite_frames.has_animation(nombre):
+		sprite.play(nombre)
+
+
+## Parado: el primer fotograma de la caminata de la dirección actual, congelado.
+func mostrar_pose_quieto() -> void:
+	var nombre := "Walk_" + last_direction
+	if sprite.sprite_frames.has_animation(nombre):
+		sprite.play(nombre)
+		sprite.set_frame_and_progress(0, 0.0)
 		sprite.pause()
 
+
 ## Si el jugador avanza contra una caja, la empuja (la caja decide si se mueve).
-func _empujar_cajas(direccion: Vector2, delta: float) -> void:
+func empujar_cajas(direccion: Vector2, delta: float) -> void:
 	if direccion == Vector2.ZERO:
 		return
 	for i in get_slide_collision_count():
@@ -106,20 +102,19 @@ func _empujar_cajas(direccion: Vector2, delta: float) -> void:
 		if caja != null and direccion.dot(-choque.get_normal()) > 0.5:
 			caja.empujar(choque.get_normal(), delta, self)
 
-func _input(event: InputEvent) -> void:
-	if cayendo:
-		return
-	if event.is_action_pressed("accion") and not event.is_echo():
-		if not attacking:
-			attack()
+
+## Si queda retroceso por aplicar, mueve al jugador con él y devuelve true.
+func avanzar_retroceso(delta: float) -> bool:
+	if _tiempo_retroceso <= 0.0:
+		return false
+	_tiempo_retroceso -= delta
+	velocity = _velocidad_retroceso
+	move_and_slide()
+	return true
 
 
-func attack() -> void:
-	attacking = true
-	sprite.play("Attack_" + last_direction)
-	get_tree().create_timer(retardo_golpe).timeout.connect(_golpear)
-	await sprite.animation_finished
-	attacking = false
+func cancelar_retroceso() -> void:
+	_tiempo_retroceso = 0.0
 
 
 ## Centro del cuerpo (el origen del personaje está en los pies).
@@ -128,7 +123,20 @@ func centro() -> Vector2:
 
 
 func esta_invulnerable() -> bool:
-	return _tiempo_invulnerable > 0.0 or cayendo
+	return _tiempo_invulnerable > 0.0 or (maquina.actual != null and maquina.actual.es_invulnerable())
+
+
+## Empieza el periodo sin poder recibir daño, con el parpadeo.
+func iniciar_invulnerabilidad() -> void:
+	_tiempo_invulnerable = invulnerabilidad
+	_parpadear()
+
+
+## Para el parpadeo y deja el sprite opaco.
+func detener_parpadeo() -> void:
+	if _tween_parpadeo != null:
+		_tween_parpadeo.kill()
+	sprite.modulate.a = 1.0
 
 
 ## origen: punto global de donde viene el daño. Si se indica, el jugador retrocede alejándose de él.
@@ -138,35 +146,25 @@ func recibir_dano(cantidad: int, origen := Vector2.INF) -> void:
 	vida.recibir_dano(cantidad)
 	if not vida.esta_viva():
 		return
-	_tiempo_invulnerable = invulnerabilidad
-	_parpadear()
+	iniciar_invulnerabilidad()
 	if origen != Vector2.INF:
 		var direccion := (centro() - origen).normalized()
 		if direccion == Vector2.ZERO:
 			direccion = -_vector_de(last_direction)
 		_velocidad_retroceso = direccion * fuerza_retroceso
 		_tiempo_retroceso = duracion_retroceso
+		# Atacando, el ataque sigue: el retroceso lo aplica el propio estado Atacar.
+		if not maquina.esta_en(JugadorEstado.ATACAR):
+			maquina.cambiar_a(JugadorEstado.HERIDO)
 
 
-## Caída al vacío: el sprite se encoge con la animación "caer", el jugador recibe daño
-## y reaparece en destino (coordenadas de la mazmorra) con invulnerabilidad.
-## Es una corrutina: quien la llame puede esperar (await) a que termine.
+## Caída al vacío: el jugador recibe daño y reaparece en destino (coordenadas de la mazmorra) con
+## invulnerabilidad. Es una corrutina: quien la llame puede esperar (await) a que termine.
 func caer_al_vacio(dano: int, destino: Vector2) -> void:
-	if cayendo or not vida.esta_viva():
+	if maquina.esta_en(JugadorEstado.CAER) or not vida.esta_viva():
 		return
-	cayendo = true
-	_tiempo_retroceso = 0.0
-	velocity = Vector2.ZERO
-	_animacion_caida.play("caer")
-	await _animacion_caida.animation_finished
-	# El daño del vacío no lo frena la invulnerabilidad anterior.
-	vida.recibir_dano(dano)
-	if vida.esta_viva():
-		sprite.scale = Vector2.ONE
-		position = destino
-		_tiempo_invulnerable = invulnerabilidad
-		_parpadear()
-	cayendo = false
+	maquina.cambiar_a(JugadorEstado.CAER, {"dano": dano, "destino": destino})
+	await caida_terminada
 
 
 func curar(cantidad: int) -> void:
@@ -206,10 +204,8 @@ func _parpadear() -> void:
 	_tween_parpadeo.finished.connect(func(): sprite.modulate.a = 1.0)
 
 
-## Daña a todos los enemigos dentro de un círculo delante del jugador.
-func _golpear() -> void:
-	if not attacking:
-		return
+## Daña a todos los enemigos dentro de un círculo delante del jugador (lo llama el estado Atacar).
+func golpear() -> void:
 	var forma := CircleShape2D.new()
 	forma.radius = radio_ataque
 
@@ -241,6 +237,6 @@ func _vector_de(direccion: String) -> Vector2:
 func desfase_centro() -> Vector2:
 	return _hitbox.global_position - global_position
 
+## La vida llegó a 0: pasa a Muerte, que emite murio cuando acaba el fundido.
 func _on_vida_murio() -> void:
-	print("Jugador muerto")
-	murio.emit()
+	maquina.cambiar_a(JugadorEstado.MUERTE)
