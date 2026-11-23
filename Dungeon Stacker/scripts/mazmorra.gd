@@ -5,6 +5,8 @@ enum Lugar { NINGUNO, VESTIBULO_INFERIOR, VESTIBULO_SUPERIOR, SALA }
 
 ## El jugador ha conseguido piezas para el tetris (cofres...). Lo conecta Juego.
 signal piezas_obtenidas(cantidad: int)
+## El jugador ha cruzado la puerta de salida del vestíbulo superior. Lo conecta Juego en el editor.
+signal nivel_completado
 
 ## Sala base: se usa cuando no hay ninguna sala en el pool que toca.
 const ESCENA_HABITACION := preload("res://scenes/salas/Habitacion_Base.tscn")
@@ -121,6 +123,7 @@ func _crear_vestibulo(tipo: Vestibulo.Tipo) -> Vestibulo:
 	var y := CENTRO_HABITACION.y - mitad_alto if tipo == Vestibulo.Tipo.INFERIOR else CENTRO_HABITACION.y + mitad_alto
 	vestibulo.position = Vector2(x, y)
 	vestibulo.puerta_cruzada.connect(_on_vestibulo_cruzado.bind(tipo))
+	vestibulo.nivel_completado.connect(nivel_completado.emit)
 	return vestibulo
 
 

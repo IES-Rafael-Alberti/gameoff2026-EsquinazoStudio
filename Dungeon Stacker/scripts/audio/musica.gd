@@ -23,6 +23,10 @@ enum Modo { TETRIS, MAZMORRA }
 @export_range(0.0, 5.0, 0.05, "suffix:s") var fundido_bioma := 0.8
 ## Duración (s) de CADA fundido al pasar del menú al juego o al revés. 0 = corte.
 @export_range(0.0, 5.0, 0.05, "suffix:s") var fundido_menu := 0.8
+## Cuánto baja el volumen (dB, negativo) mientras el juego está en pausa.
+@export_range(-40.0, 0.0, 0.5, "suffix:dB") var atenuacion_pausa_db := -12.0
+## Duración (s) de la bajada y la subida del volumen al entrar y salir de la pausa. 0 = corte.
+@export_range(0.0, 2.0, 0.05, "suffix:s") var fundido_pausa := 0.2
 
 const SILENCIO_DB := -80.0
 
@@ -31,6 +35,9 @@ const SILENCIO_DB := -80.0
 var _sync: AudioStreamSynchronized
 var _tween: Tween
 var _tween_modo: Tween
+var _tween_pausa: Tween
+## Atenuación actual por la pausa (dB, 0 o negativo).
+var _pausa_db := 0.0
 
 var _en_menu := false
 var _juego_cargado := false
@@ -90,6 +97,18 @@ func cambiar_bioma(bioma: int) -> void:
 	_transicion(fundido_bioma, _cargar_juego)
 
 
+## Baja el volumen mientras el juego está en pausa (true) o lo devuelve (false).
+func atenuar_pausa(activa: bool) -> void:
+	var objetivo := atenuacion_pausa_db if activa else 0.0
+	if _tween_pausa != null:
+		_tween_pausa.kill()
+	if fundido_pausa <= 0.0:
+		_poner_atenuacion_pausa(objetivo)
+		return
+	_tween_pausa = create_tween()
+	_tween_pausa.tween_method(_poner_atenuacion_pausa, _pausa_db, objetivo, fundido_pausa)
+
+
 ## Fundido de salida (si estaba sonando), carga lo nuevo y fundido de entrada.
 func _transicion(duracion: float, cargar: Callable) -> void:
 	if _tween != null:
@@ -140,15 +159,22 @@ func _poner_mezcla(t: float) -> void:
 	_sync.set_sync_stream_volume(1, _a_db(t))
 
 
-## Volumen general del reproductor, de 0 (silencio) a 1 (volumen_db).
+## Cambia la atenuación de la pausa sin alterar el fundido que esté en marcha.
+func _poner_atenuacion_pausa(db: float) -> void:
+	var lineal := _volumen_lineal()
+	_pausa_db = db
+	_poner_volumen(lineal)
+
+
+## Volumen general del reproductor, de 0 (silencio) a 1 (volumen_db, menos la atenuación de pausa).
 func _poner_volumen(lineal: float) -> void:
-	_player.volume_db = _a_db(lineal) + volumen_db if lineal > 0.0001 else SILENCIO_DB
+	_player.volume_db = _a_db(lineal) + volumen_db + _pausa_db if lineal > 0.0001 else SILENCIO_DB
 
 
 func _volumen_lineal() -> float:
 	if _player.volume_db <= SILENCIO_DB:
 		return 0.0
-	return clampf(db_to_linear(_player.volume_db - volumen_db), 0.0, 1.0)
+	return clampf(db_to_linear(_player.volume_db - volumen_db - _pausa_db), 0.0, 1.0)
 
 
 func _a_db(lineal: float) -> float:

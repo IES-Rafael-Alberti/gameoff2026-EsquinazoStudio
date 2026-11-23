@@ -31,3 +31,6 @@ tile_set = SubResource("TileSet_py81d")
 
 [node name="Spawn" type="Marker2D" parent="." unique_id=652935805]
 position = Vector2(256, 160)
+
+[node name="PuertaNivel" type="Marker2D" parent="." unique_id=254022645]
+position = Vector2(256, 224)

@@ -33,6 +33,9 @@ func _ready() -> void:
 	add_child(_pantalla_muerte)
 	_pantalla_muerte.reinicio_pedido.connect(reiniciar_nivel)
 	_mazmorra.jugador.murio.connect(_on_jugador_murio)
+	# Si viene de un nivel anterior (o reinicia este), empieza con la vida que le toca.
+	if Partida.vida_al_empezar >= 0:
+		_mazmorra.jugador.vida.establecer(Partida.vida_al_empezar)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cambiar_modo"):
@@ -65,6 +68,13 @@ func _activar(nodo: CanvasItem, activo: bool) -> void:
 func _on_jugador_murio() -> void:
 	get_tree().paused = true
 	_pantalla_muerte.mostrar()
+
+## Señal nivel_completado de Mazmorra (se conecta desde el editor): el jugador cruzó la puerta de
+## salida. Se cura lo que diga la configuración del nivel y pasa al siguiente con esa vida.
+func _on_mazmorra_nivel_completado() -> void:
+	var vida: Vida = _mazmorra.jugador.vida
+	vida.curar(_tetris.Configuracion.CURACION_FIN_NIVEL)
+	Partida.terminar_nivel(vida.vida)
 
 ## Reinicia solo este nivel (tablero, mazmorra y vida desde cero).
 func reiniciar_nivel() -> void:

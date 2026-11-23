@@ -35,7 +35,7 @@ const TAM_CELDA := 64.0
 ## Segundos que dura la explosión antes de borrarse la mina.
 @export var duracion_explosion := 0.4
 ## Segundos que se ve cada uno de los dos sprites de la explosión antes de cambiar al otro.
-@export var intervalo_explosion := 0.1
+@export_range(0.01, 1.0, 0.01, "suffix:s") var intervalo_explosion := 0.1
 
 @export_group("Sprites")
 ## Los 7 sprites de la bomba, en orden.
@@ -78,11 +78,9 @@ func _ready() -> void:
 
 	_deteccion.body_entered.connect(_on_cuerpo_entro)
 
-
 func _on_cuerpo_entro(cuerpo: Node2D) -> void:
 	if cuerpo.is_in_group("jugador"):
 		_activar()
-
 
 func _activar() -> void:
 	if _activada:
@@ -93,7 +91,6 @@ func _activar() -> void:
 	if not is_inside_tree():
 		return
 	await _explotar()
-
 
 ## Reproduce los 7 sprites repartidos en toda la cuenta atrás y parpadea en rojo a la vez.
 func _cuenta_atras() -> void:
@@ -117,7 +114,6 @@ func _cuenta_atras() -> void:
 	await animacion.finished
 	_sprite.modulate = Color.WHITE
 
-
 func _explotar() -> void:
 	# Se anota al empezar la explosión: aunque el jugador salga de la sala, no vuelve.
 	if _habitacion != null and _habitacion.datos != null:
@@ -138,18 +134,15 @@ func _explotar() -> void:
 		indice += 1
 	queue_free()
 
-
 ## Identifica esta mina dentro de su sala: su posición. Cada celda guarda su propia lista.
 func _clave() -> Vector2i:
 	return Vector2i(global_position.round())
-
 
 func _buscar_habitacion() -> Habitacion:
 	var nodo := get_parent()
 	while nodo != null and not nodo is Habitacion:
 		nodo = nodo.get_parent()
 	return nodo as Habitacion
-
 
 ## Las 9 casillas del 3x3 (la central es la de la mina), todas con el mismo sprite a la vez.
 func _crear_sprites_explosion() -> void:
@@ -164,11 +157,9 @@ func _crear_sprites_explosion() -> void:
 			_sprites_explosion.add_child(casilla)
 			_casillas_explosion.append(casilla)
 
-
 func _poner_fotograma_bomba(indice: int) -> void:
 	if indice < fotogramas_bomba.size():
 		_sprite.texture = fotogramas_bomba[indice]
-
 
 func _poner_fotograma_explosion(indice: int) -> void:
 	if indice >= fotogramas_explosion.size():

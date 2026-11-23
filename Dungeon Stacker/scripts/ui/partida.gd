@@ -18,6 +18,9 @@ const RUTA_GUARDADO := "user://progreso.cfg"
 ## Nivel que se está jugando. -1 = ninguno elegido (por ejemplo, al abrir juego.tscn con F6):
 ## en ese caso el juego usa la configuración que lleve su propio nodo Tetris.
 var nivel_actual := -1
+## Vida con la que se empezó el nivel actual. Reiniciar el nivel la vuelve a poner.
+## -1 = vida completa (al empezar desde el menú).
+var vida_al_empezar := -1
 var _completados: Array[bool] = []
 
 
@@ -69,10 +72,13 @@ func completar_nivel(nivel: int) -> void:
 	_guardar()
 
 
-## Empieza el nivel indicado desde cero.
-func jugar_nivel(nivel: int) -> void:
+## Empieza el nivel indicado desde cero. Con `conservar_vida`, entra con la vida de
+## vida_al_empezar (al pasar de un nivel al siguiente); si no, con la vida completa.
+func jugar_nivel(nivel: int, conservar_vida := false) -> void:
 	if not nivel_disponible(nivel):
 		return
+	if not conservar_vida:
+		vida_al_empezar = -1
 	nivel_actual = nivel
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(escena_juego)
@@ -83,8 +89,25 @@ func continuar() -> void:
 		jugar_nivel(siguiente_nivel())
 
 
+## El jugador cruza la puerta de salida: el nivel queda completado y pasa al siguiente con la
+## vida que lleva. Tras el último nivel, vuelve al menú.
+func terminar_nivel(vida_final: int) -> void:
+	if nivel_actual < 0:
+		push_warning("Partida: terminar_nivel sin nivel elegido (¿juego.tscn lanzado con F6?).")
+		return
+	var terminado := nivel_actual
+	completar_nivel(terminado)
+	var siguiente := terminado + 1
+	if siguiente >= configuraciones.size():
+		volver_al_menu()
+		return
+	vida_al_empezar = vida_final
+	jugar_nivel(siguiente, true)
+
+
 func volver_al_menu() -> void:
 	nivel_actual = -1
+	vida_al_empezar = -1
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(escena_menu)
 
