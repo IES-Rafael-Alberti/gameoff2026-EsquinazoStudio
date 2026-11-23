@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65esq"]
 atlas = ExtResource("2_lh6q1")
-region = Rect2(0, 1536, 512, 0)
+region = Rect2(0, 1536, 512, 512)
 
 [node name="BaldosaRota" unique_id=500927486 instance=ExtResource("1_gb84q")]
 

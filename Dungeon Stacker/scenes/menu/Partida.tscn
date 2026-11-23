@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="4_7e8vb"]
 [ext_resource type="Resource" uid="uid://bxa6y8k8sk2k1" path="res://resources/niveles/tutorial.tres" id="5_wao8a"]
 [ext_resource type="Resource" uid="uid://ce6xapbus542h" path="res://resources/niveles/nivel1.tres" id="6_6yk5c"]
+[ext_resource type="Resource" uid="uid://drcyek0mc4aon" path="res://resources/niveles/nivel2.tres" id="7_6yk5c"]
 
 [node name="Partida" type="Node" unique_id=808435336]
 script = ExtResource("1_cqp8k")
 escena_juego = ExtResource("2_usjx2")
 escena_menu = ExtResource("3_injly")
-configuraciones = Array[ExtResource("4_7e8vb")]([ExtResource("5_wao8a"), ExtResource("6_6yk5c"), ExtResource("6_6yk5c"), ExtResource("6_6yk5c")])
+configuraciones = Array[ExtResource("4_7e8vb")]([ExtResource("5_wao8a"), ExtResource("6_6yk5c"), ExtResource("7_6yk5c"), ExtResource("6_6yk5c")])

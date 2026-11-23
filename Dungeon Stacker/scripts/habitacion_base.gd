@@ -243,8 +243,8 @@ func cerrar() -> void:
 func _resolver_si_corresponde() -> void:
 	if datos == null or datos.resuelta:
 		return
-	if categoria == null or not categoria.se_resuelve_al_entrar:
-		return
+	#if categoria == null or not categoria.se_resuelve_al_entrar:
+	#	return
 	if not _desafios.is_empty():
 		return
 	datos.resuelta = true
