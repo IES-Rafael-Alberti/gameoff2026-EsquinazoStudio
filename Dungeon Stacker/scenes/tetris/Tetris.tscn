@@ -12,10 +12,11 @@
 [ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="9_lawg1"]
 [ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="10_kjx5x"]
 
-[node name="Tetris" type="Node2D" unique_id=545254014]
+[node name="Tetris" type="Node2D" unique_id=545254014 node_paths=PackedStringArray("aviso_salida")]
 script = ExtResource("1_6ccle")
 Configuracion = ExtResource("2_ajih5")
 MAX_PREVIEWS = null
+aviso_salida = NodePath("SidePanel/Label")
 
 [node name="Background" type="ColorRect" parent="." unique_id=393229449]
 z_index = -10
@@ -110,3 +111,12 @@ offset_top = 10.0
 offset_right = 180.0
 offset_bottom = 33.0
 text = "PIEZAS: 0"
+
+[node name="Label" type="Label" parent="SidePanel" unique_id=1440733841]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 276.0
+offset_right = 427.0
+offset_bottom = 363.0
+text = "Exit reached. Press SPACE/A 
+to continue placing pieces"
