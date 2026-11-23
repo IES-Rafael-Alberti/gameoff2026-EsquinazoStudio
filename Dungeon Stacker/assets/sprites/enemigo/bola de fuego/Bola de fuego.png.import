@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dblqmbscmdldu"
-path="res://.godot/imported/Murcielago muerte.png-98f17754438115b0aef690683fcccd0b.ctex"
+uid="uid://ceke3oy3fxn58"
+path="res://.godot/imported/Bola de fuego.png-0343dff60ae1f1e555a6a1eeba4eb3f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemigo/esqueleto/Murcielago muerte.png"
-dest_files=["res://.godot/imported/Murcielago muerte.png-98f17754438115b0aef690683fcccd0b.ctex"]
+source_file="res://assets/sprites/enemigo/bola de fuego/Bola de fuego.png"
+dest_files=["res://.godot/imported/Bola de fuego.png-0343dff60ae1f1e555a6a1eeba4eb3f4.ctex"]
 
 [params]
 

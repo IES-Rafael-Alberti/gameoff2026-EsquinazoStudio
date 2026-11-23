@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dilfq8r0jdefq"]
 
 [ext_resource type="PackedScene" uid="uid://bwqjyb85nbq6s" path="res://scenes/enemigos/EnemigoEstadosBase.tscn" id="1_axstx"]
-[ext_resource type="Texture2D" uid="uid://dqcyxw14bhxtl" path="res://assets/sprites/enemigo/esqueleto/Murciélago movimiento.png" id="2_vrtqg"]
-[ext_resource type="Texture2D" uid="uid://dblqmbscmdldu" path="res://assets/sprites/enemigo/esqueleto/Murcielago muerte.png" id="3_mramu"]
+[ext_resource type="Texture2D" uid="uid://dqcyxw14bhxtl" path="res://assets/sprites/enemigo/murcielago/Murciélago movimiento.png" id="2_vrtqg"]
+[ext_resource type="Texture2D" uid="uid://dblqmbscmdldu" path="res://assets/sprites/enemigo/murcielago/Murcielago muerte.png" id="3_mramu"]
 [ext_resource type="PackedScene" uid="uid://dtu3yh1sacj6f" path="res://scenes/enemigos/botin_piezas.tscn" id="4_mramu"]
 
 [sub_resource type="Animation" id="Animation_vrtqg"]
