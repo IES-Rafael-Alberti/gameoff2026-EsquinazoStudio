@@ -1,3 +1,4 @@
+
 name: Test Godot Build
 
 on:
@@ -9,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: barichev/godot-ci:4.3
+      image: barichello/godot-ci:4.7.2
 
     steps:
       - name: Checkout repository
@@ -17,5 +18,11 @@ jobs:
 
       - name: Export game for Web
         run: |
-          mkdir -p build/web
-          godot --headless --path . --export-release "Web" build/web/index.html
+          mkdir -p build
+          godot --headless --path "Dungeon Stacker" \
+            --export-release "Web" build/dungeon-stacker.html
+
+      - name: Check exported files
+        run: |
+          test -f build/dungeon-stacker.html
+          ls -lah build/
