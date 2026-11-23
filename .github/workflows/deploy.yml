@@ -1,3 +1,4 @@
+
 name: Publish to itch.io
 
 on:
@@ -17,20 +18,20 @@ jobs:
 
       - name: Export game for Web
         run: |
-          rm -rf build/web
-          mkdir -p build/web
-          godot --headless --path . --export-release "Web" build/web/index.html
+          mkdir -p build
+          godot --headless --path "Dungeon Stacker" \
+            --export-release "Web" build/dungeon-stacker.html
 
-      - name: Package Web build
+      - name: Check exported files
         run: |
-          cd build/web
-          zip -r ../web.zip .
+          test -f build/dungeon-stacker.html
+          ls -lah build/
 
       - name: Install Butler
         uses: remarkablegames/setup-butler@v2
 
       - name: Publish game
         env:
-          ITCHIO_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
         run: |
-          butler push ./build/web.zip "Esquina Studio/Dungeon Stacker:html5"
+          butler push ./build "Esquina Studio/Dungeon Stacker:html5"
