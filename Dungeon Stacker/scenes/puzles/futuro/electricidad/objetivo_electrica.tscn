@@ -3,6 +3,14 @@
 [ext_resource type="Script" uid="uid://b1ia0unxj4xch" path="res://scripts/puzles/objetivo_electrico.gd" id="1_5frnv"]
 [ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_io14s"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bao76"]
+atlas = ExtResource("2_io14s")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v027m"]
+atlas = ExtResource("2_io14s")
+region = Rect2(1536, 1024, 512, 512)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
 atlas = ExtResource("2_io14s")
 region = Rect2(2048, 3584, 512, 512)
@@ -10,6 +18,8 @@ filter_clip = true
 
 [node name="Objetivo Electrico" type="Node2D" unique_id=605912163]
 script = ExtResource("1_5frnv")
+sprite_apagado = SubResource("AtlasTexture_bao76")
+sprite_encendido = SubResource("AtlasTexture_v027m")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1979876589]
 scale = Vector2(0.125, 0.125)
