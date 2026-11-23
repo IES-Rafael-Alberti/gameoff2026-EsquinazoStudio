@@ -167,7 +167,8 @@ func fijar_pieza() -> void:
 		controlador_pieza.categorias_actuales,
 		controlador_pieza.bioma_actual,
 		controlador_pieza.sin_habitacion_actual,
-		controlador_pieza.solo_horizontal_actual
+		controlador_pieza.solo_horizontal_actual,
+		controlador_pieza.escenas_actuales
 	)
 	var lineas: int = tablero_nodo.comprobar_lineas()
 	_regalar_tesoro(lineas)

@@ -39,6 +39,10 @@ const NOMBRES_PIEZAS := ["I", "O", "T", "S", "Z", "J", "L", "TT", "H", "X", "P",
 ## puerta de su columna en el vestíbulo. 0 = ninguna.
 @export_range(0.0, 100.0, 0.5, "suffix:%") var PROBABILIDAD_SOLO_HORIZONTAL := 0.0
 
+## Cuántas filas por encima del tablero aparece la pieza: 1 = su borde de abajo pegado al borde
+## de arriba del tablero; más = más arriba. Siempre dentro de los márgenes izquierdo y derecho.
+@export_range(1, 10) var FILAS_APARICION := 2
+
 ## Si el jugador puede guardar piezas en la reserva (acción guardar_pieza) en este nivel.
 @export var PERMITIR_GUARDAR_PIEZA := true
 

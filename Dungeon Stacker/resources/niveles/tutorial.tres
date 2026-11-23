@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bvlnqnssehkyo" path="res://scenes/salas/Medieval/Tutorial/Tutorial3.tscn" id="22_tt7k0"]
 [ext_resource type="PackedScene" uid="uid://c48tvr27wgs32" path="res://scenes/salas/Medieval/Tesoro/Tesoro1.tscn" id="24_ln5x1"]
 [ext_resource type="PackedScene" uid="uid://cxg6j72bhdno0" path="res://scenes/salas/Medieval/Vacio/vacio5.tscn" id="26_ln5x1"]
+[ext_resource type="PackedScene" uid="uid://brs7ohytq6c83" path="res://scenes/salas/Medieval/Puzzles/puzzle7.tscn" id="27_euucq"]
 
 [sub_resource type="Resource" id="Resource_wbero"]
 script = ExtResource("5_qeidx")
@@ -106,7 +107,7 @@ metadata/_custom_type_script = "uid://cgs80e6cfm5qy"
 
 [sub_resource type="Resource" id="Resource_hmu68"]
 script = ExtResource("19_tjmch")
-escenas = Array[PackedScene]([ExtResource("21_wbero"), ExtResource("22_tt7k0"), ExtResource("26_ln5x1"), null])
+escenas = Array[PackedScene]([ExtResource("22_tt7k0"), ExtResource("21_wbero"), ExtResource("26_ln5x1"), ExtResource("27_euucq")])
 rotacion_inicial = 1
 puede_rotar = false
 metadata/_custom_type_script = "uid://cgs80e6cfm5qy"
@@ -120,7 +121,7 @@ TAM_CELDA = 40
 CANTIDAD_PIEZAS = 1
 PESOS_CATEGORIAS = Array[ExtResource("5_foihi")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
 CONTENIDO = SubResource("Resource_wbero")
-PIEZAS_NIVEL = 16258
+PIEZAS_NIVEL = 1
 PERMITIR_GUARDAR_PIEZA = false
 SECUENCIA_INICIAL = Array[ExtResource("19_tjmch")]([SubResource("Resource_7vecx"), SubResource("Resource_bt8y5"), SubResource("Resource_hmu68")])
 metadata/_custom_type_script = "uid://l2dv12p10t3s"
