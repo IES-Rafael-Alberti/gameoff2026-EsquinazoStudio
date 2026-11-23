@@ -205,6 +205,9 @@ func _desde_escogida(escogida: PiezaEscogida) -> PiezaGenerada:
 
 	if escogida.sin_habitacion:
 		pieza.sin_habitacion = true
+		var config = Tetris.de(self).Configuracion
+		if config != null:
+			pieza.textura_fondo = config.TEXTURA_BLOQUEADA
 		return pieza
 
 	pieza.solo_horizontal = escogida.solo_horizontal
@@ -249,9 +252,12 @@ func _pieza_normal() -> PiezaGenerada:
 	pieza.bioma = biomas.pick_random()
 	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
 
-	# Sin habitación: sigue siendo una pieza normal, pero sin categorías (ni icono ni letra).
+	# Sin habitación: sin categorías (ni icono ni letra) y con la textura de las casillas bloqueadas.
 	if _sale_sin_habitacion():
 		pieza.sin_habitacion = true
+		var config = Tetris.de(self).Configuracion
+		if config != null:
+			pieza.textura_fondo = config.TEXTURA_BLOQUEADA
 		return pieza
 
 	pieza.solo_horizontal = _sale_solo_horizontal()

@@ -8,13 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://catahommqbxjt" path="res://scenes/puzles/futuro/electricidad/fuente_electrica.tscn" id="3_ki6e2"]
 [ext_resource type="PackedScene" uid="uid://7vdwjeyccxev" path="res://scenes/puzles/futuro/electricidad/receptor_electrico.tscn" id="5_ki0oy"]
 [ext_resource type="PackedScene" uid="uid://cr1sbt4p38t8p" path="res://scenes/puzles/futuro/Laser.tscn" id="7_pq45n"]
+[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/CambiadorBaldosas.tscn" id="10_7oi5a"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="11_wno2j"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_fcs1e")]
 
 [node name="Depuracion" parent="." index="0" unique_id=1550064695 instance=ExtResource("2_d38ut")]
 
 [node name="Electricidad" parent="Electricidad" parent_id_path=PackedInt32Array(800480628) index="0" unique_id=1564926750]
-tile_map_data = PackedByteArray("AAAUAAMAAAABAAcAAAATAAMAAAAFAAkAAAATAAQAAAABAAkAAAATAAUAAAABAAkAAAATAAYAAAABAAkAAAATAAcAAAABAAkAAAASAAMAAAACAAkAAAARAAMAAAACAAkAAAAQAAMAAAACAAkAAAAPAAMAAAACAAkAAAAOAAMAAAACAAkAAAANAAMAAAAFAAkAAAAOAAQAAAACAAkAAAAPAAQAAAACAAkAAAALAAMAAAACAAkAAAAKAAMAAAACAAkAAAAUAAIAAAABAAkAAAA=")
+tile_map_data = PackedByteArray("AAAUAAMAAAABAAcAAAATAAMAAAAFAAkAAAATAAQAAAABAAkAAAATAAUAAAABAAkAAAATAAYAAAABAAkAAAATAAcAAAABAAkAAAASAAMAAAACAAkAAAARAAMAAAACAAkAAAAQAAMAAAACAAkAAAAPAAMAAAACAAkAAAAOAAMAAAACAAkAAAANAAMAAAAFAAkAAAAOAAQAAAACAAkAAAAPAAQAAAAFAAcAAAALAAMAAAACAAkAAAAKAAMAAAACAAkAAAAUAAIAAAAGAAcAAAAJAAMAAAAHAAcAAAA=")
 
 [node name="Fuente Electrica" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="0" unique_id=605912163 instance=ExtResource("3_ki6e2")]
 position = Vector2(1312, 128)
@@ -48,5 +50,12 @@ rotation = 1.5707964
 
 [node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("2_xdjh3")]
 position = Vector2(800, 256)
+
+[node name="CambiadorBaldosas" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("10_7oi5a")]
+tile_map_data = PackedByteArray("AAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAANAA0AAAAAAAEAAAAOAA0AAAAAAAEAAAAPAA0AAAAAAAEAAAAQAA0AAAAAAAEAAAA=")
+placas = [NodePath("../../Placa")]
+
+[node name="Placa" parent="." index="10" unique_id=909371902 instance=ExtResource("11_wno2j")]
+position = Vector2(928, 768)
 
 [editable path="Puzle"]

@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://dxqpy3snmmtd8"]
-
-[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/medieval/CambiadorBaldosas.tscn" id="1_k0lkx"]
-
-[node name="CambiadorBaldosas" unique_id=970107115 instance=ExtResource("1_k0lkx")]
