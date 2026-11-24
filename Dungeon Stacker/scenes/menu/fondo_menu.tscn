@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://71eejpow8g62"]
+
+[ext_resource type="Script" uid="uid://cwe1bddu8033k" path="res://scripts/ui/lluvia_piezas.gd" id="1_csth7"]
+
+[node name="Control" type="Control" unique_id=1709290085]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fondo" type="CanvasLayer" parent="." unique_id=1462611102]
+layer = -3
+
+[node name="ColorRect" type="ColorRect" parent="Fondo" unique_id=1182407762]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.7176471, 1, 1)
+
+[node name="Lluvia" type="CanvasLayer" parent="." unique_id=589255363]
+layer = -2
+
+[node name="Node2D" type="Node2D" parent="Lluvia" unique_id=1806472055]
+script = ExtResource("1_csth7")
+cantidad = 10
+tam_celda = 40
+opacidad = 0.75
+escala_abajo = 1.5999999999999999
+inclinacion = 6.0
+
+[node name="Torre" type="CanvasLayer" parent="." unique_id=597060736]
+layer = -1
+
+[node name="ColorRect2" type="ColorRect" parent="Torre" unique_id=401905787]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.805792, 0.103779964, 1)
