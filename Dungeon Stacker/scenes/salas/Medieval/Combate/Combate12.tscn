@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://c5p7u44ar8c6v"]
+[gd_scene format=4 uid="uid://b6n2r9t4k8x3e]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_k4dt4"]
 [ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/medieval/lanzaflechas.tscn" id="2_uc3ov"]
