@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bvopxhqpb1twj"]
+
+[ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/medieval/CofreFalso.tscn" id="1_n2cyr"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_vvlbj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvlbj"]
+atlas = ExtResource("2_vvlbj")
+region = Rect2(2560, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b846"]
+atlas = ExtResource("2_vvlbj")
+region = Rect2(2048, 1536, 512, 512)
+
+[node name="CofreFalso" unique_id=551623583 instance=ExtResource("1_n2cyr")]
+escena_enemigo = null
+sprite_cerrado = SubResource("AtlasTexture_vvlbj")
+sprite_abierto = SubResource("AtlasTexture_5b846")

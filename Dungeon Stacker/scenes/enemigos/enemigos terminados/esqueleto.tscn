@@ -691,7 +691,10 @@ collision_mask = 2
 position = Vector2(40, 0)
 shape = SubResource("RectangleShape2D_mjkrw")
 
-[node name="Ataque" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
+[node name="MaquinaEstados" parent="." index="4" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
+estado_inicial = NodePath("Inactivo")
+
+[node name="Ataque" parent="MaquinaEstados" index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
 zona_golpe = NodePath("../../ZonaGolpe")
 
 [node name="SpriteBase" type="Sprite2D" parent="." index="6" unique_id=401359900]
