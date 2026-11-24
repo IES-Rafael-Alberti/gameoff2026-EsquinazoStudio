@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cbfyxtsqi8ck7"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_77r8y"]
+[ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="2_lja5j"]
+[ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="2_vb4am"]
+[ext_resource type="PackedScene" uid="uid://ftaippyffeyq" path="res://scenes/_Componentes/Probabilizador.tscn" id="3_vb4am"]
+[ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="4_0fg86"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_77r8y")]
+
+[node name="Placa" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=909371902 instance=ExtResource("2_vb4am")]
+position = Vector2(928, 704)
+activa_caja = false
+se_queda_activa = true
+
+[node name="Placa2" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=98808675 instance=ExtResource("2_vb4am")]
+position = Vector2(1120, 512)
+activa_caja = false
+se_queda_activa = true
+
+[node name="Placa3" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="2" unique_id=293847085 instance=ExtResource("2_vb4am")]
+position = Vector2(736, 512)
+activa_caja = false
+se_queda_activa = true
+
+[node name="Placa4" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="3" unique_id=411243570 instance=ExtResource("2_vb4am")]
+position = Vector2(928, 320)
+activa_caja = false
+se_queda_activa = true
+
+[node name="TrampaGiratoria" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=27660831 instance=ExtResource("2_lja5j")]
+position = Vector2(928, 512)
+cantidad_palos = 4
+longitud = 7
+velocidad_giro = 75.0
+
+[node name="Probabilizador" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1708072780 instance=ExtResource("3_vb4am")]
+probabilidad_eliminar = 15.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador" index="0" unique_id=1110925366 instance=ExtResource("4_0fg86")]
+position = Vector2(1056, 640)
+
+[node name="Probabilizador2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1994570249 instance=ExtResource("3_vb4am")]
+probabilidad_eliminar = 15.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador2" index="0" unique_id=294810353 instance=ExtResource("4_0fg86")]
+position = Vector2(800, 640)
+
+[node name="Probabilizador3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="2" unique_id=1007207371 instance=ExtResource("3_vb4am")]
+probabilidad_eliminar = 15.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador3" index="0" unique_id=1143274709 instance=ExtResource("4_0fg86")]
+position = Vector2(1056, 384)
+
+[node name="Probabilizador4" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="3" unique_id=1310121249 instance=ExtResource("3_vb4am")]
+probabilidad_eliminar = 15.0
+
+[node name="PocionCuracion" parent="Objetos/Probabilizador4" index="0" unique_id=985607939 instance=ExtResource("4_0fg86")]
+position = Vector2(800, 384)
+
+[editable path="Puzle"]
