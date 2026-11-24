@@ -39,7 +39,6 @@
 [ext_resource type="Resource" uid="uid://bmft83rs5q0u5" path="res://resources/categorias/TesoroPuzle.tres" id="20_t51g7"]
 [ext_resource type="PackedScene" uid="uid://c5p7u44ar8c6v" path="res://scenes/salas/Medieval/CombateCuracion/CombateCuracion1.tscn" id="21_nov54"]
 [ext_resource type="PackedScene" uid="uid://bto6jnyv8rlwj" path="res://scenes/salas/Medieval/CombatePuzzle/CombatePuzzle1.tscn" id="23_ne33p"]
-[ext_resource type="PackedScene" uid="uid://ukxxn1d812uy" path="res://scenes/salas/Medieval/CombatePuzzle/CombatePuzzle2.tscn" id="24_spivc"]
 [ext_resource type="PackedScene" uid="uid://dvr28lqwe7707" path="res://scenes/salas/Medieval/CombatePuzzle/CombatePuzzle3.tscn" id="25_ukdgv"]
 [ext_resource type="PackedScene" uid="uid://clx864ah68sid" path="res://scenes/salas/Medieval/CombatePuzzle/combatePuzzle4.tscn" id="26_ok4vw"]
 [ext_resource type="PackedScene" uid="uid://cb7r4fcpmkeim" path="res://scenes/salas/Medieval/CombatePuzzle/combatePuzzle5.tscn" id="27_4bvc6"]
@@ -56,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://lucrudjehu1s" path="res://scenes/salas/Medieval/Tesoro/tesoro6.tscn" id="49_uo25j"]
 [ext_resource type="PackedScene" uid="uid://ctrcek5t6ww7t" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate1.tscn" id="51_p3b52"]
 [ext_resource type="PackedScene" uid="uid://bbv4bg7s0upmd" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate2.tscn" id="52_3ajun"]
-[ext_resource type="PackedScene" uid="uid://da7njn7xqtliy" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate4.tscn" id="54_3sxub"]
+[ext_resource type="PackedScene" uid="uid://da7njn7xqtliy" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate3.tscn" id="54_3sxub"]
 [ext_resource type="PackedScene" uid="uid://dtp8bo84mve8a" path="res://scenes/salas/Medieval/TesoroCuracion/TesoroCuracion1.tscn" id="56_vtcgn"]
 [ext_resource type="PackedScene" uid="uid://dcudvlaiud7d0" path="res://scenes/salas/Medieval/TesoroPuzle/TesoroPuzle1.tscn" id="58_8be6g"]
 [ext_resource type="PackedScene" uid="uid://cu2risgn7np4d" path="res://scenes/salas/Medieval/Vacio/Vacio3.tscn" id="62_iwlye"]
@@ -161,9 +160,12 @@ script = ExtResource("4_iehwp")
 escena = ExtResource("23_ne33p")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
+[sub_resource type="Resource" id="Resource_3ajun"]
+metadata/__load_path__ = "res://scenes/salas/Medieval/CombatePuzzle/CombatePuzle2.tscn"
+
 [sub_resource type="Resource" id="Resource_v2k4q"]
 script = ExtResource("4_iehwp")
-escena = ExtResource("24_spivc")
+escena = SubResource("Resource_3ajun")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_ddqpp"]

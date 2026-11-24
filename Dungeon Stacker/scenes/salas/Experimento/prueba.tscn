@@ -11,6 +11,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAACAAAAAAAAAAI
 [node name="ZonaEntrada" parent="." index="2" unique_id=180062892]
 visible = false
 
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("2_tsb7y")]
+[node name="Depuracion2" parent="." index="8" unique_id=1550064695 instance=ExtResource("2_tsb7y")]
 
 [editable path="Puzle"]
