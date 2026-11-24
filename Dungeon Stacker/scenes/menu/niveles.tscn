@@ -23,6 +23,8 @@ offset_left = -503.68005
 offset_top = -343.96002
 offset_right = 776.31995
 offset_bottom = 488.03998
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Level1Label" type="Label" parent="Panel" unique_id=1990708413]
 layout_mode = 0
