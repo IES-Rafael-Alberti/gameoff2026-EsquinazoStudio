@@ -1,0 +1,34 @@
+name: Test Godot Build
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'Dungeon Stacker/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.7.2
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Godot export templates
+        run: |
+          mkdir -p /github/home/.local/share/godot/export_templates/4.7.2.stable
+          wget -q https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          unzip -q Godot_v4.7.2-stable_export_templates.tpz
+          cp -r templates/* /github/home/.local/share/godot/export_templates/4.7.2.stable/
+
+      - name: Export game for Web
+        run: |
+          mkdir -p build
+          godot --headless --path "Dungeon Stacker" \
+            --export-release "Web" "$GITHUB_WORKSPACE/build/dungeon-stacker.html"
+
+      - name: Check exported files
+        run: test -f build/dungeon-stacker.html

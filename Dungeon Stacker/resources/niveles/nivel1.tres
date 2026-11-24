@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="Configuracion_Tablero" format=3 uid="uid://ce6xapbus542h"]
+
+[ext_resource type="Script" uid="uid://gwn7jo3iiwod" path="res://scripts/tetris/grupo_barrera.gd" id="1_iatgj"]
+[ext_resource type="Script" uid="uid://ec52h3tn8l2s" path="res://scripts/tetris/casilla_fija.gd" id="2_t0y0h"]
+[ext_resource type="Script" uid="uid://iortsm7cn8s0" path="res://scripts/categoria_sala.gd" id="3_ywq62"]
+[ext_resource type="Resource" uid="uid://blu4dlyhl61tl" path="res://resources/contenido_salas.tres" id="4_kq6mn"]
+[ext_resource type="Script" uid="uid://d30k1odn4wqj3" path="res://scripts/peso_categoria.gd" id="5_urxaw"]
+[ext_resource type="Resource" uid="uid://b4uoftdp0uvek" path="res://resources/categorias/Combate.tres" id="6_hlifb"]
+[ext_resource type="Resource" uid="uid://cbiolwbo0it2y" path="res://resources/categorias/CombateCuracion.tres" id="7_reyot"]
+[ext_resource type="Resource" uid="uid://dfbhvxj5ui1n" path="res://resources/categorias/CombatePuzle.tres" id="8_0wd8l"]
+[ext_resource type="Resource" uid="uid://b2jry5pe8wn07" path="res://resources/categorias/Curación.tres" id="9_ky5nb"]
+[ext_resource type="Resource" uid="uid://ckfpqisg5v4hy" path="res://resources/categorias/Puzle.tres" id="10_q538c"]
+[ext_resource type="Resource" uid="uid://dv8f1mhdewg4u" path="res://resources/categorias/PuzleCuracion.tres" id="11_1ja4f"]
+[ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="12_6digt"]
+[ext_resource type="Resource" uid="uid://odv61bfmtlbk" path="res://resources/categorias/TesoroCombate.tres" id="13_hx1ya"]
+[ext_resource type="Resource" uid="uid://cm5gfqhkao5nr" path="res://resources/categorias/TesoroCuracion.tres" id="14_o6ece"]
+[ext_resource type="Resource" uid="uid://bmft83rs5q0u5" path="res://resources/categorias/TesoroPuzle.tres" id="15_rigxp"]
+[ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="16_1kltn"]
+[ext_resource type="Script" uid="uid://bu1ykkrbfef2d" path="res://scripts/tetris/pieza_en_turno.gd" id="17_wic33"]
+[ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="18_035lb"]
+[ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="19_glf3y"]
+[ext_resource type="Script" uid="uid://l2dv12p10t3s" path="res://scripts/configuracion.gd" id="20_2grdq"]
+
+[sub_resource type="Resource" id="Resource_ervc2"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("6_hlifb")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_5g1u2"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("7_reyot")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_mlgrx"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("8_0wd8l")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_spu22"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("9_ky5nb")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_d0608"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("10_q538c")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_c173r"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("11_1ja4f")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_py3uc"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("12_6digt")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_d7syh"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("13_hx1ya")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_pncoq"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("14_o6ece")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_y8n3i"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("15_rigxp")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[sub_resource type="Resource" id="Resource_ae6e5"]
+script = ExtResource("5_urxaw")
+categoria = ExtResource("16_1kltn")
+metadata/_custom_type_script = "uid://d30k1odn4wqj3"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("20_2grdq")
+COLUMNAS = 10
+FILAS = 15
+TAM_CELDA = 40
+CANTIDAD_PIEZAS = 3
+PESOS_CATEGORIAS = Array[ExtResource("5_urxaw")]([SubResource("Resource_ervc2"), SubResource("Resource_5g1u2"), SubResource("Resource_mlgrx"), SubResource("Resource_spu22"), SubResource("Resource_d0608"), SubResource("Resource_c173r"), SubResource("Resource_py3uc"), SubResource("Resource_d7syh"), SubResource("Resource_pncoq"), SubResource("Resource_y8n3i"), SubResource("Resource_ae6e5")])
+CONTENIDO = ExtResource("4_kq6mn")
+CURACION_FIN_NIVEL = 5
+PIEZAS_NIVEL = 127
+CATEGORIA_TESORO = ExtResource("12_6digt")
+CATEGORIAS_TESORO = Array[ExtResource("3_ywq62")]([ExtResource("13_hx1ya"), ExtResource("14_o6ece"), ExtResource("15_rigxp")])
+CASILLAS_BLOQUEADAS = Array[Vector2i]([Vector2i(4, 10), Vector2i(5, 10), Vector2i(6, 10), Vector2i(7, 10), Vector2i(8, 10), Vector2i(9, 10)])
+metadata/_custom_type_script = "uid://l2dv12p10t3s"

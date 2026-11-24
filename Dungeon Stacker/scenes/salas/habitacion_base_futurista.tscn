@@ -2,25 +2,142 @@
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_fvmg3"]
 [ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_1w53o"]
+[ext_resource type="PackedScene" uid="uid://bmgdpwf01wklq" path="res://scenes/puzles/futuro/electricidad/electricidad.tscn" id="3_cbglk"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbglk"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cbglk"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wob5q"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4s4ib"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_q1i0d"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wob5q"]
 texture = ExtResource("2_1w53o")
 texture_region_size = Vector2i(512, 512)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 0:1/0 = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cbglk")
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 61.15912, 256, 55.599182, 256, 256, -256, 256)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 0:2/0 = 0
 0:3/0 = 0
+0:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_wob5q")
 2:1/0 = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_q1i0d")
 2:0/0 = 0
 3:0/0 = 0
 8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+4:2/0 = 0
+4:2/0/custom_data_0 = true
+4:1/0 = 0
+4:1/0/custom_data_0 = true
+4:0/0 = 0
+4:0/0/custom_data_0 = true
+5:0/0 = 0
+5:0/0/custom_data_0 = true
+6:0/0 = 0
+6:0/0/custom_data_0 = true
+6:1/0 = 0
+6:1/0/custom_data_0 = true
+5:1/0 = 0
+5:1/0/custom_data_0 = true
+5:2/0 = 0
+5:2/0/custom_data_0 = true
+6:2/0 = 0
+6:2/0/custom_data_0 = true
+7:0/0 = 0
+7:0/0/custom_data_0 = true
+8:0/0 = 0
+8:0/0/custom_data_0 = true
+9:0/0 = 0
+9:0/0/custom_data_0 = true
+9:1/0 = 0
+9:1/0/custom_data_0 = true
+9:2/0 = 0
+9:2/0/custom_data_0 = true
+8:2/0 = 0
+8:2/0/custom_data_0 = true
+7:2/0 = 0
+7:2/0/custom_data_0 = true
+7:1/0 = 0
+7:1/0/custom_data_0 = true
+0:8/0 = 0
+0:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+0:9/0 = 0
+0:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+1:9/0 = 0
+1:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+1:8/0 = 0
+1:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+1:7/0 = 0
+1:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+2:6/0 = 0
+2:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+2:7/0 = 0
+2:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+2:8/0 = 0
+2:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+2:9/0 = 0
+2:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+3:9/0 = 0
+3:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+3:8/0 = 0
+3:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+4:8/0 = 0
+4:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+3:6/0 = 0
+3:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+3:7/0 = 0
+3:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+5:8/0 = 0
+5:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+5:9/0 = 0
+5:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+4:9/0 = 0
+4:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+1:6/0 = 0
+1:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+0:6/0 = 0
+0:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+0:7/0 = 0
+0:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+6:8/0 = 0
+6:8/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+6:9/0 = 0
+6:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4s4ib")
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSet" id="TileSet_1w53o"]
 tile_size = Vector2i(512, 512)
-sources/0 = SubResource("TileSetAtlasSource_cbglk")
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+custom_data_layer_0/name = "vacio"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_wob5q")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wob5q"]
 atlas = ExtResource("2_1w53o")
@@ -95,5 +212,17 @@ sprite_sellada = SubResource("AtlasTexture_p77fq")
 sprite_abierta = SubResource("AtlasTexture_4sh5p")
 sprite_cerrada = SubResource("AtlasTexture_fx61x")
 sprite_sellada = SubResource("AtlasTexture_81m07")
+
+[node name="Electricidad" type="Node2D" parent="." index="4" unique_id=800480628]
+
+[node name="Electricidad" parent="Electricidad" index="0" unique_id=1564926750 instance=ExtResource("3_cbglk")]
+
+[node name="Fuentes" type="Node2D" parent="Electricidad" index="1" unique_id=1560103062]
+
+[node name="Puentes" type="Node2D" parent="Electricidad" index="2" unique_id=446057945]
+
+[node name="Receptor" type="Node2D" parent="Electricidad" index="3" unique_id=593196618]
+
+[node name="Objetivo" type="Node2D" parent="Electricidad" index="4" unique_id=1507801890]
 
 [editable path="Puzle"]

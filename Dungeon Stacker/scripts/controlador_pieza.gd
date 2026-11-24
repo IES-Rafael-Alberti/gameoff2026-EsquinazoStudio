@@ -79,8 +79,9 @@ func calcular_posicion_spawn(forma: Array) -> Vector2i:
 		max_y = max(max_y, bloque.y)
 	var ancho = max_x - min_x + 1
 	var x = floori((Configuracion.COLUMNAS - ancho) / 2.0) - min_x
-	x = clampi(x, 0, maxi(Configuracion.COLUMNAS - ancho, 0))
-	var y = -max_y - 1
+	# Que ningún cuadrado quede fuera del tablero, cuente donde cuente el mínimo de la forma.
+	x = clampi(x, -min_x, maxi(Configuracion.COLUMNAS - 1 - max_x, -min_x))
+	var y = -max_y - Configuracion.FILAS_APARICION
 	return Vector2i(x, y)
 
 func limpiar_pieza() -> void:
@@ -147,7 +148,7 @@ func mover_pieza(direccion: Vector2i) -> void:
 func rotar_pieza(direccion: int = 1):
 	if pieza_actual == null:
 		return
-	if pieza_actual.nombre == "O" or pieza_actual.nombre == "P":
+	if pieza_actual.nombre == "O" or pieza_actual.nombre == "P" or not pieza_actual.puede_rotar:
 		return
 
 	var nueva_forma: Array[Vector2i] = []
@@ -222,7 +223,7 @@ func establecer_pieza(pieza: PiezaGenerada) -> bool:
 	categorias_actuales = pieza.categorias
 	escenas_actuales = pieza.escenas
 	posicion_pieza = calcular_posicion_spawn(forma_actual)
-	estado_rotacion = 0
+	estado_rotacion = pieza.rotacion_inicial
 	temporizador = 0.0
 	bioma_actual = pieza.bioma
 	sin_habitacion_actual = pieza.sin_habitacion

@@ -160,7 +160,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_bi4d1"]
 resource_name = "ataque_anticipacion"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -224,7 +224,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_l84dp"]
 resource_name = "ataque_golpe"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -352,7 +352,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_o3o3c"]
 resource_name = "aturdido"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -678,6 +678,7 @@ size = Vector2(48, 40)
 [node name="Esqueleto" unique_id=661418023 instance=ExtResource("1_oobep")]
 
 [node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=1289893395]
+z_index = 2
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=1053273587]
 libraries/ = SubResource("AnimationLibrary_b2cy6")
@@ -685,33 +686,39 @@ libraries/ = SubResource("AnimationLibrary_b2cy6")
 [node name="ZonaGolpe" parent="." index="3" unique_id=2003133916]
 collision_layer = 0
 collision_mask = 2
-script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaGolpe" index="0" unique_id=402024500]
 position = Vector2(40, 0)
 shape = SubResource("RectangleShape2D_mjkrw")
 
-[node name="Ataque" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
+[node name="MaquinaEstados" parent="." index="4" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
+estado_inicial = NodePath("Inactivo")
+
+[node name="Ataque" parent="MaquinaEstados" index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
 zona_golpe = NodePath("../../ZonaGolpe")
 
 [node name="SpriteBase" type="Sprite2D" parent="." index="6" unique_id=401359900]
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_wblbd")
 
 [node name="SpriteAndar" type="Sprite2D" parent="." index="7" unique_id=1912553807]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_bi4d1")
 hframes = 3
 
 [node name="SpriteAtaque" type="Sprite2D" parent="." index="8" unique_id=486956420]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_l84dp")
 hframes = 3
 
 [node name="SpriteMuerte" type="Sprite2D" parent="." index="9" unique_id=756912508]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_o3o3c")
 hframes = 3

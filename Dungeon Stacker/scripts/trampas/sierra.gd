@@ -162,10 +162,15 @@ func _hay_obstaculo(posicion: Vector2) -> bool:
 	return not get_world_2d().direct_space_state.intersect_shape(consulta, 1).is_empty()
 
 
+## Cuerpos que sus comprobaciones ignoran: ella misma y el haz de los láseres (lo atraviesa; los
+## emisores sí la detienen).
 func _propios() -> Array[RID]:
 	var rids: Array[RID] = [get_rid()]
 	if _cuerpo != null:
 		rids.append(_cuerpo.get_rid())
+	for haz in get_tree().get_nodes_in_group(&"haz_laser"):
+		if haz is CollisionObject2D:
+			rids.append(haz.get_rid())
 	return rids
 
 

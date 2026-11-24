@@ -35,6 +35,12 @@ var cofres_abiertos: Array[Vector2i] = []
 ## Rutas (desde la sala) de los CambiadorBaldosas de esta sala que están ahora mismo
 ## "alternados" (con sus baldosas intercambiadas). Al recargar la sala se vuelven a aplicar.
 var cambiadores_alternados: Array[String] = []
+## Solo se rellenan con la sala resuelta (los guarda al salir). Claves: ruta del nodo desde la sala.
+## Si están encendidos los láseres de esta sala (ruta -> bool).
+var lasers_encendidos: Dictionary = {}
+## Dónde quedaron las cajas (ruta -> posición dentro de la sala). Las cajas que cayeron al vacío
+## no se guardan: reaparecen en su sitio inicial.
+var cajas_posicion: Dictionary = {}
 
 func _init(p_textura: Texture2D = null, p_categoria: CategoriaSala = null, p_bioma: int = Catalogo.Bioma.MEDIEVAL) -> void:
 	textura_fondo = p_textura

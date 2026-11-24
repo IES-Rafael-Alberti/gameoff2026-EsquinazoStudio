@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="2_4oduq"]
 [ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="2_xx2yp"]
 [ext_resource type="Script" uid="uid://by7grrqd14lxk" path="res://scripts/utilidades/capa_suelo.gd" id="3_m7f63"]
-[ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="3_piqk1"]
 [ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/medieval/BaldosaRota.tscn" id="5_oxclx"]
+[ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="6_m7f63"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4usg8"]
 vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
@@ -269,22 +269,16 @@ position = Vector2(608, 768)
 [node name="BaldosaRota36" parent="Trampas/BaldosaRota" index="35" unique_id=1437088055 instance=ExtResource("5_oxclx")]
 position = Vector2(544, 768)
 
-[node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("3_piqk1")]
-position = Vector2(800, 320)
+[node name="Murcielago" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("6_m7f63")]
+position = Vector2(800, 640)
 
-[node name="EnemigoVolador2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=2136620512 instance=ExtResource("3_piqk1")]
-position = Vector2(1184, 512)
+[node name="Murcielago2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1852090056 instance=ExtResource("6_m7f63")]
+position = Vector2(800, 384)
 
-[node name="EnemigoVolador3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1223577550 instance=ExtResource("3_piqk1")]
-position = Vector2(800, 704)
+[node name="Murcielago3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=2083682698 instance=ExtResource("6_m7f63")]
+position = Vector2(1056, 384)
 
-[node name="EnemigoVolador4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=755896082 instance=ExtResource("3_piqk1")]
-position = Vector2(1056, 704)
-
-[node name="EnemigoVolador5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=424708489 instance=ExtResource("3_piqk1")]
-position = Vector2(1056, 320)
-
-[node name="EnemigoVolador6" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=1797279024 instance=ExtResource("3_piqk1")]
-position = Vector2(672, 512)
+[node name="Murcielago4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=957158517 instance=ExtResource("6_m7f63")]
+position = Vector2(1056, 640)
 
 [editable path="Puzle"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bht7oytbt4do2"]
+
+[ext_resource type="PackedScene" uid="uid://cdmt18kwxydad" path="res://scenes/puzles/placa_invisible.tscn" id="1_kkn8p"]
+
+[node name="Puente Electrico" type="Node2D" unique_id=1487050585]
+
+[node name="PlacaInvisible" parent="." unique_id=909371902 instance=ExtResource("1_kkn8p")]
+solo_cajas_conductoras = true

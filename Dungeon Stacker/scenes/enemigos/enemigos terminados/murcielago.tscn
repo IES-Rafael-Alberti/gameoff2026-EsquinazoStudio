@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dilfq8r0jdefq"]
 
 [ext_resource type="PackedScene" uid="uid://bwqjyb85nbq6s" path="res://scenes/enemigos/EnemigoEstadosBase.tscn" id="1_axstx"]
-[ext_resource type="Texture2D" uid="uid://dqcyxw14bhxtl" path="res://assets/sprites/enemigo/esqueleto/Murciélago movimiento.png" id="2_vrtqg"]
-[ext_resource type="Texture2D" uid="uid://dblqmbscmdldu" path="res://assets/sprites/enemigo/esqueleto/Murcielago muerte.png" id="3_mramu"]
+[ext_resource type="Texture2D" uid="uid://dqcyxw14bhxtl" path="res://assets/sprites/enemigo/murcielago/Murciélago movimiento.png" id="2_vrtqg"]
+[ext_resource type="Texture2D" uid="uid://dblqmbscmdldu" path="res://assets/sprites/enemigo/murcielago/Murcielago muerte.png" id="3_mramu"]
 [ext_resource type="PackedScene" uid="uid://dtu3yh1sacj6f" path="res://scenes/enemigos/botin_piezas.tscn" id="4_mramu"]
 
 [sub_resource type="Animation" id="Animation_vrtqg"]
@@ -490,12 +490,14 @@ rango = 200.0
 velocidad_embestida = 1000.0
 
 [node name="SpriteMovimiento" type="Sprite2D" parent="." index="4" unique_id=293824979]
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_vrtqg")
 hframes = 3
 
 [node name="SpriteMuerte" type="Sprite2D" parent="." index="5" unique_id=1806796683]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_mramu")
 hframes = 3

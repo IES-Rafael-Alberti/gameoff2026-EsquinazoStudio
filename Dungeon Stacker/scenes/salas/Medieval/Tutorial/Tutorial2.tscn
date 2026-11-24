@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bn4ndrp08flr6"]
 
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_mssyc"]
-[ext_resource type="PackedScene" uid="uid://b4cqci5h5klxp" path="res://scenes/enemigos/EnemigoPerseguidor.tscn" id="2_nl5tm"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="2_mssyc"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_mssyc")]
 
-[node name="CharacterBody2D" parent="." index="4" unique_id=1141728963 instance=ExtResource("2_nl5tm")]
-position = Vector2(927, 288)
+[node name="Esqueleto" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("2_mssyc")]
+position = Vector2(928, 256)
+
+[editable path="Puzle"]

@@ -1,4 +1,3 @@
-
 [gd_scene format=3 uid="uid://bx1agdn2f4cw7"]
 
 [ext_resource type="Script" uid="uid://cepdunecswp12" path="res://scripts/juego.gd" id="1_x4n2o"]
@@ -25,6 +24,8 @@
 [ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="18_0g8fp"]
 [ext_resource type="Script" uid="uid://42ajtkgl04rp" path="res://scripts/ui/controles_tactiles.gd" id="18_spu22"]
 [ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="19_u22gr"]
+[ext_resource type="PackedScene" uid="uid://dp6v54qs0n86i" path="res://scenes/menu/menu_pausa.tscn" id="25_bh3c7"]
+[ext_resource type="Texture2D" uid="uid://dufndvyfx731m" path="res://assets/sprites/icon/flecha-giro.png" id="25_rcahx"]
 
 [sub_resource type="Resource" id="Resource_ervc2"]
 script = ExtResource("4_c173r")
@@ -56,36 +57,30 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 [sub_resource type="Resource" id="Resource_c173r"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("10_yp23v")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_py3uc"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("11_0g8fp")
 peso = 3.5
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_d7syh"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("12_u22gr")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_pncoq"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("13_bh3c7")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_y8n3i"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("14_d0608")
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
 [sub_resource type="Resource" id="Resource_ae6e5"]
 script = ExtResource("4_c173r")
 categoria = ExtResource("15_spu22")
 peso = 7.0
-metadata/_custom_type_script = "uid://d30k1odn4qj3"
 
-[sub_resource type="Resource" id="Resource_u22gr"]
+[sub_resource type="Resource" id="Resource_bh3c7"]
 resource_local_to_scene = true
 script = ExtResource("14_rcahx")
 COLUMNAS = 10
@@ -114,7 +109,8 @@ size = Vector2(180, 180)
 script = ExtResource("1_x4n2o")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
-Configuracion = SubResource("Resource_u22gr")
+Configuracion = SubResource("Resource_bh3c7")
+MAX_PREVIEWS = 5
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
 
@@ -137,39 +133,34 @@ action_down = &"mover_abajo"
 
 [node name="BotonRotarDer" type="TouchScreenButton" parent="ControlesTactiles" unique_id=911350923]
 self_modulate = Color(1, 1, 1, 0.25)
-position = Vector2(1360, 780)
+position = Vector2(1472, 864)
 texture_normal = SubResource("GradientTexture2D_mjkrw")
 shape = SubResource("RectangleShape2D_gqhdy")
 shape_visible = false
 action = "rotar_derecha"
 
-[node name="Label" type="Label" parent="ControlesTactiles/BotonRotarDer" unique_id=1468519100]
-offset_right = 160.0
-offset_bottom = 160.0
-theme_override_font_sizes/font_size = 64
-text = "↻"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="ControlesTactiles/BotonRotarDer" unique_id=424115940]
+position = Vector2(80, 80)
+scale = Vector2(0.44444445, 0.44444445)
+texture = ExtResource("25_rcahx")
 
 [node name="BotonRotarIzq" type="TouchScreenButton" parent="ControlesTactiles" unique_id=2118160007]
 self_modulate = Color(1, 1, 1, 0.25)
-position = Vector2(1560, 780)
+position = Vector2(1696, 864)
 texture_normal = SubResource("GradientTexture2D_mjkrw")
 shape = SubResource("RectangleShape2D_gqhdy")
 shape_visible = false
 action = "rotar_izquierda"
 
-[node name="Label" type="Label" parent="ControlesTactiles/BotonRotarIzq" unique_id=1139566676]
-offset_right = 160.0
-offset_bottom = 160.0
-theme_override_font_sizes/font_size = 56
-text = "↺"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="ControlesTactiles/BotonRotarIzq" unique_id=1194308624]
+position = Vector2(80, 80)
+scale = Vector2(0.44444445, 0.44444445)
+texture = ExtResource("25_rcahx")
+flip_h = true
 
 [node name="BotonAccion" type="TouchScreenButton" parent="ControlesTactiles" unique_id=263245171]
 self_modulate = Color(1, 1, 1, 0.25)
-position = Vector2(1560, 600)
+position = Vector2(1696, 640)
 texture_normal = SubResource("GradientTexture2D_mjkrw")
 shape = SubResource("RectangleShape2D_gqhdy")
 shape_visible = false
@@ -185,7 +176,7 @@ vertical_alignment = 1
 
 [node name="BotonModo" type="TouchScreenButton" parent="ControlesTactiles" unique_id=22342896]
 self_modulate = Color(1, 1, 1, 0.25)
-position = Vector2(1360, 600)
+position = Vector2(1472, 640)
 texture_normal = SubResource("GradientTexture2D_mjkrw")
 shape = SubResource("RectangleShape2D_gqhdy")
 shape_visible = false
@@ -216,3 +207,9 @@ text = "||"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Menu" parent="." unique_id=1079454129 instance=ExtResource("25_bh3c7")]
+visible = false
+
+[connection signal="nivel_completado" from="Mazmorra" to="." method="_on_mazmorra_nivel_completado"]
+[connection signal="reinicio_pedido" from="Menu" to="." method="reiniciar_nivel"]

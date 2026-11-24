@@ -7,12 +7,15 @@ extends Node2D
 ## con las puertas al sur y la zona arriba.
 
 signal puerta_cruzada(columna: int)
+## El jugador ha tocado la puerta de salida del nivel (solo la del vestíbulo superior funciona).
+signal nivel_completado
 
 enum Tipo { INFERIOR, SUPERIOR }
 
 const ESCENA_TRAMO := preload("res://scenes/mazmorra/vestibulo_tramo.tscn")
 const ESCENA_EXTREMO := preload("res://scenes/mazmorra/vestibulo_extremo.tscn")
 const ESCENA_PUERTA := preload("res://scenes/mazmorra/puerta.tscn")
+const ESCENA_PUERTA_NIVEL := preload("res://scenes/mazmorra/puerta_nivel.tscn")
 const ESCENA_ZONA_INFERIOR := preload("res://scenes/mazmorra/vestibulo_zona_inferior.tscn")
 const ESCENA_ZONA_SUPERIOR := preload("res://scenes/mazmorra/vestibulo_zona_superior.tscn")
 
@@ -131,6 +134,21 @@ func _construir_zona() -> void:
 	if marcador != null:
 		_spawn_local = Vector2(origen * _tam_celda) + marcador.position - Vector2(rect.position * _tam_celda)
 		_tiene_spawn = true
+
+	# Puerta del nivel: donde la zona tenga un marcador "PuertaNivel". En las dos zonas se pone,
+	# pero solo funciona la del vestíbulo superior (la salida del nivel).
+	var marcador_puerta := zona.get_node_or_null("PuertaNivel") as Node2D
+	if marcador_puerta != null:
+		var puerta_nivel := ESCENA_PUERTA_NIVEL.instantiate() as PuertaNivel
+		puerta_nivel.position = Vector2(origen * _tam_celda) + marcador_puerta.position - Vector2(rect.position * _tam_celda)
+		puerta_nivel.activa = tipo == Tipo.SUPERIOR
+		# El vestíbulo superior está volteado: se compensa para que el sprite no salga del revés.
+		if tipo == Tipo.SUPERIOR:
+			puerta_nivel.scale.y = -1.0
+		puerta_nivel.tocada.connect(_on_puerta_nivel_tocada)
+		add_child(puerta_nivel)
+	elif tipo == Tipo.SUPERIOR:
+		push_warning("Vestibulo: la zona superior no tiene un marcador \"PuertaNivel\": no hay salida de nivel.")
 	_filas_celdas = origen.y + rect.size.y
 	zona.free()
 
@@ -158,6 +176,9 @@ func _comprobar_cerrado() -> void:
 			if not es_solida:
 				visitadas[vecina] = true
 				pendientes.append(vecina)
+
+func _on_puerta_nivel_tocada() -> void:
+	nivel_completado.emit()
 
 func _on_jugador_cruzo(_puerta: Puerta, columna: int) -> void:
 	puerta_cruzada.emit(columna)

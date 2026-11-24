@@ -20,6 +20,16 @@ func bloquear(celdas: Array[Vector2i]) -> void:
 		notify_runtime_tile_data_update()
 
 
+## Devuelve la malla de navegación a esas casillas (las que se habían quitado con bloquear).
+func desbloquear(celdas: Array[Vector2i]) -> void:
+	var hubo_cambio := false
+	for celda in celdas:
+		if _bloqueadas.erase(celda):
+			hubo_cambio = true
+	if hubo_cambio:
+		notify_runtime_tile_data_update()
+
+
 func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
 	return _bloqueadas.has(coords)
 

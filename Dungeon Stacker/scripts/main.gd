@@ -1,4 +1,3 @@
-
 class_name Tetris
 extends Node2D
 
@@ -12,6 +11,18 @@ static func de(nodo: Node) -> Tetris:
 
 @export var Configuracion: Configuracion_Tablero
 @export var MAX_PREVIEWS := 5
+
+@export_group("Aviso de salida")
+## Aviso que se muestra cuando dejan de salir piezas por tener una puerta arriba (por ejemplo, un
+## Label en el panel lateral: "SHIFT: mazmorra / ESPACIO: seguir"). Opcional.
+@export var aviso_salida: Control
+
+@export_group("Colocación en pantalla")
+## Dónde queda el centro del tablero en vertical, medido desde abajo (0 = abajo del todo,
+## 1 = arriba del todo, 0,33 = a un tercio). Si el tablero no cabe, se ajusta para no salirse.
+@export_range(0.0, 1.0, 0.01) var altura_centro_desde_abajo := 1.0 / 3.0
+## Separación (px) entre el borde derecho del tablero y el panel lateral.
+@export var separacion_panel := 40.0
 
 @onready var fixed_blocks = $Board/FixedBlocks
 @onready var barreras = $Board/Barreras
@@ -29,6 +40,8 @@ static func de(nodo: Node) -> Tetris:
 ## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
 @onready var hold_panel = get_node_or_null("SidePanel/HoldPiece")
 @onready var piezas = $Piezas
+@onready var _board: Node2D = $Board
+@onready var _panel_lateral: Control = $SidePanel
 @onready var controlador_pieza = $ControladorPieza
 
 var piezas_disponibles: int = 0
@@ -37,6 +50,9 @@ var cola_piezas: Array[PiezaGenerada] = []
 var pieza_guardada: PiezaGenerada = null
 var bloqueado: bool = false
 var juego_activo := true
+## Las piezas están en pausa porque hay una puerta al vestíbulo en la fila de arriba. ESPACIO saca
+## la siguiente pieza aunque la puerta siga ahí.
+var parado_por_salida := false
 
 var tablero: Array:
 	get:
@@ -51,10 +67,22 @@ func _ready() -> void:
 	)
 	controlador_pieza.solicitar_fijar_pieza.connect(fijar_pieza)
 	crear_tablero()
+	colocar_tablero()
+	get_viewport().size_changed.connect(colocar_tablero)
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	refrescar_cola()
 	generar_pieza()
 	actualizar_contador()
+
+## Centra el tablero en horizontal, lo sube a la altura elegida y pega el panel lateral a su
+## derecha. Depende del tamaño del tablero del nivel y del de la pantalla.
+func colocar_tablero() -> void:
+	var pantalla := get_viewport_rect().size
+	var tam := Vector2(Configuracion.ANCHO_TABLERO, Configuracion.ALTO_TABLERO)
+	var centro_y := pantalla.y * (1.0 - altura_centro_desde_abajo)
+	var y := clampf(centro_y - tam.y / 2.0, 0.0, maxf(pantalla.y - tam.y, 0.0))
+	_board.position = Vector2((pantalla.x - tam.x) / 2.0, y)
+	_panel_lateral.position.x = _board.position.x + tam.x + separacion_panel
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reiniciar"):
@@ -75,7 +103,10 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("rotar_derecha"):
 		controlador_pieza.rotar_pieza(1)
 	elif Input.is_action_just_pressed("accion"):
-		controlador_pieza.hard_drop()
+		if parado_por_salida:
+			generar_pieza(true)
+		else:
+			controlador_pieza.hard_drop()
 	elif InputMap.has_action("guardar_pieza") and Input.is_action_just_pressed("guardar_pieza"):
 		guardar_pieza()
 
@@ -110,8 +141,18 @@ func actualizar_previews() -> void:
 		else:
 			preview.actualizar_pieza([], null, null, [])
 
-func generar_pieza() -> void:
+## Con `forzada`, la pieza sale aunque haya puerta arriba (el jugador quiere seguir).
+func generar_pieza(forzada := false) -> void:
 	if not juego_activo or bloqueado:
+		return
+	# Si ya hay una puerta al vestíbulo en la fila de arriba, las piezas que quedan esperan.
+	var quedan := piezas_disponibles > 0 or pieza_guardada != null
+	parado_por_salida = quedan and not forzada and hay_puerta_arriba()
+	if aviso_salida != null:
+		aviso_salida.visible = parado_por_salida
+	if parado_por_salida:
+		controlador_pieza.limpiar_pieza()
+		actualizar_contador()
 		return
 	if piezas_disponibles <= 0:
 		# Sin piezas en la cola: si hay una guardada, sale ella (no se puede dejar atascada).
@@ -136,6 +177,16 @@ func generar_pieza() -> void:
 	refrescar_cola()
 	actualizar_contador()
 
+## Si alguna casilla de la fila de arriba tiene sala con puerta al vestíbulo (no sin habitación ni
+## solo horizontal): por ahí se puede salir de la mazmorra.
+func hay_puerta_arriba() -> bool:
+	if tablero.is_empty():
+		return false
+	for celda in tablero[0]:
+		if celda != null and not celda.sin_habitacion and not celda.solo_horizontal:
+			return true
+	return false
+
 func fijar_pieza() -> void:
 	if bloqueado:
 		return
@@ -147,7 +198,8 @@ func fijar_pieza() -> void:
 		controlador_pieza.categorias_actuales,
 		controlador_pieza.bioma_actual,
 		controlador_pieza.sin_habitacion_actual,
-		controlador_pieza.solo_horizontal_actual
+		controlador_pieza.solo_horizontal_actual,
+		controlador_pieza.escenas_actuales
 	)
 	var lineas: int = tablero_nodo.comprobar_lineas()
 	_regalar_tesoro(lineas)
@@ -166,6 +218,8 @@ func fijar_pieza() -> void:
 ## vacía, la pieza actual se guarda y entra la primera de la cola (gasta una pieza del contador).
 ## La pieza que sale aparece arriba, sin rotar.
 func guardar_pieza() -> void:
+	if not Configuracion.PERMITIR_GUARDAR_PIEZA:
+		return
 	if not juego_activo or bloqueado or controlador_pieza.pieza_actual == null:
 		return
 	var actual: PiezaGenerada = controlador_pieza.pieza_actual

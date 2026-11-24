@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://qr0mqvci2n8n"]
+
+[ext_resource type="PackedScene" uid="uid://dt7tjvqhc66qh" path="res://scenes/trampas/medieval/BaldosaRota.tscn" id="1_gb84q"]
+[ext_resource type="Texture2D" uid="uid://qcq1s05pw44e" path="res://assets/sprites/tiles/futuro.png" id="2_lh6q1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65esq"]
+atlas = ExtResource("2_lh6q1")
+region = Rect2(0, 1536, 512, 512)
+
+[node name="BaldosaRota" unique_id=500927486 instance=ExtResource("1_gb84q")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1560515397]
+texture = SubResource("AtlasTexture_65esq")

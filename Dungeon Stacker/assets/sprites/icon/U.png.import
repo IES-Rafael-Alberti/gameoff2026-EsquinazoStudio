@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqcyxw14bhxtl"
-path="res://.godot/imported/Murciélago movimiento.png-3821968bdd18a6912c26ad9342dc25fc.ctex"
+uid="uid://dtckbxrxjriqb"
+path="res://.godot/imported/U.png-d079bcefdbab93afe2a882d10e3f43f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemigo/esqueleto/Murciélago movimiento.png"
-dest_files=["res://.godot/imported/Murciélago movimiento.png-3821968bdd18a6912c26ad9342dc25fc.ctex"]
+source_file="res://assets/sprites/icon/U.png"
+dest_files=["res://.godot/imported/U.png-d079bcefdbab93afe2a882d10e3f43f9.ctex"]
 
 [params]
 

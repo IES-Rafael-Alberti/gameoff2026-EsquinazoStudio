@@ -15,7 +15,9 @@
 [ext_resource type="Resource" uid="uid://d2sqte7cht5mu" path="res://resources/categorias/Tesoro.tres" id="11_0g8fp"]
 [ext_resource type="Resource" uid="uid://odv61bfmtlbk" path="res://resources/categorias/TesoroCombate.tres" id="12_u22gr"]
 [ext_resource type="Resource" uid="uid://cm5gfqhkao5nr" path="res://resources/categorias/TesoroCuracion.tres" id="13_bh3c7"]
+[ext_resource type="Resource" uid="uid://bmft83rs5q0u5" path="res://resources/categorias/TesoroPuzle.tres" id="15_hcyvm"]
 [ext_resource type="Script" uid="uid://bu1ykkrbfef2d" path="res://scripts/tetris/pieza_en_turno.gd" id="15_khdex"]
+[ext_resource type="Resource" uid="uid://dvkek41po78nn" path="res://resources/categorias/Vacía.tres" id="16_khdex"]
 [ext_resource type="Script" uid="uid://1vkughewyjrm" path="res://scripts/tetris/pieza_con_peso.gd" id="16_weax8"]
 [ext_resource type="Script" uid="uid://cgs80e6cfm5qy" path="res://scripts/tetris/pieza_escogida.gd" id="17_l7y0s"]
 
@@ -66,10 +68,12 @@ metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [sub_resource type="Resource" id="Resource_y8n3i"]
 script = ExtResource("2_peso")
+categoria = ExtResource("15_hcyvm")
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [sub_resource type="Resource" id="Resource_ae6e5"]
 script = ExtResource("2_peso")
+categoria = ExtResource("16_khdex")
 metadata/_custom_type_script = "uid://d30k1odn4wqj3"
 
 [resource]

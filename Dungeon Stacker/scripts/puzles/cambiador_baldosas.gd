@@ -26,7 +26,7 @@ extends TileMapLayer
 ## Coordenadas en el atlas de la marca que significa "aquí empieza una roca".
 var marca_roca := Vector2i(0, 0)
 ## Coordenadas en el atlas de la marca que significa "aquí empieza una baldosa".
-var marca_baldosa := Vector2i(1, 0)
+var marca_baldosa := Vector2i(0, 1)
 
 @export_group("Tiles del suelo")
 ## Coordenadas en el atlas del suelo del tile de roca.
@@ -85,6 +85,21 @@ func _ready() -> void:
 	if _habitacion.datos != null and _habitacion.datos.cambiadores_alternados.has(_clave()):
 		_intercambiar()
 		_alternado = true
+
+
+## Para controlarlo desde fuera (electricidad...). "Encendido" = con las baldosas intercambiadas.
+func alternar() -> void:
+	_alternar()
+
+
+func encender() -> void:
+	if not _alternado:
+		_alternar()
+
+
+func apagar() -> void:
+	if _alternado:
+		_alternar()
 
 
 func _alternar() -> void:

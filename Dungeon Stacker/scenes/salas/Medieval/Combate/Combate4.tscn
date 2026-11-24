@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_0yqhs"]
 [ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="2_gybs0"]
 [ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="3_rbd86"]
-[ext_resource type="PackedScene" uid="uid://dbpm6fuwy2kql" path="res://scenes/enemigos/EnemigoVolador.tscn" id="4_w5sjj"]
+[ext_resource type="PackedScene" uid="uid://dilfq8r0jdefq" path="res://scenes/enemigos/enemigos terminados/murcielago.tscn" id="4_5yalo"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_0yqhs")]
 
 [node name="TrampaGiratoria" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=27660831 instance=ExtResource("2_gybs0")]
 position = Vector2(928, 512)
 cantidad_palos = 3
-longitud = 8
+longitud = 6
 velocidad_giro = 45.0
 
 [node name="Pinchos" type="Node2D" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=61608488]
@@ -147,16 +147,16 @@ position = Vector2(544, 192)
 [node name="PinchosEstaticos24" parent="Trampas/Pinchos" index="43" unique_id=1597504010 instance=ExtResource("3_rbd86")]
 position = Vector2(544, 128)
 
-[node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1141728963 instance=ExtResource("4_w5sjj")]
+[node name="Murcielago" parent="." index="8" unique_id=661418023 instance=ExtResource("4_5yalo")]
+position = Vector2(608, 192)
+
+[node name="Murcielago2" parent="." index="9" unique_id=512350592 instance=ExtResource("4_5yalo")]
 position = Vector2(1248, 832)
 
-[node name="EnemigoVolador2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1389037990 instance=ExtResource("4_w5sjj")]
-position = Vector2(608, 832)
-
-[node name="EnemigoVolador3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=616970143 instance=ExtResource("4_w5sjj")]
+[node name="Murcielago3" parent="." index="10" unique_id=937290803 instance=ExtResource("4_5yalo")]
 position = Vector2(1248, 192)
 
-[node name="EnemigoVolador4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=500833176 instance=ExtResource("4_w5sjj")]
-position = Vector2(608, 192)
+[node name="Murcielago4" parent="." index="11" unique_id=1827061833 instance=ExtResource("4_5yalo")]
+position = Vector2(608, 832)
 
 [editable path="Puzle"]

@@ -1,4 +1,3 @@
-
 extends Node
 # Todas las piezas de Tetris
 
@@ -195,12 +194,20 @@ func _desde_escogida(escogida: PiezaEscogida) -> PiezaGenerada:
 	pieza.nombre = escogida.forma
 	pieza.escogida = true
 	pieza.forma = FORMAS[escogida.forma]
+	pieza.puede_rotar = escogida.puede_rotar
+	# La O y la P no giran (igual que en rotar_pieza del controlador).
+	if escogida.rotacion_inicial > 0 and escogida.forma != "O" and escogida.forma != "P":
+		pieza.rotacion_inicial = escogida.rotacion_inicial
+		pieza.forma = _girar(FORMAS[escogida.forma], escogida.rotacion_inicial, escogida.forma == "I")
 	pieza.textura_fondo = TEXTURAS_COLOR[escogida.forma]
 	pieza.bioma = escogida.bioma
 	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
 
 	if escogida.sin_habitacion:
 		pieza.sin_habitacion = true
+		var config = Tetris.de(self).Configuracion
+		if config != null:
+			pieza.textura_fondo = config.TEXTURA_BLOQUEADA
 		return pieza
 
 	pieza.solo_horizontal = escogida.solo_horizontal
@@ -221,6 +228,17 @@ func _desde_escogida(escogida: PiezaEscogida) -> PiezaGenerada:
 		pieza.escenas.append(escena)
 	return pieza
 
+## Gira la forma `veces` cuartos de vuelta en sentido horario (la misma fórmula que rotar_pieza).
+## Los cuadrados salen en el mismo orden que en la forma original.
+func _girar(forma: Array, veces: int, es_i: bool) -> Array:
+	var lado := 3 if es_i else 2
+	var girada := forma.duplicate()
+	for n in veces:
+		for i in girada.size():
+			var p: Vector2i = girada[i]
+			girada[i] = Vector2i(lado - p.y, p.x)
+	return girada
+
 ## Pieza aleatoria normal, con las probabilidades y pesos del nivel.
 func _pieza_normal() -> PiezaGenerada:
 	var nombre = pieza_aleatoria()
@@ -234,9 +252,12 @@ func _pieza_normal() -> PiezaGenerada:
 	pieza.bioma = biomas.pick_random()
 	pieza.textura_marco = Catalogo.marco_bioma(pieza.bioma)
 
-	# Sin habitación: sigue siendo una pieza normal, pero sin categorías (ni icono ni letra).
+	# Sin habitación: sin categorías (ni icono ni letra) y con la textura de las casillas bloqueadas.
 	if _sale_sin_habitacion():
 		pieza.sin_habitacion = true
+		var config = Tetris.de(self).Configuracion
+		if config != null:
+			pieza.textura_fondo = config.TEXTURA_BLOQUEADA
 		return pieza
 
 	pieza.solo_horizontal = _sale_solo_horizontal()
