@@ -15,6 +15,7 @@ region = Rect2(1024, 2048, 512, 512)
 collision_layer = 32
 collision_mask = 10
 script = ExtResource("1_ilosk")
+retroceso = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
 shape = SubResource("RectangleShape2D_mjkrw")
