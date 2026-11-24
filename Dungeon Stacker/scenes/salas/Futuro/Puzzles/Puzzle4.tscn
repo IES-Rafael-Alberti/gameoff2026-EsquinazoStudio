@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://5q683hc65e3p"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_7uw00"]
+[ext_resource type="PackedScene" uid="uid://catahommqbxjt" path="res://scenes/puzles/futuro/electricidad/fuente_electrica.tscn" id="2_yc4hp"]
+[ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="3_l1exi"]
+[ext_resource type="PackedScene" uid="uid://bwijvmsmdixob" path="res://scenes/puzles/futuro/electricidad/objetivo_electrica.tscn" id="4_ph7qj"]
+[ext_resource type="PackedScene" uid="uid://epcan2t8w62i" path="res://scenes/trampas/futuro/mina_futuro.tscn" id="5_n7q1w"]
+[ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="6_fipal"]
+[ext_resource type="PackedScene" uid="uid://diln7rinq7few" path="res://scenes/trampas/futuro/sierra_futuro.tscn" id="6_ph7qj"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="7_l1exi"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_7uw00")]
+
+[node name="Electricidad" parent="Electricidad" parent_id_path=PackedInt32Array(800480628) index="0" unique_id=1564926750]
+tile_map_data = PackedByteArray("AAAKAAYAAAABAAkAAAAKAAcAAAABAAkAAAAKAAkAAAABAAkAAAAKAAoAAAAEAAcAAAAKAAwAAAAHAAcAAAALAAwAAAACAAkAAAAMAAwAAAACAAkAAAANAAwAAAACAAkAAAAOAAwAAAACAAkAAAAPAAwAAAACAAkAAAAQAAwAAAACAAkAAAARAAwAAAACAAkAAAASAAwAAAABAAcAAAASAAsAAAABAAkAAAASAAoAAAABAAkAAAASAAcAAAABAAkAAAASAAkAAAABAAkAAAASAAYAAAAGAAcAAAAKAAQAAAADAAcAAAAKAAUAAAABAAkAAAALAAQAAAACAAkAAAAMAAQAAAACAAkAAAANAAQAAAACAAkAAAAOAAQAAAACAAkAAAAPAAQAAAACAAkAAAAQAAQAAAACAAkAAAARAAQAAAACAAkAAAASAAQAAAAFAAcAAAA=")
+
+[node name="Fuente Electrica2" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="0" unique_id=605912163 instance=ExtResource("2_yc4hp")]
+position = Vector2(672, 768)
+
+[node name="Fuente Electrica" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="1" unique_id=705659675 instance=ExtResource("2_yc4hp")]
+position = Vector2(1184, 256)
+
+[node name="Puente Electrico" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="0" unique_id=1487050585 instance=ExtResource("3_l1exi")]
+position = Vector2(672, 512)
+
+[node name="Puente Electrico2" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="1" unique_id=1835357927 instance=ExtResource("3_l1exi")]
+position = Vector2(1184, 512)
+
+[node name="Objetivo Electrico" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="0" unique_id=1128851961 instance=ExtResource("4_ph7qj")]
+position = Vector2(672, 640)
+
+[node name="Objetivo Electrico2" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="1" unique_id=707100794 instance=ExtResource("4_ph7qj")]
+position = Vector2(1184, 384)
+
+[node name="Mina" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1893609633 instance=ExtResource("5_n7q1w")]
+position = Vector2(800, 640)
+
+[node name="Mina2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=1346411328 instance=ExtResource("5_n7q1w")]
+position = Vector2(1056, 384)
+
+[node name="Mina3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=2089129786 instance=ExtResource("5_n7q1w")]
+position = Vector2(1056, 640)
+
+[node name="Mina4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1936849306 instance=ExtResource("5_n7q1w")]
+position = Vector2(800, 384)
+
+[node name="Sierra5" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=1757069768 instance=ExtResource("6_ph7qj")]
+position = Vector2(736, 832)
+
+[node name="Sierra6" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="5" unique_id=1139721138 instance=ExtResource("6_ph7qj")]
+position = Vector2(1120, 832)
+
+[node name="Sierra7" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="6" unique_id=1206541441 instance=ExtResource("6_ph7qj")]
+position = Vector2(608, 704)
+
+[node name="Sierra8" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="7" unique_id=2109858222 instance=ExtResource("6_ph7qj")]
+position = Vector2(1248, 704)
+
+[node name="Sierra9" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="8" unique_id=241345532 instance=ExtResource("6_ph7qj")]
+position = Vector2(736, 192)
+
+[node name="Sierra10" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=1765164558 instance=ExtResource("6_ph7qj")]
+position = Vector2(1120, 192)
+
+[node name="Sierra11" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="10" unique_id=1338295107 instance=ExtResource("6_ph7qj")]
+position = Vector2(608, 320)
+
+[node name="Sierra12" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="11" unique_id=1001664031 instance=ExtResource("6_ph7qj")]
+position = Vector2(1248, 320)
+
+[node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("6_fipal")]
+position = Vector2(928, 448)
+
+[node name="Caja2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1928014758 instance=ExtResource("6_fipal")]
+position = Vector2(928, 576)
+
+[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("7_l1exi")]
+position = Vector2(923.44794, 509.38687)
+
+[editable path="Puzle"]
