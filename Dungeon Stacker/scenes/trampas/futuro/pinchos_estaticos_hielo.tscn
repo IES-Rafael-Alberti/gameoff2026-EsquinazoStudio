@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d16qtdhqdqjbi"]
+
+[ext_resource type="Script" uid="uid://itlswrs34xsi" path="res://scripts/trampas/pinchos_hielo.gd" id="1_ilosk"]
+[ext_resource type="Texture2D" uid="uid://db03r62170fax" path="res://assets/sprites/tiles/hielo.png" id="2_ilosk"]
+[ext_resource type="Script" uid="uid://cbdw87fav6ajs" path="res://scripts/utilidades/bloqueo_navegacion.gd" id="3_6uuhv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(68, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77hhd"]
+atlas = ExtResource("2_ilosk")
+region = Rect2(1024, 2048, 512, 512)
+
+[node name="PinchosEstaticosHielo" type="Area2D" unique_id=204095970]
+collision_layer = 32
+collision_mask = 10
+script = ExtResource("1_ilosk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
+shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Sprite0-1" type="Sprite2D" parent="." unique_id=1258677299]
+position = Vector2(-15.999999, 16)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_77hhd")
+
+[node name="Sprite1-1" type="Sprite2D" parent="." unique_id=1714056493]
+position = Vector2(16, 16)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_77hhd")
+
+[node name="Sprite0-0" type="Sprite2D" parent="." unique_id=1568855434]
+position = Vector2(-15.999999, -15.999999)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_77hhd")
+
+[node name="Sprite1-0" type="Sprite2D" parent="." unique_id=2017441774]
+position = Vector2(16, -15.999999)
+scale = Vector2(0.0625, 0.0625)
+texture = SubResource("AtlasTexture_77hhd")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=103336359]
+radius = 40.0
+
+[node name="BloqueoNavegacion" type="Node2D" parent="." unique_id=225960798]
+script = ExtResource("3_6uuhv")
