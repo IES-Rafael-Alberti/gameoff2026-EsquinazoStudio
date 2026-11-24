@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://61akx2q0ybs5" path="res://scripts/trampas/pincho_techo.gd" id="1_my3c0"]
 [ext_resource type="Texture2D" uid="uid://db03r62170fax" path="res://assets/sprites/tiles/hielo.png" id="2_bqpio"]
+[ext_resource type="PackedScene" uid="uid://dlmb5evknos0p" path="res://scenes/trampas/hielo/pinchos_estaticos_nieve.tscn" id="3_ve8ir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my3c0"]
 size = Vector2(64, 64)
@@ -10,12 +11,13 @@ size = Vector2(64, 64)
 atlas = ExtResource("2_bqpio")
 region = Rect2(1536, 2560, 512, 512)
 
-[node name="PinchosTecho" type="Area2D" unique_id=2090656361 node_paths=PackedStringArray("circulo")]
+[node name="PinchosTecho" type="Area2D" unique_id=2090656361 node_paths=PackedStringArray("circulo", "pinchos")]
 collision_layer = 32
 collision_mask = 10
 script = ExtResource("1_my3c0")
 modo = 2
 circulo = NodePath("Circulo")
+pinchos = NodePath("PinchosEstaticos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753944393]
 light_mask = 32
@@ -23,4 +25,8 @@ visibility_layer = 10
 shape = SubResource("RectangleShape2D_my3c0")
 
 [node name="Circulo" type="Sprite2D" parent="." unique_id=1404656399]
+visible = false
+scale = Vector2(0.125, 0.125)
 texture = SubResource("AtlasTexture_my3c0")
+
+[node name="PinchosEstaticos" parent="." unique_id=204095970 instance=ExtResource("3_ve8ir")]
