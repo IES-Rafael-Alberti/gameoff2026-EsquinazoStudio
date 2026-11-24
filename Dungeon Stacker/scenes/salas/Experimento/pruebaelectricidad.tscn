@@ -43,6 +43,7 @@ position = Vector2(1248, 512)
 position = Vector2(992, 256)
 rotation = 1.5707964
 empieza_encendido = false
+longitud = 2
 
 [node name="Laser3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=1590120396 instance=ExtResource("7_pq45n")]
 position = Vector2(928, 256)
