@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c7x6j8qxex6ln"]
+
+[ext_resource type="PackedScene" uid="uid://bwqjyb85nbq6s" path="res://scenes/enemigos/EnemigoEstadosBase.tscn" id="1_cft40"]
+
+[node name="EnemigoEstadosBase" unique_id=661418023 instance=ExtResource("1_cft40")]
+
+[node name="ColorRect" type="ColorRect" parent="." index="4" unique_id=178776442]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.9333266, 3.272891e-06, 9.62615e-07, 1)
