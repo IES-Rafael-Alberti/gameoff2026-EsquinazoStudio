@@ -8,5 +8,6 @@
 script = ExtResource("1_wrle8")
 
 [node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_8u7po")]
+vida_maxima = 5
 
 [node name="Interfaz" parent="." unique_id=1995162197 instance=ExtResource("3_0s3qi")]
