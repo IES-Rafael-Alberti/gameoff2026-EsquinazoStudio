@@ -50,7 +50,6 @@
 [ext_resource type="PackedScene" uid="uid://bvjd7h6qnkp71" path="res://scenes/salas/Medieval/Puzzles/puzzle6.tscn" id="39_prxm5"]
 [ext_resource type="PackedScene" uid="uid://brs7ohytq6c83" path="res://scenes/salas/Medieval/Puzzles/puzzle7.tscn" id="40_lub8c"]
 [ext_resource type="PackedScene" uid="uid://dwhdcvc474fhy" path="res://scenes/salas/Medieval/PuzzleCuracion/PuzzleCuracion1.tscn" id="42_efrak"]
-[ext_resource type="PackedScene" uid="uid://dhifbq4o62bxx" path="res://scenes/salas/Medieval/Tesoro/Tesoro2.tscn" id="45_gye15"]
 [ext_resource type="PackedScene" uid="uid://bsqk84amyprp6" path="res://scenes/salas/Medieval/Tesoro/Tesoro3.tscn" id="46_01cxq"]
 [ext_resource type="PackedScene" uid="uid://cihpgbamfahpa" path="res://scenes/salas/Medieval/Tesoro/Tesoro4.tscn" id="47_6e1a1"]
 [ext_resource type="PackedScene" uid="uid://c8nkd6ljwsxdk" path="res://scenes/salas/Medieval/Tesoro/Tesoro5.tscn" id="48_b7jr4"]
@@ -273,7 +272,7 @@ metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_noybr"]
 script = ExtResource("4_iehwp")
-escena = ExtResource("45_gye15")
+escena = ExtResource("52_3ajun")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_p6a47"]
