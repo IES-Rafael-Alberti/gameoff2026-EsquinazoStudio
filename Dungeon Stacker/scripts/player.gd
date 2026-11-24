@@ -117,6 +117,17 @@ func cancelar_retroceso() -> void:
 	_tiempo_retroceso = 0.0
 
 
+## La sala cargada ahora mismo (null si no hay ninguna).
+func habitacion() -> Habitacion:
+	return get_tree().get_first_node_in_group("habitacion") as Habitacion
+
+
+## true si el centro del cuerpo está sobre una baldosa de hielo.
+func en_hielo() -> bool:
+	var sala := habitacion()
+	return sala != null and sala.es_hielo(centro())
+
+
 ## Centro del cuerpo (el origen del personaje está en los pies).
 func centro() -> Vector2:
 	return _hitbox.global_position
@@ -153,8 +164,8 @@ func recibir_dano(cantidad: int, origen := Vector2.INF) -> void:
 			direccion = -_vector_de(last_direction)
 		_velocidad_retroceso = direccion * fuerza_retroceso
 		_tiempo_retroceso = duracion_retroceso
-		# Atacando, el ataque sigue: el retroceso lo aplica el propio estado Atacar.
-		if not maquina.esta_en(JugadorEstado.ATACAR):
+		# Atacando o resbalando, el estado sigue: el retroceso lo aplica el propio estado.
+		if not maquina.esta_en(JugadorEstado.ATACAR) and not maquina.esta_en(JugadorEstado.RESBALAR):
 			maquina.cambiar_a(JugadorEstado.HERIDO)
 
 

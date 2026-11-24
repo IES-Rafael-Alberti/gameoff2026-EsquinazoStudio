@@ -31,12 +31,16 @@ var _baldosas := {}
 ## Puerta por la que se entró en la sala o -1.
 var entrada := -1
 var _cayendo := false
+var _hay_capa_hielo := false
 
 @onready var _zona: Area2D = $ZonaEntrada
 @onready var _tiles: TileMapLayer = $TileMapLayer
 
 
 func _ready() -> void:
+	add_to_group("habitacion")
+	# Si el TileSet no tiene el dato "hielo", la sala simplemente no tiene hielo.
+	_hay_capa_hielo = _tiles.tile_set != null and _tiles.tile_set.get_custom_data_layer_by_name("hielo") != -1
 	for hijo in $Puertas.get_children():
 		var puerta := hijo as Puerta
 		if puerta:
@@ -280,6 +284,24 @@ func _physics_process(_delta: float) -> void:
 	var celda := _tiles.local_to_map(_tiles.to_local(jugador.centro()))
 	if _es_vacio(celda):
 		_caer(jugador)
+
+## Celda del tablero de baldosas que hay bajo una posición global.
+func celda_de(posicion_global: Vector2) -> Vector2i:
+	return _tiles.local_to_map(_tiles.to_local(posicion_global))
+
+
+## Posición global del centro de una celda.
+func centro_de_celda(celda: Vector2i) -> Vector2:
+	return _tiles.to_global(_tiles.map_to_local(celda))
+
+
+## true si la baldosa bajo esa posición global es de hielo (custom data "hielo").
+func es_hielo(posicion_global: Vector2) -> bool:
+	if not _hay_capa_hielo:
+		return false
+	var tile := _tiles.get_cell_tile_data(celda_de(posicion_global))
+	return tile != null and tile.get_custom_data("hielo")
+
 
 func _es_vacio(celda: Vector2i) -> bool:
 	if _baldosas_rotas.has(celda):
