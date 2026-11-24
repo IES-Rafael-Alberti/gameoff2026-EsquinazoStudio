@@ -50,14 +50,13 @@
 [ext_resource type="PackedScene" uid="uid://bvjd7h6qnkp71" path="res://scenes/salas/Medieval/Puzzles/puzzle6.tscn" id="39_prxm5"]
 [ext_resource type="PackedScene" uid="uid://brs7ohytq6c83" path="res://scenes/salas/Medieval/Puzzles/puzzle7.tscn" id="40_lub8c"]
 [ext_resource type="PackedScene" uid="uid://dwhdcvc474fhy" path="res://scenes/salas/Medieval/PuzzleCuracion/PuzzleCuracion1.tscn" id="42_efrak"]
-[ext_resource type="PackedScene" uid="uid://dhifbq4o62bxx" path="res://scenes/salas/Medieval/Tesoro/Tesoro2.tscn" id="45_gye15"]
 [ext_resource type="PackedScene" uid="uid://bsqk84amyprp6" path="res://scenes/salas/Medieval/Tesoro/Tesoro3.tscn" id="46_01cxq"]
 [ext_resource type="PackedScene" uid="uid://cihpgbamfahpa" path="res://scenes/salas/Medieval/Tesoro/Tesoro4.tscn" id="47_6e1a1"]
 [ext_resource type="PackedScene" uid="uid://c8nkd6ljwsxdk" path="res://scenes/salas/Medieval/Tesoro/Tesoro5.tscn" id="48_b7jr4"]
 [ext_resource type="PackedScene" uid="uid://lucrudjehu1s" path="res://scenes/salas/Medieval/Tesoro/tesoro6.tscn" id="49_uo25j"]
 [ext_resource type="PackedScene" uid="uid://ctrcek5t6ww7t" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate1.tscn" id="51_p3b52"]
 [ext_resource type="PackedScene" uid="uid://bbv4bg7s0upmd" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate2.tscn" id="52_3ajun"]
-[ext_resource type="PackedScene" uid="uid://da7njn7xqtliy" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate4.tscn" id="54_3sxub"]
+[ext_resource type="PackedScene" uid="uid://da7njn7xqtliy" path="res://scenes/salas/Medieval/TesoroCombate/TesoroCombate3.tscn" id="54_3sxub"]
 [ext_resource type="PackedScene" uid="uid://dtp8bo84mve8a" path="res://scenes/salas/Medieval/TesoroCuracion/TesoroCuracion1.tscn" id="56_vtcgn"]
 [ext_resource type="PackedScene" uid="uid://dcudvlaiud7d0" path="res://scenes/salas/Medieval/TesoroPuzle/TesoroPuzle1.tscn" id="58_8be6g"]
 [ext_resource type="PackedScene" uid="uid://cu2risgn7np4d" path="res://scenes/salas/Medieval/Vacio/Vacio3.tscn" id="62_iwlye"]
@@ -273,7 +272,7 @@ metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_noybr"]
 script = ExtResource("4_iehwp")
-escena = ExtResource("45_gye15")
+escena = ExtResource("52_3ajun")
 metadata/_custom_type_script = "uid://d20qapcko8rat"
 
 [sub_resource type="Resource" id="Resource_p6a47"]
