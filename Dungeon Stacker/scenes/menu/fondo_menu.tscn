@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://beh6iqva8bkoa" path="res://assets/sprites/menu/T pieza.png" id="6_u4sfs"]
 [ext_resource type="Texture2D" uid="uid://deb51tmbnlh0o" path="res://assets/sprites/menu/Z pieza.png" id="7_ofthq"]
 
-[sub_resource type="Animation" id="Animation_50svf"]
+[sub_resource type="Animation" id="Animation_jj56k"]
 resource_name = "Flotar"
 length = 5.0
 loop_mode = 2
@@ -31,10 +31,10 @@ tracks/1/path = NodePath("Torre/SpriteO:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 5),
+"times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1056, 650), Vector2(1056, 600), Vector2(1056, 650)]
+"values": [Vector2(1050, 600), Vector2(1100, 500), Vector2(1050, 650)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -43,14 +43,39 @@ tracks/2/path = NodePath("Torre/SpriteZ:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(650, 400)]
+"values": [Vector2(650, 400), Vector2(600, 300)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Torre/SpriteT:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(416, 960.00006), Vector2(287.99994, 832.00006)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torre/SpriteL:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(383.99997, 512), Vector2(448.00003, 672)]
 }
 
 [sub_resource type="Animation" id="Animation_8p4sg"]
-length = 0.001
+length = 5.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +83,10 @@ tracks/0/path = NodePath("Torre/SpriteI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1056, 850)]
+"values": [Vector2(1056, 850), Vector2(1056, 1000)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -70,10 +95,10 @@ tracks/1/path = NodePath("Torre/SpriteO:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1056, 600)]
+"values": [Vector2(1050, 600), Vector2(1100, 500), Vector2(1050, 650)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -82,15 +107,39 @@ tracks/2/path = NodePath("Torre/SpriteZ:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(650, 400)]
+"values": [Vector2(650, 400), Vector2(600, 300)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Torre/SpriteT:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(416, 960.00006), Vector2(287.99994, 832.00006)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Torre/SpriteL:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(383.99997, 512), Vector2(448.00003, 672)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukar"]
 _data = {
-&"Flotar": SubResource("Animation_50svf"),
+&"Flotar": SubResource("Animation_jj56k"),
 &"RESET": SubResource("Animation_8p4sg")
 }
 
@@ -120,7 +169,7 @@ layer = -2
 script = ExtResource("1_csth7")
 cantidad = 10
 tam_celda = 40
-opacidad = 0.75
+opacidad = 0.5
 opacidad_cuadricula = 0.41
 escala_arriba = 0.95
 escala_abajo = 1.8
@@ -140,17 +189,18 @@ scale = Vector2(0.7, 0.706)
 texture = ExtResource("3_jj56k")
 
 [node name="SpriteL" type="Sprite2D" parent="Torre" unique_id=143128253]
-position = Vector2(384, 448)
+position = Vector2(383.99997, 512)
+rotation = 6.2831855
 scale = Vector2(0.7, 0.706)
 texture = ExtResource("4_ysipo")
 
 [node name="SpriteO" type="Sprite2D" parent="Torre" unique_id=902794538]
-position = Vector2(1056, 600)
+position = Vector2(1050, 600)
 scale = Vector2(0.7, 0.706)
 texture = ExtResource("5_jpkr8")
 
 [node name="SpriteT" type="Sprite2D" parent="Torre" unique_id=893123842]
-position = Vector2(320, 864)
+position = Vector2(416, 960.00006)
 scale = Vector2(0.7, 0.706)
 texture = ExtResource("6_u4sfs")
 
