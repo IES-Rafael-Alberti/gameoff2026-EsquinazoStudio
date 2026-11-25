@@ -34,10 +34,10 @@ al_cortarse_corriente = 1
 destinos = [NodePath("../../../Trampas/Laser2")]
 
 [node name="Objetivo Electrico2" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="0" unique_id=2068763873 instance=ExtResource("3_4bns5")]
-position = Vector2(608, 192)
+position = Vector2(864, 192)
 
 [node name="Objetivo Electrico4" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="1" unique_id=1435248941 instance=ExtResource("3_4bns5")]
-position = Vector2(1248, 512)
+position = Vector2(1248, 448)
 
 [node name="Laser2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=118587625 instance=ExtResource("7_pq45n")]
 position = Vector2(992, 256)
