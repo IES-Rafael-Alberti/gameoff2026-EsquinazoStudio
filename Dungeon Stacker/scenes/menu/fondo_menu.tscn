@@ -1,6 +1,98 @@
 [gd_scene format=3 uid="uid://71eejpow8g62"]
 
 [ext_resource type="Script" uid="uid://cwe1bddu8033k" path="res://scripts/ui/lluvia_piezas.gd" id="1_csth7"]
+[ext_resource type="Texture2D" uid="uid://4yow28t00n63" path="res://assets/sprites/menu/Torreon.png" id="2_wrb2o"]
+[ext_resource type="Texture2D" uid="uid://bdjp3cn6g16aq" path="res://assets/sprites/menu/I pieza.png" id="3_jj56k"]
+[ext_resource type="Texture2D" uid="uid://bqxywwglw2wpj" path="res://assets/sprites/menu/L pieza.png" id="4_ysipo"]
+[ext_resource type="Texture2D" uid="uid://dui6rciy1bbd5" path="res://assets/sprites/menu/O pieza.png" id="5_jpkr8"]
+[ext_resource type="Texture2D" uid="uid://beh6iqva8bkoa" path="res://assets/sprites/menu/T pieza.png" id="6_u4sfs"]
+[ext_resource type="Texture2D" uid="uid://deb51tmbnlh0o" path="res://assets/sprites/menu/Z pieza.png" id="7_ofthq"]
+
+[sub_resource type="Animation" id="Animation_50svf"]
+resource_name = "Flotar"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torre/SpriteI:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1056, 850), Vector2(1056, 1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torre/SpriteO:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1056, 650), Vector2(1056, 600), Vector2(1056, 650)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Torre/SpriteZ:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(650, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_8p4sg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torre/SpriteI:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1056, 850)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torre/SpriteO:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1056, 600)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Torre/SpriteZ:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(650, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kukar"]
+_data = {
+&"Flotar": SubResource("Animation_50svf"),
+&"RESET": SubResource("Animation_8p4sg")
+}
 
 [node name="Control" type="Control" unique_id=1709290085]
 layout_mode = 3
@@ -29,17 +121,44 @@ script = ExtResource("1_csth7")
 cantidad = 10
 tam_celda = 40
 opacidad = 0.75
-escala_abajo = 1.5999999999999999
+opacidad_cuadricula = 0.41
+escala_arriba = 0.95
+escala_abajo = 1.8
 inclinacion = 6.0
 
 [node name="Torre" type="CanvasLayer" parent="." unique_id=597060736]
 layer = -1
 
-[node name="ColorRect2" type="ColorRect" parent="Torre" unique_id=401905787]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 768.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.805792, 0.103779964, 1)
+[node name="SpriteTorre" type="Sprite2D" parent="Torre" unique_id=1487857924]
+position = Vector2(703.9999, 704.00006)
+scale = Vector2(0.7, 0.706)
+texture = ExtResource("2_wrb2o")
+
+[node name="SpriteI" type="Sprite2D" parent="Torre" unique_id=217049836]
+position = Vector2(1056, 850)
+scale = Vector2(0.7, 0.706)
+texture = ExtResource("3_jj56k")
+
+[node name="SpriteL" type="Sprite2D" parent="Torre" unique_id=143128253]
+position = Vector2(384, 448)
+scale = Vector2(0.7, 0.706)
+texture = ExtResource("4_ysipo")
+
+[node name="SpriteO" type="Sprite2D" parent="Torre" unique_id=902794538]
+position = Vector2(1056, 600)
+scale = Vector2(0.7, 0.706)
+texture = ExtResource("5_jpkr8")
+
+[node name="SpriteT" type="Sprite2D" parent="Torre" unique_id=893123842]
+position = Vector2(320, 864)
+scale = Vector2(0.7, 0.706)
+texture = ExtResource("6_u4sfs")
+
+[node name="SpriteZ" type="Sprite2D" parent="Torre" unique_id=1269238274]
+position = Vector2(650, 400)
+scale = Vector2(0.7, 0.706)
+texture = ExtResource("7_ofthq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=764680803]
+libraries/ = SubResource("AnimationLibrary_kukar")
+autoplay = &"Flotar"
