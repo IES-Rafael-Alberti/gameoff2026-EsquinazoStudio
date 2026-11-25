@@ -1,0 +1,120 @@
+[gd_scene format=4 uid="uid://byjmr3pbvdvnb"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_bj5bu"]
+[ext_resource type="PackedScene" uid="uid://catahommqbxjt" path="res://scenes/puzles/futuro/electricidad/fuente_electrica.tscn" id="2_rvqh4"]
+[ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="3_oy1mk"]
+[ext_resource type="PackedScene" uid="uid://bwijvmsmdixob" path="res://scenes/puzles/futuro/electricidad/objetivo_electrica.tscn" id="4_ydi5j"]
+[ext_resource type="PackedScene" uid="uid://cgyl56dvqv3g3" path="res://scenes/enemigos/enemigos terminados/bolaplasma.tscn" id="5_prbrg"]
+[ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="6_6lnbl"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="7_rvqh4"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_bj5bu")]
+
+[node name="Forma" parent="ZonaEntrada" parent_id_path=PackedInt32Array(180062892) index="0" unique_id=990661461]
+position = Vector2(0, 0)
+
+[node name="Electricidad" parent="Electricidad" parent_id_path=PackedInt32Array(800480628) index="0" unique_id=1564926750]
+tile_map_data = PackedByteArray("AAAOAAgAAAAAAAkAAAANAAgAAAACAAkAAAAMAAgAAAACAAkAAAAKAAgAAAAHAAcAAAAPAAgAAAACAAkAAAAQAAgAAAACAAkAAAASAAgAAAAFAAcAAAAOAAkAAAABAAkAAAAOAAoAAAABAAkAAAAOAAYAAAABAAkAAAAOAAcAAAABAAkAAAAOAAwAAAAEAAcAAAAOAAQAAAAGAAcAAAA=")
+
+[node name="Fuente Electrica" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="0" unique_id=605912163 instance=ExtResource("2_rvqh4")]
+position = Vector2(928, 512)
+
+[node name="Puente Electrico" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="0" unique_id=1487050585 instance=ExtResource("3_oy1mk")]
+position = Vector2(736, 512)
+
+[node name="Puente Electrico2" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="1" unique_id=1390399624 instance=ExtResource("3_oy1mk")]
+position = Vector2(928, 704)
+
+[node name="Puente Electrico3" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="2" unique_id=35269638 instance=ExtResource("3_oy1mk")]
+position = Vector2(1120, 512)
+
+[node name="Puente Electrico4" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="3" unique_id=1483443503 instance=ExtResource("3_oy1mk")]
+position = Vector2(928, 320)
+
+[node name="Objetivo Electrico" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="0" unique_id=464184157 instance=ExtResource("4_ydi5j")]
+position = Vector2(672, 512)
+
+[node name="Objetivo Electrico2" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="1" unique_id=322283314 instance=ExtResource("4_ydi5j")]
+position = Vector2(928, 256)
+
+[node name="Objetivo Electrico3" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="2" unique_id=1176669187 instance=ExtResource("4_ydi5j")]
+position = Vector2(1184, 512)
+
+[node name="Objetivo Electrico4" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="3" unique_id=1803718466 instance=ExtResource("4_ydi5j")]
+position = Vector2(928, 768)
+
+[node name="Patrulla" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1739202080 instance=ExtResource("5_prbrg")]
+position = Vector2(608, 448)
+velocidad = 100.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla" index="3" unique_id=930864658]
+position = Vector2(192, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla" index="4" unique_id=1001596759]
+position = Vector2(192, 128)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla" index="5" unique_id=42024681]
+position = Vector2(0, 128)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemigos/Patrulla" index="6" unique_id=2040547731]
+
+[node name="Patrulla2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1570396097 instance=ExtResource("5_prbrg")]
+position = Vector2(864, 832)
+velocidad = 100.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla2" index="3" unique_id=2078014997]
+position = Vector2(0, -192)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla2" index="4" unique_id=1652831846]
+position = Vector2(128, -192)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla2" index="5" unique_id=1717413855]
+position = Vector2(128, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemigos/Patrulla2" index="6" unique_id=205711920]
+
+[node name="Patrulla3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=22589723 instance=ExtResource("5_prbrg")]
+position = Vector2(1248, 576)
+velocidad = 100.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla3" index="3" unique_id=1895521219]
+position = Vector2(-192, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla3" index="4" unique_id=1178216471]
+position = Vector2(-192, -128)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla3" index="5" unique_id=137789765]
+position = Vector2(0, -128)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemigos/Patrulla3" index="6" unique_id=1319652590]
+
+[node name="Patrulla4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=781998387 instance=ExtResource("5_prbrg")]
+position = Vector2(992, 192)
+velocidad = 100.0
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla4" index="3" unique_id=1046302886]
+position = Vector2(0, 192)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla4" index="4" unique_id=1026211598]
+position = Vector2(-128, 192)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla4" index="5" unique_id=409348774]
+position = Vector2(-128, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemigos/Patrulla4" index="6" unique_id=857124153]
+
+[node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("6_6lnbl")]
+position = Vector2(864, 576)
+
+[node name="Caja2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1572877829 instance=ExtResource("6_6lnbl")]
+position = Vector2(992, 576)
+
+[node name="Caja3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="2" unique_id=1096897206 instance=ExtResource("6_6lnbl")]
+position = Vector2(864, 448)
+
+[node name="Caja4" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="3" unique_id=649370257 instance=ExtResource("6_6lnbl")]
+position = Vector2(992, 448)
+
+[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("7_rvqh4")]
+
+[editable path="Puzle"]

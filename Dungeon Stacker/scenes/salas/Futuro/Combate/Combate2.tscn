@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dpb8hqbay726t"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_1l7b6"]
+[ext_resource type="PackedScene" uid="uid://dd8d8bsc2aj45" path="res://scenes/enemigos/spawner.tscn" id="2_2ygcj"]
+[ext_resource type="PackedScene" uid="uid://kkcv2dt1mobu" path="res://scenes/enemigos/enemigos terminados/robot.tscn" id="3_ijb7h"]
+[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/Cohete.tscn" id="4_2ygcj"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_1l7b6")]
+
+[node name="Spawner" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=272867690 instance=ExtResource("2_2ygcj")]
+position = Vector2(736, 512)
+escena_enemigo = ExtResource("3_ijb7h")
+intervalo = 2.0
+max_apariciones = 5
+max_vivos = 2
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Spawner" index="0" unique_id=1176599776]
+
+[node name="Spawner2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=355826426 instance=ExtResource("2_2ygcj")]
+position = Vector2(1120, 512)
+escena_enemigo = ExtResource("3_ijb7h")
+intervalo = 2.0
+max_apariciones = 5
+max_vivos = 2
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Spawner2" index="0" unique_id=1367678513]
+
+[node name="EnemigoEstadosBase" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=661418023 instance=ExtResource("4_2ygcj")]
+position = Vector2(928, 512)
+
+[node name="EnemigoEstadosBase2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1471297002 instance=ExtResource("4_2ygcj")]
+position = Vector2(928, 320)
+
+[node name="EnemigoEstadosBase3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1475210543 instance=ExtResource("4_2ygcj")]
+position = Vector2(928, 704)
+
+[editable path="Puzle"]
