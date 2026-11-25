@@ -161,6 +161,8 @@ texture_region_size = Vector2i(512, 512)
 8:7/0/custom_data_1 = true
 9:8/0 = 0
 9:6/0 = 0
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSet" id="TileSet_hcyvm"]
 tile_size = Vector2i(512, 512)
