@@ -16,6 +16,7 @@ collision_layer = 32
 collision_mask = 10
 script = ExtResource("1_my3c0")
 modo = 2
+retardo = 0.7
 circulo = NodePath("Circulo")
 pinchos = NodePath("PinchosEstaticos")
 

@@ -1,27 +1,87 @@
 [gd_scene format=3 uid="uid://kkcv2dt1mobu"]
 
 [ext_resource type="PackedScene" uid="uid://bnyacbnu4yr60" path="res://scenes/enemigos/bases finales enemigos/EnemigoEstadosTerrestre.tscn" id="1_4rbmq"]
+[ext_resource type="AnimationLibrary" uid="uid://n2276j6g7ctw" path="res://resources/animaciones_esqueleto.res" id="2_4788v"]
 [ext_resource type="PackedScene" uid="uid://dtu3yh1sacj6f" path="res://scenes/enemigos/botin_piezas.tscn" id="2_i5owe"]
 [ext_resource type="Texture2D" uid="uid://h2ioufpimqyx" path="res://assets/sprites/enemigo/robot/Robot Movimiento.png" id="3_4788v"]
 [ext_resource type="Texture2D" uid="uid://07ajgxnur3sw" path="res://assets/sprites/enemigo/robot/Robot ataque.png" id="4_i0aip"]
 [ext_resource type="Texture2D" uid="uid://w1bo5fna6vhr" path="res://assets/sprites/enemigo/robot/Robot muerte.png" id="5_55l3b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
-atlas = ExtResource("3_4788v")
-region = Rect2(0, 0, 512, 0)
+[sub_resource type="Animation" id="Animation_i0aip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAndar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteMuerte:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteAtaque:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55l3b"]
+_data = {
+&"RESET": SubResource("Animation_i0aip")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(48, 40)
 
 [node name="EnemigoEstadosBase" unique_id=661418023 instance=ExtResource("1_4rbmq")]
 
+[node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
+libraries/ = SubResource("AnimationLibrary_55l3b")
+libraries/animaciones_esqueleto = ExtResource("2_4788v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaGolpe" parent_id_path=PackedInt32Array(2003133916) index="0" unique_id=309187164]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_mjkrw")
+
 [node name="MaquinaEstados" parent="." index="3" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
 estado_inicial = NodePath("Inactivo")
+
+[node name="Ataque" parent="MaquinaEstados" index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
+zona_golpe = NodePath("../../ZonaGolpe")
 
 [node name="BotinPiezas" parent="." index="5" unique_id=2125955471 instance=ExtResource("2_i5owe")]
 probabilidad = 50.0
 
 [node name="SpriteBase" type="Sprite2D" parent="." index="6" unique_id=2084160059]
+visible = false
 z_index = 2
 scale = Vector2(0.125, 0.125)
-texture = SubResource("AtlasTexture_mjkrw")
+texture = ExtResource("3_4788v")
+hframes = 3
+vframes = 2
 
 [node name="SpriteAndar" type="Sprite2D" parent="." index="7" unique_id=1647690750]
 visible = false
@@ -29,13 +89,16 @@ z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_4788v")
 hframes = 3
+vframes = 2
+frame = 3
 
 [node name="SpriteAtaque" type="Sprite2D" parent="." index="8" unique_id=804835267]
-visible = false
 z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_i0aip")
-hframes = 3
+hframes = 2
+vframes = 2
+frame = 1
 
 [node name="SpriteMuerte" type="Sprite2D" parent="." index="9" unique_id=405019512]
 visible = false
@@ -44,3 +107,4 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_55l3b")
 hframes = 3
 vframes = 2
+frame = 5
