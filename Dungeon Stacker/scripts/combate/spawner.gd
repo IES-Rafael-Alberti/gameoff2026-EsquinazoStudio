@@ -7,10 +7,13 @@ extends Node2D
 ## desafío de la sala (la señal desafios_resueltos de Habitacion). En una sala ya resuelta
 ## no hace nada y se borra.
 ##
-## Los enemigos invocados NO cuentan como desafío: no bloquean las puertas ni impiden resolver
-## la sala. La sala debe tener otro desafío que sí se pueda resolver (un puzle, otros
-## enemigos...) o el spawner no se apagaría nunca. Al aparecer se quedan quietos un instante
-## (bloqueo_invocado de Enemigo). Son hijos de la sala, así que desaparecen con ella al salir.
+## Por defecto los enemigos invocados NO cuentan como desafío: no bloquean las puertas ni
+## impiden resolver la sala. La sala debe tener entonces otro desafío que sí se pueda resolver
+## (un puzle, otros enemigos...) o el spawner no se apagaría nunca. Con cuenta_como_desafio
+## (solo si tiene límite de apariciones), el spawner y todo lo que invoca son parte del desafío:
+## la sala se resuelve cuando ya ha invocado todo y todos han muerto. Al aparecer se quedan
+## quietos un instante (bloqueo_invocado de Enemigo). Son hijos de la sala, así que desaparecen
+## con ella al salir.
 ##
 ## Estructura: este nodo con uno o varios Marker2D como hijos.
 
@@ -35,6 +38,13 @@ enum Reparto { EN_CADA_MARCADOR, UNO_AL_AZAR }
 ## 0 = sin límite.
 @export_range(0, 99) var max_vivos := 0
 
+@export_group("Desafío de la sala")
+## Si el spawner y los enemigos que invoca forman parte del desafío de la sala: las puertas
+## siguen cerradas hasta que ha invocado todos (max_apariciones) y han muerto todos. Solo
+## funciona con límite de apariciones (max_apariciones > 0): sin límite la sala no acabaría
+## nunca, así que se ignora (y avisa en la consola).
+@export var cuenta_como_desafio := false
+
 @export_group("Al acabar el desafío")
 ## Si los enemigos invocados que sigan vivos desaparecen cuando el spawner se apaga.
 @export var eliminar_invocados := true
@@ -44,6 +54,8 @@ var _espera := 0.0
 var _apariciones := 0
 var _vivos: Array[Enemigo] = []
 var _apagado := false
+## cuenta_como_desafio ya filtrado: solo se cumple si tiene límite de apariciones.
+var _es_desafio := false
 
 
 func _ready() -> void:
@@ -56,6 +68,11 @@ func _ready() -> void:
 	if _habitacion.datos != null and _habitacion.datos.resuelta:
 		queue_free()
 		return
+	if cuenta_como_desafio and max_apariciones == 0:
+		push_warning("El spawner %s no tiene límite de apariciones: no puede ser parte del desafío (sería interminable)." % name)
+	_es_desafio = cuenta_como_desafio and max_apariciones > 0
+	if _es_desafio:
+		_habitacion.registrar_desafio(self)
 	_habitacion.jugador_entro.connect(_empezar, CONNECT_ONE_SHOT)
 	_habitacion.desafios_resueltos.connect(_apagar)
 
@@ -116,6 +133,10 @@ func _invocar() -> void:
 	# desafío por si tiene que quitar lo invocado.
 	if max_apariciones > 0 and _apariciones >= max_apariciones:
 		set_physics_process(false)
+		# Ya no queda nada por invocar: el spawner deja de ser desafío (los enemigos que
+		# haya vivos siguen siéndolo hasta que mueran).
+		if _es_desafio:
+			_habitacion.resolver_desafio(self)
 
 
 func _puede_invocar() -> bool:
@@ -142,7 +163,7 @@ func _crear(marcador: Marker2D) -> void:
 		return
 
 	enemigo.invocado = true
-	enemigo.cuenta_como_desafio = false
+	enemigo.cuenta_como_desafio = _es_desafio
 	enemigo.position = padre.to_local(marcador.global_position)
 	padre.add_child(enemigo)
 
