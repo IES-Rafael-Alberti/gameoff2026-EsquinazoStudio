@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://bbx3jmfh736n0"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_ssa1y"]
+[ext_resource type="PackedScene" uid="uid://epcan2t8w62i" path="res://scenes/trampas/futuro/mina_futuro.tscn" id="2_rcip6"]
+[ext_resource type="PackedScene" uid="uid://bj1u06wqd7okr" path="res://scenes/trampas/futuro/pinchos_estaticos_futuro.tscn" id="3_7nbm3"]
+[ext_resource type="PackedScene" uid="uid://dqjevpvspyh3h" path="res://scenes/puzles/futuro/cofre_botin_futuro.tscn" id="4_bsem8"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_ssa1y")]
+
+[node name="Mina" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1893609633 instance=ExtResource("2_rcip6")]
+position = Vector2(800, 640)
+
+[node name="Mina2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=375026508 instance=ExtResource("2_rcip6")]
+position = Vector2(800, 384)
+
+[node name="Mina3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=1238155265 instance=ExtResource("2_rcip6")]
+position = Vector2(1056, 384)
+
+[node name="Mina4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=850266345 instance=ExtResource("2_rcip6")]
+position = Vector2(1056, 640)
+
+[node name="Mina5" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=423151948 instance=ExtResource("2_rcip6")]
+position = Vector2(928, 640)
+
+[node name="Mina6" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="5" unique_id=1325618334 instance=ExtResource("2_rcip6")]
+position = Vector2(928, 384)
+
+[node name="Mina7" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="6" unique_id=1163154985 instance=ExtResource("2_rcip6")]
+position = Vector2(1056, 512)
+
+[node name="Mina8" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="7" unique_id=1227461914 instance=ExtResource("2_rcip6")]
+position = Vector2(800, 512)
+
+[node name="PinchosEstaticos" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="8" unique_id=204095970 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 704)
+
+[node name="PinchosEstaticos2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=1980490171 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 640)
+
+[node name="PinchosEstaticos3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="10" unique_id=728260700 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 576)
+
+[node name="PinchosEstaticos4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="11" unique_id=922868020 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 448)
+
+[node name="PinchosEstaticos5" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="12" unique_id=367849341 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 384)
+
+[node name="PinchosEstaticos6" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="13" unique_id=861532961 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 320)
+
+[node name="PinchosEstaticos7" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="14" unique_id=930879278 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 256)
+
+[node name="PinchosEstaticos8" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="15" unique_id=188937837 instance=ExtResource("3_7nbm3")]
+position = Vector2(736, 256)
+
+[node name="PinchosEstaticos9" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="16" unique_id=551572230 instance=ExtResource("3_7nbm3")]
+position = Vector2(800, 256)
+
+[node name="PinchosEstaticos10" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="17" unique_id=445853198 instance=ExtResource("3_7nbm3")]
+position = Vector2(864, 256)
+
+[node name="PinchosEstaticos11" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="18" unique_id=886078331 instance=ExtResource("3_7nbm3")]
+position = Vector2(992, 256)
+
+[node name="PinchosEstaticos12" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="19" unique_id=1537361097 instance=ExtResource("3_7nbm3")]
+position = Vector2(1056, 256)
+
+[node name="PinchosEstaticos13" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="20" unique_id=2078612848 instance=ExtResource("3_7nbm3")]
+position = Vector2(1120, 256)
+
+[node name="PinchosEstaticos14" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="21" unique_id=2089748889 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 256)
+
+[node name="PinchosEstaticos15" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="22" unique_id=1992614091 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 320)
+
+[node name="PinchosEstaticos16" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="23" unique_id=1810131362 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 384)
+
+[node name="PinchosEstaticos17" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="24" unique_id=752518580 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 448)
+
+[node name="PinchosEstaticos18" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="25" unique_id=867285101 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 576)
+
+[node name="PinchosEstaticos19" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="26" unique_id=21933039 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 640)
+
+[node name="PinchosEstaticos20" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="27" unique_id=45869252 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 704)
+
+[node name="PinchosEstaticos21" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="28" unique_id=1450836208 instance=ExtResource("3_7nbm3")]
+position = Vector2(1184, 768)
+
+[node name="PinchosEstaticos22" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="29" unique_id=693338735 instance=ExtResource("3_7nbm3")]
+position = Vector2(1120, 768)
+
+[node name="PinchosEstaticos23" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="30" unique_id=222026274 instance=ExtResource("3_7nbm3")]
+position = Vector2(1056, 768)
+
+[node name="PinchosEstaticos24" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="31" unique_id=1289204281 instance=ExtResource("3_7nbm3")]
+position = Vector2(992, 768)
+
+[node name="PinchosEstaticos25" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="32" unique_id=521105431 instance=ExtResource("3_7nbm3")]
+position = Vector2(864, 768)
+
+[node name="PinchosEstaticos26" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="33" unique_id=1115712705 instance=ExtResource("3_7nbm3")]
+position = Vector2(800, 768)
+
+[node name="PinchosEstaticos27" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="34" unique_id=1073992078 instance=ExtResource("3_7nbm3")]
+position = Vector2(736, 768)
+
+[node name="PinchosEstaticos28" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="35" unique_id=892652539 instance=ExtResource("3_7nbm3")]
+position = Vector2(672, 768)
+
+[node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=2110658979 instance=ExtResource("4_bsem8")]
+position = Vector2(928, 512)
+
+[editable path="Puzle"]

@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bkduvjit7sq8x" path="res://assets/sprites/personaje/Walk arriba.png" id="9_4ni07"]
 [ext_resource type="Script" uid="uid://ggm2i2hxrt00" path="res://scripts/jugador/jugador_muerte.gd" id="9_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://bae3ugb0auep7" path="res://assets/sprites/personaje/Andar Izquierda.png" id="10_l71n6"]
+[ext_resource type="Script" uid="uid://dbxkrb5gexfvl" path="res://scripts/jugador/jugador_resbalar.gd" id="18_fulsm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 11.032687
@@ -507,3 +508,6 @@ script = ExtResource("8_jej6c")
 
 [node name="Muerte" type="Node" parent="MaquinaEstados" unique_id=1288902916]
 script = ExtResource("9_f1ej7")
+
+[node name="Resbalar" type="Node" parent="MaquinaEstados" unique_id=2074076946]
+script = ExtResource("18_fulsm")

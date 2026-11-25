@@ -127,6 +127,23 @@ func _construir_zona() -> void:
 	var zona := escena.instantiate()
 	var capa := zona.get_node("TileMapLayer") as TileMapLayer
 	var rect := capa.get_used_rect()
+
+	# Con 2 columnas la zona ocupa todo el ancho del vestíbulo y sus esquinas de la
+	# primera fila caen encima de los muros de los extremos. Las sustituimos por el
+	# muro que tienen justo debajo. En el superior, como se pega en espejo, esa misma
+	# celda es la que se ve arriba: no hay que buscar la última fila de la plantilla.
+	if rect.size.x >= _columnas_celdas:
+		var fila := rect.position.y
+		for x in [rect.position.x, rect.position.x + rect.size.x - 1]:
+			var destino := Vector2i(x, fila)
+			var muro := Vector2i(x, fila + 1)
+			if capa.get_cell_source_id(muro) == -1:
+				continue
+			capa.set_cell(destino,
+				capa.get_cell_source_id(muro),
+				capa.get_cell_atlas_coords(muro),
+				capa.get_cell_alternative_tile(muro))
+
 	var origen := Vector2i(int((_columnas_celdas - rect.size.x) / 2.0), _filas_celdas - 1)
 	_estampar(capa, origen)
 

@@ -31,12 +31,18 @@ var _baldosas := {}
 ## Puerta por la que se entró en la sala o -1.
 var entrada := -1
 var _cayendo := false
+var _hay_capa_hielo := false
+## Celdas que son hielo por un objeto de la sala (por ejemplo PinchosHielo), no por la baldosa.
+var _celdas_hielo := {}
 
 @onready var _zona: Area2D = $ZonaEntrada
 @onready var _tiles: TileMapLayer = $TileMapLayer
 
 
 func _ready() -> void:
+	add_to_group("habitacion")
+	# Si el TileSet no tiene el dato "hielo", la sala simplemente no tiene hielo.
+	_hay_capa_hielo = _tiles.tile_set != null and _tiles.tile_set.get_custom_data_layer_by_name("hielo") != -1
 	for hijo in $Puertas.get_children():
 		var puerta := hijo as Puerta
 		if puerta:
@@ -55,6 +61,9 @@ func _ready() -> void:
 			baldosa.rota.connect(_on_baldosa_rota)
 			var celda := _tiles.local_to_map(_tiles.to_local(baldosa.global_position))
 			_baldosas[celda] = baldosa
+	for nodo in get_tree().get_nodes_in_group("hielo_objeto"):
+		if is_ancestor_of(nodo):
+			_celdas_hielo[celda_de((nodo as Node2D).global_position)] = true
 	_restaurar_estado()
 
 
@@ -280,6 +289,27 @@ func _physics_process(_delta: float) -> void:
 	var celda := _tiles.local_to_map(_tiles.to_local(jugador.centro()))
 	if _es_vacio(celda):
 		_caer(jugador)
+
+## Celda del tablero de baldosas que hay bajo una posición global.
+func celda_de(posicion_global: Vector2) -> Vector2i:
+	return _tiles.local_to_map(_tiles.to_local(posicion_global))
+
+
+## Posición global del centro de una celda.
+func centro_de_celda(celda: Vector2i) -> Vector2:
+	return _tiles.to_global(_tiles.map_to_local(celda))
+
+
+## true si la casilla bajo esa posición global es de hielo: baldosa con custom data "hielo" u objeto de hielo.
+func es_hielo(posicion_global: Vector2) -> bool:
+	var celda := celda_de(posicion_global)
+	if _celdas_hielo.has(celda):
+		return true
+	if not _hay_capa_hielo:
+		return false
+	var tile := _tiles.get_cell_tile_data(celda)
+	return tile != null and tile.get_custom_data("hielo")
+
 
 func _es_vacio(celda: Vector2i) -> bool:
 	if _baldosas_rotas.has(celda):

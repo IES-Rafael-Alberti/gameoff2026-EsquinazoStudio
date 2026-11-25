@@ -15,6 +15,7 @@ const ATACAR := &"Atacar"
 const HERIDO := &"Herido"
 const CAER := &"Caer"
 const MUERTE := &"Muerte"
+const RESBALAR := &"Resbalar"
 
 ## El jugador al que pertenece (lo pone la máquina).
 var jugador: Jugador

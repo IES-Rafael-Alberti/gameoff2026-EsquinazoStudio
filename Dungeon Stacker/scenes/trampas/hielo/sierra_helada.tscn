@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cvy8nsk3xthea"]
+
+[ext_resource type="PackedScene" uid="uid://dh1mck3g2dd3p" path="res://scenes/trampas/medieval/Sierra.tscn" id="1_yoaax"]
+[ext_resource type="Texture2D" uid="uid://db03r62170fax" path="res://assets/sprites/tiles/hielo.png" id="2_ieguq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieguq"]
+atlas = ExtResource("2_ieguq")
+region = Rect2(512, 2560, 512, 512)
+
+[node name="Sierra" unique_id=807437377 instance=ExtResource("1_yoaax")]
+
+[node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(354997395) index="0" unique_id=1873715623]
+texture = SubResource("AtlasTexture_ieguq")
