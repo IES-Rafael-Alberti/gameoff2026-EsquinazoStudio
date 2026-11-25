@@ -1,0 +1,82 @@
+[gd_scene format=4 uid="uid://c6toy4mgbk2rg"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_f61qh"]
+[ext_resource type="PackedScene" uid="uid://catahommqbxjt" path="res://scenes/puzles/futuro/electricidad/fuente_electrica.tscn" id="2_mrl5c"]
+[ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="3_uiqw3"]
+[ext_resource type="PackedScene" uid="uid://7vdwjeyccxev" path="res://scenes/puzles/futuro/electricidad/receptor_electrico.tscn" id="4_mi1te"]
+[ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="5_nfjxm"]
+[ext_resource type="PackedScene" uid="uid://ftaippyffeyq" path="res://scenes/_Componentes/Probabilizador.tscn" id="6_mrl5c"]
+[ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="6_utsx3"]
+[ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/CambiadorBaldosas.tscn" id="7_y4680"]
+[ext_resource type="PackedScene" uid="uid://cgyl56dvqv3g3" path="res://scenes/enemigos/enemigos terminados/bolaplasma.tscn" id="8_t21ni"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_f61qh")]
+
+[node name="Forma" parent="ZonaEntrada" parent_id_path=PackedInt32Array(180062892) index="0" unique_id=990661461]
+position = Vector2(0, 0)
+
+[node name="Electricidad" parent="Electricidad" parent_id_path=PackedInt32Array(800480628) index="0" unique_id=1564926750]
+tile_map_data = PackedByteArray("AAALAAYAAAAHAAcAAAAMAAYAAAACAAcAAAAMAAcAAAABAAkAAAAMAAgAAAABAAkAAAAMAAkAAAABAAkAAAANAAoAAAACAAkAAAAOAAoAAAACAAkAAAAPAAoAAAACAAkAAAAQAAoAAAACAAkAAAARAAoAAAACAAkAAAASAAsAAAABAAkAAAASAAwAAAABAAkAAAASAA0AAAAEAAcAAAA=")
+
+[node name="Fuente Electrica" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="0" unique_id=605912163 instance=ExtResource("2_mrl5c")]
+position = Vector2(1184, 832)
+
+[node name="Puente Electrico" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="0" unique_id=1487050585 instance=ExtResource("3_uiqw3")]
+position = Vector2(800, 640)
+
+[node name="Puente Electrico2" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="1" unique_id=1506067 instance=ExtResource("3_uiqw3")]
+position = Vector2(1184, 640)
+
+[node name="ReceptorElectrico" parent="Electricidad/Receptor" parent_id_path=PackedInt32Array(593196618) index="0" unique_id=750516404 node_paths=PackedStringArray("destinos") instance=ExtResource("4_mi1te")]
+position = Vector2(736, 384)
+al_llegar_corriente = 1
+al_cortarse_corriente = 1
+destinos = [NodePath("../../../Puzle/CambiadorBaldosas")]
+
+[node name="Caja" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="0" unique_id=1664255518 instance=ExtResource("5_nfjxm")]
+position = Vector2(608, 832)
+
+[node name="Caja2" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="1" unique_id=1644093103 instance=ExtResource("5_nfjxm")]
+position = Vector2(1248, 320)
+
+[node name="Probabilizador" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="2" unique_id=1708072780 instance=ExtResource("6_mrl5c")]
+probabilidad_eliminar = 62.5
+
+[node name="PocionCuracion" parent="Electricidad/Objetivo/Probabilizador" index="0" unique_id=1110925366 instance=ExtResource("6_utsx3")]
+position = Vector2(672, 320)
+
+[node name="PocionCuracion2" parent="Electricidad/Objetivo/Probabilizador" index="1" unique_id=1646302422 instance=ExtResource("6_utsx3")]
+position = Vector2(608, 320)
+
+[node name="CambiadorBaldosas" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=970107115 instance=ExtResource("7_y4680")]
+tile_map_data = PackedByteArray("AAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAUAAAAAAAAAAAA=")
+
+[node name="Patrulla" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1739202080 instance=ExtResource("8_t21ni")]
+position = Vector2(736, 576)
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla" index="3" unique_id=225901008]
+position = Vector2(128, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla" index="4" unique_id=877688053]
+position = Vector2(128, 128)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla" index="5" unique_id=3754012]
+position = Vector2(0, 128)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemigos/Patrulla" index="6" unique_id=1625113393]
+
+[node name="Patrulla2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=442812491 instance=ExtResource("8_t21ni")]
+position = Vector2(1248, 576)
+
+[node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla2" index="3" unique_id=1251307333]
+position = Vector2(0, 128)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemigos/Patrulla2" index="4" unique_id=1568309462]
+position = Vector2(-128, 128)
+
+[node name="Marker2D3" type="Marker2D" parent="Enemigos/Patrulla2" index="5" unique_id=1862801687]
+position = Vector2(-128, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="Enemigos/Patrulla2" index="6" unique_id=1891091389]
+
+[editable path="Puzle"]
