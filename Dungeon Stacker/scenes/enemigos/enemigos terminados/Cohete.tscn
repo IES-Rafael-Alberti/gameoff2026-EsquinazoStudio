@@ -207,11 +207,13 @@ zona_golpe = NodePath("../../ZonaGolpe")
 script = ExtResource("4_omqjr")
 
 [node name="SpriteAndar" type="Sprite2D" parent="." index="4" unique_id=2027439128]
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_55ksb")
 hframes = 2
 vframes = 2
 
 [node name="explosion" type="Sprite2D" parent="." index="5" unique_id=1074604956]
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("6_sjfsb")
 hframes = 3
 vframes = 2

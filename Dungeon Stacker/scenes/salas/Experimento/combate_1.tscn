@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="7_0lhjv"]
 [ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/medieval/CofreFalso.tscn" id="8_amvy4"]
 [ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/medieval/lanzaflechas.tscn" id="8_cly1m"]
+[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/cohete.tscn" id="9_4q3au"]
 [ext_resource type="PackedScene" uid="uid://bxhh0ggwx4wua" path="res://scenes/trampas/medieval/mina.tscn" id="9_6u2yx"]
 [ext_resource type="PackedScene" uid="uid://c4lm4krh4f4q0" path="res://scenes/enemigos/enemigo_terrestre.tscn" id="12_ivv0d"]
 [ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="12_jqfdg"]
@@ -55,24 +56,27 @@ position = Vector2(608, 832)
 [node name="CofreFalso" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="9" unique_id=551623583 instance=ExtResource("8_amvy4")]
 position = Vector2(800, 832)
 
-[node name="EnemigoEstatico" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=985281501 instance=ExtResource("2_46aam")]
+[node name="Cohete" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("9_4q3au")]
+position = Vector2(992, 384)
+
+[node name="EnemigoEstatico" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=985281501 instance=ExtResource("2_46aam")]
 position = Vector2(668, 351)
 
-[node name="EnemigoEstatico2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1002324315 instance=ExtResource("2_46aam")]
+[node name="EnemigoEstatico2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1002324315 instance=ExtResource("2_46aam")]
 position = Vector2(923, 351)
 
-[node name="EnemigoEstatico3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=2093607761 instance=ExtResource("2_46aam")]
+[node name="EnemigoEstatico3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=2093607761 instance=ExtResource("2_46aam")]
 position = Vector2(1157, 351)
 
-[node name="EnemigoPerseguidor" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=592405911 instance=ExtResource("3_msgi3")]
+[node name="EnemigoPerseguidor" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=592405911 instance=ExtResource("3_msgi3")]
 position = Vector2(1184, 192)
 
-[node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
+[node name="EnemigoVolador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=1141728963 instance=ExtResource("4_3nt8i")]
 position = Vector2(1120, 544)
 
-[node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="5" unique_id=19484404 instance=ExtResource("12_ivv0d")]
+[node name="enemigo_terrestre" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="6" unique_id=19484404 instance=ExtResource("12_ivv0d")]
 position = Vector2(544, 128)
 
-[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("12_jqfdg")]
+[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("12_jqfdg")]
 
 [editable path="Puzle"]

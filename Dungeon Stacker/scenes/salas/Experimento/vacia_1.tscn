@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="9_d10aq"]
 [ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="9_odsc1"]
 [ext_resource type="PackedScene" uid="uid://c7yon63rgn1n2" path="res://scenes/trampas/medieval/TrampaGiratoria.tscn" id="10_d10aq"]
+[ext_resource type="PackedScene" uid="uid://cs3sdy7fcgr47" path="res://scenes/trampas/hielo/trampa_bola_nieve.tscn" id="12_vglt8"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_dglvb")]
 
@@ -71,5 +72,13 @@ position = Vector2(928, 384)
 [node name="TrampaGiratoria" parent="." index="12" unique_id=27660831 instance=ExtResource("10_d10aq")]
 position = Vector2(672, 448)
 longitud = 2
+
+[node name="TrampaBolaNieve" parent="." index="13" unique_id=1698572517 instance=ExtResource("12_vglt8")]
+position = Vector2(1248, 128)
+sentido = 2
+
+[node name="TrampaBolaNieve2" parent="." index="14" unique_id=1217495881 instance=ExtResource("12_vglt8")]
+position = Vector2(1184, 480)
+sentido = 1
 
 [editable path="Puzle"]

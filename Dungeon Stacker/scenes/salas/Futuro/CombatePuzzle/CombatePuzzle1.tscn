@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="3_sqkdr"]
 [ext_resource type="PackedScene" uid="uid://bwijvmsmdixob" path="res://scenes/puzles/futuro/electricidad/objetivo_electrica.tscn" id="4_kmos3"]
 [ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="5_jj4im"]
-[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/Cohete.tscn" id="6_y0xvi"]
+[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/cohete.tscn" id="6_y0xvi"]
 [ext_resource type="PackedScene" uid="uid://kkcv2dt1mobu" path="res://scenes/enemigos/enemigos terminados/robot.tscn" id="7_sbqtj"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_1t7yi")]
