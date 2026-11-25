@@ -1,12 +1,172 @@
 [gd_scene format=3 uid="uid://c7x6j8qxex6ln"]
 
 [ext_resource type="PackedScene" uid="uid://bwqjyb85nbq6s" path="res://scenes/enemigos/EnemigoEstadosBase.tscn" id="1_cft40"]
+[ext_resource type="Script" uid="uid://c1sq7ooi0l0j1" path="res://scripts/combate/EnemigoMaquinaEstado/enemigo_cohete.gd" id="2_3e65b"]
+[ext_resource type="Script" uid="uid://doqeshwjdwagp" path="res://scripts/combate/EnemigoMaquinaEstado/estado_perseguir_cohete.gd" id="3_p4tcp"]
+[ext_resource type="Script" uid="uid://6y42w4pm71lu" path="res://scripts/combate/EnemigoMaquinaEstado/estado_explosion.gd" id="4_omqjr"]
+[ext_resource type="Texture2D" uid="uid://cwddxrelp08ub" path="res://assets/sprites/enemigo/Robot cohete/Movimiento Robot volador.png" id="5_55ksb"]
+[ext_resource type="Texture2D" uid="uid://dab7b2rk4l0t" path="res://assets/sprites/enemigo/Robot cohete/Muerte robot volador.png" id="6_sjfsb"]
+
+[sub_resource type="Animation" id="Animation_k1hgn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAndar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteAndar:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hcoyy"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAndar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_j2ypr"]
+resource_name = "perseguir"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAndar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteAndar:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5e36a"]
+_data = {
+&"RESET": SubResource("Animation_k1hgn"),
+&"explosion": SubResource("Animation_hcoyy"),
+&"perseguir": SubResource("Animation_j2ypr")
+}
 
 [node name="EnemigoEstadosBase" unique_id=661418023 instance=ExtResource("1_cft40")]
+collision_layer = 9
+script = ExtResource("2_3e65b")
 
-[node name="ColorRect" type="ColorRect" parent="." index="4" unique_id=178776442]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-color = Color(0.9333266, 3.272891e-06, 9.62615e-07, 1)
+[node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
+libraries/ = SubResource("AnimationLibrary_5e36a")
+
+[node name="Perseguir" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="4" unique_id=586746999]
+script = ExtResource("3_p4tcp")
+
+[node name="Ataque" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="6" unique_id=1763796683]
+rango = 0.0
+
+[node name="Explosion" type="Node" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="7" unique_id=202880181]
+script = ExtResource("4_omqjr")
+
+[node name="SpriteAndar" type="Sprite2D" parent="." index="4" unique_id=2027439128]
+texture = ExtResource("5_55ksb")
+hframes = 2
+vframes = 2
+
+[node name="explosion" type="Sprite2D" parent="." index="5" unique_id=1074604956]
+texture = ExtResource("6_sjfsb")
+hframes = 3
+vframes = 2
