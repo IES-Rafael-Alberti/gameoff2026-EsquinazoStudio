@@ -18,7 +18,8 @@ extends TileMapLayer
 ## La luz recorre el cable casilla a casilla: cada casilla tarda "retardo_casilla" más que la
 ## anterior en encenderse. Al apagarse, las casillas más cercanas a lo que sigue con corriente se
 ## apagan primero y la oscuridad se aleja. Los receptores reaccionan cuando la luz llega a su
-## casilla. Al cargar la sala, la red ya aparece encendida y los receptores no reaccionan.
+## casilla. Al cargar la sala, la red ya aparece encendida y los receptores no reaccionan (salvo
+## los ObjetivoElectrico, que cuentan como alcanzados si ya les llega corriente).
 ## Si la sala ya estaba resuelta al cargarla, la red se ajusta al instante a las cajas que haya
 ## (sin recorrido de luz) y los receptores no reaccionan: láseres y cambiadores están como se
 ## guardaron.
@@ -137,6 +138,18 @@ func _on_puente(puente: PlacaInvisible, activo: bool) -> void:
 		_recalcular(false)
 
 
+## Al cargar, los receptores no reaccionan, pero los que tienen el método corriente_inicial
+## (los ObjetivoElectrico) sí se enteran de si ya les llega corriente. Se avisa en diferido, cuando
+## todos los nodos de la sala ya han terminado su _ready (por ejemplo, para registrarse como
+## desafío). Si la sala ya estaba resuelta no hace falta: los objetivos aparecen resueltos solos.
+func _avisar_corriente_inicial() -> void:
+	if _resuelta_al_cargar:
+		return
+	for receptor in _receptores:
+		if receptor.has_method("corriente_inicial"):
+			receptor.corriente_inicial.call_deferred(_encendidas.has(_celda_de(receptor)))
+
+
 ## Sala resuelta cargada: pone cada casilla como le toca ya, sin recorrido ni avisos.
 func _ajustar_al_instante() -> void:
 	var objetivo := _alcanzar(_celdas_fuente)
@@ -156,6 +169,7 @@ func _recalcular(inicial: bool) -> void:
 			if _cables.has(celda):
 				_aplicar_celda(celda, true, false)
 		_distancias = objetivo
+		_avisar_corriente_inicial()
 		return
 
 	# Encender: pasos desde lo que ya está encendido (o las fuentes), solo por la parte nueva.

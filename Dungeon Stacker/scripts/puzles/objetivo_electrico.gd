@@ -29,6 +29,12 @@ func recibir_corriente(hay_corriente: bool) -> void:
 		resolver()
 
 
+## Lo llama la CapaElectrica al cargar la sala, si el objetivo ya está conectado a una fuente.
+func corriente_inicial(hay_corriente: bool) -> void:
+	if hay_corriente:
+		recibir_corriente(true)
+
+
 func _al_cargar_resuelto() -> void:
 	_poner_sprite(true)
 
