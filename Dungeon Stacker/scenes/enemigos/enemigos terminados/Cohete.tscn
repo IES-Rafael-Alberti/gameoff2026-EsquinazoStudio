@@ -188,6 +188,7 @@ _data = {
 [node name="Cohete" unique_id=661418023 instance=ExtResource("1_cft40")]
 collision_mask = 5
 script = ExtResource("2_3e65b")
+volador = true
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
 libraries/ = SubResource("AnimationLibrary_5e36a")
