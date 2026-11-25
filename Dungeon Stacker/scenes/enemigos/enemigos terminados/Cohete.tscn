@@ -97,6 +97,45 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_55ksb"]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteAndar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="Animation" id="Animation_j2ypr"]
 resource_name = "perseguir"
 length = 0.8
@@ -142,23 +181,28 @@ tracks/2/keys = {
 _data = {
 &"RESET": SubResource("Animation_k1hgn"),
 &"explosion": SubResource("Animation_hcoyy"),
+&"muerte": SubResource("Animation_55ksb"),
 &"perseguir": SubResource("Animation_j2ypr")
 }
 
-[node name="EnemigoEstadosBase" unique_id=661418023 instance=ExtResource("1_cft40")]
-collision_layer = 9
+[node name="Cohete" unique_id=661418023 instance=ExtResource("1_cft40")]
+collision_mask = 5
 script = ExtResource("2_3e65b")
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
 libraries/ = SubResource("AnimationLibrary_5e36a")
 
-[node name="Perseguir" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="4" unique_id=586746999]
+[node name="MaquinaEstados" parent="." index="3" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
+estado_inicial = NodePath("Perseguir")
+
+[node name="Perseguir" parent="MaquinaEstados" index="4" unique_id=586746999]
 script = ExtResource("3_p4tcp")
 
-[node name="Ataque" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="6" unique_id=1763796683]
+[node name="Ataque" parent="MaquinaEstados" index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
 rango = 0.0
+zona_golpe = NodePath("../../ZonaGolpe")
 
-[node name="Explosion" type="Node" parent="MaquinaEstados" parent_id_path=PackedInt32Array(46075694) index="7" unique_id=202880181]
+[node name="Explosion" type="Node" parent="MaquinaEstados" index="7" unique_id=202880181]
 script = ExtResource("4_omqjr")
 
 [node name="SpriteAndar" type="Sprite2D" parent="." index="4" unique_id=2027439128]
