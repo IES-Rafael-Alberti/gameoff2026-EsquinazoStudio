@@ -311,6 +311,11 @@ func es_hielo(posicion_global: Vector2) -> bool:
 	return tile != null and tile.get_custom_data("hielo")
 
 
+## true si bajo esa posición global hay vacío (casilla donde se cae).
+func es_vacio(posicion_global: Vector2) -> bool:
+	return _es_vacio(celda_de(posicion_global))
+
+
 func _es_vacio(celda: Vector2i) -> bool:
 	if _baldosas_rotas.has(celda):
 		return true

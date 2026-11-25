@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://mm0bccftifpd"]
+
+[ext_resource type="Script" uid="uid://0lfj1fqbufbb" path="res://scripts/trampas/bola_nieve.gd" id="1_hhkkr"]
+[ext_resource type="Texture2D" uid="uid://db03r62170fax" path="res://assets/sprites/tiles/hielo.png" id="2_3rbb5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mjkrw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
+atlas = ExtResource("2_3rbb5")
+region = Rect2(1536, 3072, 512, 512)
+
+[node name="BolaNieve" type="Area2D" unique_id=1946304826]
+script = ExtResource("1_hhkkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=501548953]
+shape = SubResource("CircleShape2D_mjkrw")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=475435770]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_mjkrw")
