@@ -8,7 +8,9 @@ var modo := Modo.MAZMORRA
 @onready var _tetris: Tetris = $Tetris
 @onready var _mazmorra: Mazmorra = $Mazmorra
 
-var _pantalla_muerte: PantallaMuerte
+## La pantalla de "has muerto" (instancia de su escena dentro de juego.tscn). Su señal
+## reinicio_pedido se conecta a reiniciar_nivel desde el editor.
+@export var pantalla_muerte: PantallaMuerte
 
 ## Antes de que nada del tablero lea su configuración (el padre entra en el árbol antes que sus
 ## hijos), se pone la del nivel elegido en el menú. Sin nivel elegido (F6 sobre esta escena)
@@ -29,9 +31,6 @@ func _ready() -> void:
 	Musica.iniciar_juego(Catalogo.Bioma.MEDIEVAL, Musica.Modo.MAZMORRA)
 	_aplicar_modo()
 
-	_pantalla_muerte = PantallaMuerte.new()
-	add_child(_pantalla_muerte)
-	_pantalla_muerte.reinicio_pedido.connect(reiniciar_nivel)
 	_mazmorra.jugador.murio.connect(_on_jugador_murio)
 	# Si viene de un nivel anterior (o reinicia este), empieza con la vida que le toca.
 	if Partida.vida_al_empezar >= 0:
@@ -67,7 +66,7 @@ func _activar(nodo: CanvasItem, activo: bool) -> void:
 ## El jugador ha llegado a 0 de vida: se congela todo y se ofrece reiniciar el nivel.
 func _on_jugador_murio() -> void:
 	get_tree().paused = true
-	_pantalla_muerte.mostrar()
+	pantalla_muerte.mostrar()
 
 ## Señal nivel_completado de Mazmorra (se conecta desde el editor): el jugador cruzó la puerta de
 ## salida. Se cura lo que diga la configuración del nivel y pasa al siguiente con esa vida.
