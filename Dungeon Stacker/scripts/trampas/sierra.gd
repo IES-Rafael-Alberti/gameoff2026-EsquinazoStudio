@@ -11,6 +11,12 @@ enum Estado { REPOSO, ATACANDO, VOLVIENDO }
 ## En el orden de Puerta.Direccion: Norte, Este, Sur, Oeste.
 const VECTORES := [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 
+## Si la velocidad de ataque supera esta, la sierra usa el dibujo alternativo (manchado de
+## sangre). No se expone al diseñador. Los dos dibujos son hijos de "Visual".
+const VELOCIDAD_SANGRIENTA := 600.0
+const DIBUJO_NORMAL := &"Sprite2D"
+const DIBUJO_ALTERNATIVO := &"Sprite2Alter"
+
 @export_group("Ataque")
 ## Direcciones en las que ataca. Por defecto, las cuatro.
 @export_flags("Norte", "Este", "Sur", "Oeste") var direcciones := 15
@@ -51,6 +57,7 @@ func _ready() -> void:
 	if _cuerpo != null:
 		_cuerpo.collision_layer = 0 if atravesable else Capas.SIERRAS
 	_visual = get_node_or_null("Visual") as Node2D
+	_elegir_dibujo()
 	for hijo in get_children():
 		if hijo is CollisionShape2D:
 			_forma = _reducir(hijo.shape)
@@ -69,6 +76,19 @@ func _physics_process(delta: float) -> void:
 	# Gira mientras se mueve (atacando o volviendo); quieta en reposo.
 	if _visual != null and _estado != Estado.REPOSO:
 		_visual.rotation += deg_to_rad(velocidad_giro) * delta
+
+
+## Muestra el dibujo alternativo si la sierra va muy rápida y el normal si no.
+func _elegir_dibujo() -> void:
+	if _visual == null:
+		return
+	var normal := _visual.get_node_or_null(NodePath(DIBUJO_NORMAL)) as CanvasItem
+	var alternativo := _visual.get_node_or_null(NodePath(DIBUJO_ALTERNATIVO)) as CanvasItem
+	if normal == null or alternativo == null:
+		return
+	var sangrienta := velocidad > VELOCIDAD_SANGRIENTA
+	normal.visible = not sangrienta
+	alternativo.visible = sangrienta
 
 
 ## En reposo: busca al jugador en alguno de sus ejes permitidos.
