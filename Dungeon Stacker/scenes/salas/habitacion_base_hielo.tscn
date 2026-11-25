@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://crfl1k05tltje"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_ypjs6"]
+[ext_resource type="Texture2D" uid="uid://db03r62170fax" path="res://assets/sprites/tiles/hielo.png" id="2_qwf71"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qwf71"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4bxdj"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mphjc"]
+vertices = PackedVector2Array(256, 256, -256, 256, -256, -256, 256, -256)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4bxdj"]
+texture = ExtResource("2_qwf71")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_qwf71")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 136.33226, 256, 136.33228, 256, 256, -256, 256)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+2:1/0 = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4bxdj")
+2:1/0/custom_data_1 = true
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+3:1/0 = 0
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+2:3/0 = 0
+2:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mphjc")
+4:0/0 = 0
+4:0/0/custom_data_0 = true
+5:0/0 = 0
+5:0/0/custom_data_0 = true
+6:2/0 = 0
+6:2/0/custom_data_0 = true
+6:3/0 = 0
+6:3/0/custom_data_0 = true
+6:3/0/custom_data_1 = true
+7:3/0 = 0
+7:3/0/custom_data_0 = true
+7:3/0/custom_data_1 = true
+7:4/0 = 0
+7:4/0/custom_data_0 = true
+7:4/0/custom_data_1 = true
+9:4/0 = 0
+9:4/0/custom_data_0 = true
+9:4/0/custom_data_1 = true
+9:3/0 = 0
+9:3/0/custom_data_0 = true
+9:3/0/custom_data_1 = true
+9:2/0 = 0
+9:2/0/custom_data_0 = true
+9:1/0 = 0
+9:1/0/custom_data_0 = true
+9:0/0 = 0
+9:0/0/custom_data_0 = true
+8:0/0 = 0
+8:0/0/custom_data_0 = true
+7:0/0 = 0
+7:0/0/custom_data_0 = true
+6:0/0 = 0
+6:0/0/custom_data_0 = true
+6:1/0 = 0
+6:1/0/custom_data_0 = true
+7:1/0 = 0
+7:1/0/custom_data_0 = true
+8:2/0 = 0
+8:2/0/custom_data_0 = true
+6:4/0 = 0
+6:4/0/custom_data_0 = true
+6:4/0/custom_data_1 = true
+8:3/0 = 0
+8:3/0/custom_data_0 = true
+8:3/0/custom_data_1 = true
+7:2/0 = 0
+7:2/0/custom_data_0 = true
+7:5/0 = 0
+7:5/0/custom_data_0 = true
+7:5/0/custom_data_1 = true
+8:5/0 = 0
+8:5/0/custom_data_0 = true
+8:5/0/custom_data_1 = true
+9:5/0 = 0
+9:5/0/custom_data_0 = true
+9:5/0/custom_data_1 = true
+6:5/0 = 0
+6:5/0/custom_data_0 = true
+6:5/0/custom_data_1 = true
+5:5/0 = 0
+5:5/0/custom_data_0 = true
+5:5/0/custom_data_1 = true
+4:5/0 = 0
+4:5/0/custom_data_0 = true
+4:5/0/custom_data_1 = true
+4:4/0 = 0
+4:4/0/custom_data_0 = true
+4:4/0/custom_data_1 = true
+4:3/0 = 0
+4:3/0/custom_data_0 = true
+4:3/0/custom_data_1 = true
+4:2/0 = 0
+4:2/0/custom_data_0 = true
+4:1/0 = 0
+4:1/0/custom_data_0 = true
+5:2/0 = 0
+5:2/0/custom_data_0 = true
+5:3/0 = 0
+5:3/0/custom_data_0 = true
+5:3/0/custom_data_1 = true
+0:4/0 = 0
+0:2/0 = 0
+5:1/0 = 0
+5:1/0/custom_data_0 = true
+1:4/0 = 0
+2:4/0 = 0
+2:4/0/custom_data_1 = true
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+
+[sub_resource type="TileSet" id="TileSet_hcyvm"]
+tile_size = Vector2i(512, 512)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+custom_data_layer_0/name = "vacio"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "hielo"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_4bxdj")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mphjc"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 512, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77hhd"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 1024, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5m8m"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 0, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwf71"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 512, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bxdj"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 1024, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lasnn"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 0, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ickm6"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 512, 512, 512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aalwi"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shby4"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twf32"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mds8"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cdor"]
+atlas = ExtResource("2_qwf71")
+region = Rect2(512, 0, 512, 512)
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_ypjs6")]
+
+[node name="TileMapLayer" parent="." index="0" unique_id=1996153903]
+tile_set = SubResource("TileSet_hcyvm")
+
+[node name="PuertaNorte" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="0" unique_id=1428825819]
+sprite_abierta = SubResource("AtlasTexture_mphjc")
+sprite_cerrada = SubResource("AtlasTexture_77hhd")
+sprite_sellada = SubResource("AtlasTexture_s5m8m")
+
+[node name="PuertaEste" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="1" unique_id=1373427372]
+sprite_abierta = SubResource("AtlasTexture_qwf71")
+sprite_cerrada = SubResource("AtlasTexture_4bxdj")
+sprite_sellada = SubResource("AtlasTexture_lasnn")
+
+[node name="PuertaSur" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="2" unique_id=1809080674]
+sprite_abierta = SubResource("AtlasTexture_ickm6")
+sprite_cerrada = SubResource("AtlasTexture_aalwi")
+sprite_sellada = SubResource("AtlasTexture_shby4")
+
+[node name="PuertaOeste" parent="Puertas" parent_id_path=PackedInt32Array(1354287463) index="3" unique_id=914210556]
+sprite_abierta = SubResource("AtlasTexture_twf32")
+sprite_cerrada = SubResource("AtlasTexture_6mds8")
+sprite_sellada = SubResource("AtlasTexture_5cdor")
+
+[editable path="Puzle"]

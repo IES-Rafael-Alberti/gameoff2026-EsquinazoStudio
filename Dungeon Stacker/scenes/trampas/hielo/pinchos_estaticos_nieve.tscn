@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dlmb5evknos0p"]
+
+[ext_resource type="PackedScene" uid="uid://b71t1yh8nlc7v" path="res://scenes/trampas/medieval/PinchosEstaticos.tscn" id="1_frn3d"]
+[ext_resource type="Texture2D" uid="uid://db03r62170fax" path="res://assets/sprites/tiles/hielo.png" id="2_cbmhy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbmhy"]
+atlas = ExtResource("2_cbmhy")
+region = Rect2(512, 2048, 512, 512)
+
+[node name="PinchosEstaticos" unique_id=204095970 instance=ExtResource("1_frn3d")]
+
+[node name="Sprite0-1" parent="." index="1" unique_id=1258677299]
+texture = SubResource("AtlasTexture_cbmhy")
+
+[node name="Sprite1-1" parent="." index="2" unique_id=1714056493]
+texture = SubResource("AtlasTexture_cbmhy")
+
+[node name="Sprite0-0" parent="." index="3" unique_id=1568855434]
+texture = SubResource("AtlasTexture_cbmhy")
+
+[node name="Sprite1-0" parent="." index="4" unique_id=2017441774]
+texture = SubResource("AtlasTexture_cbmhy")
