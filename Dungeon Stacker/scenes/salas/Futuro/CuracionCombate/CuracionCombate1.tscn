@@ -75,6 +75,7 @@ position = Vector2(1184, 832)
 position = Vector2(672, 192)
 
 [node name="Probabilizador3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="3" unique_id=732596689 instance=ExtResource("6_7dpea")]
+probabilidad_eliminar = 60.0
 
 [node name="PocionCuracion3" parent="Objetos/Probabilizador3" index="0" unique_id=608028661 instance=ExtResource("7_71eyb")]
 position = Vector2(1184, 192)
