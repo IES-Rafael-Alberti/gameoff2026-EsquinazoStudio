@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_0e7f6"]
 [ext_resource type="PackedScene" uid="uid://cgyl56dvqv3g3" path="res://scenes/enemigos/enemigos terminados/bolaplasma.tscn" id="2_hleey"]
 [ext_resource type="PackedScene" uid="uid://kkcv2dt1mobu" path="res://scenes/enemigos/enemigos terminados/robot.tscn" id="3_b8bim"]
-[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="3_hleey"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_0e7f6")]
 
@@ -127,7 +126,5 @@ position = Vector2(864, 448)
 
 [node name="EnemigoEstadosBase4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="7" unique_id=1667797337 instance=ExtResource("3_b8bim")]
 position = Vector2(992, 448)
-
-[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("3_hleey")]
 
 [editable path="Puzle"]
