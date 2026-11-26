@@ -12,15 +12,21 @@ The point is that both parts are connected: the dungeon you play is the one you 
 Developed for Game off, This proyect tries to mix 2 Genres where every decision with the building change the way you explore the dungeon.
 
 # Planning
-This repository counts with 3
+This repository counts with 3 distinct proyect phases:
+
+Pre-production: Creation of a playable prototipe, 1 week
+
+Production: Development and polish, 2 weeks
+
+Post-production: bugfixing and marketing, 1 week
 
 # Team Members
-Rubén Gómez @Kyubi-LS : Art, Marketing
+Carlos Borrego @carlos-borregofajardo : Main Programmer
 
 Eduardo Pacheco @Edu25107 : Main artist
 
-Jose Carmona @ErCarmona : Producer, designer
-
 Gonzalo Casas @GonzaloCasa06 : Main designer
 
-Carlos Borrego @carlos-borrego : Main Programmer
+Jose Carmona @ErCarmona : Producer, designer
+
+Rubén Gómez @Kyubi-LS : Art, Marketing
