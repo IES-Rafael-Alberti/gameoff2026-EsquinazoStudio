@@ -2,7 +2,6 @@ class_name Juego
 extends Node
 
 enum Modo { TETRIS, MAZMORRA }
-
 var modo := Modo.MAZMORRA
 
 @onready var _tetris: Tetris = $Tetris
@@ -25,6 +24,8 @@ func _ready() -> void:
 	_mazmorra.contenido = _tetris.Configuracion.CONTENIDO
 	# Las piezas que se consiguen en la mazmorra (cofres...) se suman al tetris.
 	_mazmorra.piezas_obtenidas.connect(_tetris.agregar_piezas)
+	# Las salas objetivo resueltas apagan barreras del tetris.
+	_mazmorra.barreras_a_apagar_pedidas.connect(_apagar_barreras)
 	# Se empieza en la mazmorra, en la zona de spawn del vestíbulo inferior.
 	_mazmorra.sincronizar(_tetris.tablero)
 	# La música empieza en el bioma medieval; la mazmorra cambia de bioma al entrar en cada sala.
@@ -79,3 +80,7 @@ func _on_mazmorra_nivel_completado() -> void:
 func reiniciar_nivel() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+func _apagar_barreras(grupos: Array[StringName]) -> void:
+	for grupo in grupos:
+		_tetris.desactivar_barrera(grupo)

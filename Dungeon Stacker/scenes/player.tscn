@@ -451,7 +451,7 @@ radius = 11.032687
 height = 34.03676
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
-size = Vector2(175, 100)
+size = Vector2(72, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
 atlas = ExtResource("11_4r5pv")
@@ -561,6 +561,7 @@ platform_floor_layers = 0
 safe_margin = 0.5
 script = ExtResource("1_oprun")
 speed = 240.0
+alcance_ataque = 44.0
 zona_golpe = NodePath("ZonaGolpe")
 onda_ataque = NodePath("ZonaGolpe/Onda")
 

@@ -2,7 +2,8 @@ class_name InterfazMazmorra
 extends CanvasLayer
 
 @onready var _minimapa: Minimapa = $Minimapa
-@onready var _etiqueta: Label = $Etiqueta
+## Texto opcional (ya no se usa de serie): si el nodo "Etiqueta" no existe, no pasa nada.
+@onready var _etiqueta: Label = get_node_or_null("Etiqueta") as Label
 @onready var _barra_vida: BarraVida = $BarraVida
 @onready var _llave: TextureRect = get_node_or_null("Llave") as TextureRect
 
@@ -48,7 +49,8 @@ func refrescar_minimapa() -> void:
 
 
 func mostrar_texto(texto: String) -> void:
-	_etiqueta.text = texto
+	if _etiqueta != null:
+		_etiqueta.text = texto
 
 
 func _conectar_llave(jugador: Node) -> void:
