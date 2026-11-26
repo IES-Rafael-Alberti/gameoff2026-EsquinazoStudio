@@ -1,5 +1,5 @@
 # Dungeon stacker
-## presented by Esquinazo studio
+## Presented by Esquinazo studio
 
 What if the pieces you put un a tetris game only purpose wasnt get a high score, but also build a fully explorable dungeon?
 
@@ -22,3 +22,5 @@ Eduardo Pacheco @Edu25107 : Main artist
 Jose Carmona @ErCarmona : Producer, designer
 
 Gonzalo Casas @GonzaloCasa06 : Main designer
+
+Carlos Borrego @carlos-borrego : Main Programmer
