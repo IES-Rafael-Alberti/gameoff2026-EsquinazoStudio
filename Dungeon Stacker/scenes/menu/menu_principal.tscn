@@ -21,6 +21,9 @@ boton_salir = NodePath("MenuPrincipal/Salir")
 metadata/_edit_horizontal_guides_ = [1080.0]
 metadata/_edit_vertical_guides_ = [1921.0]
 
+[node name="Fondo" parent="." unique_id=1709290085 instance=ExtResource("4_4mcpf")]
+layout_mode = 1
+
 [node name="MenuPrincipal" type="Panel" parent="." unique_id=997857503]
 layout_mode = 1
 anchors_preset = -1
@@ -95,9 +98,6 @@ layout_mode = 1
 
 [node name="Niveles" parent="." unique_id=211134633 instance=ExtResource("3_28145")]
 visible = false
-layout_mode = 1
-
-[node name="Control" parent="." unique_id=1709290085 instance=ExtResource("4_4mcpf")]
 layout_mode = 1
 
 [connection signal="pressed" from="MenuPrincipal/Iniciar" to="." method="_on_play_button_pressed"]

@@ -143,7 +143,7 @@ _data = {
 &"RESET": SubResource("Animation_8p4sg")
 }
 
-[node name="Control" type="Control" unique_id=1709290085]
+[node name="Fondo" type="Control" unique_id=1709290085]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,13 +154,7 @@ grow_vertical = 2
 [node name="Fondo" type="CanvasLayer" parent="." unique_id=1462611102]
 layer = -3
 
-[node name="ColorRect" type="ColorRect" parent="Fondo" unique_id=1182407762]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.7176471, 1, 1)
+[node name="SpriteCielo" type="Sprite2D" parent="Fondo" unique_id=559321162]
 
 [node name="Lluvia" type="CanvasLayer" parent="." unique_id=589255363]
 layer = -2
