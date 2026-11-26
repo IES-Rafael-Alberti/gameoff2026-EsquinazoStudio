@@ -13,6 +13,9 @@ Developed for Game off, This proyect tries to mix 2 Genres where every decision 
 
 # Team Members
 Rubén Gómez @Kyubi-LS : Art, Marketing
+
 Eduardo Pacheco @Edu25107 : Main artist
+
 Jose Carmona @ErCarmona : Producer, designer
+
 Gonzalo Casas @GonzaloCasa06 : Main designer
