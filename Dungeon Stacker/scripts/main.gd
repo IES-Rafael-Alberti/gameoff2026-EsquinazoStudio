@@ -16,6 +16,8 @@ static func de(nodo: Node) -> Tetris:
 ## Aviso que se muestra cuando dejan de salir piezas por tener una puerta arriba (por ejemplo, un
 ## Label en el panel lateral: "SHIFT: mazmorra / ESPACIO: seguir"). Opcional.
 @export var aviso_salida: Control
+## Cambió el número de piezas (en cola, en juego y guardada). Para pintarlo donde haga falta.
+signal piezas_cambiadas(total: int)
 
 @export_group("Colocación en pantalla")
 ## Dónde queda el centro del tablero en vertical, medido desde abajo (0 = abajo del todo,
@@ -315,11 +317,16 @@ func reiniciar_tetris() -> void:
 	generar_pieza()
 	actualizar_contador()
 
-func actualizar_contador() -> void:
-	if piezas_label == null:
-		return
-	var actual = 0
-	if controlador_pieza.pieza_actual != null:
-		actual = 1
+## Piezas que quedan: las pendientes, la que está cayendo y la guardada.
+func total_piezas() -> int:
+	var actual := 1 if controlador_pieza.pieza_actual != null else 0
 	var guardada := 1 if pieza_guardada != null else 0
-	piezas_label.text = "PIEZAS: %d" % (piezas_disponibles + actual + guardada)
+	return piezas_disponibles + actual + guardada
+
+
+## Solo el número: el icono lo pones tú en el editor junto a la etiqueta.
+func actualizar_contador() -> void:
+	var total := total_piezas()
+	if piezas_label != null:
+		piezas_label.text = str(total)
+	piezas_cambiadas.emit(total)

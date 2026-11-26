@@ -10,6 +10,8 @@ var modo := Modo.MAZMORRA
 ## La pantalla de "has muerto" (instancia de su escena dentro de juego.tscn). Su señal
 ## reinicio_pedido se conecta a reiniciar_nivel desde el editor.
 @export var pantalla_muerte: PantallaMuerte
+## Texto de controles en pantalla (opcional). Se le avisa del modo al cambiar.
+@export var controles: ControlesPantalla
 
 ## Antes de que nada del tablero lea su configuración (el padre entra en el árbol antes que sus
 ## hijos), se pone la del nivel elegido en el menú. Sin nivel elegido (F6 sobre esta escena)
@@ -26,6 +28,9 @@ func _ready() -> void:
 	_mazmorra.piezas_obtenidas.connect(_tetris.agregar_piezas)
 	# Las salas objetivo resueltas apagan barreras del tetris.
 	_mazmorra.barreras_a_apagar_pedidas.connect(_apagar_barreras)
+	# El contador de piezas se ve también en la interfaz de la mazmorra.
+	_tetris.piezas_cambiadas.connect(_mazmorra.mostrar_piezas)
+	_mazmorra.mostrar_piezas(_tetris.total_piezas())
 	# Se empieza en la mazmorra, en la zona de spawn del vestíbulo inferior.
 	_mazmorra.sincronizar(_tetris.tablero)
 	# La música empieza en el bioma medieval; la mazmorra cambia de bioma al entrar en cada sala.
@@ -58,6 +63,8 @@ func _aplicar_modo() -> void:
 	_activar(_mazmorra, modo == Modo.MAZMORRA)
 	_mazmorra.set_activa(modo == Modo.MAZMORRA)
 	print("Modo: ", Modo.keys()[modo])
+	if controles != null:
+		controles.mostrar_modo(modo == Modo.TETRIS)
 	Musica.cambiar_modo(Musica.Modo.TETRIS if modo == Modo.TETRIS else Musica.Modo.MAZMORRA)
 
 func _activar(nodo: CanvasItem, activo: bool) -> void:

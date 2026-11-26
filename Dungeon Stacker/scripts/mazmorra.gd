@@ -236,6 +236,11 @@ func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	print("Vestíbulo ", Lugar.keys()[donde], " columna ", columna)
 
 
+## Pinta el contador de piezas del tetris en la interfaz de la mazmorra. Lo conecta Juego.
+func mostrar_piezas(total: int) -> void:
+	_interfaz.mostrar_piezas(total)
+
+
 func _on_puerta_cruzada(puerta: Puerta) -> void:
 	var destino := celda_actual + Puerta.vector_de(puerta.direccion)
 	# Diferido: estamos dentro de una señal de física y no se pueden crear cuerpos ahora.

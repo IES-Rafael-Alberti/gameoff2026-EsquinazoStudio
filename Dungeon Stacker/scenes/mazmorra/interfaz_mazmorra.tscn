@@ -10,8 +10,9 @@ atlas = ExtResource("4_f00u8")
 region = Rect2(4648, 1660, 408, 164)
 filter_clip = true
 
-[node name="Interfaz" type="CanvasLayer" unique_id=1995162197]
+[node name="Interfaz" type="CanvasLayer" unique_id=1995162197 node_paths=PackedStringArray("etiqueta_piezas")]
 script = ExtResource("1_1dm4y")
+etiqueta_piezas = NodePath("Piezas")
 
 [node name="Minimapa" type="Control" parent="." unique_id=89696954]
 layout_mode = 3
@@ -23,23 +24,21 @@ offset_bottom = 40.0
 grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("2_yjn0g")
-metadata/_edit_use_anchors_ = true
 
-[node name="Etiqueta" type="Label" parent="." unique_id=678796577]
+[node name="Piezas" type="Label" parent="." unique_id=678796577]
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 410.0
-offset_bottom = 50.0
+offset_left = 88.0
+offset_top = 24.0
+offset_right = 488.0
+offset_bottom = 64.0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 28
-metadata/_edit_use_anchors_ = true
 
 [node name="BarraVida" type="HBoxContainer" parent="." unique_id=487677871]
-offset_left = 10.0
-offset_top = 56.0
-offset_right = 50.0
-offset_bottom = 96.0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 64.0
+offset_bottom = 120.0
 mouse_filter = 2
 theme_override_constants/separation = 6
 script = ExtResource("3_f00u8")
@@ -47,11 +46,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Llave" type="TextureRect" parent="." unique_id=1807170972]
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 104.0
-offset_right = 74.0
-offset_bottom = 130.0
+offset_left = 24.0
+offset_top = 216.0
+offset_right = 88.0
+offset_bottom = 242.0
 texture = SubResource("AtlasTexture_yjn0g")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=347400636]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 64.0
