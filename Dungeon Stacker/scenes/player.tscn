@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bkduvjit7sq8x" path="res://assets/sprites/personaje/Walk arriba.png" id="9_4ni07"]
 [ext_resource type="Script" uid="uid://ggm2i2hxrt00" path="res://scripts/jugador/jugador_muerte.gd" id="9_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://bae3ugb0auep7" path="res://assets/sprites/personaje/Andar Izquierda.png" id="10_l71n6"]
+[ext_resource type="Texture2D" uid="uid://i5p4bq5wquly" path="res://assets/sprites/personaje/Area ataque.png" id="11_4r5pv"]
 [ext_resource type="Script" uid="uid://dbxkrb5gexfvl" path="res://scripts/jugador/jugador_resbalar.gd" id="18_fulsm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
@@ -449,6 +450,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(175, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("11_4r5pv")
+region = Rect2(0, 0, 513, 513)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("11_4r5pv")
+region = Rect2(513, 0, 513, 513)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("11_4r5pv")
+region = Rect2(0, 513, 513, 513)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("11_4r5pv")
+region = Rect2(513, 513, 513, 513)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqhdy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
+}],
+"loop": 0,
+"name": &"Onda",
+"speed": 30.0
+}]
+
 [sub_resource type="Animation" id="Animation_g2els"]
 length = 0.001
 tracks/0/type = "value"
@@ -510,14 +550,16 @@ _data = {
 &"caer": SubResource("Animation_qhqgy")
 }
 
-[node name="player" type="CharacterBody2D" unique_id=802599124]
+[node name="player" type="CharacterBody2D" unique_id=802599124 node_paths=PackedStringArray("zona_golpe", "onda_ataque")]
 z_index = 2
-scale = Vector2(1.4502358, 1.324797)
+scale = Vector2(1.6, 1.469)
 collision_layer = 2
 collision_mask = 29
 platform_floor_layers = 0
 script = ExtResource("1_oprun")
 speed = 240.0
+zona_golpe = NodePath("ZonaGolpe")
+onda_ataque = NodePath("ZonaGolpe/Onda")
 
 [node name="HitboxPersonaje" type="CollisionShape2D" parent="." unique_id=537282891]
 position = Vector2(0, 3.0193305)
@@ -529,6 +571,22 @@ scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_mjkrw")
 animation = &"Attack_South"
 frame_progress = 1.0
+
+[node name="ZonaGolpe" type="Area2D" parent="." unique_id=557169346]
+top_level = true
+scale = Vector2(1.0000001, 1)
+collision_layer = 0
+collision_mask = 9
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaGolpe" unique_id=1207461213]
+shape = SubResource("RectangleShape2D_mjkrw")
+
+[node name="Onda" type="AnimatedSprite2D" parent="ZonaGolpe" unique_id=329338115]
+visible = false
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_gqhdy")
+animation = &"Onda"
 
 [node name="Animacion" type="Node" parent="." unique_id=818297592]
 
