@@ -32,15 +32,15 @@ signal piezas_cambiadas(total: int)
 @onready var current_piece = $Board/CurrentPiece
 @onready var tablero_nodo = $Board/Tablero
 @onready var previews = [
-	$SidePanel/NextPiece1,
-	$SidePanel/NextPiece2,
-	$SidePanel/NextPiece3,
-	$SidePanel/NextPiece4,
-	$SidePanel/NextPiece5,
+	$SidePanel/Contenido/NextSlot1/NextPiece1,
+	$SidePanel/Contenido/NextSlot2/NextPiece2,
+	$SidePanel/Contenido/NextSlot3/NextPiece3,
+	$SidePanel/Contenido/NextSlot4/NextPiece4,
+	$SidePanel/Contenido/NextSlot5/NextPiece5,
 ]
-@onready var piezas_label = $SidePanel/PiezasLabel
+@onready var piezas_label = $SidePanel/Contenido/PiezasLabel
 ## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
-@onready var hold_panel = get_node_or_null("SidePanel/HoldPiece")
+@onready var hold_panel = get_node_or_null("SidePanel/Contenido/HoldSlot/HoldPiece")
 @onready var piezas = $Piezas
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel
@@ -70,7 +70,10 @@ func _ready() -> void:
 	controlador_pieza.solicitar_fijar_pieza.connect(fijar_pieza)
 	crear_tablero()
 	colocar_tablero()
+	colocar_panel()
+	_preparar_previews()
 	get_viewport().size_changed.connect(colocar_tablero)
+	get_viewport().size_changed.connect(colocar_panel)
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	refrescar_cola()
 	generar_pieza()
@@ -85,6 +88,35 @@ func colocar_tablero() -> void:
 	var y := clampf(centro_y - tam.y / 2.0, 0.0, maxf(pantalla.y - tam.y, 0.0))
 	_board.position = Vector2((pantalla.x - tam.x) / 2.0, y)
 	_panel_lateral.position.x = _board.position.x + tam.x + separacion_panel
+
+func colocar_panel() -> void:
+	var pantalla := get_viewport_rect().size
+	var ancho_tablero := float(Configuracion.ANCHO_TABLERO)
+	var alto_tablero := float(Configuracion.ALTO_TABLERO)
+	var x := _board.position.x + ancho_tablero + separacion_panel
+	var centro_y := _board.position.y + alto_tablero / 2.0
+	var y := clampf(centro_y - _panel_lateral.size.y / 2.0, 0.0, maxf(pantalla.y - _panel_lateral.size.y, 0.0))
+	_panel_lateral.position = Vector2(x, y)
+
+func _preparar_previews() -> void:
+	var nodos := previews.duplicate()
+	if hold_panel != null:
+		nodos.append(hold_panel)
+	for nodo in nodos:
+		var slot := nodo.get_parent() as Control
+		if slot != null:
+			slot.resized.connect(_centrar_previews)
+	call_deferred("_centrar_previews")
+
+func _centrar_previews() -> void:
+	var nodos := previews.duplicate()
+	if hold_panel != null:
+		nodos.append(hold_panel)
+	for nodo in nodos:
+		var slot := nodo.get_parent() as Control
+		if slot != null:
+			nodo.position = slot.size / 2.0
+			nodo.scale = Vector2.ONE * 0.6
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reiniciar"):
@@ -324,9 +356,8 @@ func total_piezas() -> int:
 	return piezas_disponibles + actual + guardada
 
 
-## Solo el número: el icono lo pones tú en el editor junto a la etiqueta.
 func actualizar_contador() -> void:
 	var total := total_piezas()
 	if piezas_label != null:
-		piezas_label.text = str(total)
+		piezas_label.text = "PIECES: %d" % total
 	piezas_cambiadas.emit(total)

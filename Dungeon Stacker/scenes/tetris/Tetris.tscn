@@ -12,16 +12,16 @@
 [ext_resource type="Script" uid="uid://dflrhf5ww8hu2" path="res://scripts/piezas.gd" id="8_5r8ga"]
 [ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="9_lawg1"]
 [ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="10_kjx5x"]
+[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="12_pujdc"]
 
 [node name="Tetris" type="Node2D" unique_id=545254014 node_paths=PackedStringArray("aviso_salida")]
 script = ExtResource("1_6ccle")
 Configuracion = ExtResource("2_ajih5")
-MAX_PREVIEWS = null
-aviso_salida = NodePath("SidePanel/Label")
+aviso_salida = NodePath("SidePanel/Contenido/Label")
 altura_centro_desde_abajo = 0.5
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=524955811]
-position = Vector2(976.00006, 528.00006)
+position = Vector2(1056, 544.00006)
 scale = Vector2(0.4514309, 0.3922463)
 texture = ExtResource("3_b8moq")
 
@@ -59,64 +59,88 @@ script = ExtResource("9_lawg1")
 z_index = 5
 layout_mode = 3
 anchors_preset = 0
-offset_left = 960.0
-offset_top = 192.0
-offset_right = 1216.0
-offset_bottom = 1024.0
-offset_transform_enabled = true
-offset_transform_position = Vector2(1200, 0)
+offset_left = 1200.0
+offset_top = 60.0
+offset_right = 1456.0
+offset_bottom = 1020.0
 metadata/_edit_use_anchors_ = true
 
-[node name="NextLabel" type="Label" parent="SidePanel" unique_id=1189905426]
-custom_maximum_size = Vector2(20, 40)
-layout_mode = 0
-offset_top = 17.0
-offset_right = 20.0
-offset_bottom = 40.0
-text = "NEXT"
-
-[node name="HoldPiece" type="Node2D" parent="SidePanel" unique_id=2042075291]
-position = Vector2(320, -32)
-script = ExtResource("10_kjx5x")
-
-[node name="NextPiece1" type="Node2D" parent="SidePanel" unique_id=729437495]
-position = Vector2(192, 128)
-script = ExtResource("10_kjx5x")
-
-[node name="NextPiece2" type="Node2D" parent="SidePanel" unique_id=8595327]
-position = Vector2(160, 224)
-script = ExtResource("10_kjx5x")
-
-[node name="NextPiece3" type="Node2D" parent="SidePanel" unique_id=813856935]
-position = Vector2(128, 320)
-script = ExtResource("10_kjx5x")
-
-[node name="NextPiece4" type="Node2D" parent="SidePanel" unique_id=1966944990]
-position = Vector2(96, 416)
-script = ExtResource("10_kjx5x")
-
-[node name="NextPiece5" type="Node2D" parent="SidePanel" unique_id=120523711]
-position = Vector2(96, 512)
-script = ExtResource("10_kjx5x")
-
-[node name="PiezasLabel" type="Label" parent="SidePanel" unique_id=1007720950]
+[node name="Contenido" type="VBoxContainer" parent="SidePanel" unique_id=1891674859]
 layout_mode = 1
-anchors_preset = -1
-offset_left = -256.0
-offset_top = -96.0
-offset_right = -64.0
-offset_bottom = -64.0
-text = "PIECES: 0"
-
-[node name="Label" type="Label" parent="SidePanel" unique_id=1440733841]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -992.0
-offset_top = 64.0
-offset_right = -715.0
-offset_bottom = 155.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = 4.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="HoldLabel" type="Label" parent="SidePanel/Contenido" unique_id=1237199659]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_pujdc")
+text = "HOLD"
+horizontal_alignment = 1
+
+[node name="HoldSlot" type="Control" parent="SidePanel/Contenido" unique_id=959957116]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="HoldPiece" type="Node2D" parent="SidePanel/Contenido/HoldSlot" unique_id=2042075291]
+script = ExtResource("10_kjx5x")
+
+[node name="NextLabel" type="Label" parent="SidePanel/Contenido" unique_id=1189905426]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_pujdc")
+text = "NEXT"
+horizontal_alignment = 1
+
+[node name="NextSlot1" type="Control" parent="SidePanel/Contenido" unique_id=632996684]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="NextPiece1" type="Node2D" parent="SidePanel/Contenido/NextSlot1" unique_id=729437495]
+script = ExtResource("10_kjx5x")
+
+[node name="NextSlot2" type="Control" parent="SidePanel/Contenido" unique_id=1901487937]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="NextPiece2" type="Node2D" parent="SidePanel/Contenido/NextSlot2" unique_id=8595327]
+script = ExtResource("10_kjx5x")
+
+[node name="NextSlot3" type="Control" parent="SidePanel/Contenido" unique_id=2069862192]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="NextPiece3" type="Node2D" parent="SidePanel/Contenido/NextSlot3" unique_id=813856935]
+script = ExtResource("10_kjx5x")
+
+[node name="NextSlot4" type="Control" parent="SidePanel/Contenido" unique_id=302990956]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="NextPiece4" type="Node2D" parent="SidePanel/Contenido/NextSlot4" unique_id=1966944990]
+script = ExtResource("10_kjx5x")
+
+[node name="NextSlot5" type="Control" parent="SidePanel/Contenido" unique_id=1423924986]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="NextPiece5" type="Node2D" parent="SidePanel/Contenido/NextSlot5" unique_id=120523711]
+script = ExtResource("10_kjx5x")
+
+[node name="PiezasLabel" type="Label" parent="SidePanel/Contenido" unique_id=1007720950]
+layout_mode = 2
+text = "PIECES: 0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="SidePanel/Contenido" unique_id=1440733841]
+layout_mode = 2
 text = "Exit reached. Press SPACE/A 
 to continue placing pieces"
+autowrap_mode = 3
