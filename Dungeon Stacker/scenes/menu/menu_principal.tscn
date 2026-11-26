@@ -106,9 +106,9 @@ texture = ExtResource("3_luowc")
 [node name="Iniciar" type="Button" parent="Menu" unique_id=977525131]
 layout_mode = 0
 offset_left = 160.0
-offset_top = 368.0
+offset_top = 384.0
 offset_right = 448.0
-offset_bottom = 431.0
+offset_bottom = 447.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
