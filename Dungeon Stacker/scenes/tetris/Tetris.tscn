@@ -18,13 +18,15 @@ script = ExtResource("1_6ccle")
 Configuracion = ExtResource("2_ajih5")
 MAX_PREVIEWS = null
 aviso_salida = NodePath("SidePanel/Label")
+altura_centro_desde_abajo = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=524955811]
-position = Vector2(960, 512)
-scale = Vector2(0.3611447, 0.2736602)
+[node name="Fondo" type="Sprite2D" parent="." unique_id=524955811]
+position = Vector2(976.00006, 512)
+scale = Vector2(0.4514309, 0.29190418)
 texture = ExtResource("3_b8moq")
 
 [node name="Board" type="Node2D" parent="." unique_id=313245139]
+position = Vector2(760, 240)
 
 [node name="GridBackground" type="Node2D" parent="Board" unique_id=292566563]
 script = ExtResource("3_5xuig")
@@ -62,6 +64,7 @@ offset_top = 192.0
 offset_right = 1216.0
 offset_bottom = 1024.0
 offset_transform_enabled = true
+offset_transform_position = Vector2(1200, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="NextLabel" type="Label" parent="SidePanel" unique_id=1189905426]
