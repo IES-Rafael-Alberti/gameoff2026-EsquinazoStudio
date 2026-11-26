@@ -13,11 +13,13 @@
 [ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="9_lawg1"]
 [ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="10_kjx5x"]
 [ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="12_pujdc"]
+[ext_resource type="Script" uid="uid://dncor5rirsw2k" path="res://scripts/ui/controles_pantalla.gd" id="13_ctrls"]
+[ext_resource type="Texture2D" uid="uid://dvqppbgt3o6ss" path="res://assets/sprites/menu/pergamino con pieza.png" id="14_icono"]
 
 [node name="Tetris" type="Node2D" unique_id=545254014 node_paths=PackedStringArray("aviso_salida")]
 script = ExtResource("1_6ccle")
 Configuracion = ExtResource("2_ajih5")
-aviso_salida = NodePath("SidePanel/Contenido/Label")
+aviso_salida = NodePath("PanelIzquierdo/AvisoLabel")
 altura_centro_desde_abajo = 0.5
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=524955811]
@@ -134,13 +136,85 @@ layout_mode = 2
 [node name="NextPiece5" type="Node2D" parent="SidePanel/Contenido/NextSlot5" unique_id=120523711]
 script = ExtResource("10_kjx5x")
 
-[node name="PiezasLabel" type="Label" parent="SidePanel/Contenido" unique_id=1007720950]
-layout_mode = 2
-text = "PIECES: 0"
-horizontal_alignment = 1
+[node name="PanelIzquierdo" type="Control" parent="." unique_id=2043978205]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 720.0
+offset_bottom = 640.0
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="SidePanel/Contenido" unique_id=1440733841]
+[node name="Contador" type="HBoxContainer" parent="PanelIzquierdo" unique_id=93262395]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 600.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Icono" type="TextureRect" parent="PanelIzquierdo/Contador" unique_id=1527371549]
+custom_minimum_size = Vector2(64, 80)
 layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("14_icono")
+expand_mode = 1
+
+[node name="PiezasLabel" type="Label" parent="PanelIzquierdo/Contador" unique_id=1007720950]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_font_sizes/font_size = 40
+text = "PIECES: 0"
+vertical_alignment = 1
+
+[node name="AvisoLabel" type="Label" parent="PanelIzquierdo" unique_id=1440733841]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_top = 92.0
+offset_right = 600.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_font_sizes/font_size = 28
 text = "Exit reached. Press SPACE/A 
 to continue placing pieces"
 autowrap_mode = 3
+
+[node name="Controles" type="Label" parent="PanelIzquierdo" unique_id=7224002]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 192.0
+offset_right = 600.0
+offset_bottom = 520.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_font_sizes/font_size = 26
+script = ExtResource("13_ctrls")
+tetris_teclado = "A / D  Move
+W  Rotate
+Q / E  Rotate
+S  Soft drop
+Space  Hard drop
+Tab  Hold
+Shift  Enter dungeon
+R  Restart
+P  Pause"
+mazmorra_teclado = "WASD  Move
+Space  Attack
+Shift  Enter tetris
+P  Pause"
+tetris_mando = "D-pad / Stick  Move
+X / B  Rotate
+LB / RB  Rotate
+A  Hard drop
+Left stick click  Hold
+Select  Enter dungeon
+Y  Restart
+Start  Pause"
+mazmorra_mando = "D-pad / Stick  Move
+A  Attack
+Select  Enter tetris
+Start  Pause"

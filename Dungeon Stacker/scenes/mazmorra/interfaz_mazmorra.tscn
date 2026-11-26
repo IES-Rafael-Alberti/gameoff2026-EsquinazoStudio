@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsagvcim3v0k7" path="res://assets/sprites/menu/gema vida.png" id="5_rcj12"]
 [ext_resource type="Texture2D" uid="uid://duv2ctvyl81s2" path="res://assets/sprites/menu/corona vida.png" id="6_lvfjt"]
 [ext_resource type="Texture2D" uid="uid://dvqppbgt3o6ss" path="res://assets/sprites/menu/pergamino con pieza.png" id="7_tvt0x"]
+[ext_resource type="Script" uid="uid://dncor5rirsw2k" path="res://scripts/ui/controles_pantalla.gd" id="8_ctrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjn0g"]
 atlas = ExtResource("4_f00u8")
@@ -118,3 +119,40 @@ offset_right = 152.59503
 offset_bottom = 156.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
+
+[node name="Controles" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 192.0
+offset_right = 480.0
+offset_bottom = 320.0
+theme_override_constants/outline_size = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5lyqp")
+theme_override_font_sizes/font_size = 24
+script = ExtResource("8_ctrl")
+tetris_teclado = "A / D  Move
+W  Rotate
+Q / E  Rotate
+S  Soft drop
+Space  Hard drop
+Tab  Hold
+Shift  Enter dungeon
+R  Restart
+P  Pause"
+mazmorra_teclado = "WASD  Move
+Space  Attack
+Shift  Enter tetris
+P  Pause"
+tetris_mando = "D-pad / Stick  Move
+X / B  Rotate
+LB / RB  Rotate
+A  Hard drop
+Left stick click  Hold
+Select  Enter dungeon
+Y  Restart
+Start  Pause"
+mazmorra_mando = "D-pad / Stick  Move
+A  Attack
+Select  Enter tetris
+Start  Pause"

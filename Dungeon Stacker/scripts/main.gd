@@ -38,12 +38,14 @@ signal piezas_cambiadas(total: int)
 	$SidePanel/Contenido/NextSlot4/NextPiece4,
 	$SidePanel/Contenido/NextSlot5/NextPiece5,
 ]
-@onready var piezas_label = $SidePanel/Contenido/PiezasLabel
+@onready var piezas_label = $PanelIzquierdo/Contador/PiezasLabel
 ## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
 @onready var hold_panel = get_node_or_null("SidePanel/Contenido/HoldSlot/HoldPiece")
 @onready var piezas = $Piezas
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel
+@onready var _panel_izquierdo: Control = $PanelIzquierdo
+@onready var _controles := get_node_or_null("PanelIzquierdo/Controles") as ControlesPantalla
 @onready var controlador_pieza = $ControladorPieza
 
 var piezas_disponibles: int = 0
@@ -71,9 +73,13 @@ func _ready() -> void:
 	crear_tablero()
 	colocar_tablero()
 	colocar_panel()
+	colocar_panel_izquierdo()
 	_preparar_previews()
+	if _controles != null:
+		_controles.mostrar_modo(true)
 	get_viewport().size_changed.connect(colocar_tablero)
 	get_viewport().size_changed.connect(colocar_panel)
+	get_viewport().size_changed.connect(colocar_panel_izquierdo)
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	refrescar_cola()
 	generar_pieza()
@@ -97,6 +103,11 @@ func colocar_panel() -> void:
 	var centro_y := _board.position.y + alto_tablero / 2.0
 	var y := clampf(centro_y - _panel_lateral.size.y / 2.0, 0.0, maxf(pantalla.y - _panel_lateral.size.y, 0.0))
 	_panel_lateral.position = Vector2(x, y)
+
+func colocar_panel_izquierdo() -> void:
+	var x := maxf(0.0, _board.position.x - separacion_panel - _panel_izquierdo.size.x)
+	var y := clampf(_board.position.y - 20.0, 40.0, 160.0)
+	_panel_izquierdo.position = Vector2(x, y)
 
 func _preparar_previews() -> void:
 	var nodos := previews.duplicate()
