@@ -21,8 +21,8 @@ aviso_salida = NodePath("SidePanel/Label")
 altura_centro_desde_abajo = 0.5
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=524955811]
-position = Vector2(976.00006, 512)
-scale = Vector2(0.4514309, 0.29190418)
+position = Vector2(976.00006, 528.00006)
+scale = Vector2(0.4514309, 0.3922463)
 texture = ExtResource("3_b8moq")
 
 [node name="Board" type="Node2D" parent="." unique_id=313245139]

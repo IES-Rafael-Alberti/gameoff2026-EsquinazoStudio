@@ -229,6 +229,10 @@ func resolver_desafio(desafio: Node) -> void:
 
 ## Un puzle ha dejado de cumplirse: vuelve a la lista de desafíos y la sala se cierra.
 func reabrir_desafio(desafio: Node) -> void:
+	# Al descargar la sala, las placas sueltan lo que tenían encima y "dejan de cumplirse": eso no
+	# debe deshacer una sala que ya estaba resuelta (se guardaría como pendiente).
+	if _cerrando:
+		return
 	registrar_desafio(desafio)
 	if datos != null:
 		datos.resuelta = false
