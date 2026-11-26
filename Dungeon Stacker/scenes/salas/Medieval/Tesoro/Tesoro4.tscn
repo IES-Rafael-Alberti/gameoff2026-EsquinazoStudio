@@ -11,19 +11,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAACAAAAAAAAAAI
 
 [node name="Sierra" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=807437377 instance=ExtResource("2_04i0u")]
 position = Vector2(736, 320)
-velocidad = 750.0
+velocidad = 500.0
 
 [node name="Sierra2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=282900599 instance=ExtResource("2_04i0u")]
 position = Vector2(736, 704)
-velocidad = 750.0
+velocidad = 500.0
 
 [node name="Sierra3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=1580064869 instance=ExtResource("2_04i0u")]
 position = Vector2(1120, 704)
-velocidad = 750.0
+velocidad = 500.0
 
 [node name="Sierra4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1786561354 instance=ExtResource("2_04i0u")]
 position = Vector2(1120, 320)
-velocidad = 750.0
+velocidad = 500.0
 
 [node name="CofreBotin" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="4" unique_id=2110658979 instance=ExtResource("3_k80w4")]
 position = Vector2(928, 512)
