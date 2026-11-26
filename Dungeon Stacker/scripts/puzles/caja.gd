@@ -8,7 +8,12 @@ const TAM_CELDA := 64.0
 
 @export var tiempo_empuje := 0.2
 @export var intercambiar_al_atascar := true
-@export var duracion_movimiento := 0.15
+## Lo que tarda la caja en avanzar una casilla. Cuanto más cerca de lo que tarda el jugador en
+## recorrerla (64 / velocidad del jugador), más pegada a él se siente.
+@export var duracion_movimiento := 0.3
+## Tras mover la caja, tiempo durante el que seguir empujando en la misma dirección la mueve
+## otra casilla sin esperar de nuevo "tiempo_empuje". 0 = siempre hay que esperar.
+@export var ventana_encadenado := 0.4
 ## Si esta caja conduce la electricidad: solo las cajas conductoras activan los puentes
 ## eléctricos que lo exigen.
 @export var conduce_electricidad := false
@@ -20,6 +25,7 @@ var _acumulado := 0.0
 var _empujada := false
 var _intercambiando := false
 var _tween: Tween
+var _fin_movimiento_ms := -100000
 var _visibilidad_inicial := true
 var _escala_inicial := Vector2.ONE
 var _id_caida := 0
@@ -52,14 +58,18 @@ func empujar(normal: Vector2, delta: float, jugador: CharacterBody2D = null) -> 
 	if _moviendo or _intercambiando or cayendo or reiniciando:
 		return
 	var direccion := _a_eje(normal)
+	var encadenado := direccion == _direccion \
+			and (Time.get_ticks_msec() - _fin_movimiento_ms) / 1000.0 <= ventana_encadenado
 	if direccion != _direccion:
 		_direccion = direccion
 		_acumulado = 0.0
 	_empujada = true
 	_acumulado += delta
+	if encadenado:
+		_acumulado = tiempo_empuje
 	if _acumulado >= tiempo_empuje:
 		_acumulado = 0.0
-		_intentar_mover(direccion, jugador)
+		_intentar_mover(direccion, jugador, encadenado)
 
 ## Caída al vacío mediante AnimationPlayer.
 func caer_al_vacio() -> void:
@@ -106,7 +116,7 @@ func reiniciar() -> void:
 	visible = _visibilidad_inicial
 	reiniciando = false
 
-func _intentar_mover(direccion: Vector2, jugador: CharacterBody2D) -> void:
+func _intentar_mover(direccion: Vector2, jugador: CharacterBody2D, encadenado := false) -> void:
 	var destino := global_position + direccion * TAM_CELDA
 	if _casilla_libre(destino, jugador):
 		_moviendo = true
@@ -114,11 +124,15 @@ func _intentar_mover(direccion: Vector2, jugador: CharacterBody2D) -> void:
 		_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		_tween.tween_property(self, "global_position", destino, duracion_movimiento)
 		_tween.finished.connect(_on_tween_finished)
+	elif encadenado:
+		# Al topar con algo tras un empuje seguido, el intercambio espera su tiempo normal.
+		_fin_movimiento_ms = -100000
 	elif intercambiar_al_atascar and jugador != null:
 		_intercambiar(direccion, jugador)
 
 func _on_tween_finished() -> void:
 	_moviendo = false
+	_fin_movimiento_ms = Time.get_ticks_msec()
 	_tween = null
 
 ## La caja no puede avanzar: el jugador pasa a su casilla y la caja a la casilla de detrás.
