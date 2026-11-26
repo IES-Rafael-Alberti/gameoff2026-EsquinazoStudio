@@ -11,6 +11,9 @@ The point is that both parts are connected: the dungeon you play is the one you 
 
 Developed for Game off, This proyect tries to mix 2 Genres where every decision with the building change the way you explore the dungeon.
 
+# Planning
+This repository counts with 3
+
 # Team Members
 Rubén Gómez @Kyubi-LS : Art, Marketing
 
