@@ -16,9 +16,10 @@ signal caida_terminada
 @export var dano_ataque := 1
 ## Distancia desde el centro del jugador hasta el centro del golpe (píxeles).
 @export var alcance_ataque := 40.0
-@export var radio_ataque := 28.0
 ## Segundos desde que empieza la animación de ataque hasta que el golpe hace daño.
 @export var retardo_golpe := 0.1
+@export var zona_golpe: Area2D
+@export var onda_ataque: AnimatedSprite2D
 
 @export_group("Daño recibido")
 ## Segundos sin poder recibir daño tras un golpe (el sprite parpadea).
@@ -41,6 +42,7 @@ var _tiempo_invulnerable := 0.0
 var _tiempo_retroceso := 0.0
 var _velocidad_retroceso := Vector2.ZERO
 var _tween_parpadeo: Tween
+var _objetivos_golpeados := {}
 
 func _ready() -> void:
 	add_to_group("jugador")
@@ -214,24 +216,34 @@ func _parpadear() -> void:
 	_tween_parpadeo.tween_property(sprite, "modulate:a", 1.0, 0.1)
 	_tween_parpadeo.finished.connect(func(): sprite.modulate.a = 1.0)
 
+## Coloca el Area2D de la onda delante del jugador, mirando en su dirección.
+func colocar_zona_golpe() -> void:
+	var direccion := _vector_de(last_direction)
+	zona_golpe.global_position = centro() + direccion * alcance_ataque
+	# La onda está dibujada apuntando arriba; +PI/2 la gira hacia "direccion".
+	zona_golpe.global_rotation = direccion.angle() + PI / 2.0
 
-## Daña a todos los enemigos dentro de un círculo delante del jugador (lo llama el estado Atacar).
+
+func empezar_golpe() -> void:
+	_objetivos_golpeados.clear()
+	zona_golpe.monitoring = true
+
+
+## Da daño una sola vez por golpe a cada cuerpo dentro del Area2D.
 func golpear() -> void:
-	var forma := CircleShape2D.new()
-	forma.radius = radio_ataque
+	for cuerpo in zona_golpe.get_overlapping_bodies():
+		var id := cuerpo.get_instance_id()
+		if _objetivos_golpeados.has(id):
+			continue
+		_objetivos_golpeados[id] = true
+		if cuerpo is Enemigo:
+			cuerpo.recibir_dano(dano_ataque)
+		elif cuerpo.has_method("recibir_golpe"):
+			cuerpo.recibir_golpe()
 
-	var consulta := PhysicsShapeQueryParameters2D.new()
-	consulta.shape = forma
-	consulta.transform = Transform2D(0.0, centro() + _vector_de(last_direction) * alcance_ataque)
-	consulta.collision_mask = Capas.ENEMIGOS | Capas.MUROS
-	consulta.exclude = [get_rid()]
 
-	for resultado in get_world_2d().direct_space_state.intersect_shape(consulta):
-		var objetivo := resultado.collider as Node
-		if objetivo is Enemigo:
-			objetivo.recibir_dano(dano_ataque)
-		elif objetivo.has_method("recibir_golpe"):
-			objetivo.recibir_golpe()
+func terminar_golpe() -> void:
+	zona_golpe.monitoring = false
 
 func _vector_de(direccion: String) -> Vector2:
 	match direccion:

@@ -89,7 +89,6 @@ metadata/_edit_horizontal_guides_ = [1080.0, 384.0]
 metadata/_edit_vertical_guides_ = [1921.0, 1472.0]
 
 [node name="Fondo" parent="." unique_id=1709290085 instance=ExtResource("4_4mcpf")]
-visible = false
 layout_mode = 1
 
 [node name="Menu" type="Control" parent="." unique_id=1416956610]
@@ -107,9 +106,9 @@ texture = ExtResource("3_luowc")
 [node name="Iniciar" type="Button" parent="Menu" unique_id=977525131]
 layout_mode = 0
 offset_left = 160.0
-offset_top = 352.0
+offset_top = 384.0
 offset_right = 448.0
-offset_bottom = 415.0
+offset_bottom = 447.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
@@ -118,10 +117,10 @@ text = "START"
 
 [node name="Continuar" type="Button" parent="Menu" unique_id=1425424495]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 256.0
-offset_right = 448.0
-offset_bottom = 320.0
+offset_left = 176.0
+offset_top = 304.0
+offset_right = 464.0
+offset_bottom = 368.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
@@ -143,9 +142,9 @@ text = "LEVELS"
 [node name="Opciones" type="Button" parent="Menu" unique_id=1356230576]
 layout_mode = 0
 offset_left = 96.0
-offset_top = 544.0
+offset_top = 528.0
 offset_right = 384.0
-offset_bottom = 607.0
+offset_bottom = 591.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
@@ -154,10 +153,10 @@ text = "OPTIONS"
 
 [node name="Salir" type="Button" parent="Menu" unique_id=858273588]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 640.0
-offset_right = 416.0
-offset_bottom = 703.0
+offset_left = 96.0
+offset_top = 608.0
+offset_right = 384.0
+offset_bottom = 671.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
