@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://wn1pwtbjcm3d" path="res://scripts/combate/EnemigoMaquinaEstado/estado_ataque.gd" id="9_ocges"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnu70"]
-radius = 16.0
+radius = 22.25
 
 [node name="EnemigoEstadosBase" type="CharacterBody2D" unique_id=661418023]
 collision_layer = 8

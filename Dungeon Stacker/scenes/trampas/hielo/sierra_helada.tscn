@@ -7,7 +7,14 @@
 atlas = ExtResource("2_ieguq")
 region = Rect2(512, 2560, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6v61"]
+atlas = ExtResource("2_ieguq")
+region = Rect2(512, 3072, 512, 512)
+
 [node name="Sierra" unique_id=807437377 instance=ExtResource("1_yoaax")]
 
 [node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(354997395) index="0" unique_id=1873715623]
 texture = SubResource("AtlasTexture_ieguq")
+
+[node name="Sprite2Alter" parent="Visual" parent_id_path=PackedInt32Array(354997395) index="1" unique_id=1374448471]
+texture = SubResource("AtlasTexture_p6v61")

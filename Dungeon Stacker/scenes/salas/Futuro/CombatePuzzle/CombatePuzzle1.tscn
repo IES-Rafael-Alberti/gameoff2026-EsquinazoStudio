@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://dhcnuu72jvq8w"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_1t7yi"]
+[ext_resource type="PackedScene" uid="uid://catahommqbxjt" path="res://scenes/puzles/futuro/electricidad/fuente_electrica.tscn" id="2_yta7x"]
+[ext_resource type="PackedScene" uid="uid://bht7oytbt4do2" path="res://scenes/puzles/futuro/electricidad/puente_electrico.tscn" id="3_sqkdr"]
+[ext_resource type="PackedScene" uid="uid://bwijvmsmdixob" path="res://scenes/puzles/futuro/electricidad/objetivo_electrica.tscn" id="4_kmos3"]
+[ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="5_jj4im"]
+[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/cohete.tscn" id="6_y0xvi"]
+[ext_resource type="PackedScene" uid="uid://kkcv2dt1mobu" path="res://scenes/enemigos/enemigos terminados/robot.tscn" id="7_sbqtj"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_1t7yi")]
+
+[node name="Electricidad" parent="Electricidad" parent_id_path=PackedInt32Array(800480628) index="0" unique_id=1564926750]
+tile_map_data = PackedByteArray("AAARAAwAAAAEAAcAAAARAAoAAAABAAkAAAARAAkAAAABAAkAAAALAAwAAAAEAAcAAAALAAoAAAABAAkAAAALAAkAAAABAAkAAAALAAcAAAABAAkAAAALAAYAAAABAAkAAAARAAcAAAABAAkAAAARAAYAAAABAAkAAAARAAUAAAACAAcAAAALAAUAAAADAAcAAAAMAAUAAAAFAAcAAAAQAAUAAAAHAAcAAAALAAsAAAABAAkAAAARAAsAAAABAAkAAAA=")
+
+[node name="Fuente Electrica" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="0" unique_id=605912163 instance=ExtResource("2_yta7x")]
+position = Vector2(736, 768)
+
+[node name="Fuente Electrica2" parent="Electricidad/Fuentes" parent_id_path=PackedInt32Array(1560103062) index="1" unique_id=2087265196 instance=ExtResource("2_yta7x")]
+position = Vector2(1120, 768)
+
+[node name="Puente Electrico" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="0" unique_id=1487050585 instance=ExtResource("3_sqkdr")]
+position = Vector2(736, 512)
+
+[node name="Puente Electrico2" parent="Electricidad/Puentes" parent_id_path=PackedInt32Array(446057945) index="1" unique_id=1602257272 instance=ExtResource("3_sqkdr")]
+position = Vector2(1120, 512)
+
+[node name="Objetivo Electrico3" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="0" unique_id=1004681641 instance=ExtResource("4_kmos3")]
+position = Vector2(800, 320)
+
+[node name="Objetivo Electrico4" parent="Electricidad/Objetivo" parent_id_path=PackedInt32Array(1507801890) index="1" unique_id=183535099 instance=ExtResource("4_kmos3")]
+position = Vector2(1056, 320)
+
+[node name="EnemigoEstadosBase" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=661418023 instance=ExtResource("6_y0xvi")]
+position = Vector2(608, 192)
+
+[node name="EnemigoEstadosBase2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=2091642110 instance=ExtResource("6_y0xvi")]
+position = Vector2(608, 832)
+
+[node name="EnemigoEstadosBase3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1382205025 instance=ExtResource("6_y0xvi")]
+position = Vector2(1248, 832)
+
+[node name="EnemigoEstadosBase4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=250162744 instance=ExtResource("6_y0xvi")]
+position = Vector2(1248, 192)
+
+[node name="EnemigoEstadosBase5" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="4" unique_id=735616081 instance=ExtResource("7_sbqtj")]
+position = Vector2(928, 512)
+
+[node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("5_jj4im")]
+position = Vector2(928, 704)
+
+[node name="Caja2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1683694067 instance=ExtResource("5_jj4im")]
+position = Vector2(928, 320)
+
+[editable path="Puzle"]

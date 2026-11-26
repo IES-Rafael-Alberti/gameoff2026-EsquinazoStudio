@@ -1,12 +1,32 @@
-# gameoff2026-EsquinazoStudio
+# Dungeon stacker
+## Presented by Esquinazo studio
 
-Qué pasaría si las piezas que colocas en una partida de Tetris no sirvieran únicamente para conseguir una puntuación alta, sino que construyeran una mazmorra que después tuvieras que explorar?
+What if the pieces you put in Tetris only purpose wasnt get a high score, but also build a fully explorable dungeon?
 
-Esa es la idea detrás de Dungeon Stacker, un videojuego que combina las mecánicas clásicas de Tetris con la generación de mazmorras y la exploración de niveles.
+Thats the idea behind Dungeon stacker, a game that mix the classic mecanics of Tetris with a full fledged dungeon crawling and level exploration experience.
 
-Un concepto que une dos experiencias aparentemente diferentes: la planificación y colocación de piezas de un juego de puzles con la aventura y exploración de un dungeon crawler.
+A concept that joins two completely diferent experiences: the strategy with the Tetris pieces and dungeons crawler exploration and puzzles.
 
-La particularidad es que ambas partes están conectadas: la mazmorra a la que tendrás que enfrentarte es la que tú mismo has construido.
+The point is that both parts are connected: the dungeon you play is the one you build with the Tetris pieces.
 
-Desarrollado para Game Off, este proyecto busca experimentar con una combinación de géneros en la que cada decisión tomada durante la construcción tiene consecuencias en la aventura posterior.
+Developed for Game off, this proyect tries to mix 2 genres where every decision with the building change the way you explore the dungeon.
 
+# Planning
+This repository counts with 3 distinct proyect phases:
+
+Pre-production: Creation of a playable prototipe, 1 week
+
+Production: Development and polish, 2 weeks
+
+Post-production: Bugfixing and marketing, 1 week
+
+# Team Members
+Carlos Borrego @carlos-borregofajardo : Main Programmer
+
+Eduardo Pacheco @Edu25107 : Main artist
+
+Gonzalo Casas @GonzaloCasa06 : Main designer
+
+Jose Carmona @ErCarmona : Producer, designer
+
+Rubén Gómez @Kyubi-LS : Art, Marketing
