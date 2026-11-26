@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_4ewcj"]
 [ext_resource type="PackedScene" uid="uid://cr1sbt4p38t8p" path="res://scenes/puzles/futuro/Laser.tscn" id="2_7bxby"]
-[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/Cohete.tscn" id="3_7bxby"]
+[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/cohete.tscn" id="3_7bxby"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_4ewcj")]
 

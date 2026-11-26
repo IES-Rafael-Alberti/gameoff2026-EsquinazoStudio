@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_1l7b6"]
 [ext_resource type="PackedScene" uid="uid://dd8d8bsc2aj45" path="res://scenes/enemigos/spawner.tscn" id="2_2ygcj"]
 [ext_resource type="PackedScene" uid="uid://kkcv2dt1mobu" path="res://scenes/enemigos/enemigos terminados/robot.tscn" id="3_ijb7h"]
-[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/Cohete.tscn" id="4_2ygcj"]
+[ext_resource type="PackedScene" uid="uid://c7x6j8qxex6ln" path="res://scenes/enemigos/enemigos terminados/cohete.tscn" id="4_2ygcj"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_1l7b6")]
 

@@ -18,6 +18,7 @@ var _moviendo := false
 var _direccion := Vector2.ZERO
 var _acumulado := 0.0
 var _empujada := false
+var _intercambiando := false
 var _tween: Tween
 var _visibilidad_inicial := true
 var _escala_inicial := Vector2.ONE
@@ -48,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 
 ## Lo llama el jugador cada paso de física mientras empuja.
 func empujar(normal: Vector2, delta: float, jugador: CharacterBody2D = null) -> void:
-	if _moviendo or cayendo or reiniciando:
+	if _moviendo or _intercambiando or cayendo or reiniciando:
 		return
 	var direccion := _a_eje(normal)
 	if direccion != _direccion:
@@ -71,6 +72,7 @@ func caer_al_vacio() -> void:
 		_tween.kill()
 		_tween = null
 	_moviendo = false
+	_intercambiando = false
 	_empujada = false
 	_acumulado = 0.0
 	_colision.set_deferred("disabled", true)
@@ -92,6 +94,7 @@ func reiniciar() -> void:
 		_tween = null
 	_animacion.stop()
 	_moviendo = false
+	_intercambiando = false
 	cayendo = false
 	_empujada = false
 	_acumulado = 0.0
@@ -110,23 +113,42 @@ func _intentar_mover(direccion: Vector2, jugador: CharacterBody2D) -> void:
 		_tween = create_tween()
 		_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		_tween.tween_property(self, "global_position", destino, duracion_movimiento)
-		_tween.finished.connect(func(): _moviendo = false)
+		_tween.finished.connect(_on_tween_finished)
 	elif intercambiar_al_atascar and jugador != null:
 		_intercambiar(direccion, jugador)
 
+func _on_tween_finished() -> void:
+	_moviendo = false
+	_tween = null
+
 ## La caja no puede avanzar: el jugador pasa a su casilla y la caja a la casilla de detrás.
 func _intercambiar(direccion: Vector2, jugador: CharacterBody2D) -> void:
+	if _intercambiando:
+		return
+	_intercambiando = true
 	var detras := global_position - direccion * TAM_CELDA
 	if not _casilla_libre(detras, jugador):
+		_intercambiando = false
 		return
 	var centro_jugador := jugador.global_position
 	if jugador.has_method("centro"):
 		centro_jugador = jugador.centro()
-	jugador.global_position += global_position - centro_jugador
-	global_position = detras
+	var destino_jugador := jugador.global_position + global_position - centro_jugador
+	_sincronizar_body(jugador, destino_jugador)
+	_sincronizar_body(self, detras)
+	_intercambiando = false
+
+func _sincronizar_body(cuerpo: CollisionObject2D, destino: Vector2) -> void:
+	var transform := cuerpo.global_transform
+	transform.origin = destino
+	cuerpo.global_transform = transform
+	PhysicsServer2D.body_set_state(cuerpo.get_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM, transform)
 
 ## Comprueba que no hay muros, puertas, enemigos, sierras ni otras cajas en la casilla destino.
 func _casilla_libre(centro: Vector2, ignorar: CollisionObject2D = null) -> bool:
+	for cuerpo in get_tree().get_nodes_in_group(&"caja"):
+		if cuerpo is CollisionObject2D:
+			_sincronizar_body(cuerpo, cuerpo.global_position)
 	var forma := RectangleShape2D.new()
 	forma.size = Vector2.ONE * (TAM_CELDA - 8.0)
 	var consulta := PhysicsShapeQueryParameters2D.new()
