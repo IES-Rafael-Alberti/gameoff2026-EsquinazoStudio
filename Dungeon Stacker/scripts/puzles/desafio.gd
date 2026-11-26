@@ -7,6 +7,8 @@ extends Node2D
 ## cierran y no se puede cambiar de modo mientras quede alguno sin resolver.
 
 signal resuelto
+## El puzle ha dejado de cumplirse y vuelve a contar como desafío de la sala.
+signal reabierto
 
 var esta_resuelto := false
 
@@ -37,6 +39,17 @@ func resolver() -> void:
 		_habitacion.resolver_desafio(self)
 
 
+## Vuelve a dejar el puzle como desafío pendiente. Útil cuando una placa deja de estar pisada.
+func desresolver() -> void:
+	if not esta_resuelto:
+		return
+	esta_resuelto = false
+	_al_desresolver()
+	reabierto.emit()
+	if _habitacion != null:
+		_habitacion.reabrir_desafio(self)
+
+
 ## Lo llama el botón de reinicio de la sala. Solo tiene efecto si el puzle sigue sin resolver.
 func reiniciar() -> void:
 	if esta_resuelto:
@@ -46,6 +59,11 @@ func reiniciar() -> void:
 
 ## Para sobrescribir: qué pasa al resolverse (animación, sonido...).
 func _al_resolver() -> void:
+	pass
+
+
+## Para sobrescribir: qué pasa al dejar de estar resuelto.
+func _al_desresolver() -> void:
 	pass
 
 

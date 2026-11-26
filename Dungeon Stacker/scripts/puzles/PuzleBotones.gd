@@ -14,6 +14,7 @@ func _ready() -> void:
 
 	for placa in _placas:
 		placa.activada.connect(_comprobar)
+		placa.desactivada.connect(_on_placa_desactivada)
 
 	for cerradura in _cerraduras:
 		cerradura.abierta_senal.connect(_comprobar)
@@ -32,16 +33,28 @@ func _recoger_elementos(nodo: Node) -> void:
 		_recoger_elementos(hijo)
 
 
-func _comprobar() -> void:
+func _condicion_cumplida() -> bool:
 	for placa in _placas:
 		if not placa.activa:
-			return
+			return false
 
 	for cerradura in _cerraduras:
 		if not cerradura.abierta:
-			return
+			return false
+
+	return true
+
+
+func _comprobar() -> void:
+	if esta_resuelto or not _condicion_cumplida():
+		return
 
 	resolver()
+
+
+func _on_placa_desactivada() -> void:
+	if esta_resuelto and not _condicion_cumplida():
+		desresolver()
 
 
 func _al_reiniciar() -> void:

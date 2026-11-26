@@ -203,6 +203,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda), entrada)
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	habitacion_actual.desafios_resueltos.connect(_interfaz.refrescar_minimapa)
+	habitacion_actual.desafios_reabiertos.connect(_interfaz.refrescar_minimapa)
 	habitacion_actual.piezas_obtenidas.connect(piezas_obtenidas.emit)
 
 	# El punto de entrada es donde queda el centro del cuerpo, no los pies.

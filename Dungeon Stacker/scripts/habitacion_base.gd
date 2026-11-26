@@ -5,6 +5,8 @@ signal jugador_entro
 signal puertas_cerradas
 signal puertas_abiertas
 signal desafios_resueltos
+## Un desafío que se había resuelto vuelve a estar pendiente.
+signal desafios_reabiertos
 ## El jugador ha cruzado una puerta abierta.
 signal puerta_cruzada(puerta: Puerta)
 ## Un cofre de la sala ha dado piezas para el tetris.
@@ -124,7 +126,9 @@ func registrar_desafio(desafio: Node) -> void:
 		return
 	_desafios.append(desafio)
 	_tuvo_desafios = true
-	desafio.tree_exited.connect(resolver_desafio.bind(desafio), CONNECT_ONE_SHOT)
+	var al_salir := resolver_desafio.bind(desafio)
+	if not desafio.tree_exited.is_connected(al_salir):
+		desafio.tree_exited.connect(al_salir, CONNECT_ONE_SHOT)
 	_actualizar_puertas()
 
 ## True mientras quede algún combate o puzzle sin resolver.
@@ -214,6 +218,15 @@ func resolver_desafio(desafio: Node) -> void:
 	if _tuvo_desafios and datos != null:
 		datos.resuelta = true
 		desafios_resueltos.emit()
+
+
+## Un puzle ha dejado de cumplirse: vuelve a la lista de desafíos y la sala se cierra.
+func reabrir_desafio(desafio: Node) -> void:
+	registrar_desafio(desafio)
+	if datos != null:
+		datos.resuelta = false
+	desafios_reabiertos.emit()
+
 
 func _on_cuerpo_entro(cuerpo: Node2D) -> void:
 	if not cuerpo.is_in_group("jugador"):
