@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drbhgjlfsj32r" path="res://scenes/puzles/CambiadorBaldosas.tscn" id="3_p3ceh"]
 [ext_resource type="PackedScene" uid="uid://ftaippyffeyq" path="res://scenes/_Componentes/Probabilizador.tscn" id="3_xoq3c"]
 [ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="4_bv88c"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="6_xoq3c"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_u8ync")]
 
@@ -36,7 +37,19 @@ probabilidad_eliminar = 25.0
 position = Vector2(1248, 192)
 
 [node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("3_p3ceh")]
-tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAIAAcAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAANAA4AAAAAAAEAAAANAA0AAAAAAAEAAAAOAA0AAAAAAAEAAAAPAA0AAAAAAAEAAAAPAA4AAAAAAAEAAAAUAAkAAAAAAAEAAAATAAkAAAAAAAEAAAATAAgAAAAAAAEAAAATAAcAAAAAAAEAAAAUAAcAAAAAAAEAAAANAAIAAAAAAAEAAAANAAMAAAAAAAEAAAAOAAMAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAIAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAAAAAAKAA4AAAAAAAAAAAASAA4AAAAAAAAAAAASAA0AAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAA=")
 placas = [NodePath("../Objetos/Placa")]
+
+[node name="Esqueleto" parent="." index="9" unique_id=661418023 instance=ExtResource("6_xoq3c")]
+position = Vector2(544, 896)
+
+[node name="Esqueleto2" parent="." index="10" unique_id=1638222900 instance=ExtResource("6_xoq3c")]
+position = Vector2(1312, 896.00006)
+
+[node name="Esqueleto3" parent="." index="11" unique_id=472418626 instance=ExtResource("6_xoq3c")]
+position = Vector2(544, 128)
+
+[node name="Esqueleto4" parent="." index="12" unique_id=1060652786 instance=ExtResource("6_xoq3c")]
+position = Vector2(1312, 128)
 
 [editable path="Puzle"]
