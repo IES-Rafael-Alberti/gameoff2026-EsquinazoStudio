@@ -4,8 +4,73 @@
 [ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_4yl6o"]
 [ext_resource type="PackedScene" uid="uid://d2scfefrhbpj1" path="res://scenes/menu/niveles.tscn" id="3_28145"]
 [ext_resource type="Texture2D" uid="uid://bti4bucsp6glp" path="res://assets/sprites/menu/pergamino normal.png" id="3_luowc"]
+[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="4_3vyha"]
 [ext_resource type="PackedScene" uid="uid://71eejpow8g62" path="res://scenes/menu/fondo_menu.tscn" id="4_4mcpf"]
-[ext_resource type="Texture2D" uid="uid://cywjwf344xxt6" path="res://assets/sprites/menu/dungeon_staker.png" id="4_ngrfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luowc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngrfs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vyha"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5alq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7ih0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Menu" type="Control" unique_id=1079454129 node_paths=PackedStringArray("panel_principal", "opciones", "niveles", "boton_continuar", "boton_salir")]
 layout_mode = 3
@@ -41,11 +106,14 @@ texture = ExtResource("3_luowc")
 
 [node name="Iniciar" type="Button" parent="Menu" unique_id=977525131]
 layout_mode = 0
-offset_left = 192.0
+offset_left = 160.0
 offset_top = 352.0
-offset_right = 480.0
+offset_right = 448.0
 offset_bottom = 415.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_luowc")
 text = "START"
 
 [node name="Continuar" type="Button" parent="Menu" unique_id=1425424495]
@@ -54,7 +122,10 @@ offset_left = 160.0
 offset_top = 256.0
 offset_right = 448.0
 offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngrfs")
 text = "CONTINUE"
 
 [node name="SeleccionNivel" type="Button" parent="Menu" unique_id=1717628227]
@@ -63,7 +134,10 @@ offset_left = 128.0
 offset_top = 448.0
 offset_right = 416.0
 offset_bottom = 511.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_3vyha")
 text = "LEVELS"
 
 [node name="Opciones" type="Button" parent="Menu" unique_id=1356230576]
@@ -72,7 +146,10 @@ offset_left = 96.0
 offset_top = 544.0
 offset_right = 384.0
 offset_bottom = 607.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_e5alq")
 text = "OPTIONS"
 
 [node name="Salir" type="Button" parent="Menu" unique_id=858273588]
@@ -81,13 +158,11 @@ offset_left = 128.0
 offset_top = 640.0
 offset_right = 416.0
 offset_bottom = 703.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7ih0")
 text = "EXIT"
-
-[node name="Titulo" type="Sprite2D" parent="Menu" unique_id=1454416877]
-position = Vector2(96.00004, -32.000008)
-scale = Vector2(0.76724154, 0.7672414)
-texture = ExtResource("4_ngrfs")
 
 [node name="Opciones" parent="." unique_id=2128798694 instance=ExtResource("2_4yl6o")]
 visible = false

@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://beh6iqva8bkoa" path="res://assets/sprites/menu/T pieza.png" id="6_u4sfs"]
 [ext_resource type="Texture2D" uid="uid://deb51tmbnlh0o" path="res://assets/sprites/menu/Z pieza.png" id="7_ofthq"]
 [ext_resource type="Texture2D" uid="uid://d2kyll5uggwj7" path="res://assets/sprites/menu/menu rey.png" id="9_jpkr8"]
+[ext_resource type="Texture2D" uid="uid://cywjwf344xxt6" path="res://assets/sprites/menu/dungeon_staker.png" id="10_u4sfs"]
 
-[sub_resource type="Animation" id="Animation_jj56k"]
+[sub_resource type="Animation" id="Animation_u4sfs"]
 resource_name = "Flotar"
-length = 5.0
+length = 15.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,7 +22,7 @@ tracks/0/path = NodePath("Torre/SpriteI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1056, 850), Vector2(1056, 1000)]
@@ -33,7 +34,7 @@ tracks/1/path = NodePath("Torre/SpriteO:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
+"times": PackedFloat32Array(0, 7.5, 15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1050, 600), Vector2(1100, 500), Vector2(1050, 650)]
@@ -45,7 +46,7 @@ tracks/2/path = NodePath("Torre/SpriteZ:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(650, 400), Vector2(600, 300)]
@@ -57,7 +58,7 @@ tracks/3/path = NodePath("Torre/SpriteT:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(416, 960.00006), Vector2(287.99994, 832.00006)]
@@ -69,14 +70,26 @@ tracks/4/path = NodePath("Torre/SpriteL:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(383.99997, 512), Vector2(448.00003, 672)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rey/SpriteRey:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.875, 3.75, 5.625, 7.5, 9.433333, 11.25, 13.125, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006)]
 }
 
 [sub_resource type="Animation" id="Animation_8p4sg"]
-length = 5.0
+length = 15.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,7 +98,7 @@ tracks/0/path = NodePath("Torre/SpriteI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1056, 850), Vector2(1056, 1000)]
@@ -97,7 +110,7 @@ tracks/1/path = NodePath("Torre/SpriteO:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
+"times": PackedFloat32Array(0, 7.5, 15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1050, 600), Vector2(1100, 500), Vector2(1050, 650)]
@@ -109,7 +122,7 @@ tracks/2/path = NodePath("Torre/SpriteZ:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(650, 400), Vector2(600, 300)]
@@ -121,7 +134,7 @@ tracks/3/path = NodePath("Torre/SpriteT:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(416, 960.00006), Vector2(287.99994, 832.00006)]
@@ -133,15 +146,27 @@ tracks/4/path = NodePath("Torre/SpriteL:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(383.99997, 512), Vector2(448.00003, 672)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Rey/SpriteRey:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.875, 3.75, 5.625, 7.5, 9.433333, 11.25, 13.125, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006), Vector2(690, 980), Vector2(690, 962.00006)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukar"]
 _data = {
-&"Flotar": SubResource("Animation_jj56k"),
+&"Flotar": SubResource("Animation_u4sfs"),
 &"RESET": SubResource("Animation_8p4sg")
 }
 
@@ -154,7 +179,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Fondo" type="CanvasLayer" parent="." unique_id=1462611102]
-layer = -4
+layer = -5
 
 [node name="SpriteCielo" type="Sprite2D" parent="Fondo" unique_id=559321162]
 position = Vector2(960, 540)
@@ -162,7 +187,7 @@ scale = Vector2(0.99999994, 1)
 texture = ExtResource("1_ysipo")
 
 [node name="Lluvia" type="CanvasLayer" parent="." unique_id=589255363]
-layer = -3
+layer = -4
 
 [node name="Node2D" type="Node2D" parent="Lluvia" unique_id=1806472055]
 script = ExtResource("1_csth7")
@@ -175,7 +200,7 @@ escala_abajo = 1.8
 inclinacion = 6.0
 
 [node name="Torre" type="CanvasLayer" parent="." unique_id=597060736]
-layer = -2
+layer = -3
 
 [node name="SpriteTorre" type="Sprite2D" parent="Torre" unique_id=1487857924]
 position = Vector2(703.9999, 704.00006)
@@ -209,12 +234,20 @@ scale = Vector2(0.7, 0.706)
 texture = ExtResource("7_ofthq")
 
 [node name="Rey" type="CanvasLayer" parent="." unique_id=2116273494]
-layer = -1
+layer = -2
 
 [node name="SpriteRey" type="Sprite2D" parent="Rey" unique_id=2004415798]
 position = Vector2(690, 962.00006)
 scale = Vector2(0.8378906, 0.8378906)
 texture = ExtResource("9_jpkr8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1568626623]
+layer = -1
+
+[node name="Titulo" type="Sprite2D" parent="CanvasLayer" unique_id=1080807798]
+position = Vector2(1472.0001, 192)
+scale = Vector2(0.76724154, 0.7672414)
+texture = ExtResource("10_u4sfs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=764680803]
 libraries/ = SubResource("AnimationLibrary_kukar")
