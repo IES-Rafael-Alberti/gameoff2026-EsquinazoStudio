@@ -689,7 +689,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaGolpe" index="0" unique_id=402024500]
-position = Vector2(40, 0)
+position = Vector2(43.333332, 0)
 shape = SubResource("RectangleShape2D_mjkrw")
 
 [node name="MaquinaEstados" parent="." index="4" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
