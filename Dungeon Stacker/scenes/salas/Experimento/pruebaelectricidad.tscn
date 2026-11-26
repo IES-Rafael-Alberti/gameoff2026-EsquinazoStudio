@@ -48,6 +48,7 @@ longitud = 2
 [node name="Laser3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=1590120396 instance=ExtResource("7_pq45n")]
 position = Vector2(928, 256)
 rotation = 1.5707964
+longitud = 11
 
 [node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("2_xdjh3")]
 position = Vector2(800, 256)
