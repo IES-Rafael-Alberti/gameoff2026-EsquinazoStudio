@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://luch1xunp51g" path="res://scenes/puzles/medieval/Cerradura.tscn" id="2_ml6bf"]
 [ext_resource type="PackedScene" uid="uid://ccnrpxu8vtidf" path="res://scenes/puzles/medieval/Llave.tscn" id="3_tqqva"]
 [ext_resource type="PackedScene" uid="uid://dsmduuy2d15mb" path="res://scenes/trampas/medieval/CofreFalso.tscn" id="4_ml6bf"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="5_d6ff3"]
 [ext_resource type="PackedScene" uid="uid://bg88cj5qlfumc" path="res://scenes/puzles/medieval/CofreBotin.tscn" id="5_tqqva"]
-[ext_resource type="PackedScene" uid="uid://b4cqci5h5klxp" path="res://scenes/enemigos/EnemigoPerseguidor.tscn" id="6_d6ff3"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_g18w8")]
 
@@ -23,7 +23,7 @@ position = Vector2(928, 448)
 
 [node name="CofreFalso" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=551623583 instance=ExtResource("4_ml6bf")]
 position = Vector2(672, 192)
-escena_enemigo = ExtResource("6_d6ff3")
+escena_enemigo = ExtResource("5_d6ff3")
 
 [node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=2110658979 instance=ExtResource("5_tqqva")]
 position = Vector2(1184, 192)

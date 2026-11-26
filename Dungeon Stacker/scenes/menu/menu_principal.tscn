@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1mjxmaicm7gj" path="res://scripts/ui/boton_cambio_menu.gd" id="1_ytm4j"]
 [ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_4yl6o"]
 [ext_resource type="PackedScene" uid="uid://d2scfefrhbpj1" path="res://scenes/menu/niveles.tscn" id="3_28145"]
+[ext_resource type="PackedScene" uid="uid://71eejpow8g62" path="res://scenes/menu/fondo_menu.tscn" id="4_4mcpf"]
 
 [node name="Menu" type="Control" unique_id=1079454129 node_paths=PackedStringArray("panel_principal", "opciones", "niveles", "boton_continuar", "boton_salir")]
 layout_mode = 3
@@ -20,18 +21,21 @@ boton_salir = NodePath("MenuPrincipal/Salir")
 metadata/_edit_horizontal_guides_ = [1080.0]
 metadata/_edit_vertical_guides_ = [1921.0]
 
+[node name="Fondo" parent="." unique_id=1709290085 instance=ExtResource("4_4mcpf")]
+layout_mode = 1
+
 [node name="MenuPrincipal" type="Panel" parent="." unique_id=997857503]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -320.0
+offset_left = -640.0
 offset_top = -412.0
-offset_right = 192.0
+offset_right = -128.0
 offset_bottom = 420.0
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Titulo" type="Label" parent="MenuPrincipal" unique_id=1283631926]
