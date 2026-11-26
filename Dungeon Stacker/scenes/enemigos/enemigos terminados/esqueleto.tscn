@@ -676,6 +676,7 @@ _data = {
 size = Vector2(48, 40)
 
 [node name="Esqueleto" unique_id=661418023 instance=ExtResource("1_oobep")]
+scale = Vector2(1.5, 1.5)
 
 [node name="Sprite" type="Sprite2D" parent="." index="1" unique_id=1289893395]
 z_index = 2
