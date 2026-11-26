@@ -70,14 +70,13 @@ metadata/_edit_use_anchors_ = true
 [node name="NextLabel" type="Label" parent="SidePanel" unique_id=1189905426]
 custom_maximum_size = Vector2(20, 40)
 layout_mode = 0
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 148.0
-offset_bottom = 87.0
+offset_top = 17.0
+offset_right = 20.0
+offset_bottom = 40.0
 text = "NEXT"
 
 [node name="HoldPiece" type="Node2D" parent="SidePanel" unique_id=2042075291]
-position = Vector2(320, 128)
+position = Vector2(320, -32)
 script = ExtResource("10_kjx5x")
 
 [node name="NextPiece1" type="Node2D" parent="SidePanel" unique_id=729437495]
@@ -104,8 +103,9 @@ script = ExtResource("10_kjx5x")
 layout_mode = 1
 anchors_preset = -1
 offset_left = -256.0
-offset_right = -96.0
-offset_bottom = 23.0
+offset_top = -96.0
+offset_right = -64.0
+offset_bottom = -64.0
 text = "PIECES: 0"
 
 [node name="Label" type="Label" parent="SidePanel" unique_id=1440733841]
