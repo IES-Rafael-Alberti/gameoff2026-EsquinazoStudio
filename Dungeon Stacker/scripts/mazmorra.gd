@@ -32,7 +32,7 @@ var habitacion_actual: Habitacion
 var _activa := false
 var _vestibulo_inferior: Vestibulo
 var _vestibulo_superior: Vestibulo
-var _camara: Camera2D # solo activa dentro de un vestíbulo
+@onready var _camara: Camera2D = $CamaraVestibulo
 
 @onready var jugador: CharacterBody2D = $Jugador
 @onready var _interfaz: InterfazMazmorra = $Interfaz
@@ -40,9 +40,6 @@ var _camara: Camera2D # solo activa dentro de un vestíbulo
 func _ready() -> void:
 	_interfaz.configurar(self, jugador.vida)
 	_interfaz.visible = false
-	_camara = Camera2D.new()
-	_camara.enabled = false
-	add_child(_camara)
 
 func _process(_delta: float) -> void:
 	if _camara.enabled:
@@ -80,13 +77,14 @@ func _actualizar_camara() -> void:
 func _seguir_jugador() -> void:
 	var vestibulo := _vestibulo_inferior if lugar == Lugar.VESTIBULO_INFERIOR else _vestibulo_superior
 	var vista := get_viewport_rect().size
+	var ancho_visible := vista.x / _camara.zoom.x
 	var izquierda := vestibulo.global_position.x
 	var derecha := izquierda + vestibulo.ancho_total()
 	var x := jugador.global_position.x
-	if derecha - izquierda <= vista.x:
+	if derecha - izquierda <= ancho_visible:
 		x = (izquierda + derecha) / 2.0
 	else:
-		x = clampf(x, izquierda + vista.x / 2.0, derecha - vista.x / 2.0)
+		x = clampf(x, izquierda + ancho_visible / 2.0, derecha - ancho_visible / 2.0)
 	_camara.global_position = Vector2(x, vista.y / 2.0)
 
 
@@ -205,6 +203,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	habitacion_actual.preparar(celda, datos_celda, vecinos_de(celda), entrada)
 	habitacion_actual.puerta_cruzada.connect(_on_puerta_cruzada)
 	habitacion_actual.desafios_resueltos.connect(_interfaz.refrescar_minimapa)
+	habitacion_actual.desafios_reabiertos.connect(_interfaz.refrescar_minimapa)
 	habitacion_actual.piezas_obtenidas.connect(piezas_obtenidas.emit)
 
 	# El punto de entrada es donde queda el centro del cuerpo, no los pies.
