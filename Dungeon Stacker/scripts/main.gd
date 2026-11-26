@@ -201,9 +201,13 @@ func fijar_pieza() -> void:
 		controlador_pieza.solo_horizontal_actual,
 		controlador_pieza.escenas_actuales
 	)
+	var antes: Array = fixed_blocks.instantanea(tablero)
 	var lineas: int = tablero_nodo.comprobar_lineas()
 	_regalar_tesoro(lineas)
-	fixed_blocks.actualizar_tablero(tablero)
+	if lineas > 0:
+		fixed_blocks.animar_lineas(antes, tablero)
+	else:
+		fixed_blocks.actualizar_tablero(tablero)
 
 	if colocadas == 0:
 		bloqueado = true

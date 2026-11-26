@@ -6,11 +6,14 @@ extends JugadorEstado
 
 var _dano := 0
 var _destino := Vector2.ZERO
+## Escala del sprite al empezar a caer (la del jugador, no necesariamente 1).
+var _escala_sprite := Vector2.ONE
 
 
 func entrar(_anterior: StringName, datos: Dictionary) -> void:
 	_dano = datos.get("dano", 0)
 	_destino = datos.get("destino", jugador.position)
+	_escala_sprite = jugador.sprite.scale
 	jugador.velocity = Vector2.ZERO
 	jugador.cancelar_retroceso()
 	jugador.animacion_caida.play("caer")
@@ -29,7 +32,8 @@ func _on_caida_terminada(_nombre: StringName) -> void:
 	# El daño del vacío no lo frena la invulnerabilidad anterior.
 	jugador.vida.recibir_dano(_dano)
 	if jugador.vida.esta_viva():
-		jugador.sprite.scale = Vector2.ONE
+		jugador.sprite.scale = _escala_sprite
+		jugador.sprite.rotation = 0.0
 		jugador.position = _destino
 		jugador.iniciar_invulnerabilidad()
 		_terminar(INACTIVO)
