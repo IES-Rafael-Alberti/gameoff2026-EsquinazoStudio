@@ -2,7 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bphk0rqkyofmu" path="res://scripts/ui/opciones.gd" id="1_dqsu3"]
 [ext_resource type="Texture2D" uid="uid://bti4bucsp6glp" path="res://assets/sprites/menu/pergamino normal.png" id="2_lvxne"]
-[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_1foug"]
+[ext_resource type="FontFile" uid="uid://b7uvyhvotmcby" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_i1gd1"]
+
+[sub_resource type="FontVariation" id="FontVariation_bfpv7"]
+base_font = ExtResource("3_i1gd1")
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVariation_qkx8p"]
+base_font = ExtResource("3_i1gd1")
+spacing_glyph = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1gd1"]
 content_margin_left = 4.0
@@ -40,7 +48,7 @@ offset_top = 512.0
 offset_right = 1632.0
 offset_bottom = 567.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_1foug")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 40
 text = "Master"
 
@@ -61,7 +69,7 @@ offset_top = 608.0
 offset_right = 1600.0
 offset_bottom = 663.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_1foug")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 40
 text = "Music"
 
@@ -82,7 +90,7 @@ offset_top = 704.0
 offset_right = 1568.0
 offset_bottom = 759.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_1foug")
+theme_override_fonts/font = SubResource("FontVariation_qkx8p")
 theme_override_font_sizes/font_size = 40
 text = "SFX"
 
@@ -103,7 +111,7 @@ offset_top = 832.0
 offset_right = 1568.0
 offset_bottom = 895.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_1foug")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_i1gd1")
 text = "RETURN"

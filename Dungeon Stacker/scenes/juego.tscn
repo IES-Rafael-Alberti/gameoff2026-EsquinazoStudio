@@ -106,14 +106,14 @@ height = 160
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdy"]
 size = Vector2(180, 180)
 
-[node name="Juego" type="Node" unique_id=1710010088 node_paths=PackedStringArray("pantalla_muerte", "controles")]
+[node name="Juego" type="Node" unique_id=1710010088 node_paths=PackedStringArray("pantalla_muerte", "controles", "controles_tetris")]
 script = ExtResource("1_x4n2o")
 pantalla_muerte = NodePath("PantallaMuerte")
 controles = NodePath("Mazmorra/Interfaz/Controles")
+controles_tetris = NodePath("Tetris/PanelIzquierdo/Controles")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
 Configuracion = SubResource("Resource_vf1pr")
-MAX_PREVIEWS = 5
 
 [node name="Mazmorra" parent="." unique_id=1787572250 instance=ExtResource("4_ervc2")]
 
@@ -220,3 +220,7 @@ visible = false
 [connection signal="nivel_completado" from="Mazmorra" to="." method="_on_mazmorra_nivel_completado"]
 [connection signal="reinicio_pedido" from="Menu" to="." method="reiniciar_nivel"]
 [connection signal="reinicio_pedido" from="PantallaMuerte" to="." method="reiniciar_nivel"]
+
+[editable path="Tetris"]
+[editable path="Mazmorra"]
+[editable path="Mazmorra/Interfaz"]
