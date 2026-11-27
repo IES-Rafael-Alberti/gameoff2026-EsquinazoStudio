@@ -12,6 +12,10 @@ var modo := Modo.MAZMORRA
 @export var pantalla_muerte: PantallaMuerte
 ## Texto de controles en pantalla (opcional). Se le avisa del modo al cambiar.
 @export var controles: ControlesPantalla
+## El texto de controles del tetris (el Label dentro del panel izquierdo del tetris). En la
+## mazmorra, "controles" se coloca en la misma posición que este. Opcional: sin él, el texto de
+## la mazmorra se queda donde lo pusiste en el editor.
+@export var controles_tetris: Control
 
 ## Antes de que nada del tablero lea su configuración (el padre entra en el árbol antes que sus
 ## hijos), se pone la del nivel elegido en el menú. Sin nivel elegido (F6 sobre esta escena)
@@ -36,6 +40,8 @@ func _ready() -> void:
 	# La música empieza en el bioma medieval; la mazmorra cambia de bioma al entrar en cada sala.
 	Musica.iniciar_juego(Catalogo.Bioma.MEDIEVAL, Musica.Modo.MAZMORRA)
 	_aplicar_modo()
+	# El tetris recoloca su panel al cambiar el tamaño de la ventana; se vuelve a copiar la posición.
+	get_viewport().size_changed.connect(_igualar_posicion_controles)
 
 	_mazmorra.jugador.murio.connect(_on_jugador_murio)
 	# Si viene de un nivel anterior (o reinicia este), empieza con la vida que le toca.
@@ -65,7 +71,14 @@ func _aplicar_modo() -> void:
 	print("Modo: ", Modo.keys()[modo])
 	if controles != null:
 		controles.mostrar_modo(modo == Modo.TETRIS)
+	_igualar_posicion_controles()
 	Musica.cambiar_modo(Musica.Modo.TETRIS if modo == Modo.TETRIS else Musica.Modo.MAZMORRA)
+
+## Pone el texto de controles de la mazmorra donde está el del tetris. La cámara de la mazmorra
+## está apagada mientras se ve el tetris, así que la posición del tetris coincide con la de pantalla.
+func _igualar_posicion_controles() -> void:
+	if controles != null and controles_tetris != null:
+		controles.global_position = controles_tetris.global_position
 
 func _activar(nodo: CanvasItem, activo: bool) -> void:
 	nodo.visible = activo
