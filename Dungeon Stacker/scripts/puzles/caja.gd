@@ -3,6 +3,9 @@ extends AnimatableBody2D
 ## Caja empujable por casillas. El jugador la empuja con su movimiento:
 ## tras empujar un instante contra ella, avanza una casilla si la de delante está libre.
 ## Si no puede avanzar, intercambia el sitio con el jugador para que no se quede atascada.
+## Sobre hielo resbala como el jugador: al terminar una casilla de hielo sigue avanzando en la
+## misma dirección, casilla a casilla (con la misma duración que al empujarla), hasta que la
+## siguiente está bloqueada o la casilla en la que termina ya no es hielo.
 
 const TAM_CELDA := 64.0
 
@@ -45,6 +48,8 @@ func _ready() -> void:
 	if _sprite.texture != null:
 		_sprite.scale = Vector2.ONE * TAM_CELDA / _sprite.texture.get_size()
 	_escala_inicial = _sprite.scale
+	# La sala aún no está lista aquí (los hijos se preparan antes que ella): se hace al terminar el frame.
+	_ajustar_a_cuadricula.call_deferred()
 
 
 func _physics_process(_delta: float) -> void:
@@ -117,30 +122,47 @@ func reiniciar() -> void:
 	reiniciando = false
 
 func _intentar_mover(direccion: Vector2, jugador: CharacterBody2D, encadenado := false) -> void:
-	var destino := global_position + direccion * TAM_CELDA
+	var destino := _centro_de_su_celda() + direccion * TAM_CELDA
 	if _casilla_libre(destino, jugador):
-		_moviendo = true
-		_tween = create_tween()
-		_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		_tween.tween_property(self, "global_position", destino, duracion_movimiento)
-		_tween.finished.connect(_on_tween_finished)
+		_mover_a(destino)
 	elif encadenado:
 		# Al topar con algo tras un empuje seguido, el intercambio espera su tiempo normal.
 		_fin_movimiento_ms = -100000
 	elif intercambiar_al_atascar and jugador != null:
 		_intercambiar(direccion, jugador)
 
+## Mueve la caja a la casilla de destino (la que ya se ha comprobado que está libre).
+func _mover_a(destino: Vector2) -> void:
+	_moviendo = true
+	_tween = create_tween()
+	_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	_tween.tween_property(self, "global_position", destino, duracion_movimiento)
+	_tween.finished.connect(_on_tween_finished)
+
 func _on_tween_finished() -> void:
 	_moviendo = false
 	_fin_movimiento_ms = Time.get_ticks_msec()
 	_tween = null
+	_seguir_resbalando()
+
+## Si la caja ha acabado sobre hielo y la casilla siguiente está libre, avanza otra casilla.
+## En una casilla que no es hielo (o con algo delante) se queda ahí.
+func _seguir_resbalando() -> void:
+	if cayendo or reiniciando or _direccion == Vector2.ZERO:
+		return
+	var sala := get_tree().get_first_node_in_group("habitacion") as Habitacion
+	if sala == null or not sala.es_hielo(global_position):
+		return
+	var destino := _centro_de_su_celda() + _direccion * TAM_CELDA
+	if _casilla_libre(destino):
+		_mover_a(destino)
 
 ## La caja no puede avanzar: el jugador pasa a su casilla y la caja a la casilla de detrás.
 func _intercambiar(direccion: Vector2, jugador: CharacterBody2D) -> void:
 	if _intercambiando:
 		return
 	_intercambiando = true
-	var detras := global_position - direccion * TAM_CELDA
+	var detras := _centro_de_su_celda() - direccion * TAM_CELDA
 	if not _casilla_libre(detras, jugador):
 		_intercambiando = false
 		return
@@ -179,6 +201,27 @@ func _casilla_libre(centro: Vector2, ignorar: CollisionObject2D = null) -> bool:
 			excluidos.append(haz.get_rid())
 	consulta.exclude = excluidos
 	return get_world_2d().direct_space_state.intersect_shape(consulta, 1).is_empty()
+
+## Centro de la casilla de la sala en la que está la caja. Todos los destinos se calculan desde
+## aquí y no desde la posición actual, para que la caja nunca se desvíe de la cuadrícula.
+func _centro_de_su_celda() -> Vector2:
+	return _centro_de_celda_de(global_position)
+
+func _centro_de_celda_de(posicion: Vector2) -> Vector2:
+	var sala := get_tree().get_first_node_in_group("habitacion") as Habitacion
+	if sala == null:
+		return posicion # escena suelta (pruebas): sin sala no hay cuadrícula
+	return sala.centro_de_celda(sala.celda_de(posicion))
+
+## Recoloca la caja (y su posición de reinicio) en el centro de su casilla. Corrige cajas puestas
+## a ojo en el editor o restauradas a medio movimiento.
+func _ajustar_a_cuadricula() -> void:
+	_posicion_inicial = _centro_de_celda_de(_posicion_inicial)
+	if _moviendo or cayendo or reiniciando:
+		return
+	var centro := _centro_de_su_celda()
+	if not global_position.is_equal_approx(centro):
+		_sincronizar_body(self, centro)
 
 ## Convierte una normal cualquiera al eje cardinal dominante.
 func _a_eje(normal: Vector2) -> Vector2:
