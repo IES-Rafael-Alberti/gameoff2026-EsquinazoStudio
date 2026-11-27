@@ -40,7 +40,6 @@ activa_caja = false
 
 [node name="Placa3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="4" unique_id=1754703377 instance=ExtResource("2_oe0f8")]
 position = Vector2(800, 128)
-activa_caja = false
 
 [node name="CambiadorBaldosas" parent="." index="8" unique_id=970107115 node_paths=PackedStringArray("placas") instance=ExtResource("7_g580b")]
 tile_map_data = PackedByteArray("AAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAJAA4AAAAAAAAAAAAIAAMAAAAAAAEAAAAJAAMAAAAAAAEAAAAJAAIAAAAAAAEAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAALAAIAAAAAAAAAAAA=")

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="3_kusue"]
 [ext_resource type="PackedScene" uid="uid://br3qcgdmserv5" path="res://scenes/puzles/medieval/Caja.tscn" id="4_gj7oj"]
 [ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="5_eb33t"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="6_8gmks"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_t06gb")]
 
@@ -48,5 +49,7 @@ position = Vector2(928, 512)
 position = Vector2(512, 96)
 tile_map_data = PackedByteArray("AAAAAAQAAAAAAAEAAAABAAQAAAAAAAEAAAACAAQAAAAAAAEAAAADAAQAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAA=")
 placas = [NodePath("../Placa")]
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("6_8gmks")]
 
 [editable path="Puzle"]
