@@ -9,6 +9,8 @@ atlas = ExtResource("3_ejvaf")
 region = Rect2(1536, 2560, 512, 512)
 
 [node name="TrampaBolaNieve" type="Node2D" unique_id=1698572517]
+light_mask = 0
+visibility_layer = 0
 script = ExtResource("1_4880n")
 escena_bola = ExtResource("2_ay7j6")
 
