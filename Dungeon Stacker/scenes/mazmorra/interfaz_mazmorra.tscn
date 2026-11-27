@@ -2,16 +2,22 @@
 
 [ext_resource type="Script" uid="uid://cai0wd26gj7fg" path="res://scripts/mazmorra/interfaz_mazmorra.gd" id="1_1dm4y"]
 [ext_resource type="Script" uid="uid://bqddph4t53tq1" path="res://scripts/mazmorra/minimapa.gd" id="2_yjn0g"]
+[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_5lyqp"]
 [ext_resource type="Script" uid="uid://b4njy5n0prnas" path="res://scripts/mazmorra/barra_vida.gd" id="3_f00u8"]
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="4_f00u8"]
+[ext_resource type="Texture2D" uid="uid://dsagvcim3v0k7" path="res://assets/sprites/menu/gema vida.png" id="5_rcj12"]
+[ext_resource type="Texture2D" uid="uid://duv2ctvyl81s2" path="res://assets/sprites/menu/corona vida.png" id="6_lvfjt"]
+[ext_resource type="Texture2D" uid="uid://dvqppbgt3o6ss" path="res://assets/sprites/menu/pergamino con pieza.png" id="7_tvt0x"]
+[ext_resource type="Script" uid="uid://dncor5rirsw2k" path="res://scripts/ui/controles_pantalla.gd" id="8_ctrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjn0g"]
 atlas = ExtResource("4_f00u8")
 region = Rect2(4648, 1660, 408, 164)
 filter_clip = true
 
-[node name="Interfaz" type="CanvasLayer" unique_id=1995162197]
+[node name="Interfaz" type="CanvasLayer" unique_id=1995162197 node_paths=PackedStringArray("etiqueta_piezas")]
 script = ExtResource("1_1dm4y")
+etiqueta_piezas = NodePath("Piezas")
 
 [node name="Minimapa" type="Control" parent="." unique_id=89696954]
 layout_mode = 3
@@ -23,35 +29,130 @@ offset_bottom = 40.0
 grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("2_yjn0g")
-metadata/_edit_use_anchors_ = true
 
-[node name="Etiqueta" type="Label" parent="." unique_id=678796577]
+[node name="Piezas" type="Label" parent="." unique_id=678796577]
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 410.0
-offset_bottom = 50.0
+offset_left = 232.0
+offset_top = 48.0
+offset_right = 632.0
+offset_bottom = 88.0
 theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_5lyqp")
 theme_override_font_sizes/font_size = 28
-metadata/_edit_use_anchors_ = true
 
-[node name="BarraVida" type="HBoxContainer" parent="." unique_id=487677871]
-offset_left = 10.0
-offset_top = 56.0
-offset_right = 50.0
-offset_bottom = 96.0
-mouse_filter = 2
-theme_override_constants/separation = 6
-script = ExtResource("3_f00u8")
-metadata/_edit_use_anchors_ = true
+[node name="Icono" type="TextureRect" parent="." unique_id=347400636]
+offset_left = 192.0
+offset_top = 40.0
+offset_right = 232.0
+offset_bottom = 96.55786
+texture = ExtResource("7_tvt0x")
+expand_mode = 1
 
 [node name="Llave" type="TextureRect" parent="." unique_id=1807170972]
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 104.0
-offset_right = 74.0
-offset_bottom = 130.0
+offset_left = 200.0
+offset_top = 136.0
+offset_right = 264.0
+offset_bottom = 162.0
 texture = SubResource("AtlasTexture_yjn0g")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
+
+[node name="Corona" type="TextureRect" parent="." unique_id=2048910158]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 176.0
+texture = ExtResource("6_lvfjt")
+expand_mode = 1
+
+[node name="BarraVida" type="Control" parent="." unique_id=2137293946 node_paths=PackedStringArray("gemas")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_f00u8")
+gemas = [NodePath("Gema"), NodePath("Gema2"), NodePath("Gema3"), NodePath("Gema4"), NodePath("Gema5")]
+
+[node name="Gema" type="TextureRect" parent="BarraVida" unique_id=838683653]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 146.0
+offset_right = 64.59504
+offset_bottom = 158.0
+texture = ExtResource("5_rcj12")
+expand_mode = 1
+
+[node name="Gema2" type="TextureRect" parent="BarraVida" unique_id=1292072891]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 150.0
+offset_right = 86.59504
+offset_bottom = 162.0
+texture = ExtResource("5_rcj12")
+expand_mode = 1
+
+[node name="Gema3" type="TextureRect" parent="BarraVida" unique_id=1598176326]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 150.0
+offset_right = 108.59504
+offset_bottom = 162.0
+texture = ExtResource("5_rcj12")
+expand_mode = 1
+
+[node name="Gema4" type="TextureRect" parent="BarraVida" unique_id=118484717]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 148.0
+offset_right = 132.59503
+offset_bottom = 160.0
+texture = ExtResource("5_rcj12")
+expand_mode = 1
+
+[node name="Gema5" type="TextureRect" parent="BarraVida" unique_id=1092846440]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 144.0
+offset_right = 152.59503
+offset_bottom = 156.0
+texture = ExtResource("5_rcj12")
+expand_mode = 1
+
+[node name="Controles" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 192.0
+offset_right = 480.0
+offset_bottom = 320.0
+theme_override_constants/outline_size = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5lyqp")
+theme_override_font_sizes/font_size = 24
+script = ExtResource("8_ctrl")
+tetris_teclado = "A / D  Move
+W  Rotate
+Q / E  Rotate
+S  Soft drop
+Space  Hard drop
+Tab  Hold
+Shift  Enter dungeon
+R  Restart
+P  Pause"
+mazmorra_teclado = "WASD  Move
+Space  Attack
+Shift  Enter tetris
+P  Pause"
+tetris_mando = "D-pad / Stick  Move
+X / B  Rotate
+LB / RB  Rotate
+A  Hard drop
+Left stick click  Hold
+Select  Enter dungeon
+Y  Restart
+Start  Pause"
+mazmorra_mando = "D-pad / Stick  Move
+A  Attack
+Select  Enter tetris
+Start  Pause"

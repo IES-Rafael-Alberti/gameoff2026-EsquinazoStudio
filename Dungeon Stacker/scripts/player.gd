@@ -12,7 +12,7 @@ signal caida_terminada
 @export var speed: float = 150.0
 
 @export_group("Combate")
-@export var vida_maxima := 3
+@export var vida_maxima := 5
 @export var dano_ataque := 1
 ## Distancia desde el centro del jugador hasta el centro del golpe (píxeles).
 @export var alcance_ataque := 40.0
@@ -33,6 +33,8 @@ signal caida_terminada
 @onready var _hitbox: CollisionShape2D = $HitboxPersonaje
 @onready var animacion_caida: AnimationPlayer = $Animacion/AnimacionCaida
 @onready var maquina: JugadorMaquina = $MaquinaEstados
+@onready var _chirivitas_curacion: CPUParticles2D = $ChirivitasCuracion
+@onready var _chirivitas_llena: CPUParticles2D = $ChirivitasVidaLlena
 
 var vida: Vida
 var tiene_llave := false
@@ -50,6 +52,9 @@ func _ready() -> void:
 	vida.vida_maxima = vida_maxima
 	add_child(vida)
 	vida.murio.connect(_on_vida_murio)
+	vida.curada.connect(_on_vida_curada)
+	_chirivitas_curacion.texture = _crear_textura_chirivita()
+	_chirivitas_llena.texture = _crear_textura_chirivita_con_halo()
 	maquina.iniciar(self)
 	
 func _physics_process(delta: float) -> void:
@@ -180,8 +185,46 @@ func caer_al_vacio(dano: int, destino: Vector2) -> void:
 	await caida_terminada
 
 
-func curar(cantidad: int) -> void:
-	vida.curar(cantidad)
+func curar(cantidad: int) -> bool:
+	return vida.curar(cantidad)
+
+## Curación real: chirivitas rojas.
+func _on_vida_curada(_cantidad: int) -> void:
+	_mostrar_chirivitas(_chirivitas_curacion)
+
+## Poción recogida con la vida ya llena: chirivitas negras.
+func chirivitas_vida_llena() -> void:
+	if not vida.esta_viva() or not vida.esta_llena():
+		return
+	_mostrar_chirivitas(_chirivitas_llena)
+
+func _mostrar_chirivitas(particulas: CPUParticles2D) -> void:
+	particulas.emitting = true
+	particulas.restart()
+
+## Cruz blanca de 7x7; el color de la curación la tiñe de rojo.
+func _crear_textura_chirivita() -> ImageTexture:
+	var imagen := Image.create(7, 7, false, Image.FORMAT_RGBA8)
+	imagen.fill(Color(0, 0, 0, 0))
+	for y in range(7):
+		for x in range(7):
+			if absi(x - 3) <= 1 or absi(y - 3) <= 1:
+				imagen.set_pixel(x, y, Color.WHITE)
+	return ImageTexture.create_from_image(imagen)
+
+## Cruz negra con halo blanco para que se vea sobre baldosas oscuras.
+func _crear_textura_chirivita_con_halo() -> ImageTexture:
+	var imagen := Image.create(9, 9, false, Image.FORMAT_RGBA8)
+	imagen.fill(Color(0, 0, 0, 0))
+	for y in range(9):
+		for x in range(9):
+			var dx := absi(x - 4)
+			var dy := absi(y - 4)
+			if dx == 0 or dy == 0:
+				imagen.set_pixel(x, y, Color(0, 0, 0, 1))
+			elif dx <= 1 or dy <= 1:
+				imagen.set_pixel(x, y, Color.WHITE)
+	return ImageTexture.create_from_image(imagen)
 
 func recoger_llave() -> bool:
 	if tiene_llave:

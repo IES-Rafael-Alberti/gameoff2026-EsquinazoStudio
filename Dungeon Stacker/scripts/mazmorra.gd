@@ -5,6 +5,8 @@ enum Lugar { NINGUNO, VESTIBULO_INFERIOR, VESTIBULO_SUPERIOR, SALA }
 
 ## El jugador ha conseguido piezas para el tetris (cofres...). Lo conecta Juego.
 signal piezas_obtenidas(cantidad: int)
+## Una sala objetivo resuelta pide apagar estas barreras del tetris. Lo conecta Juego.
+signal barreras_a_apagar_pedidas(grupos: Array[StringName])
 ## El jugador ha cruzado la puerta de salida del vestíbulo superior. Lo conecta Juego en el editor.
 signal nivel_completado
 
@@ -205,6 +207,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	habitacion_actual.desafios_resueltos.connect(_interfaz.refrescar_minimapa)
 	habitacion_actual.desafios_reabiertos.connect(_interfaz.refrescar_minimapa)
 	habitacion_actual.piezas_obtenidas.connect(piezas_obtenidas.emit)
+	habitacion_actual.barreras_a_apagar_pedidas.connect(barreras_a_apagar_pedidas.emit)
 
 	# El punto de entrada es donde queda el centro del cuerpo, no los pies.
 	var centro_cuerpo := CENTRO_HABITACION if entrada < 0 else habitacion_actual.punto_de_entrada(entrada)
@@ -231,6 +234,11 @@ func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	_actualizar_etiqueta()
 	_interfaz.refrescar_minimapa()
 	print("Vestíbulo ", Lugar.keys()[donde], " columna ", columna)
+
+
+## Pinta el contador de piezas del tetris en la interfaz de la mazmorra. Lo conecta Juego.
+func mostrar_piezas(total: int) -> void:
+	_interfaz.mostrar_piezas(total)
 
 
 func _on_puerta_cruzada(puerta: Puerta) -> void:
