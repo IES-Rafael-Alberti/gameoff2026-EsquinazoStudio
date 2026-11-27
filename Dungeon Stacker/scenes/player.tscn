@@ -572,28 +572,40 @@ animation = &"Attack_South"
 frame_progress = 1.0
 
 [node name="ChirivitasCuracion" type="CPUParticles2D" parent="." unique_id=410140781]
-position = Vector2(0, -6)
+z_index = 1
+position = Vector2(0, 0)
 emitting = false
-lifetime = 0.45
+amount = 18
+explosiveness = 1.0
+lifetime = 0.55
 one_shot = true
 direction = Vector2(0, -1)
-spread = 70.0
-gravity = Vector2(0, 30)
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
-color = Color(1, 0.15, 0.15, 1)
+spread = 18.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 55.0
+initial_velocity_max = 80.0
+scale_min = 0.9
+scale_max = 1.3
+color = Color(1, 0.25, 0.25, 1)
+visibility_rect = Rect2(-48, -80, 96, 112)
 
 [node name="ChirivitasVidaLlena" type="CPUParticles2D" parent="." unique_id=81321666]
-position = Vector2(0, -6)
+z_index = 1
+position = Vector2(0, 0)
 emitting = false
-lifetime = 0.45
+amount = 18
+explosiveness = 1.0
+lifetime = 0.55
 one_shot = true
 direction = Vector2(0, -1)
-spread = 70.0
-gravity = Vector2(0, 30)
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
-color = Color(0, 0, 0, 1)
+spread = 18.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 55.0
+initial_velocity_max = 80.0
+scale_min = 0.9
+scale_max = 1.3
+color = Color(1, 1, 1, 1)
+visibility_rect = Rect2(-48, -80, 96, 112)
 
 [node name="HitboxPersonaje" type="CollisionShape2D" parent="." unique_id=537282891]
 position = Vector2(0, 4.0844116)

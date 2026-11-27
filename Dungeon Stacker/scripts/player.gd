@@ -53,9 +53,8 @@ func _ready() -> void:
 	add_child(vida)
 	vida.murio.connect(_on_vida_murio)
 	vida.curada.connect(_on_vida_curada)
-	var textura := _crear_textura_chirivita()
-	_chirivitas_curacion.texture = textura
-	_chirivitas_llena.texture = textura
+	_chirivitas_curacion.texture = _crear_textura_chirivita()
+	_chirivitas_llena.texture = _crear_textura_chirivita_con_halo()
 	maquina.iniciar(self)
 	
 func _physics_process(delta: float) -> void:
@@ -203,15 +202,28 @@ func _mostrar_chirivitas(particulas: CPUParticles2D) -> void:
 	particulas.emitting = true
 	particulas.restart()
 
-## Cruz blanca de 5x5; el color de cada sistema de partículas la tiñe.
+## Cruz blanca de 7x7; el color de la curación la tiñe de rojo.
 func _crear_textura_chirivita() -> ImageTexture:
-	var imagen := Image.create(5, 5, false, Image.FORMAT_RGBA8)
+	var imagen := Image.create(7, 7, false, Image.FORMAT_RGBA8)
 	imagen.fill(Color(0, 0, 0, 0))
-	for pixel in [
-		Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3), Vector2i(2, 4),
-		Vector2i(0, 2), Vector2i(1, 2), Vector2i(3, 2), Vector2i(4, 2),
-	]:
-		imagen.set_pixel(pixel.x, pixel.y, Color.WHITE)
+	for y in range(7):
+		for x in range(7):
+			if absi(x - 3) <= 1 or absi(y - 3) <= 1:
+				imagen.set_pixel(x, y, Color.WHITE)
+	return ImageTexture.create_from_image(imagen)
+
+## Cruz negra con halo blanco para que se vea sobre baldosas oscuras.
+func _crear_textura_chirivita_con_halo() -> ImageTexture:
+	var imagen := Image.create(9, 9, false, Image.FORMAT_RGBA8)
+	imagen.fill(Color(0, 0, 0, 0))
+	for y in range(9):
+		for x in range(9):
+			var dx := absi(x - 4)
+			var dy := absi(y - 4)
+			if dx == 0 or dy == 0:
+				imagen.set_pixel(x, y, Color(0, 0, 0, 1))
+			elif dx <= 1 or dy <= 1:
+				imagen.set_pixel(x, y, Color.WHITE)
 	return ImageTexture.create_from_image(imagen)
 
 func recoger_llave() -> bool:
