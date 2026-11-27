@@ -36,8 +36,6 @@ var _tween: Tween
 
 func _ready() -> void:
 	super._ready()
-	# Para el respaldo: detectar paredes además del jugador y los enemigos.
-	collision_mask |= Capas.MUROS
 	activo = false # mientras cae no hace daño
 	_sala = get_tree().get_first_node_in_group("habitacion") as Habitacion
 	if sprite == null:

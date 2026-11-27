@@ -10,6 +10,8 @@ atlas = ExtResource("2_3rbb5")
 region = Rect2(1536, 3072, 512, 512)
 
 [node name="BolaNieve" type="Area2D" unique_id=1946304826]
+collision_layer = 32
+collision_mask = 11
 script = ExtResource("1_hhkkr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=501548953]
