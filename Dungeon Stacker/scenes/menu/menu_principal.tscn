@@ -3,7 +3,74 @@
 [ext_resource type="Script" uid="uid://c1mjxmaicm7gj" path="res://scripts/ui/boton_cambio_menu.gd" id="1_ytm4j"]
 [ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_4yl6o"]
 [ext_resource type="PackedScene" uid="uid://d2scfefrhbpj1" path="res://scenes/menu/niveles.tscn" id="3_28145"]
+[ext_resource type="Texture2D" uid="uid://bti4bucsp6glp" path="res://assets/sprites/menu/pergamino normal.png" id="3_luowc"]
+[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="4_3vyha"]
 [ext_resource type="PackedScene" uid="uid://71eejpow8g62" path="res://scenes/menu/fondo_menu.tscn" id="4_4mcpf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luowc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngrfs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vyha"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5alq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7ih0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Menu" type="Control" unique_id=1079454129 node_paths=PackedStringArray("panel_principal", "opciones", "niveles", "boton_continuar", "boton_salir")]
 layout_mode = 3
@@ -13,83 +80,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ytm4j")
-panel_principal = NodePath("MenuPrincipal")
+panel_principal = NodePath("Menu")
 opciones = NodePath("Opciones")
 niveles = NodePath("Niveles")
-boton_continuar = NodePath("MenuPrincipal/Continuar")
-boton_salir = NodePath("MenuPrincipal/Salir")
-metadata/_edit_horizontal_guides_ = [1080.0]
-metadata/_edit_vertical_guides_ = [1921.0]
+boton_continuar = NodePath("Menu/Continuar")
+boton_salir = NodePath("Menu/Salir")
+metadata/_edit_horizontal_guides_ = [1080.0, 384.0]
+metadata/_edit_vertical_guides_ = [1921.0, 1472.0]
 
 [node name="Fondo" parent="." unique_id=1709290085 instance=ExtResource("4_4mcpf")]
 layout_mode = 1
 
-[node name="MenuPrincipal" type="Panel" parent="." unique_id=997857503]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -412.0
-offset_right = -128.0
-offset_bottom = 420.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Menu" type="Control" parent="." unique_id=1416956610]
+anchors_preset = 0
+offset_left = 1184.0
+offset_top = 224.0
+offset_right = 1760.0
+offset_bottom = 1088.0
 
-[node name="Titulo" type="Label" parent="MenuPrincipal" unique_id=1283631926]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 449.0
-offset_bottom = 128.0
-theme_override_font_sizes/font_size = 40
-text = "DUNGEON STACKER"
+[node name="Sprite2D" type="Sprite2D" parent="Menu" unique_id=816171826]
+position = Vector2(287.99994, 491.06546)
+scale = Vector2(0.19347036, 0.18874884)
+texture = ExtResource("3_luowc")
 
-[node name="Iniciar" type="Button" parent="MenuPrincipal" unique_id=977525131]
+[node name="Iniciar" type="Button" parent="Menu" unique_id=977525131]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 320.0
+offset_left = 160.0
+offset_top = 384.0
 offset_right = 448.0
-offset_bottom = 383.0
-theme_override_font_sizes/font_size = 40
+offset_bottom = 447.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_luowc")
 text = "START"
 
-[node name="Continuar" type="Button" parent="MenuPrincipal" unique_id=1425424495]
+[node name="Continuar" type="Button" parent="Menu" unique_id=1425424495]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 192.0
-offset_right = 448.0
-offset_bottom = 255.0
-theme_override_font_sizes/font_size = 40
+offset_left = 176.0
+offset_top = 304.0
+offset_right = 464.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngrfs")
 text = "CONTINUE"
 
-[node name="SeleccionNivel" type="Button" parent="MenuPrincipal" unique_id=1717628227]
+[node name="SeleccionNivel" type="Button" parent="Menu" unique_id=1717628227]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 128.0
 offset_top = 448.0
-offset_right = 448.0
+offset_right = 416.0
 offset_bottom = 511.0
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_3vyha")
 text = "LEVELS"
 
-[node name="Opciones" type="Button" parent="MenuPrincipal" unique_id=1356230576]
+[node name="Opciones" type="Button" parent="Menu" unique_id=1356230576]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 576.0
-offset_right = 448.0
-offset_bottom = 639.0
-theme_override_font_sizes/font_size = 40
+offset_left = 96.0
+offset_top = 528.0
+offset_right = 384.0
+offset_bottom = 591.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_e5alq")
 text = "OPTIONS"
 
-[node name="Salir" type="Button" parent="MenuPrincipal" unique_id=858273588]
+[node name="Salir" type="Button" parent="Menu" unique_id=858273588]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 704.0
-offset_right = 448.0
-offset_bottom = 767.0
-theme_override_font_sizes/font_size = 40
+offset_left = 96.0
+offset_top = 608.0
+offset_right = 384.0
+offset_bottom = 671.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7ih0")
 text = "EXIT"
 
 [node name="Opciones" parent="." unique_id=2128798694 instance=ExtResource("2_4yl6o")]
@@ -100,10 +171,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MenuPrincipal/Iniciar" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MenuPrincipal/Continuar" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="MenuPrincipal/SeleccionNivel" to="." method="_on_level_button_pressed"]
-[connection signal="pressed" from="MenuPrincipal/Opciones" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MenuPrincipal/Salir" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Menu/Iniciar" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/Continuar" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Menu/SeleccionNivel" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="Menu/Opciones" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Menu/Salir" to="." method="_on_exit_button_pressed"]
 [connection signal="cerrado" from="Opciones" to="." method="_on_submenu_cerrado"]
 [connection signal="cerrado" from="Niveles" to="." method="_on_submenu_cerrado"]

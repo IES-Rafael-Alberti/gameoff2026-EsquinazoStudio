@@ -18,6 +18,9 @@ func _ready() -> void:
 func esta_viva() -> bool:
 	return vida > 0
 
+func esta_llena() -> bool:
+	return vida >= vida_maxima
+
 func recibir_dano(cantidad: int) -> void:
 	if not esta_viva() or cantidad <= 0:
 		return
@@ -29,13 +32,15 @@ func recibir_dano(cantidad: int) -> void:
 
 
 ## Recupera vida sin pasar de la máxima. No resucita: con 0 no hace nada.
-func curar(cantidad: int) -> void:
+## Devuelve true solo cuando ha curado de verdad.
+func curar(cantidad: int) -> bool:
 	if not esta_viva() or cantidad <= 0 or vida >= vida_maxima:
-		return
+		return false
 	var antes := vida
 	vida = mini(vida + cantidad, vida_maxima)
 	curada.emit(vida - antes)
 	cambiada.emit(vida, vida_maxima)
+	return true
 
 ## Sube la vida máxima. Por defecto el contenedor nuevo viene lleno.
 func aumentar_maxima(cantidad: int, rellenar := true) -> void:

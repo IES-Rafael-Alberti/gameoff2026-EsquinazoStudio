@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pfyq6smtcdst"
-path="res://.godot/imported/character-spritesheet.png-221738fd2e9ad50cb6e795ca6f1ab822.ctex"
+uid="uid://d0qfu1fmkyggq"
+path="res://.godot/imported/cartel opciones.png-690c79c1ddd1c85c0a1a60a802ccbfa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BorrarTodoDeAqui/character-spritesheet.png"
-dest_files=["res://.godot/imported/character-spritesheet.png-221738fd2e9ad50cb6e795ca6f1ab822.ctex"]
+source_file="res://assets/sprites/menu/cartel opciones.png"
+dest_files=["res://.godot/imported/cartel opciones.png-690c79c1ddd1c85c0a1a60a802ccbfa4.ctex"]
 
 [params]
 

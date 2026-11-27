@@ -19,6 +19,8 @@ const Piezas = preload("res://scripts/piezas.gd")
 @export_range(0.2, 5.0, 0.01) var escala_abajo := 1.30
 ## Inclinación hacia atrás en grados. 0 = vertical; el signo cambia el lado.
 @export_range(-45.0, 45.0, 1.0) var inclinacion := 18.0
+## Posición horizontal (0 = izquierda, 1 = derecha) hacia la que convergen las columnas.
+@export_range(0.0, 1.0, 0.01) var centro_x := 0.5
 
 class PiezaLluvia:
 	var forma: String
@@ -116,7 +118,7 @@ func _escala_perspectiva(y: float) -> float:
 ## Proyección perspectiva: las X convergen hacia el centro al subir.
 func _proyectar(p: Vector2) -> Vector2:
 	var s := _escala_perspectiva(p.y)
-	var cx := _tam_pantalla.x * 0.5
+	var cx := centro_x * _tam_pantalla.x
 	return Vector2(
 		cx + (p.x - cx) * s + p.y * _deriva_x(),
 		p.y * _comprime_y()
@@ -174,11 +176,16 @@ func _dibujar_cuadricula() -> void:
 	var color := Color(1.0, 1.0, 1.0, opacidad_cuadricula)
 	var radio := maxf(1.0, _tam * 0.035)
 	# Si arriba se encoge, hay que emitir columnas fuera de pantalla para seguir cubriéndola.
+	# Con el centro desplazado, los márgenes izquierdo y derecho ya no son simétricos.
 	var s0 := maxf(escala_arriba, 0.05)
-	var margen := _tam_pantalla.x * 0.5 * absf(1.0 / s0 - 1.0)
-	margen += absf(_deriva_x()) * _alto_util() + _tam * 2.0
-	var x := -margen
-	while x <= _tam_pantalla.x + margen:
+	var deriva := absf(_deriva_x()) * _alto_util()
+	var cx := centro_x * _tam_pantalla.x
+	var x_min := (0.0 - deriva - cx) / s0 + cx
+	var x_max := (_tam_pantalla.x + deriva - cx) / s0 + cx
+	x_min -= _tam * 2.0
+	x_max += _tam * 2.0
+	var x := x_min
+	while x <= x_max:
 		var y := 0.0
 		while y <= _alto_util() + _tam:
 			var p := _proyectar(Vector2(x, y))

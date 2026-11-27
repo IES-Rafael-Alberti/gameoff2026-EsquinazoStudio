@@ -5,12 +5,20 @@ signal jugador_entro
 signal puertas_cerradas
 signal puertas_abiertas
 signal desafios_resueltos
+## Un desafío que se había resuelto vuelve a estar pendiente.
+signal desafios_reabiertos
 ## El jugador ha cruzado una puerta abierta.
 signal puerta_cruzada(puerta: Puerta)
 ## Un cofre de la sala ha dado piezas para el tetris.
 signal piezas_obtenidas(cantidad: int)
 
+## Una sala resuelta pide apagar estas barreras del tetris (nombres de grupo).
+signal barreras_a_apagar_pedidas(grupos: Array[StringName])
+
 @export_flags("Norte", "Este", "Sur", "Oeste") var conexiones_iniciales := 15
+## Habitación objetivo: al resolverse sus desafíos, apaga estos grupos de barreras del tetris
+## (el nombre del grupo, igual que en la configuración del tablero). Vacío = no apaga nada.
+@export var barreras_a_apagar: Array[StringName] = []
 @export var dano_vacio := 1
 
 var posicion_tablero := Vector2i.ZERO
@@ -124,7 +132,9 @@ func registrar_desafio(desafio: Node) -> void:
 		return
 	_desafios.append(desafio)
 	_tuvo_desafios = true
-	desafio.tree_exited.connect(resolver_desafio.bind(desafio), CONNECT_ONE_SHOT)
+	var al_salir := resolver_desafio.bind(desafio)
+	if not desafio.tree_exited.is_connected(al_salir):
+		desafio.tree_exited.connect(al_salir, CONNECT_ONE_SHOT)
 	_actualizar_puertas()
 
 ## True mientras quede algún combate o puzzle sin resolver.
@@ -214,6 +224,20 @@ func resolver_desafio(desafio: Node) -> void:
 	if _tuvo_desafios and datos != null:
 		datos.resuelta = true
 		desafios_resueltos.emit()
+		_pedir_apagar_barreras()
+
+
+## Un puzle ha dejado de cumplirse: vuelve a la lista de desafíos y la sala se cierra.
+func reabrir_desafio(desafio: Node) -> void:
+	# Al descargar la sala, las placas sueltan lo que tenían encima y "dejan de cumplirse": eso no
+	# debe deshacer una sala que ya estaba resuelta (se guardaría como pendiente).
+	if _cerrando:
+		return
+	registrar_desafio(desafio)
+	if datos != null:
+		datos.resuelta = false
+	desafios_reabiertos.emit()
+
 
 func _on_cuerpo_entro(cuerpo: Node2D) -> void:
 	if not cuerpo.is_in_group("jugador"):
@@ -258,6 +282,13 @@ func _resolver_si_corresponde() -> void:
 		return
 	datos.resuelta = true
 	desafios_resueltos.emit()
+	_pedir_apagar_barreras()
+
+
+## Pide apagar las barreras de esta sala objetivo (si tiene). Una barrera apagada ya no vuelve.
+func _pedir_apagar_barreras() -> void:
+	if not barreras_a_apagar.is_empty():
+		barreras_a_apagar_pedidas.emit(barreras_a_apagar)
 
 ## Dónde debe quedar el centro del cuerpo del jugador al entrar por esa puerta.
 func punto_de_entrada(entrada: int) -> Vector2:

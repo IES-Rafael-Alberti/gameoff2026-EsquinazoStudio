@@ -1,6 +1,61 @@
 [gd_scene format=3 uid="uid://d2scfefrhbpj1"]
 
 [ext_resource type="Script" uid="uid://c0setib6pc3l6" path="res://scripts/ui/niveles.gd" id="1_cddyd"]
+[ext_resource type="Texture2D" uid="uid://d0qfu1fmkyggq" path="res://assets/sprites/menu/cartel opciones.png" id="2_e6sv3"]
+[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_pfet6"]
+[ext_resource type="Texture2D" uid="uid://b5wqh4b33sc5a" path="res://assets/sprites/menu/post it opciones.png" id="4_sanwg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfpv7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sanwg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkx8p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2yh6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Niveles" type="Control" unique_id=2128798694 node_paths=PackedStringArray("botones_nivel")]
 layout_mode = 3
@@ -10,105 +65,141 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cddyd")
-botones_nivel = [NodePath("Panel/Level1Button"), NodePath("Panel/Level2Button"), NodePath("Panel/Level3Button"), NodePath("Panel/Level4Button")]
+botones_nivel = [NodePath("Level1Button"), NodePath("Level2Button"), NodePath("Level3Button"), NodePath("Level4Button")]
+metadata/_edit_vertical_guides_ = [480.0, 1095.0, 850.0]
+metadata/_edit_horizontal_guides_ = [352.0, 671.0]
 
-[node name="Panel" type="Panel" parent="." unique_id=1903083384]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.42900002
-anchor_top = 0.437
-anchor_right = 0.42900002
-anchor_bottom = 0.437
-offset_left = -503.68005
-offset_top = -343.96002
-offset_right = 776.31995
-offset_bottom = 488.03998
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SpriteFondo" type="Sprite2D" parent="." unique_id=1494317242]
+position = Vector2(960, 544.00006)
+scale = Vector2(1.287839, 1.4243324)
+texture = ExtResource("2_e6sv3")
 
-[node name="Level1Label" type="Label" parent="Panel" unique_id=1990708413]
+[node name="SpritePostit" type="Sprite2D" parent="." unique_id=565268479]
+position = Vector2(664.00006, 439)
+scale = Vector2(1.2190473, 1.5)
+texture = ExtResource("4_sanwg")
+
+[node name="Level1Label" type="Label" parent="." unique_id=1990708413]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 128.0
-offset_top = 128.0
-offset_right = 513.0
-offset_bottom = 192.0
+offset_left = 480.0
+offset_top = 288.0
+offset_right = 850.0
+offset_bottom = 352.0
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
 text = "Tutorial"
 
-[node name="Level1Button" type="Button" parent="Panel" unique_id=158552933]
+[node name="Level1Button" type="Button" parent="." unique_id=158552933]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 192.0
-offset_right = 512.0
-offset_bottom = 383.0
+offset_left = 480.0
+offset_top = 353.0
+offset_right = 851.0
+offset_bottom = 528.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_bfpv7")
 text = "START"
 
-[node name="Level2Label" type="Label" parent="Panel" unique_id=649428576]
+[node name="SpritePostit2" type="Sprite2D" parent="." unique_id=538409292]
+position = Vector2(1281.0286, 441)
+scale = Vector2(1.225578, 1.5234375)
+texture = ExtResource("4_sanwg")
+
+[node name="Level2Label" type="Label" parent="." unique_id=649428576]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 768.0
-offset_top = 128.0
-offset_right = 1152.0
-offset_bottom = 192.0
+offset_left = 1095.0286
+offset_top = 288.0
+offset_right = 1469.0286
+offset_bottom = 352.0
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
 text = "Level 1"
 
-[node name="Level2Button" type="Button" parent="Panel" unique_id=1298496019]
+[node name="Level2Button" type="Button" parent="." unique_id=1298496019]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 192.0
-offset_right = 1152.0
-offset_bottom = 383.0
+offset_left = 1096.0286
+offset_top = 354.0
+offset_right = 1469.0286
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_sanwg")
 text = "START"
 
-[node name="Level3Label" type="Label" parent="Panel" unique_id=357132080]
+[node name="SpritePostit3" type="Sprite2D" parent="." unique_id=1511111108]
+position = Vector2(663.5, 765.00006)
+scale = Vector2(1.2222223, 1.6406256)
+texture = ExtResource("4_sanwg")
+
+[node name="Level3Label" type="Label" parent="." unique_id=357132080]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 128.0
-offset_top = 448.0
-offset_right = 512.0
-offset_bottom = 512.0
+offset_left = 480.0
+offset_top = 608.0
+offset_right = 832.0
+offset_bottom = 672.0
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
 text = "Level 2"
 
-[node name="Level3Button" type="Button" parent="Panel" unique_id=2108188656]
+[node name="Level3Button" type="Button" parent="." unique_id=2108188656]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 512.0
-offset_right = 512.0
-offset_bottom = 703.0
+offset_left = 480.0
+offset_top = 672.0
+offset_right = 850.0
+offset_bottom = 862.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qkx8p")
 text = "START"
 
-[node name="Level4Label" type="Label" parent="Panel" unique_id=1638733482]
+[node name="Sprite2Postit4" type="Sprite2D" parent="." unique_id=50785611]
+position = Vector2(1286.0156, 765.5059)
+scale = Vector2(1.2762898, 1.6485299)
+texture = ExtResource("4_sanwg")
+
+[node name="Level4Label" type="Label" parent="." unique_id=1638733482]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 768.0
-offset_top = 448.0
-offset_right = 1152.0
-offset_bottom = 512.0
+offset_left = 1095.0
+offset_top = 608.0
+offset_right = 1468.0
+offset_bottom = 672.0
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
 text = "Level 3"
 
-[node name="Level4Button" type="Button" parent="Panel" unique_id=1935933138]
+[node name="Level4Button" type="Button" parent="." unique_id=1935933138]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 512.0
-offset_right = 1152.0
-offset_bottom = 703.0
+offset_left = 1095.0
+offset_top = 671.0
+offset_right = 1479.0
+offset_bottom = 862.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2yh6")
 text = "START"
 
-[node name="Volver" type="Button" parent="Panel" unique_id=704633026]
+[node name="Volver" type="Button" parent="." unique_id=704633026]
+visible = false
 layout_mode = 0
-offset_left = 512.0
-offset_top = 736.0
-offset_right = 768.0
-offset_bottom = 799.0
+offset_left = 832.0
+offset_top = 864.0
+offset_right = 1088.0
+offset_bottom = 927.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_pfet6")
 theme_override_font_sizes/font_size = 40
 text = "RETURN"
 
-[connection signal="pressed" from="Panel/Level1Button" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Panel/Level2Button" to="." method="_on_nivel_1_pressed"]
-[connection signal="pressed" from="Panel/Level3Button" to="." method="_on_nivel_2_pressed"]
-[connection signal="pressed" from="Panel/Level4Button" to="." method="_on_nivel_3_pressed"]
-[connection signal="pressed" from="Panel/Volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="Level1Button" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Level2Button" to="." method="_on_nivel_1_pressed"]
+[connection signal="pressed" from="Level3Button" to="." method="_on_nivel_2_pressed"]
+[connection signal="pressed" from="Level4Button" to="." method="_on_nivel_3_pressed"]
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]

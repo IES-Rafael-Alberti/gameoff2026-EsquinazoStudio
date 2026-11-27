@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://casg7q5h3hoeu"]
+
+[ext_resource type="PackedScene" uid="uid://pii86euytu88" path="res://scenes/salas/Habitacion_Base.tscn" id="1_ic37g"]
+[ext_resource type="PackedScene" uid="uid://draw0128mh1wx" path="res://scenes/trampas/medieval/lanzaflechas.tscn" id="2_mur07"]
+[ext_resource type="PackedScene" uid="uid://chkagn0jrpnon" path="res://scenes/enemigos/enemigos terminados/esqueleto.tscn" id="3_501yu"]
+[ext_resource type="PackedScene" uid="uid://ftaippyffeyq" path="res://scenes/_Componentes/Probabilizador.tscn" id="4_ily5n"]
+[ext_resource type="PackedScene" uid="uid://cqi62mq2yjuq" path="res://scenes/puzles/PocionCuracion.tscn" id="5_yevnx"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_ic37g")]
+
+[node name="Lanzaflechas" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1219705292 instance=ExtResource("2_mur07")]
+position = Vector2(544, 704)
+
+[node name="Lanzaflechas2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=468057475 instance=ExtResource("2_mur07")]
+position = Vector2(1312, 320)
+rotation = 3.1415927
+
+[node name="Lanzaflechas3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=1068737859 instance=ExtResource("2_mur07")]
+position = Vector2(544, 320)
+
+[node name="Lanzaflechas4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=151345855 instance=ExtResource("2_mur07")]
+position = Vector2(1312, 704)
+rotation = 3.1415927
+
+[node name="Probabilizador" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=1708072780 instance=ExtResource("4_ily5n")]
+position = Vector2(801.15, 187.56493)
+probabilidad_eliminar = 15.0
+
+[node name="Esqueleto" parent="Enemigos/Probabilizador" index="0" unique_id=1107300176 instance=ExtResource("3_501yu")]
+position = Vector2(-257.15002, -59.564926)
+
+[node name="Probabilizador2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1579864174 instance=ExtResource("4_ily5n")]
+probabilidad_eliminar = 15.0
+
+[node name="Esqueleto4" parent="Enemigos/Probabilizador2" index="0" unique_id=661418023 instance=ExtResource("3_501yu")]
+position = Vector2(1312, 896)
+
+[node name="Probabilizador3" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1342025185 instance=ExtResource("4_ily5n")]
+probabilidad_eliminar = 15.0
+
+[node name="Esqueleto5" parent="Enemigos/Probabilizador3" index="0" unique_id=1832688558 instance=ExtResource("3_501yu")]
+position = Vector2(544, 896)
+
+[node name="Probabilizador4" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=1596524450 instance=ExtResource("4_ily5n")]
+probabilidad_eliminar = 15.0
+
+[node name="Esqueleto6" parent="Enemigos/Probabilizador4" index="0" unique_id=1255049132 instance=ExtResource("3_501yu")]
+position = Vector2(1312, 128)
+
+[node name="PocionCuracion" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1110925366 instance=ExtResource("5_yevnx")]
+position = Vector2(864, 448)
+
+[node name="PocionCuracion2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=952272371 instance=ExtResource("5_yevnx")]
+position = Vector2(992, 576)
+
+[editable path="Puzle"]

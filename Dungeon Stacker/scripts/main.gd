@@ -16,6 +16,8 @@ static func de(nodo: Node) -> Tetris:
 ## Aviso que se muestra cuando dejan de salir piezas por tener una puerta arriba (por ejemplo, un
 ## Label en el panel lateral: "SHIFT: mazmorra / ESPACIO: seguir"). Opcional.
 @export var aviso_salida: Control
+## Cambió el número de piezas (en cola, en juego y guardada). Para pintarlo donde haga falta.
+signal piezas_cambiadas(total: int)
 
 @export_group("Colocación en pantalla")
 ## Dónde queda el centro del tablero en vertical, medido desde abajo (0 = abajo del todo,
@@ -30,18 +32,21 @@ static func de(nodo: Node) -> Tetris:
 @onready var current_piece = $Board/CurrentPiece
 @onready var tablero_nodo = $Board/Tablero
 @onready var previews = [
-	$SidePanel/NextPiece1,
-	$SidePanel/NextPiece2,
-	$SidePanel/NextPiece3,
-	$SidePanel/NextPiece4,
-	$SidePanel/NextPiece5,
+	$SidePanel/Contenido/NextSlot1/NextPiece1,
+	$SidePanel/Contenido/NextSlot2/NextPiece2,
+	$SidePanel/Contenido/NextSlot3/NextPiece3,
+	$SidePanel/Contenido/NextSlot4/NextPiece4,
+	$SidePanel/Contenido/NextSlot5/NextPiece5,
 ]
-@onready var piezas_label = $SidePanel/PiezasLabel
+@onready var piezas_label = $PanelIzquierdo/Contador/PiezasLabel
 ## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
-@onready var hold_panel = get_node_or_null("SidePanel/HoldPiece")
+@onready var hold_panel = get_node_or_null("SidePanel/Contenido/HoldSlot/HoldPiece")
 @onready var piezas = $Piezas
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel
+@onready var _panel_izquierdo: Control = $PanelIzquierdo
+@onready var _fondo_negro: ColorRect = $FondoNegro
+@onready var _controles := get_node_or_null("PanelIzquierdo/Controles") as ControlesPantalla
 @onready var controlador_pieza = $ControladorPieza
 
 var piezas_disponibles: int = 0
@@ -68,7 +73,14 @@ func _ready() -> void:
 	controlador_pieza.solicitar_fijar_pieza.connect(fijar_pieza)
 	crear_tablero()
 	colocar_tablero()
+	colocar_panel()
+	colocar_panel_izquierdo()
+	_preparar_previews()
+	if _controles != null:
+		_controles.mostrar_modo(true)
 	get_viewport().size_changed.connect(colocar_tablero)
+	get_viewport().size_changed.connect(colocar_panel)
+	get_viewport().size_changed.connect(colocar_panel_izquierdo)
 	piezas_disponibles = maxi(Configuracion.CANTIDAD_PIEZAS, 0)
 	refrescar_cola()
 	generar_pieza()
@@ -78,11 +90,46 @@ func _ready() -> void:
 ## derecha. Depende del tamaño del tablero del nivel y del de la pantalla.
 func colocar_tablero() -> void:
 	var pantalla := get_viewport_rect().size
+	_fondo_negro.size = pantalla
 	var tam := Vector2(Configuracion.ANCHO_TABLERO, Configuracion.ALTO_TABLERO)
 	var centro_y := pantalla.y * (1.0 - altura_centro_desde_abajo)
 	var y := clampf(centro_y - tam.y / 2.0, 0.0, maxf(pantalla.y - tam.y, 0.0))
 	_board.position = Vector2((pantalla.x - tam.x) / 2.0, y)
 	_panel_lateral.position.x = _board.position.x + tam.x + separacion_panel
+
+func colocar_panel() -> void:
+	var pantalla := get_viewport_rect().size
+	var ancho_tablero := float(Configuracion.ANCHO_TABLERO)
+	var alto_tablero := float(Configuracion.ALTO_TABLERO)
+	var x := _board.position.x + ancho_tablero + separacion_panel
+	var centro_y := _board.position.y + alto_tablero / 2.0
+	var y := clampf(centro_y - _panel_lateral.size.y / 2.0, 0.0, maxf(pantalla.y - _panel_lateral.size.y, 0.0))
+	_panel_lateral.position = Vector2(x, y)
+
+func colocar_panel_izquierdo() -> void:
+	var x := maxf(0.0, _board.position.x - separacion_panel - _panel_izquierdo.size.x)
+	var y := clampf(_board.position.y - 20.0, 40.0, 160.0)
+	_panel_izquierdo.position = Vector2(x, y)
+
+func _preparar_previews() -> void:
+	var nodos := previews.duplicate()
+	if hold_panel != null:
+		nodos.append(hold_panel)
+	for nodo in nodos:
+		var slot := nodo.get_parent() as Control
+		if slot != null:
+			slot.resized.connect(_centrar_previews)
+	call_deferred("_centrar_previews")
+
+func _centrar_previews() -> void:
+	var nodos := previews.duplicate()
+	if hold_panel != null:
+		nodos.append(hold_panel)
+	for nodo in nodos:
+		var slot := nodo.get_parent() as Control
+		if slot != null:
+			nodo.position = slot.size / 2.0
+			nodo.scale = Vector2.ONE * 0.6
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reiniciar"):
@@ -201,9 +248,13 @@ func fijar_pieza() -> void:
 		controlador_pieza.solo_horizontal_actual,
 		controlador_pieza.escenas_actuales
 	)
+	var antes: Array = fixed_blocks.instantanea(tablero)
 	var lineas: int = tablero_nodo.comprobar_lineas()
 	_regalar_tesoro(lineas)
-	fixed_blocks.actualizar_tablero(tablero)
+	if lineas > 0:
+		fixed_blocks.animar_lineas(antes, tablero)
+	else:
+		fixed_blocks.actualizar_tablero(tablero)
 
 	if colocadas == 0:
 		bloqueado = true
@@ -311,11 +362,15 @@ func reiniciar_tetris() -> void:
 	generar_pieza()
 	actualizar_contador()
 
-func actualizar_contador() -> void:
-	if piezas_label == null:
-		return
-	var actual = 0
-	if controlador_pieza.pieza_actual != null:
-		actual = 1
+## Piezas que quedan: las pendientes, la que está cayendo y la guardada.
+func total_piezas() -> int:
+	var actual := 1 if controlador_pieza.pieza_actual != null else 0
 	var guardada := 1 if pieza_guardada != null else 0
-	piezas_label.text = "PIEZAS: %d" % (piezas_disponibles + actual + guardada)
+	return piezas_disponibles + actual + guardada
+
+
+func actualizar_contador() -> void:
+	var total := total_piezas()
+	if piezas_label != null:
+		piezas_label.text = "PIECES: %d" % total
+	piezas_cambiadas.emit(total)
