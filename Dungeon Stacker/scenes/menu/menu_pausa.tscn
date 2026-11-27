@@ -2,6 +2,60 @@
 
 [ext_resource type="Script" uid="uid://c5p67evps11j2" path="res://scripts/ui/pausa.gd" id="1_1mqv3"]
 [ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_48u1o"]
+[ext_resource type="Texture2D" uid="uid://bti4bucsp6glp" path="res://assets/sprites/menu/pergamino normal.png" id="2_bdoxg"]
+[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_48u1o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_at66q"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iiog"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pcg3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_serjy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="Menu" type="Control" unique_id=1079454129 node_paths=PackedStringArray("panel_principal", "opciones")]
 process_mode = 3
@@ -13,68 +67,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1mqv3")
-panel_principal = NodePath("MenuPausa")
+panel_principal = NodePath(".")
 opciones = NodePath("Opciones")
 metadata/_edit_horizontal_guides_ = [1080.0]
 metadata/_edit_vertical_guides_ = [1921.0]
 
-[node name="MenuPausa" type="Panel" parent="." unique_id=997857503]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -416.0
-offset_right = 256.0
-offset_bottom = 416.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=724562718]
+position = Vector2(960.0001, 608)
+scale = Vector2(0.19347037, 0.18871154)
+texture = ExtResource("2_bdoxg")
 
-[node name="Titulo" type="Label" parent="MenuPausa" unique_id=1283631926]
+[node name="Reanudar" type="Button" parent="." unique_id=1425424495]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 449.0
-offset_bottom = 128.0
+offset_left = 832.0
+offset_top = 432.0
+offset_right = 1120.0
+offset_bottom = 496.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_48u1o")
 theme_override_font_sizes/font_size = 40
-text = "DUNGEON STACKER"
-
-[node name="Reanudar" type="Button" parent="MenuPausa" unique_id=1425424495]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 320.0
-offset_right = 448.0
-offset_bottom = 383.0
-theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_at66q")
 text = "CONTINUE"
 
-[node name="Reiniciar" type="Button" parent="MenuPausa" unique_id=977525131]
+[node name="Reiniciar" type="Button" parent="." unique_id=977525131]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 448.0
-offset_right = 448.0
-offset_bottom = 511.0
+offset_left = 816.0
+offset_top = 528.0
+offset_right = 1104.0
+offset_bottom = 591.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_48u1o")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8iiog")
 text = "RESTART"
 
-[node name="Opciones" type="Button" parent="MenuPausa" unique_id=1356230576]
+[node name="Opciones2" type="Button" parent="." unique_id=1356230576]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 576.0
-offset_right = 448.0
-offset_bottom = 639.0
+offset_left = 784.0
+offset_top = 624.0
+offset_right = 1072.0
+offset_bottom = 687.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_48u1o")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_6pcg3")
 text = "OPTIONS"
 
-[node name="Menu" type="Button" parent="MenuPausa" unique_id=858273588]
+[node name="Menu" type="Button" parent="." unique_id=858273588]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 704.0
-offset_right = 448.0
-offset_bottom = 767.0
+offset_left = 784.0
+offset_top = 720.0
+offset_right = 1072.0
+offset_bottom = 783.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_48u1o")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_serjy")
 text = "MENU
 "
 
@@ -82,8 +130,8 @@ text = "MENU
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MenuPausa/Reanudar" to="." method="_on_reanudar_pressed"]
-[connection signal="pressed" from="MenuPausa/Reiniciar" to="." method="_on_reiniciar_pressed"]
-[connection signal="pressed" from="MenuPausa/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="MenuPausa/Menu" to="." method="_on_menu_principal_pressed"]
+[connection signal="pressed" from="Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="Opciones2" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_principal_pressed"]
 [connection signal="cerrado" from="Opciones" to="." method="_on_opciones_cerrado"]
