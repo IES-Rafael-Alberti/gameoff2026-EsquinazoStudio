@@ -571,6 +571,30 @@ sprite_frames = SubResource("SpriteFrames_mjkrw")
 animation = &"Attack_South"
 frame_progress = 1.0
 
+[node name="ChirivitasCuracion" type="CPUParticles2D" parent="." unique_id=410140781]
+position = Vector2(0, -6)
+emitting = false
+lifetime = 0.45
+one_shot = true
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+color = Color(1, 0.15, 0.15, 1)
+
+[node name="ChirivitasVidaLlena" type="CPUParticles2D" parent="." unique_id=81321666]
+position = Vector2(0, -6)
+emitting = false
+lifetime = 0.45
+one_shot = true
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+color = Color(0, 0, 0, 1)
+
 [node name="HitboxPersonaje" type="CollisionShape2D" parent="." unique_id=537282891]
 position = Vector2(0, 4.0844116)
 scale = Vector2(1.0000001, 1)

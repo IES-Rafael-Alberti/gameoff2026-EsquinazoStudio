@@ -9,7 +9,6 @@ script = ExtResource("1_s31mj")
 
 [node name="Jugador" parent="." unique_id=802599124 instance=ExtResource("2_pu7ub")]
 position = Vector2(607, 483.00003)
-vida_maxima = 4
 
 [node name="Interfaz" parent="." unique_id=1995162197 instance=ExtResource("3_0puqh")]
 

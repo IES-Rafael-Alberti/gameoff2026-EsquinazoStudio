@@ -29,7 +29,9 @@ func _physics_process(_delta: float) -> void:
 			continue
 		if not cuerpo.has_method("curar"):
 			continue
-		cuerpo.curar(cantidad_curacion)
+		var curo: bool = cuerpo.curar(cantidad_curacion)
+		if not curo and cuerpo.has_method("chirivitas_vida_llena"):
+			cuerpo.chirivitas_vida_llena()
 		_recogida = true
 		if _habitacion != null:
 			_habitacion.registrar_curacion_recogida(_clave())

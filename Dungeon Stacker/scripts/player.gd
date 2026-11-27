@@ -12,7 +12,7 @@ signal caida_terminada
 @export var speed: float = 150.0
 
 @export_group("Combate")
-@export var vida_maxima := 3
+@export var vida_maxima := 5
 @export var dano_ataque := 1
 ## Distancia desde el centro del jugador hasta el centro del golpe (píxeles).
 @export var alcance_ataque := 40.0
@@ -33,6 +33,8 @@ signal caida_terminada
 @onready var _hitbox: CollisionShape2D = $HitboxPersonaje
 @onready var animacion_caida: AnimationPlayer = $Animacion/AnimacionCaida
 @onready var maquina: JugadorMaquina = $MaquinaEstados
+@onready var _chirivitas_curacion: CPUParticles2D = $ChirivitasCuracion
+@onready var _chirivitas_llena: CPUParticles2D = $ChirivitasVidaLlena
 
 var vida: Vida
 var tiene_llave := false
@@ -50,6 +52,10 @@ func _ready() -> void:
 	vida.vida_maxima = vida_maxima
 	add_child(vida)
 	vida.murio.connect(_on_vida_murio)
+	vida.curada.connect(_on_vida_curada)
+	var textura := _crear_textura_chirivita()
+	_chirivitas_curacion.texture = textura
+	_chirivitas_llena.texture = textura
 	maquina.iniciar(self)
 	
 func _physics_process(delta: float) -> void:
@@ -180,8 +186,33 @@ func caer_al_vacio(dano: int, destino: Vector2) -> void:
 	await caida_terminada
 
 
-func curar(cantidad: int) -> void:
-	vida.curar(cantidad)
+func curar(cantidad: int) -> bool:
+	return vida.curar(cantidad)
+
+## Curación real: chirivitas rojas.
+func _on_vida_curada(_cantidad: int) -> void:
+	_mostrar_chirivitas(_chirivitas_curacion)
+
+## Poción recogida con la vida ya llena: chirivitas negras.
+func chirivitas_vida_llena() -> void:
+	if not vida.esta_viva() or not vida.esta_llena():
+		return
+	_mostrar_chirivitas(_chirivitas_llena)
+
+func _mostrar_chirivitas(particulas: CPUParticles2D) -> void:
+	particulas.emitting = true
+	particulas.restart()
+
+## Cruz blanca de 5x5; el color de cada sistema de partículas la tiñe.
+func _crear_textura_chirivita() -> ImageTexture:
+	var imagen := Image.create(5, 5, false, Image.FORMAT_RGBA8)
+	imagen.fill(Color(0, 0, 0, 0))
+	for pixel in [
+		Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3), Vector2i(2, 4),
+		Vector2i(0, 2), Vector2i(1, 2), Vector2i(3, 2), Vector2i(4, 2),
+	]:
+		imagen.set_pixel(pixel.x, pixel.y, Color.WHITE)
+	return ImageTexture.create_from_image(imagen)
 
 func recoger_llave() -> bool:
 	if tiene_llave:
