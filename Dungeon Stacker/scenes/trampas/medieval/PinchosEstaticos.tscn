@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cbdw87fav6ajs" path="res://scripts/utilidades/bloqueo_navegacion.gd" id="3_4x5yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
-size = Vector2(68, 68)
+size = Vector2(64, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjkrw"]
 atlas = ExtResource("2_777ab")
@@ -19,6 +19,7 @@ script = ExtResource("1_phg2q")
 retroceso = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001694054]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_mjkrw")
 
 [node name="Sprite0-1" type="Sprite2D" parent="." unique_id=1258677299]
