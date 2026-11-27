@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dy0o75gl4ri46"]
+
+[ext_resource type="PackedScene" uid="uid://drp53c18xn4pc" path="res://scenes/salas/habitacion_base_futurista.tscn" id="1_55fio"]
+[ext_resource type="PackedScene" uid="uid://cr1sbt4p38t8p" path="res://scenes/puzles/futuro/Laser.tscn" id="2_3hqcu"]
+[ext_resource type="PackedScene" uid="uid://bu02ov2dgy6c4" path="res://scenes/puzles/futuro/caja_futuro.tscn" id="3_3hqcu"]
+[ext_resource type="PackedScene" uid="uid://dqjevpvspyh3h" path="res://scenes/puzles/futuro/cofre_botin_futuro.tscn" id="4_oekfm"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="4_yqr5t"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_55fio")]
+
+[node name="Laser" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1590120396 instance=ExtResource("2_3hqcu")]
+position = Vector2(736, 128)
+rotation = 1.5707964
+longitud = 11
+
+[node name="Laser2" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="1" unique_id=1027269006 instance=ExtResource("2_3hqcu")]
+position = Vector2(1120, 128)
+rotation = 1.5707964
+longitud = 11
+
+[node name="Laser3" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="2" unique_id=1112362087 instance=ExtResource("2_3hqcu")]
+position = Vector2(544, 704)
+longitud = 11
+
+[node name="Laser4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1395235599 instance=ExtResource("2_3hqcu")]
+position = Vector2(544, 320)
+longitud = 11
+
+[node name="Caja" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=1664255518 instance=ExtResource("3_3hqcu")]
+position = Vector2(928, 832)
+
+[node name="Caja2" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=483460315 instance=ExtResource("3_3hqcu")]
+position = Vector2(672, 512)
+
+[node name="Caja3" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="2" unique_id=1837273532 instance=ExtResource("3_3hqcu")]
+position = Vector2(928, 256)
+
+[node name="Caja4" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="3" unique_id=267261877 instance=ExtResource("3_3hqcu")]
+position = Vector2(1184, 512)
+
+[node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="4" unique_id=2110658979 instance=ExtResource("4_oekfm")]
+position = Vector2(928, 512)
+piezas = 4
+
+[node name="Caja5" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="5" unique_id=488881589 instance=ExtResource("3_3hqcu")]
+position = Vector2(928, 576)
+
+[node name="Depuracion" parent="." index="9" unique_id=1550064695 instance=ExtResource("4_yqr5t")]
+
+[editable path="Puzle"]
