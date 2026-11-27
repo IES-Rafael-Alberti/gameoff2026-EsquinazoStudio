@@ -26,8 +26,9 @@ script = ExtResource("1_6ccle")
 Configuracion = ExtResource("2_ajih5")
 aviso_salida = NodePath("PanelIzquierdo/AvisoLabel")
 altura_centro_desde_abajo = 0.5
+separacion_panel_izquierdo = 30.0
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1688372822]
+[node name="FondoTetris" type="TextureRect" parent="." unique_id=1688372822]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_2i828")
@@ -170,9 +171,9 @@ z_index = 5
 layout_mode = 3
 anchors_preset = 0
 offset_left = 64.0
-offset_top = 128.0
+offset_top = 208.0
 offset_right = 664.0
-offset_bottom = 648.0
+offset_bottom = 728.0
 mouse_filter = 2
 
 [node name="Contador" type="HBoxContainer" parent="PanelIzquierdo" unique_id=93262395]
@@ -205,15 +206,14 @@ vertical_alignment = 1
 [node name="Controles" type="Label" parent="PanelIzquierdo" unique_id=7224002]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 8.0
-offset_top = 248.0
-offset_right = 608.0
-offset_bottom = 576.0
+offset_top = 320.0
+offset_right = 600.0
+offset_bottom = 648.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = SubResource("FontVariation_bfpv7")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 script = ExtResource("13_ctrls")
 tetris_teclado = "A / D  Move
 W  Rotate

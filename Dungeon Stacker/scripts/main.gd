@@ -25,6 +25,9 @@ signal piezas_cambiadas(total: int)
 @export_range(0.0, 1.0, 0.01) var altura_centro_desde_abajo := 1.0 / 3.0
 ## Separación (px) entre el borde derecho del tablero y el panel lateral.
 @export var separacion_panel := 40.0
+## Separación (px) entre el panel de la izquierda (contador y controles) y el borde izquierdo del
+## tablero. Súbela para alejarlo más hacia la izquierda.
+@export var separacion_panel_izquierdo := 40.0
 
 @onready var fixed_blocks = $Board/FixedBlocks
 @onready var barreras = $Board/Barreras
@@ -45,7 +48,7 @@ signal piezas_cambiadas(total: int)
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel
 @onready var _panel_izquierdo: Control = $PanelIzquierdo
-@onready var _fondo_negro: TextureRect = $TextureRect
+@onready var _fondo_negro: TextureRect = $FondoTetris
 @onready var _controles := get_node_or_null("PanelIzquierdo/Controles") as ControlesPantalla
 @onready var controlador_pieza = $ControladorPieza
 
@@ -107,7 +110,7 @@ func colocar_panel() -> void:
 	_panel_lateral.position = Vector2(x, y)
 
 func colocar_panel_izquierdo() -> void:
-	var x := maxf(0.0, _board.position.x - separacion_panel - _panel_izquierdo.size.x)
+	var x := maxf(0.0, _board.position.x - separacion_panel_izquierdo - _panel_izquierdo.size.x)
 	var y := clampf(_board.position.y - 20.0, 40.0, 160.0)
 	_panel_izquierdo.position = Vector2(x, y)
 

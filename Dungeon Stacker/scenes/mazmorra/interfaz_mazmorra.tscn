@@ -183,7 +183,7 @@ Tab  Hold
 Shift  Enter dungeon
 R  Restart
 P  Pause"
-mazmorra_teclado = "WASD  Move
+mazmorra_teclado = "W / A /  S  / D  Move
 Space  Attack
 Shift  Enter tetris
 P  Pause"
