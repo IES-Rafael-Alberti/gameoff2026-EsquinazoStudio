@@ -2,13 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cai0wd26gj7fg" path="res://scripts/mazmorra/interfaz_mazmorra.gd" id="1_1dm4y"]
 [ext_resource type="Script" uid="uid://bqddph4t53tq1" path="res://scripts/mazmorra/minimapa.gd" id="2_yjn0g"]
-[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_5lyqp"]
 [ext_resource type="Script" uid="uid://b4njy5n0prnas" path="res://scripts/mazmorra/barra_vida.gd" id="3_f00u8"]
+[ext_resource type="FontFile" uid="uid://b7uvyhvotmcby" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="3_tvt0x"]
 [ext_resource type="Texture2D" uid="uid://c2236sptj5ycq" path="res://assets/sprites/tiles/medieval.png" id="4_f00u8"]
 [ext_resource type="Texture2D" uid="uid://dsagvcim3v0k7" path="res://assets/sprites/menu/gema vida.png" id="5_rcj12"]
 [ext_resource type="Texture2D" uid="uid://duv2ctvyl81s2" path="res://assets/sprites/menu/corona vida.png" id="6_lvfjt"]
 [ext_resource type="Texture2D" uid="uid://dvqppbgt3o6ss" path="res://assets/sprites/menu/pergamino con pieza.png" id="7_tvt0x"]
 [ext_resource type="Script" uid="uid://dncor5rirsw2k" path="res://scripts/ui/controles_pantalla.gd" id="8_ctrl"]
+
+[sub_resource type="FontVariation" id="FontVariation_bfpv7"]
+base_font = ExtResource("3_tvt0x")
+spacing_glyph = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjn0g"]
 atlas = ExtResource("4_f00u8")
@@ -37,7 +41,7 @@ offset_top = 48.0
 offset_right = 632.0
 offset_bottom = 88.0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("3_5lyqp")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 
 [node name="Icono" type="TextureRect" parent="." unique_id=347400636]
@@ -64,6 +68,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 176.0
 offset_bottom = 176.0
+pivot_offset = Vector2(80, 160)
 texture = ExtResource("6_lvfjt")
 expand_mode = 1
 
@@ -120,15 +125,15 @@ offset_bottom = 156.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
 
-[node name="Controles" type="Label" parent="."]
+[node name="Controles" type="Label" parent="." unique_id=1391145976]
 offset_left = 16.0
 offset_top = 192.0
 offset_right = 480.0
 offset_bottom = 320.0
-theme_override_constants/outline_size = 8
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_5lyqp")
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 24
 script = ExtResource("8_ctrl")
 tetris_teclado = "A / D  Move
@@ -156,3 +161,5 @@ mazmorra_mando = "D-pad / Stick  Move
 A  Attack
 Select  Enter tetris
 Start  Pause"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1279523788]

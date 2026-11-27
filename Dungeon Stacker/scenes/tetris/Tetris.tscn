@@ -12,9 +12,13 @@
 [ext_resource type="Script" uid="uid://dflrhf5ww8hu2" path="res://scripts/piezas.gd" id="8_5r8ga"]
 [ext_resource type="Script" uid="uid://0t02ay2klh1n" path="res://scripts/controlador_pieza.gd" id="9_lawg1"]
 [ext_resource type="Script" uid="uid://bq8bjwdmt8f58" path="res://scripts/next_piece.gd" id="10_kjx5x"]
-[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="12_pujdc"]
+[ext_resource type="FontFile" uid="uid://b7uvyhvotmcby" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="12_2i828"]
 [ext_resource type="Script" uid="uid://dncor5rirsw2k" path="res://scripts/ui/controles_pantalla.gd" id="13_ctrls"]
 [ext_resource type="Texture2D" uid="uid://dvqppbgt3o6ss" path="res://assets/sprites/menu/pergamino con pieza.png" id="14_icono"]
+
+[sub_resource type="FontVariation" id="FontVariation_bfpv7"]
+base_font = ExtResource("12_2i828")
+spacing_glyph = 4
 
 [node name="Tetris" type="Node2D" unique_id=545254014 node_paths=PackedStringArray("aviso_salida")]
 script = ExtResource("1_6ccle")
@@ -82,36 +86,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = 4.0
-offset_right = -12.0
-offset_bottom = -12.0
+offset_left = -64.0
+offset_top = 148.0
+offset_right = -60.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
-
-[node name="HoldLabel" type="Label" parent="SidePanel/Contenido" unique_id=1237199659]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("12_pujdc")
-text = "HOLD"
-horizontal_alignment = 1
-
-[node name="HoldSlot" type="Control" parent="SidePanel/Contenido" unique_id=959957116]
-custom_minimum_size = Vector2(0, 112)
-layout_mode = 2
-
-[node name="HoldPiece" type="Node2D" parent="SidePanel/Contenido/HoldSlot" unique_id=2042075291]
-script = ExtResource("10_kjx5x")
 
 [node name="NextLabel" type="Label" parent="SidePanel/Contenido" unique_id=1189905426]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
+theme_override_font_sizes/font_size = 32
 text = "NEXT"
 horizontal_alignment = 1
 
@@ -150,6 +139,36 @@ layout_mode = 2
 [node name="NextPiece5" type="Node2D" parent="SidePanel/Contenido/NextSlot5" unique_id=120523711]
 script = ExtResource("10_kjx5x")
 
+[node name="Contenido2" type="VBoxContainer" parent="SidePanel" unique_id=1635645444]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = 148.0
+offset_right = 116.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="HoldLabel" type="Label" parent="SidePanel/Contenido2" unique_id=774805659]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
+theme_override_font_sizes/font_size = 32
+text = "HOLD"
+horizontal_alignment = 1
+
+[node name="HoldSlot" type="Control" parent="SidePanel/Contenido2" unique_id=1685911103]
+custom_minimum_size = Vector2(0, 112)
+layout_mode = 2
+
+[node name="HoldPiece" type="Node2D" parent="SidePanel/Contenido2/HoldSlot" unique_id=1064752319]
+script = ExtResource("10_kjx5x")
+
 [node name="PanelIzquierdo" type="Control" parent="." unique_id=2043978205]
 z_index = 5
 layout_mode = 3
@@ -163,8 +182,10 @@ mouse_filter = 2
 [node name="Contador" type="HBoxContainer" parent="PanelIzquierdo" unique_id=93262395]
 layout_mode = 1
 anchors_preset = -1
-offset_right = 600.0
-offset_bottom = 80.0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 608.0
+offset_bottom = 136.0
 mouse_filter = 2
 theme_override_constants/separation = 12
 
@@ -180,7 +201,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 40
 text = "PIECES: 0"
 vertical_alignment = 1
@@ -189,13 +210,14 @@ vertical_alignment = 1
 visible = false
 layout_mode = 1
 anchors_preset = -1
-offset_top = 92.0
-offset_right = 600.0
-offset_bottom = 180.0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 608.0
+offset_bottom = 240.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 text = "Exit reached. Press SPACE/A 
 to continue placing pieces"
@@ -204,13 +226,53 @@ autowrap_mode = 3
 [node name="Controles" type="Label" parent="PanelIzquierdo" unique_id=7224002]
 layout_mode = 1
 anchors_preset = -1
-offset_top = 192.0
-offset_right = 600.0
-offset_bottom = 520.0
+offset_left = 8.0
+offset_top = 248.0
+offset_right = 608.0
+offset_bottom = 576.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("12_pujdc")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
+theme_override_font_sizes/font_size = 26
+script = ExtResource("13_ctrls")
+tetris_teclado = "A / D  Move
+W  Rotate
+Q / E  Rotate
+S  Soft drop
+Space  Hard drop
+Tab  Hold
+Shift  Enter dungeon
+R  Restart
+P  Pause"
+mazmorra_teclado = "WASD  Move
+Space  Attack
+Shift  Enter tetris
+P  Pause"
+tetris_mando = "D-pad / Stick  Move
+X / B  Rotate
+LB / RB  Rotate
+A  Hard drop
+Left stick click  Hold
+Select  Enter dungeon
+Y  Restart
+Start  Pause"
+mazmorra_mando = "D-pad / Stick  Move
+A  Attack
+Select  Enter tetris
+Start  Pause"
+
+[node name="Controles2" type="Label" parent="PanelIzquierdo" unique_id=1606134654]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 8.0
+offset_top = 248.0
+offset_right = 608.0
+offset_bottom = 576.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 26
 script = ExtResource("13_ctrls")
 tetris_teclado = "A / D  Move
