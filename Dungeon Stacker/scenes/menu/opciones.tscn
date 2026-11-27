@@ -3,30 +3,6 @@
 [ext_resource type="Script" uid="uid://bphk0rqkyofmu" path="res://scripts/ui/opciones.gd" id="1_dqsu3"]
 [ext_resource type="Texture2D" uid="uid://bti4bucsp6glp" path="res://assets/sprites/menu/pergamino normal.png" id="2_lvxne"]
 [ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_1foug"]
-[ext_resource type="Texture2D" uid="uid://deb51tmbnlh0o" path="res://assets/sprites/menu/Z pieza.png" id="4_i1gd1"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ei0we"]
-texture = ExtResource("4_i1gd1")
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1gd1"]
-texture = ExtResource("4_i1gd1")
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-modulate_color = Color(0.78431374, 0.78431374, 0.78039217, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ui05v"]
-texture = ExtResource("4_i1gd1")
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-modulate_color = Color(0.39308554, 0.3930855, 0.39308548, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1gd1"]
 content_margin_left = 4.0
@@ -68,10 +44,10 @@ theme_override_fonts/font = ExtResource("3_1foug")
 theme_override_font_sizes/font_size = 40
 text = "Master"
 
-[node name="Master" type="HScrollBar" parent="." unique_id=1882388551]
+[node name="Master" type="HSlider" parent="." unique_id=1441209083]
 layout_mode = 0
 offset_left = 1376.0
-offset_top = 576.0
+offset_top = 560.0
 offset_right = 1632.0
 offset_bottom = 592.0
 max_value = 1.0
@@ -89,10 +65,10 @@ theme_override_fonts/font = ExtResource("3_1foug")
 theme_override_font_sizes/font_size = 40
 text = "Music"
 
-[node name="Music" type="HScrollBar" parent="." unique_id=1729200648]
+[node name="Music" type="HSlider" parent="." unique_id=1939772720]
 layout_mode = 0
 offset_left = 1344.0
-offset_top = 672.0
+offset_top = 656.0
 offset_right = 1600.0
 offset_bottom = 688.0
 max_value = 1.0
@@ -110,15 +86,12 @@ theme_override_fonts/font = ExtResource("3_1foug")
 theme_override_font_sizes/font_size = 40
 text = "SFX"
 
-[node name="SFX" type="HScrollBar" parent="." unique_id=181706860]
+[node name="SFX" type="HSlider" parent="." unique_id=1292722939]
 layout_mode = 0
 offset_left = 1312.0
-offset_top = 768.0
+offset_top = 752.0
 offset_right = 1568.0
 offset_bottom = 784.0
-theme_override_styles/grabber = SubResource("StyleBoxTexture_ei0we")
-theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_i1gd1")
-theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_ui05v")
 max_value = 1.0
 step = 0.01
 value = 1.0

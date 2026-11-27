@@ -19,6 +19,10 @@ const ESCENA_PUERTA_NIVEL := preload("res://scenes/mazmorra/puerta_nivel.tscn")
 const ESCENA_ZONA_INFERIOR := preload("res://scenes/mazmorra/vestibulo_zona_inferior.tscn")
 const ESCENA_ZONA_SUPERIOR := preload("res://scenes/mazmorra/vestibulo_zona_superior.tscn")
 
+## true = el sprite de la puerta del nivel del vestíbulo superior sale reflejado en vertical,
+## como el resto del vestíbulo; false = se ve derecho. No afecta a su zona de colisión.
+const PUERTA_NIVEL_REFLEJADA := true
+
 @export var tipo := Tipo.INFERIOR
 ## Dónde aparece el jugador respecto al centro de su puerta, hacia dentro del vestíbulo.
 @export var desplazamiento_entrada := Vector2(0, 96)
@@ -159,9 +163,13 @@ func _construir_zona() -> void:
 		var puerta_nivel := ESCENA_PUERTA_NIVEL.instantiate() as PuertaNivel
 		puerta_nivel.position = Vector2(origen * _tam_celda) + marcador_puerta.position - Vector2(rect.position * _tam_celda)
 		puerta_nivel.activa = tipo == Tipo.SUPERIOR
-		# El vestíbulo superior está volteado: se compensa para que el sprite no salga del revés.
+		puerta_nivel.establecer_abierta(tipo == Tipo.SUPERIOR)
+		# El vestíbulo superior está volteado: se compensa en la puerta entera (así su zona de
+		# colisión queda dentro del vestíbulo) y, si se quiere reflejada, se voltean solo los sprites.
 		if tipo == Tipo.SUPERIOR:
 			puerta_nivel.scale.y = -1.0
+			if PUERTA_NIVEL_REFLEJADA:
+				puerta_nivel.reflejar_sprites()
 		puerta_nivel.tocada.connect(_on_puerta_nivel_tocada)
 		add_child(puerta_nivel)
 	elif tipo == Tipo.SUPERIOR:

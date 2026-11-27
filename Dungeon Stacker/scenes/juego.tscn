@@ -106,9 +106,10 @@ height = 160
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqhdy"]
 size = Vector2(180, 180)
 
-[node name="Juego" type="Node" unique_id=1710010088 node_paths=PackedStringArray("pantalla_muerte")]
+[node name="Juego" type="Node" unique_id=1710010088 node_paths=PackedStringArray("pantalla_muerte", "controles")]
 script = ExtResource("1_x4n2o")
 pantalla_muerte = NodePath("PantallaMuerte")
+controles = NodePath("Mazmorra/Interfaz/Controles")
 
 [node name="Tetris" parent="." unique_id=545254014 instance=ExtResource("2_pew7j")]
 Configuracion = SubResource("Resource_vf1pr")

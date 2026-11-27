@@ -42,7 +42,7 @@ signal estado_cambiado(encendido: bool)
 
 @export_group("Haz")
 ## Piezas del centro entre los dos emisores. 0 = los dos emisores pegados, sin haz.
-@export_range(1, 11) var longitud := 3
+@export_range(1, 50) var longitud := 3
 ## Distancia entre los centros de dos piezas seguidas (píxeles). Igual al ancho de la pieza
 ## del centro.
 @export var separacion := 64.0

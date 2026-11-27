@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pfyq6smtcdst"
-path="res://.godot/imported/character-spritesheet.png-221738fd2e9ad50cb6e795ca6f1ab822.ctex"
+uid="uid://duv2ctvyl81s2"
+path="res://.godot/imported/corona vida.png-176acc1e0056fa96036d2a73eb2839a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BorrarTodoDeAqui/character-spritesheet.png"
-dest_files=["res://.godot/imported/character-spritesheet.png-221738fd2e9ad50cb6e795ca6f1ab822.ctex"]
+source_file="res://assets/sprites/menu/corona vida.png"
+dest_files=["res://.godot/imported/corona vida.png-176acc1e0056fa96036d2a73eb2839a1.ctex"]
 
 [params]
 

@@ -17,10 +17,10 @@ probabilidad_eliminar = 10.0
 [node name="Llave" parent="Puzle/Probabilizador" index="0" unique_id=1477622593 instance=ExtResource("2_8ve42")]
 position = Vector2(928, 288)
 
-[node name="CofreBotin" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=2110658979 instance=ExtResource("3_2lk26")]
+[node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=2110658979 instance=ExtResource("3_2lk26")]
 position = Vector2(928, 512)
 
-[node name="Cerradura" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="2" unique_id=1263758423 instance=ExtResource("4_jod2r")]
+[node name="Cerradura" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="1" unique_id=1263758423 instance=ExtResource("4_jod2r")]
 position = Vector2(928, 640)
 
 [editable path="Puzle"]

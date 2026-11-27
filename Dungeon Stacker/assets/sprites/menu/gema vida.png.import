@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g5udijpeff4o"
-path="res://.godot/imported/marca_horizontal.png-ca640fb728a0d96c7692b5587a3cae61.ctex"
+uid="uid://dsagvcim3v0k7"
+path="res://.godot/imported/gema vida.png-557f29138f83a0f2d19fead499d3ed47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BorrarTodoDeAqui/marca_horizontal.png"
-dest_files=["res://.godot/imported/marca_horizontal.png-ca640fb728a0d96c7692b5587a3cae61.ctex"]
+source_file="res://assets/sprites/menu/gema vida.png"
+dest_files=["res://.godot/imported/gema vida.png-557f29138f83a0f2d19fead499d3ed47.ctex"]
 
 [params]
 

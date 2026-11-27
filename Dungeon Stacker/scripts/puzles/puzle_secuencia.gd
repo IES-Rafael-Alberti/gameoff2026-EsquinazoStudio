@@ -34,3 +34,7 @@ func _fallar() -> void:
 		return
 	_fallando = false
 	_al_reiniciar()
+
+
+func _al_desresolver() -> void:
+	_al_reiniciar()
