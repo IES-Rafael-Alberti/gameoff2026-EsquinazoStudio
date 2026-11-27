@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dmt2u2bpl6xmq" path="res://scenes/menu/opciones.tscn" id="2_4yl6o"]
 [ext_resource type="PackedScene" uid="uid://d2scfefrhbpj1" path="res://scenes/menu/niveles.tscn" id="3_28145"]
 [ext_resource type="Texture2D" uid="uid://bti4bucsp6glp" path="res://assets/sprites/menu/pergamino normal.png" id="3_luowc"]
-[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="4_3vyha"]
 [ext_resource type="PackedScene" uid="uid://71eejpow8g62" path="res://scenes/menu/fondo_menu.tscn" id="4_4mcpf"]
+[ext_resource type="FontFile" uid="uid://b7uvyhvotmcby" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="4_luowc"]
+
+[sub_resource type="FontVariation" id="FontVariation_bfpv7"]
+base_font = ExtResource("4_luowc")
+spacing_glyph = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luowc"]
 content_margin_left = 4.0
@@ -110,7 +114,7 @@ offset_top = 384.0
 offset_right = 448.0
 offset_bottom = 447.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_luowc")
 text = "START"
@@ -122,7 +126,7 @@ offset_top = 304.0
 offset_right = 464.0
 offset_bottom = 368.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_ngrfs")
 text = "CONTINUE"
@@ -134,7 +138,7 @@ offset_top = 448.0
 offset_right = 416.0
 offset_bottom = 511.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_3vyha")
 text = "LEVELS"
@@ -146,7 +150,7 @@ offset_top = 528.0
 offset_right = 384.0
 offset_bottom = 591.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_e5alq")
 text = "OPTIONS"
@@ -158,7 +162,7 @@ offset_top = 608.0
 offset_right = 384.0
 offset_bottom = 671.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_3vyha")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_m7ih0")
 text = "EXIT"

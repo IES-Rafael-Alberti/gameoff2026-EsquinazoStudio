@@ -17,6 +17,10 @@ const CENTRO_HABITACION := Vector2(928, 512)
 
 ## Bioma cuya música suena en los vestíbulos (las salas usan el de su celda).
 @export var bioma_vestibulos: Catalogo.Bioma = Catalogo.Bioma.MEDIEVAL
+## Punto de la sala que queda en el centro de la pantalla. Así la sala queda centrada aunque la
+## ventana no sea 16:9 (si no, sobra una franja abajo o arriba). Las salas ocupan unos
+## 1920 x 1088, desde y = -32.
+@export var centro_sala := Vector2(960, 512)
 
 ## Pools de salas por bioma y categoría. Lo asigna Juego desde la configuración del nivel.
 var contenido: ContenidoSalas
@@ -35,16 +39,18 @@ var _activa := false
 var _vestibulo_inferior: Vestibulo
 var _vestibulo_superior: Vestibulo
 @onready var _camara: Camera2D = $CamaraVestibulo
+var _zoom_vestibulo := Vector2.ONE
 
 @onready var jugador: CharacterBody2D = $Jugador
 @onready var _interfaz: InterfazMazmorra = $Interfaz
 
 func _ready() -> void:
+	_zoom_vestibulo = _camara.zoom # el zoom de la cámara en la escena es el de los vestíbulos
 	_interfaz.configurar(self, jugador.vida)
 	_interfaz.visible = false
 
 func _process(_delta: float) -> void:
-	if _camara.enabled:
+	if _camara.enabled and lugar != Lugar.SALA:
 		_seguir_jugador()
 	_actualizar_columna_vestibulo()
 
@@ -62,16 +68,23 @@ func set_activa(activa: bool) -> void:
 		_interfaz.visible = activa
 	_actualizar_camara()
 
-## La cámara solo se usa en los vestíbulos (son más anchos que la pantalla) y solo en
-## modo mazmorra; en las salas y en el tetris se desactiva y la vista queda como siempre.
+## La cámara solo se usa en modo mazmorra (en el tetris se desactiva). En los vestíbulos sigue al
+## jugador (son más anchos que la pantalla); en las salas queda fija y centrada en "centro_sala".
 func _actualizar_camara() -> void:
 	if _camara == null:
 		return
 	var en_vestibulo := lugar == Lugar.VESTIBULO_INFERIOR or lugar == Lugar.VESTIBULO_SUPERIOR
-	_camara.enabled = _activa and en_vestibulo
-	if _camara.enabled:
+	var en_sala := lugar == Lugar.SALA
+	_camara.enabled = _activa and (en_vestibulo or en_sala)
+	if not _camara.enabled:
+		return
+	if en_sala:
+		_camara.zoom = Vector2.ONE
+		_camara.global_position = centro_sala
+	else:
+		_camara.zoom = _zoom_vestibulo
 		_seguir_jugador()
-		_camara.make_current()
+	_camara.make_current()
 
 
 ## Sigue al jugador en horizontal sin salirse de los extremos del vestíbulo.
@@ -214,7 +227,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	jugador.position = centro_cuerpo - jugador.desfase_centro()
 
 	_actualizar_camara()
-	_actualizar_etiqueta()
+	_interfaz.refrescar_minimapa()
 	print("Habitación ", celda, " [", _letra_de(datos_celda.categoria), "] -> ", describir_vecinos(celda))
 	
 ## Pasa a un vestíbulo. columna >= 0: delante de su puerta; columna < 0: en la zona de spawn.
@@ -231,7 +244,6 @@ func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	else:
 		jugador.global_position = vestibulo.posicion_entrada(columna)
 	_actualizar_camara()
-	_actualizar_etiqueta()
 	_interfaz.refrescar_minimapa()
 	print("Vestíbulo ", Lugar.keys()[donde], " columna ", columna)
 
@@ -306,22 +318,6 @@ func describir_vecinos(celda: Vector2i) -> String:
 func _letra_de(categoria: CategoriaSala) -> String:
 	return "-" if categoria == null else categoria.letra
 
-func _actualizar_etiqueta() -> void:
-	match lugar:
-		Lugar.VESTIBULO_INFERIOR:
-			_interfaz.mostrar_texto("Vestíbulo inferior")
-		Lugar.VESTIBULO_SUPERIOR:
-			_interfaz.mostrar_texto("Vestíbulo superior")
-		Lugar.SALA:
-			var celda: CeldaTablero = celdas[celda_actual]
-			var estado := " [resuelta]" if celda.resuelta else ""
-			_interfaz.mostrar_texto("Sala %s [%s]%s" % [
-				celda_actual,
-				_letra_de(celda.categoria),
-				estado
-			])
-	_interfaz.refrescar_minimapa()
-
 ## Se llama al pasar de tetris a mazmorra.
 func sincronizar(matriz: Array) -> void:
 	# Tu sala es una CeldaTablero concreta; si bajaron filas, su posición ha cambiado.
@@ -351,7 +347,7 @@ func sincronizar(matriz: Array) -> void:
 		# Sigues en tu sala; solo se actualizan su posición y sus puertas.
 		celda_actual = posicion_nueva
 		habitacion_actual.preparar(celda_actual, datos_actuales, vecinos_de(celda_actual), habitacion_actual.entrada)
-		_actualizar_etiqueta()
+		_interfaz.refrescar_minimapa()
 
 ## Mientras caminas por un vestíbulo, la columna actual es la de la puerta más cercana.
 func _actualizar_columna_vestibulo() -> void:
