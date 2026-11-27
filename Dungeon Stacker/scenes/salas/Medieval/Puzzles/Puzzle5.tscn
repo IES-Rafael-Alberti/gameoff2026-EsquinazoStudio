@@ -40,7 +40,7 @@ position = Vector2(992, 256)
 
 [node name="Patrulla2" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="0" unique_id=2087392661 instance=ExtResource("5_0gt51")]
 position = Vector2(608, 192)
-velocidad = 500.0
+velocidad = 300.0
 
 [node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla2" index="3" unique_id=142252797]
 position = Vector2(0, 640)
@@ -55,7 +55,7 @@ position = Vector2(640, 0)
 
 [node name="Patrulla8" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="1" unique_id=1163489731 instance=ExtResource("5_0gt51")]
 position = Vector2(608, 832)
-velocidad = 500.0
+velocidad = 300.0
 
 [node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla8" index="3" unique_id=1335273533]
 position = Vector2(640, 0)
@@ -70,7 +70,7 @@ position = Vector2(0, -640)
 
 [node name="Patrulla9" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="2" unique_id=1985158719 instance=ExtResource("5_0gt51")]
 position = Vector2(1248, 832)
-velocidad = 500.0
+velocidad = 300.0
 
 [node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla9" index="3" unique_id=1726286886]
 position = Vector2(0, -640)
@@ -86,7 +86,7 @@ position = Vector2(-640, 0)
 
 [node name="Patrulla10" parent="Enemigos" parent_id_path=PackedInt32Array(1091375848) index="3" unique_id=186167597 instance=ExtResource("5_0gt51")]
 position = Vector2(1248, 192)
-velocidad = 500.0
+velocidad = 300.0
 
 [node name="Marker2D" type="Marker2D" parent="Enemigos/Patrulla10" index="3" unique_id=1676996306]
 position = Vector2(-640, 0)
