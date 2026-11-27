@@ -45,7 +45,7 @@ signal piezas_cambiadas(total: int)
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel
 @onready var _panel_izquierdo: Control = $PanelIzquierdo
-@onready var _fondo_negro: ColorRect = $FondoNegro
+@onready var _fondo_negro: TextureRect = $TextureRect
 @onready var _controles := get_node_or_null("PanelIzquierdo/Controles") as ControlesPantalla
 @onready var controlador_pieza = $ControladorPieza
 

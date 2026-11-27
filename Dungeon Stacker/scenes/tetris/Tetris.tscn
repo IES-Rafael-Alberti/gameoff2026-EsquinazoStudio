@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5umapo4jp2kn" path="res://scripts/main.gd" id="1_6ccle"]
 [ext_resource type="Resource" uid="uid://cpr5say8kgftu" path="res://resources/configuracion_tablero_1.tres" id="2_ajih5"]
+[ext_resource type="Texture2D" uid="uid://bd5wiu2buo0di" path="res://assets/sprites/menu/fondo parte tetris.png" id="3_2i828"]
 [ext_resource type="Script" uid="uid://d13g2aba8o5hu" path="res://scripts/grid_background.gd" id="3_5xuig"]
 [ext_resource type="Texture2D" uid="uid://ce6xaxypvaae6" path="res://assets/sprites/menu/pergamino sin fondo.png" id="3_b8moq"]
 [ext_resource type="Script" uid="uid://dxm2rn25xq6v" path="res://scripts/tablero.gd" id="4_5jpfg"]
@@ -26,15 +27,10 @@ Configuracion = ExtResource("2_ajih5")
 aviso_salida = NodePath("PanelIzquierdo/AvisoLabel")
 altura_centro_desde_abajo = 0.5
 
-[node name="FondoNegro" type="ColorRect" parent="." unique_id=794979666]
-z_index = -10
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1688372822]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_2i828")
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=524955811]
 position = Vector2(1056, 544.00006)
@@ -207,45 +203,6 @@ text = "PIECES: 0"
 vertical_alignment = 1
 
 [node name="Controles" type="Label" parent="PanelIzquierdo" unique_id=7224002]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 8.0
-offset_top = 248.0
-offset_right = 608.0
-offset_bottom = 576.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = SubResource("FontVariation_bfpv7")
-theme_override_font_sizes/font_size = 26
-script = ExtResource("13_ctrls")
-tetris_teclado = "A / D  Move
-W  Rotate
-Q / E  Rotate
-S  Soft drop
-Space  Hard drop
-Tab  Hold
-Shift  Enter dungeon
-R  Restart
-P  Pause"
-mazmorra_teclado = "WASD  Move
-Space  Attack
-Shift  Enter tetris
-P  Pause"
-tetris_mando = "D-pad / Stick  Move
-X / B  Rotate
-LB / RB  Rotate
-A  Hard drop
-Left stick click  Hold
-Select  Enter dungeon
-Y  Restart
-Start  Pause"
-mazmorra_mando = "D-pad / Stick  Move
-A  Attack
-Select  Enter tetris
-Start  Pause"
-
-[node name="Controles2" type="Label" parent="PanelIzquierdo" unique_id=1606134654]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 8.0
