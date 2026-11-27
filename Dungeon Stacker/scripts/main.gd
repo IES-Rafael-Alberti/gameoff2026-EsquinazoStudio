@@ -40,7 +40,7 @@ signal piezas_cambiadas(total: int)
 ]
 @onready var piezas_label = $PanelIzquierdo/Contador/PiezasLabel
 ## Panel de la pieza guardada (opcional: si el nodo no existe, simplemente no se dibuja).
-@onready var hold_panel = get_node_or_null("SidePanel/Contenido/HoldSlot/HoldPiece")
+@onready var hold_panel = get_node_or_null("SidePanel/Contenido2/HoldSlot/HoldPiece")
 @onready var piezas = $Piezas
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel

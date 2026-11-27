@@ -19,9 +19,46 @@ atlas = ExtResource("4_f00u8")
 region = Rect2(4648, 1660, 408, 164)
 filter_clip = true
 
+[sub_resource type="Animation" id="Animation_tvt0x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarraVida/Corona:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7yinp"]
+resource_name = "recibir_dano"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarraVida/Corona:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09717728, 0.20094316, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.08726646259971647, 0.0, -0.08726646259971647, 0.0, 0.08726646259971647, 0.0, -0.08726646259971647, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62e28"]
+_data = {
+&"RESET": SubResource("Animation_tvt0x"),
+&"recibir_dano": SubResource("Animation_7yinp")
+}
+
 [node name="Interfaz" type="CanvasLayer" unique_id=1995162197 node_paths=PackedStringArray("etiqueta_piezas")]
 script = ExtResource("1_1dm4y")
 etiqueta_piezas = NodePath("Piezas")
+animacion_dano = &"recibir_dano"
 
 [node name="Minimapa" type="Control" parent="." unique_id=89696954]
 layout_mode = 3
@@ -63,7 +100,16 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Corona" type="TextureRect" parent="." unique_id=2048910158]
+[node name="BarraVida" type="Control" parent="." unique_id=2137293946 node_paths=PackedStringArray("gemas")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_f00u8")
+gemas = [NodePath("Corona/Gema"), NodePath("Corona/Gema2"), NodePath("Corona/Gema3"), NodePath("Corona/Gema4"), NodePath("Corona/Gema5")]
+
+[node name="Corona" type="TextureRect" parent="BarraVida" unique_id=2048910158]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 176.0
@@ -72,56 +118,48 @@ pivot_offset = Vector2(80, 160)
 texture = ExtResource("6_lvfjt")
 expand_mode = 1
 
-[node name="BarraVida" type="Control" parent="." unique_id=2137293946 node_paths=PackedStringArray("gemas")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_f00u8")
-gemas = [NodePath("Gema"), NodePath("Gema2"), NodePath("Gema3"), NodePath("Gema4"), NodePath("Gema5")]
-
-[node name="Gema" type="TextureRect" parent="BarraVida" unique_id=838683653]
+[node name="Gema" type="TextureRect" parent="BarraVida/Corona" unique_id=838683653]
 layout_mode = 0
-offset_left = 52.0
-offset_top = 146.0
-offset_right = 64.59504
-offset_bottom = 158.0
+offset_left = 36.0
+offset_top = 130.0
+offset_right = 48.59504
+offset_bottom = 142.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
 
-[node name="Gema2" type="TextureRect" parent="BarraVida" unique_id=1292072891]
+[node name="Gema2" type="TextureRect" parent="BarraVida/Corona" unique_id=1292072891]
 layout_mode = 0
-offset_left = 74.0
-offset_top = 150.0
-offset_right = 86.59504
-offset_bottom = 162.0
+offset_left = 58.0
+offset_top = 134.0
+offset_right = 70.59504
+offset_bottom = 146.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
 
-[node name="Gema3" type="TextureRect" parent="BarraVida" unique_id=1598176326]
+[node name="Gema3" type="TextureRect" parent="BarraVida/Corona" unique_id=1598176326]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 150.0
-offset_right = 108.59504
-offset_bottom = 162.0
+offset_left = 80.0
+offset_top = 134.0
+offset_right = 92.59504
+offset_bottom = 146.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
 
-[node name="Gema4" type="TextureRect" parent="BarraVida" unique_id=118484717]
+[node name="Gema4" type="TextureRect" parent="BarraVida/Corona" unique_id=118484717]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 148.0
-offset_right = 132.59503
-offset_bottom = 160.0
+offset_left = 104.0
+offset_top = 132.0
+offset_right = 116.59503
+offset_bottom = 144.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
 
-[node name="Gema5" type="TextureRect" parent="BarraVida" unique_id=1092846440]
+[node name="Gema5" type="TextureRect" parent="BarraVida/Corona" unique_id=1092846440]
 layout_mode = 0
-offset_left = 140.0
-offset_top = 144.0
-offset_right = 152.59503
-offset_bottom = 156.0
+offset_left = 124.0
+offset_top = 128.0
+offset_right = 136.59503
+offset_bottom = 140.0
 texture = ExtResource("5_rcj12")
 expand_mode = 1
 
@@ -163,3 +201,4 @@ Select  Enter tetris
 Start  Pause"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1279523788]
+libraries/ = SubResource("AnimationLibrary_62e28")

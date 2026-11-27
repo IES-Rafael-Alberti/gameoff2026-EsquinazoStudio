@@ -227,7 +227,7 @@ func cargar_habitacion(celda: Vector2i, entrada: int = -1) -> void:
 	jugador.position = centro_cuerpo - jugador.desfase_centro()
 
 	_actualizar_camara()
-	_actualizar_etiqueta()
+	_interfaz.refrescar_minimapa()
 	print("Habitación ", celda, " [", _letra_de(datos_celda.categoria), "] -> ", describir_vecinos(celda))
 	
 ## Pasa a un vestíbulo. columna >= 0: delante de su puerta; columna < 0: en la zona de spawn.
@@ -244,7 +244,6 @@ func _entrar_vestibulo(donde: Lugar, columna: int) -> void:
 	else:
 		jugador.global_position = vestibulo.posicion_entrada(columna)
 	_actualizar_camara()
-	_actualizar_etiqueta()
 	_interfaz.refrescar_minimapa()
 	print("Vestíbulo ", Lugar.keys()[donde], " columna ", columna)
 
@@ -319,22 +318,6 @@ func describir_vecinos(celda: Vector2i) -> String:
 func _letra_de(categoria: CategoriaSala) -> String:
 	return "-" if categoria == null else categoria.letra
 
-func _actualizar_etiqueta() -> void:
-	match lugar:
-		Lugar.VESTIBULO_INFERIOR:
-			_interfaz.mostrar_texto("Vestíbulo inferior")
-		Lugar.VESTIBULO_SUPERIOR:
-			_interfaz.mostrar_texto("Vestíbulo superior")
-		Lugar.SALA:
-			var celda: CeldaTablero = celdas[celda_actual]
-			var estado := " [resuelta]" if celda.resuelta else ""
-			_interfaz.mostrar_texto("Sala %s [%s]%s" % [
-				celda_actual,
-				_letra_de(celda.categoria),
-				estado
-			])
-	_interfaz.refrescar_minimapa()
-
 ## Se llama al pasar de tetris a mazmorra.
 func sincronizar(matriz: Array) -> void:
 	# Tu sala es una CeldaTablero concreta; si bajaron filas, su posición ha cambiado.
@@ -364,7 +347,7 @@ func sincronizar(matriz: Array) -> void:
 		# Sigues en tu sala; solo se actualizan su posición y sus puertas.
 		celda_actual = posicion_nueva
 		habitacion_actual.preparar(celda_actual, datos_actuales, vecinos_de(celda_actual), habitacion_actual.entrada)
-		_actualizar_etiqueta()
+		_interfaz.refrescar_minimapa()
 
 ## Mientras caminas por un vestíbulo, la columna actual es la de la puerta más cercana.
 func _actualizar_columna_vestibulo() -> void:
