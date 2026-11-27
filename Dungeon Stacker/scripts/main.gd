@@ -45,6 +45,7 @@ signal piezas_cambiadas(total: int)
 @onready var _board: Node2D = $Board
 @onready var _panel_lateral: Control = $SidePanel
 @onready var _panel_izquierdo: Control = $PanelIzquierdo
+@onready var _fondo_negro: ColorRect = $FondoNegro
 @onready var _controles := get_node_or_null("PanelIzquierdo/Controles") as ControlesPantalla
 @onready var controlador_pieza = $ControladorPieza
 
@@ -89,6 +90,7 @@ func _ready() -> void:
 ## derecha. Depende del tamaño del tablero del nivel y del de la pantalla.
 func colocar_tablero() -> void:
 	var pantalla := get_viewport_rect().size
+	_fondo_negro.size = pantalla
 	var tam := Vector2(Configuracion.ANCHO_TABLERO, Configuracion.ALTO_TABLERO)
 	var centro_y := pantalla.y * (1.0 - altura_centro_desde_abajo)
 	var y := clampf(centro_y - tam.y / 2.0, 0.0, maxf(pantalla.y - tam.y, 0.0))

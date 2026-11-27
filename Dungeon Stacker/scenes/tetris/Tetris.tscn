@@ -22,6 +22,16 @@ Configuracion = ExtResource("2_ajih5")
 aviso_salida = NodePath("PanelIzquierdo/AvisoLabel")
 altura_centro_desde_abajo = 0.5
 
+[node name="FondoNegro" type="ColorRect" parent="." unique_id=794979666]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Fondo" type="Sprite2D" parent="." unique_id=524955811]
 position = Vector2(1056, 544.00006)
 scale = Vector2(0.4514309, 0.3922463)
@@ -82,7 +92,9 @@ theme_override_constants/separation = 8
 
 [node name="HoldLabel" type="Label" parent="SidePanel/Contenido" unique_id=1237199659]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("12_pujdc")
 text = "HOLD"
 horizontal_alignment = 1
@@ -96,7 +108,9 @@ script = ExtResource("10_kjx5x")
 
 [node name="NextLabel" type="Label" parent="SidePanel/Contenido" unique_id=1189905426]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("12_pujdc")
 text = "NEXT"
 horizontal_alignment = 1
@@ -163,7 +177,9 @@ expand_mode = 1
 
 [node name="PiezasLabel" type="Label" parent="PanelIzquierdo/Contador" unique_id=1007720950]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("12_pujdc")
 theme_override_font_sizes/font_size = 40
 text = "PIECES: 0"
@@ -176,7 +192,9 @@ anchors_preset = -1
 offset_top = 92.0
 offset_right = 600.0
 offset_bottom = 180.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("12_pujdc")
 theme_override_font_sizes/font_size = 28
 text = "Exit reached. Press SPACE/A 
@@ -189,7 +207,9 @@ anchors_preset = -1
 offset_top = 192.0
 offset_right = 600.0
 offset_bottom = 520.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("12_pujdc")
 theme_override_font_sizes/font_size = 26
 script = ExtResource("13_ctrls")
