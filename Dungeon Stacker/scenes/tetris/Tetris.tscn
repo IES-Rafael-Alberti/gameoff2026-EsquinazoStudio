@@ -206,8 +206,9 @@ vertical_alignment = 1
 [node name="Controles" type="Label" parent="PanelIzquierdo" unique_id=7224002]
 layout_mode = 1
 anchors_preset = -1
+offset_left = -80.0
 offset_top = 320.0
-offset_right = 600.0
+offset_right = 520.0
 offset_bottom = 648.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
