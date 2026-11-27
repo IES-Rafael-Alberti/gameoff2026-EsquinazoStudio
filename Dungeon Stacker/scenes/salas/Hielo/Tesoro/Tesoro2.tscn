@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://bjroxg6d2tlqi"]
+
+[ext_resource type="PackedScene" uid="uid://crfl1k05tltje" path="res://scenes/salas/habitacion_base_hielo.tscn" id="1_gehsm"]
+[ext_resource type="PackedScene" uid="uid://dvs8oruyljsmw" path="res://scenes/trampas/hielo/pinchos_techo.tscn" id="2_gehsm"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="3_6i1xt"]
+[ext_resource type="PackedScene" uid="uid://bf2uksgymkgtl" path="res://scenes/puzles/hielo/cofre_botin_hielo.tscn" id="3_ft5ae"]
+
+[node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_gehsm")]
+
+[node name="PinchosTecho" type="Node2D" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=1065103205]
+
+[node name="PinchosTecho" parent="Trampas/PinchosTecho" index="0" unique_id=2090656361 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 512)
+
+[node name="PinchosTecho2" parent="Trampas/PinchosTecho" index="1" unique_id=1509302407 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 384)
+
+[node name="PinchosTecho37" parent="Trampas/PinchosTecho" index="2" unique_id=1807604357 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 256)
+
+[node name="PinchosTecho38" parent="Trampas/PinchosTecho" index="3" unique_id=1317117609 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 320)
+
+[node name="PinchosTecho20" parent="Trampas/PinchosTecho" index="4" unique_id=1916630649 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 640)
+
+[node name="PinchosTecho39" parent="Trampas/PinchosTecho" index="5" unique_id=1535852126 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 384)
+
+[node name="PinchosTecho40" parent="Trampas/PinchosTecho" index="6" unique_id=1889526552 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 320)
+
+[node name="PinchosTecho41" parent="Trampas/PinchosTecho" index="7" unique_id=2128516914 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 256)
+
+[node name="PinchosTecho42" parent="Trampas/PinchosTecho" index="8" unique_id=939055722 instance=ExtResource("2_gehsm")]
+position = Vector2(1120, 256)
+
+[node name="PinchosTecho43" parent="Trampas/PinchosTecho" index="9" unique_id=1088772780 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 256)
+
+[node name="PinchosTecho44" parent="Trampas/PinchosTecho" index="10" unique_id=1070781472 instance=ExtResource("2_gehsm")]
+position = Vector2(992, 256)
+
+[node name="PinchosTecho45" parent="Trampas/PinchosTecho" index="11" unique_id=656749619 instance=ExtResource("2_gehsm")]
+position = Vector2(928, 256)
+
+[node name="PinchosTecho46" parent="Trampas/PinchosTecho" index="12" unique_id=1514736866 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 576)
+
+[node name="PinchosTecho47" parent="Trampas/PinchosTecho" index="13" unique_id=1264750628 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 512)
+
+[node name="PinchosTecho48" parent="Trampas/PinchosTecho" index="14" unique_id=2057514387 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 448)
+
+[node name="PinchosTecho21" parent="Trampas/PinchosTecho" index="15" unique_id=1184919805 instance=ExtResource("2_gehsm")]
+position = Vector2(1120, 768)
+
+[node name="PinchosTecho22" parent="Trampas/PinchosTecho" index="16" unique_id=226321549 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 768)
+
+[node name="PinchosTecho23" parent="Trampas/PinchosTecho" index="17" unique_id=567758410 instance=ExtResource("2_gehsm")]
+position = Vector2(1184, 704)
+
+[node name="PinchosTecho24" parent="Trampas/PinchosTecho" index="18" unique_id=1371386932 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 768)
+
+[node name="PinchosTecho25" parent="Trampas/PinchosTecho" index="19" unique_id=1627562216 instance=ExtResource("2_gehsm")]
+position = Vector2(992, 768)
+
+[node name="PinchosTecho26" parent="Trampas/PinchosTecho" index="20" unique_id=543652024 instance=ExtResource("2_gehsm")]
+position = Vector2(928, 768)
+
+[node name="PinchosTecho27" parent="Trampas/PinchosTecho" index="21" unique_id=1641721625 instance=ExtResource("2_gehsm")]
+position = Vector2(864, 768)
+
+[node name="PinchosTecho28" parent="Trampas/PinchosTecho" index="22" unique_id=1004136873 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 768)
+
+[node name="PinchosTecho29" parent="Trampas/PinchosTecho" index="23" unique_id=1165448979 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 768)
+
+[node name="PinchosTecho30" parent="Trampas/PinchosTecho" index="24" unique_id=1635638581 instance=ExtResource("2_gehsm")]
+position = Vector2(736, 768)
+
+[node name="PinchosTecho31" parent="Trampas/PinchosTecho" index="25" unique_id=1233471533 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 704)
+
+[node name="PinchosTecho32" parent="Trampas/PinchosTecho" index="26" unique_id=452708991 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 640)
+
+[node name="PinchosTecho33" parent="Trampas/PinchosTecho" index="27" unique_id=2103400237 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 576)
+
+[node name="PinchosTecho34" parent="Trampas/PinchosTecho" index="28" unique_id=2061919818 instance=ExtResource("2_gehsm")]
+position = Vector2(864, 256)
+
+[node name="PinchosTecho35" parent="Trampas/PinchosTecho" index="29" unique_id=1564533429 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 256)
+
+[node name="PinchosTecho36" parent="Trampas/PinchosTecho" index="30" unique_id=1450079579 instance=ExtResource("2_gehsm")]
+position = Vector2(736, 256)
+
+[node name="PinchosTecho3" parent="Trampas/PinchosTecho" index="31" unique_id=192684057 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 448)
+
+[node name="PinchosTecho4" parent="Trampas/PinchosTecho" index="32" unique_id=2011921535 instance=ExtResource("2_gehsm")]
+position = Vector2(672, 512)
+
+[node name="PinchosTecho5" parent="Trampas/PinchosTecho" index="33" unique_id=1438814320 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 576)
+
+[node name="PinchosTecho6" parent="Trampas/PinchosTecho" index="34" unique_id=1709289496 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 640)
+
+[node name="PinchosTecho7" parent="Trampas/PinchosTecho" index="35" unique_id=619428857 instance=ExtResource("2_gehsm")]
+position = Vector2(864, 640)
+
+[node name="PinchosTecho8" parent="Trampas/PinchosTecho" index="36" unique_id=679682505 instance=ExtResource("2_gehsm")]
+position = Vector2(928, 640)
+
+[node name="PinchosTecho9" parent="Trampas/PinchosTecho" index="37" unique_id=193862192 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 640)
+
+[node name="PinchosTecho10" parent="Trampas/PinchosTecho" index="38" unique_id=1931710772 instance=ExtResource("2_gehsm")]
+position = Vector2(992, 640)
+
+[node name="PinchosTecho11" parent="Trampas/PinchosTecho" index="39" unique_id=1977661642 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 576)
+
+[node name="PinchosTecho12" parent="Trampas/PinchosTecho" index="40" unique_id=1164080949 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 512)
+
+[node name="PinchosTecho13" parent="Trampas/PinchosTecho" index="41" unique_id=1790704919 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 448)
+
+[node name="PinchosTecho14" parent="Trampas/PinchosTecho" index="42" unique_id=374727989 instance=ExtResource("2_gehsm")]
+position = Vector2(1056, 384)
+
+[node name="PinchosTecho15" parent="Trampas/PinchosTecho" index="43" unique_id=832168304 instance=ExtResource("2_gehsm")]
+position = Vector2(992, 384)
+
+[node name="PinchosTecho16" parent="Trampas/PinchosTecho" index="44" unique_id=1265156226 instance=ExtResource("2_gehsm")]
+position = Vector2(928, 384)
+
+[node name="PinchosTecho17" parent="Trampas/PinchosTecho" index="45" unique_id=720127402 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 384)
+
+[node name="PinchosTecho18" parent="Trampas/PinchosTecho" index="46" unique_id=1089819298 instance=ExtResource("2_gehsm")]
+position = Vector2(864, 384)
+
+[node name="PinchosTecho19" parent="Trampas/PinchosTecho" index="47" unique_id=1585458804 instance=ExtResource("2_gehsm")]
+position = Vector2(800, 448)
+
+[node name="CofreBotin" parent="Objetos" parent_id_path=PackedInt32Array(653114024) index="0" unique_id=2110658979 instance=ExtResource("3_ft5ae")]
+position = Vector2(928, 512)
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("3_6i1xt")]
+
+[editable path="Puzle"]
