@@ -272,12 +272,10 @@ func _actualizar_puertas() -> void:
 func cerrar() -> void:
 	_cerrando = true
 
-## Las salas marcadas como "se resuelve al entrar" se completan al pisarlas.
+## Las salas sin desafíos se completan al pisarlas.
 func _resolver_si_corresponde() -> void:
 	if datos == null or datos.resuelta:
 		return
-	#if categoria == null or not categoria.se_resuelve_al_entrar:
-	#	return
 	if not _desafios.is_empty():
 		return
 	datos.resuelta = true

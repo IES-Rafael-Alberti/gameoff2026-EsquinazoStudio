@@ -281,9 +281,6 @@ func hay_conexion(celda: Vector2i) -> bool:
 		return true
 	return celda.x >= 0 and celda.x < _columnas and (celda.y == -1 or celda.y == _filas)
 
-func categoria_de(celda: Vector2i) -> CategoriaSala:
-	return celdas[celda].categoria
-
 ## La sala de esta celda solo tiene puertas Este y Oeste.
 func es_solo_horizontal(celda: Vector2i) -> bool:
 	return celdas.has(celda) and celdas[celda].solo_horizontal

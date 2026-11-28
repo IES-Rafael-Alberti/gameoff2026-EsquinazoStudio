@@ -42,15 +42,6 @@ func curar(cantidad: int) -> bool:
 	cambiada.emit(vida, vida_maxima)
 	return true
 
-## Sube la vida máxima. Por defecto el contenedor nuevo viene lleno.
-func aumentar_maxima(cantidad: int, rellenar := true) -> void:
-	if cantidad <= 0:
-		return
-	vida_maxima += cantidad
-	if rellenar and esta_viva():
-		vida += cantidad
-	cambiada.emit(vida, vida_maxima)
-
 ## Pone la vida actual en un valor concreto (entre 1 y la máxima): al empezar un nivel con la vida
 ## con la que se terminó el anterior.
 func establecer(valor: int) -> void:

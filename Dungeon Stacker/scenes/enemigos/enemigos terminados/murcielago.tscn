@@ -505,4 +505,4 @@ hframes = 3
 vframes = 2
 
 [node name="BotinPiezas" parent="." index="6" unique_id=2125955471 instance=ExtResource("4_mramu")]
-probabilidad = 50.0
+probabilidad = 25.0

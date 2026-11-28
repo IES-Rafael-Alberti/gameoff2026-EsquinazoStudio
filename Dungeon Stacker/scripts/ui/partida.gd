@@ -23,14 +23,8 @@ var nivel_actual := -1
 var vida_al_empezar := -1
 var _completados: Array[bool] = []
 
-
 func _ready() -> void:
 	_cargar()
-
-
-func cantidad_niveles() -> int:
-	return configuraciones.size()
-
 
 ## La configuración del nivel elegido, o null si no hay ninguno elegido.
 func configuracion_actual() -> Configuracion_Tablero:
@@ -38,17 +32,14 @@ func configuracion_actual() -> Configuracion_Tablero:
 		return null
 	return configuraciones[nivel_actual]
 
-
 func nivel_completado(nivel: int) -> bool:
 	return nivel >= 0 and nivel < _completados.size() and _completados[nivel]
-
 
 ## Un nivel se puede jugar si es el tutorial o si el anterior está completado.
 func nivel_disponible(nivel: int) -> bool:
 	if nivel < 0 or nivel >= configuraciones.size():
 		return false
 	return nivel == 0 or nivel_completado(nivel - 1)
-
 
 ## Primer nivel sin completar, o -1 si están todos completados.
 func siguiente_nivel() -> int:
@@ -57,11 +48,9 @@ func siguiente_nivel() -> int:
 			return i
 	return -1
 
-
 ## CONTINUE: solo con el tutorial terminado y algún nivel por jugar.
 func puede_continuar() -> bool:
 	return nivel_completado(0) and siguiente_nivel() != -1
-
 
 ## Marca el nivel como completado y lo guarda en disco. Lo llamará el fin de nivel.
 func completar_nivel(nivel: int) -> void:
@@ -70,7 +59,6 @@ func completar_nivel(nivel: int) -> void:
 	_completados.resize(configuraciones.size())
 	_completados[nivel] = true
 	_guardar()
-
 
 ## Empieza el nivel indicado desde cero. Con `conservar_vida`, entra con la vida de
 ## vida_al_empezar (al pasar de un nivel al siguiente); si no, con la vida completa.
@@ -83,11 +71,9 @@ func jugar_nivel(nivel: int, conservar_vida := false) -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(escena_juego)
 
-
 func continuar() -> void:
 	if puede_continuar():
 		jugar_nivel(siguiente_nivel())
-
 
 ## El jugador cruza la puerta de salida: el nivel queda completado y pasa al siguiente con la
 ## vida que lleva. Tras el último nivel, vuelve al menú.
@@ -104,20 +90,11 @@ func terminar_nivel(vida_final: int) -> void:
 	vida_al_empezar = vida_final
 	jugar_nivel(siguiente, true)
 
-
 func volver_al_menu() -> void:
 	nivel_actual = -1
 	vida_al_empezar = -1
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(escena_menu)
-
-
-## Borra el progreso (para pruebas).
-func borrar_progreso() -> void:
-	_completados.clear()
-	_completados.resize(configuraciones.size())
-	_guardar()
-
 
 func _cargar() -> void:
 	_completados.clear()
@@ -127,7 +104,6 @@ func _cargar() -> void:
 		return
 	for i in configuraciones.size():
 		_completados[i] = archivo.get_value("niveles", str(i), false)
-
 
 func _guardar() -> void:
 	var archivo := ConfigFile.new()

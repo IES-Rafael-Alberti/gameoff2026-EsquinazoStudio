@@ -42,11 +42,6 @@ func configurar(mazmorra: Mazmorra, vida: Vida) -> void:
 	var jugador := get_tree().get_first_node_in_group("jugador")
 	_conectar_llave(jugador)
 
-func configurar_vida(vida: Vida) -> void:
-	if vida != null:
-		_barra_vida.configurar(vida)
-		_escuchar_dano(vida)
-
 func refrescar_minimapa() -> void:
 	if _mazmorra != null:
 		_minimapa.refrescar()

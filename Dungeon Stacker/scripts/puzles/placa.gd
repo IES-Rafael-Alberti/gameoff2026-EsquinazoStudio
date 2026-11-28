@@ -22,6 +22,9 @@ const TAM_CELDA := 64.0
 @export var activa_caja := true
 ## Si es true, una vez activada se queda hundida aunque se suelte.
 @export var se_queda_activa := false
+## Tinte del sprite cuando la placa admite cajas (activa_caja), para distinguirla a simple vista.
+## Blanco = sin cambio. El de por defecto es un tono cálido suave.
+@export var color_caja := Color(1.0, 0.88, 0.7)
 
 var activa := false
 
@@ -33,6 +36,8 @@ var _ocupantes: Array[Node2D] = []
 func _ready() -> void:
 	body_entered.connect(_on_cuerpo_entro)
 	body_exited.connect(_on_cuerpo_salio)
+	if activa_caja:
+		_sprite.modulate = color_caja
 	_aplicar_sprite()
 
 
