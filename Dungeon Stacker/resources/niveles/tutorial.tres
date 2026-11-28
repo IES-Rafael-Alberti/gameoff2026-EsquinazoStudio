@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bvlnqnssehkyo" path="res://scenes/salas/Medieval/Tutorial/Tutorial3.tscn" id="22_tt7k0"]
 [ext_resource type="PackedScene" uid="uid://c48tvr27wgs32" path="res://scenes/salas/Medieval/Tesoro/Tesoro1.tscn" id="24_ln5x1"]
 [ext_resource type="PackedScene" uid="uid://cxg6j72bhdno0" path="res://scenes/salas/Medieval/Vacio/vacio5.tscn" id="26_ln5x1"]
-[ext_resource type="PackedScene" uid="uid://brs7ohytq6c83" path="res://scenes/salas/Medieval/Puzzles/puzzle7.tscn" id="27_euucq"]
+[ext_resource type="PackedScene" uid="uid://brs7ohytq6c83" path="res://scenes/salas/Medieval/Puzzles/Puzzle7.tscn" id="27_euucq"]
 
 [sub_resource type="Resource" id="Resource_wbero"]
 script = ExtResource("5_qeidx")
