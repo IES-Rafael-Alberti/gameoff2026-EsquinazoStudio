@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ce6nkx1d16c2j" path="res://assets/sprites/enemigo/Dinosaurio/Dinosaurio muerte Spritesheet.png" id="5_xotn2"]
 [ext_resource type="Texture2D" uid="uid://brqsrx486c3bi" path="res://assets/sprites/enemigo/Dinosaurio/Ataque dino.png" id="6_3sn4x"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cgpg0"]
-radius = 20.0
-
 [sub_resource type="Animation" id="Animation_cgpg0"]
 resource_name = "RESET"
 length = 0.001
@@ -681,16 +678,18 @@ _data = {
 size = Vector2(40, 24)
 
 [node name="Dinosaurio" unique_id=661418023 instance=ExtResource("1_oylt0")]
-
-[node name="CollisionShape2D" parent="." index="0" unique_id=839574352]
-shape = SubResource("CircleShape2D_cgpg0")
+scale = Vector2(1.5, 1.5)
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
 libraries/ = SubResource("AnimationLibrary_m35ro")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ZonaGolpe" parent_id_path=PackedInt32Array(2003133916) index="0" unique_id=1199356865]
-light_mask = 0
-visibility_layer = 2
+[node name="ZonaGolpe" parent="." index="2" unique_id=2003133916]
+light_mask = 2
+visibility_layer = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ZonaGolpe" index="0" unique_id=1199356865]
+light_mask = 2
+visibility_layer = 0
 position = Vector2(40, 0)
 shape = SubResource("RectangleShape2D_mjkrw")
 
