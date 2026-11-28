@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c0setib6pc3l6" path="res://scripts/ui/niveles.gd" id="1_cddyd"]
 [ext_resource type="Texture2D" uid="uid://d0qfu1fmkyggq" path="res://assets/sprites/menu/cartel opciones.png" id="2_e6sv3"]
-[ext_resource type="FontFile" uid="uid://bs7rh3h0be6pa" path="res://assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_pfet6"]
 [ext_resource type="FontFile" uid="uid://b7uvyhvotmcby" path="res://assets/fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="4_bfpv7"]
 [ext_resource type="Texture2D" uid="uid://b5wqh4b33sc5a" path="res://assets/sprites/menu/post it opciones.png" id="4_sanwg"]
 
@@ -50,6 +49,19 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2yh6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxtlq"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -192,15 +204,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_e2yh6")
 text = "START"
 
 [node name="Volver" type="Button" parent="." unique_id=704633026]
-visible = false
 layout_mode = 0
 offset_left = 832.0
 offset_top = 864.0
 offset_right = 1088.0
 offset_bottom = 927.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_pfet6")
+theme_override_fonts/font = SubResource("FontVariation_bfpv7")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxtlq")
 text = "RETURN"
 
 [connection signal="pressed" from="Level1Button" to="." method="_on_tutorial_pressed"]
