@@ -2,8 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bnyacbnu4yr60" path="res://scenes/enemigos/bases finales enemigos/EnemigoEstadosTerrestre.tscn" id="1_oylt0"]
 [ext_resource type="Texture2D" uid="uid://dqi1sqj1gcvsp" path="res://assets/sprites/enemigo/Dinosaurio/Andares cretácicos.png" id="4_xotn2"]
+[ext_resource type="PackedScene" uid="uid://dtu3yh1sacj6f" path="res://scenes/enemigos/botin_piezas.tscn" id="5_wbbpb"]
 [ext_resource type="Texture2D" uid="uid://ce6nkx1d16c2j" path="res://assets/sprites/enemigo/Dinosaurio/Dinosaurio muerte Spritesheet.png" id="5_xotn2"]
 [ext_resource type="Texture2D" uid="uid://brqsrx486c3bi" path="res://assets/sprites/enemigo/Dinosaurio/Ataque dino.png" id="6_3sn4x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgpg0"]
+radius = 20.0
 
 [sub_resource type="Animation" id="Animation_cgpg0"]
 resource_name = "RESET"
@@ -673,10 +677,22 @@ _data = {
 &"volver": SubResource("Animation_e01du")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjkrw"]
+size = Vector2(40, 24)
+
 [node name="Dinosaurio" unique_id=661418023 instance=ExtResource("1_oylt0")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=839574352]
+shape = SubResource("CircleShape2D_cgpg0")
 
 [node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
 libraries/ = SubResource("AnimationLibrary_m35ro")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ZonaGolpe" parent_id_path=PackedInt32Array(2003133916) index="0" unique_id=1199356865]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_mjkrw")
 
 [node name="MaquinaEstados" parent="." index="3" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
 estado_inicial = NodePath("Inactivo")
@@ -685,6 +701,7 @@ estado_inicial = NodePath("Inactivo")
 zona_golpe = NodePath("../../ZonaGolpe")
 
 [node name="SpriteBase" type="Sprite2D" parent="." index="5" unique_id=974726781]
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_xotn2")
 hframes = 2
@@ -692,6 +709,7 @@ vframes = 2
 
 [node name="SpriteAndar" type="Sprite2D" parent="." index="6" unique_id=839045279]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_xotn2")
 hframes = 2
@@ -699,6 +717,7 @@ vframes = 2
 
 [node name="SpriteMuerte" type="Sprite2D" parent="." index="7" unique_id=714791642]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_xotn2")
 hframes = 3
@@ -706,7 +725,11 @@ vframes = 2
 
 [node name="SpriteAtaque" type="Sprite2D" parent="." index="8" unique_id=989052915]
 visible = false
+z_index = 2
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("6_3sn4x")
 hframes = 2
 vframes = 2
+
+[node name="BotinPiezas" parent="." index="9" unique_id=2125955471 instance=ExtResource("5_wbbpb")]
+probabilidad = 25.0
