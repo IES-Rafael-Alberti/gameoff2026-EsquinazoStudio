@@ -1,5 +1,48 @@
 [gd_scene format=3 uid="uid://cqrr17hnkwxix"]
 
 [ext_resource type="PackedScene" uid="uid://bnyacbnu4yr60" path="res://scenes/enemigos/bases finales enemigos/EnemigoEstadosTerrestre.tscn" id="1_oylt0"]
+[ext_resource type="AnimationLibrary" uid="uid://n2276j6g7ctw" path="res://resources/animaciones_esqueleto.res" id="2_cgpg0"]
+[ext_resource type="AnimationLibrary" uid="uid://bdh04te7ermjo" path="res://resources/animaciones_robot.res" id="3_wbbpb"]
+[ext_resource type="Texture2D" uid="uid://dqi1sqj1gcvsp" path="res://assets/sprites/enemigo/Dinosaurio/Andares cretácicos.png" id="4_xotn2"]
+[ext_resource type="Texture2D" uid="uid://ce6nkx1d16c2j" path="res://assets/sprites/enemigo/Dinosaurio/Dinosaurio muerte Spritesheet.png" id="5_xotn2"]
+[ext_resource type="Texture2D" uid="uid://brqsrx486c3bi" path="res://assets/sprites/enemigo/Dinosaurio/Ataque dino.png" id="6_3sn4x"]
 
-[node name="EnemigoEstadosBase" unique_id=661418023 instance=ExtResource("1_oylt0")]
+[node name="Dinosaurio" unique_id=661418023 instance=ExtResource("1_oylt0")]
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1053273587]
+libraries/animaciones_esqueleto = ExtResource("2_cgpg0")
+libraries/animaciones_robot = ExtResource("3_wbbpb")
+
+[node name="MaquinaEstados" parent="." index="3" unique_id=46075694 node_paths=PackedStringArray("estado_inicial")]
+estado_inicial = NodePath("Inactivo")
+
+[node name="Ataque" parent="MaquinaEstados" index="6" unique_id=1763796683 node_paths=PackedStringArray("zona_golpe")]
+zona_golpe = NodePath("../../ZonaGolpe")
+
+[node name="SpriteBase" type="Sprite2D" parent="." index="5" unique_id=974726781]
+visible = false
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_xotn2")
+hframes = 2
+vframes = 2
+
+[node name="SpriteAndar" type="Sprite2D" parent="." index="6" unique_id=839045279]
+visible = false
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_xotn2")
+hframes = 2
+vframes = 2
+
+[node name="SpriteMuerte" type="Sprite2D" parent="." index="7" unique_id=714791642]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("5_xotn2")
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="SpriteAtaque" type="Sprite2D" parent="." index="8" unique_id=989052915]
+visible = false
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("6_3sn4x")
+hframes = 2
+vframes = 2
