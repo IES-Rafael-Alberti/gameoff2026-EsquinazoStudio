@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crfl1k05tltje" path="res://scenes/salas/habitacion_base_hielo.tscn" id="1_0ujhn"]
 [ext_resource type="PackedScene" uid="uid://ofd1pd4wrxs3" path="res://scenes/puzles/medieval/placa.tscn" id="2_dk2fg"]
 [ext_resource type="PackedScene" uid="uid://cvy8nsk3xthea" path="res://scenes/trampas/hielo/sierra_helada.tscn" id="3_ydq2t"]
+[ext_resource type="PackedScene" uid="uid://fh0uea1b1jkc" path="res://scenes/_Componentes/Depuracion.tscn" id="4_ydq2t"]
 
 [node name="HabitacionBase" unique_id=1972970273 instance=ExtResource("1_0ujhn")]
 
@@ -14,15 +15,23 @@ visible = false
 
 [node name="Placa" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="0" unique_id=909371902 instance=ExtResource("2_dk2fg")]
 position = Vector2(800, 384)
+activa_caja = false
+se_queda_activa = true
 
 [node name="Placa2" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="1" unique_id=988474766 instance=ExtResource("2_dk2fg")]
 position = Vector2(1056, 640)
+activa_caja = false
+se_queda_activa = true
 
 [node name="Placa3" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="2" unique_id=1466078881 instance=ExtResource("2_dk2fg")]
 position = Vector2(800, 640)
+activa_caja = false
+se_queda_activa = true
 
 [node name="Placa4" parent="Puzle" parent_id_path=PackedInt32Array(454960009) index="3" unique_id=772355158 instance=ExtResource("2_dk2fg")]
 position = Vector2(1056, 384)
+activa_caja = false
+se_queda_activa = true
 
 [node name="Sierra" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="0" unique_id=807437377 instance=ExtResource("3_ydq2t")]
 position = Vector2(608, 832)
@@ -35,5 +44,7 @@ position = Vector2(1248, 832)
 
 [node name="Sierra4" parent="Trampas" parent_id_path=PackedInt32Array(1202946194) index="3" unique_id=1395055115 instance=ExtResource("3_ydq2t")]
 position = Vector2(608, 192)
+
+[node name="Depuracion" parent="." index="8" unique_id=1550064695 instance=ExtResource("4_ydq2t")]
 
 [editable path="Puzle"]
