@@ -30,3 +30,5 @@ Gonzalo Casas @GonzaloCasa06 : Main designer
 Jose Carmona @ErCarmona : Producer, designer
 
 Rubén Gómez @Kyubi-LS : Art, Marketing
+
+Daniel vidal moya @vidalium : sound producer
